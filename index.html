@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>InfirmAnat IA — 16 Cours Infirmiers, Exercices, Calculs de Doses & QCM (IFSI / ISPITS)</title>
-  <meta name="description" content="Plateforme pédagogique 100 % gratuite : 16 cours complets (anatomie-physiologie, pharmacologie, calculs de doses, soins techniques, urgences, hygiène), exercices corrigés et cas cliniques." />
+  <title>InfirmAnat IA — 20 Cours Infirmiers, Exercices, Calculs de Doses & Fiches PDF (IFSI / ISPITS)</title>
+  <meta name="description" content="Plateforme pédagogique 100 % gratuite : 20 cours complets (anatomie-physiologie, pharmacologie, soins techniques, urgences, hygiène, pédiatrie, gériatrie, psychiatrie, obstétrique), exercices corrigés et 6 fiches PDF imprimables." />
   <meta name="robots" content="index, follow" />
   <style>
 
@@ -240,10 +240,11 @@ footer {
       </div>
     </a>
     <nav>
-      <a href="index.html" class="active">📚 16 Cours</a>
+      <a href="index.html" class="active">📚 20 Cours</a>
       <a href="exercices.html">✍️ Exercices & QCM</a>
+      <a href="ressources-pdf.html">📄 Fiches PDF</a>
       <a href="actualites.html">📰 Actualités</a>
-      <button onclick="openNotesModal()">📝 Carnet de Stage</button>
+      <button onclick="openNotesModal()">📝 Notes Stage</button>
     </nav>
     <div class="user-pill" onclick="openGmailModal()">
       <span id="user-badge-text">Connexion Gmail</span>
@@ -254,25 +255,27 @@ footer {
 <div class="container">
   <div class="banner">
     <div>
-      <h2>Programme Complet des Études Infirmières (16 Modules + Exercices)</h2>
-      <p>12 systèmes d'anatomie-physiologie + 4 modules cliniques (Pharmacologie & Calculs de doses, Soins techniques, Urgences AFGSU, Hygiène hospitalière).</p>
+      <h2>Programme Complet des Études Infirmières (20 Modules + Fiches PDF)</h2>
+      <p>12 systèmes d'anatomie-physiologie, 4 modules de soins/pharmacologie/urgences et 4 spécialités cliniques (Pédiatrie, Gériatrie, Psychiatrie, Obstétrique).</p>
     </div>
     <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-      <span class="sys-badge" id="progress-summary">0 / 16 cours validés</span>
-      <a href="exercices.html" class="btn btn-accent">✍️ Passer aux Exercices</a>
+      <span class="sys-badge" id="progress-summary">0 / 20 cours validés</span>
+      <a href="ressources-pdf.html" class="btn">📄 Fiches PDF</a>
+      <a href="exercices.html" class="btn btn-accent">✍️ Exercices</a>
     </div>
   </div>
 
   <div class="search-box">
-    <input type="text" id="search-input" placeholder="Rechercher un cours, un geste infirmier, un calcul de dose, un repère..." oninput="filterCards()" />
-    <button class="btn btn-outline" onclick="filterByCat('all')">Tous (16)</button>
+    <input type="text" id="search-input" placeholder="Rechercher un cours, une spécialité (Pédiatrie, Gériatrie, Psychiatrie, Obstétrique, Doses)..." oninput="filterCards()" />
+    <button class="btn btn-outline" onclick="filterByCat('all')">Tous (20)</button>
     <button class="btn btn-outline" onclick="filterByCat('Anatomie-Physiologie')">Anatomie (12)</button>
     <button class="btn btn-outline" onclick="filterByCat('Soins & Thérapeutique')">Soins & Doses (4)</button>
+    <button class="btn btn-outline" onclick="filterByCat('Spécialités Cliniques')">Spécialités (4)</button>
   </div>
 
   <div id="courses-grid" class="grid">
     
-    <a href="cours-cardiovasculaire.html" class="card" data-cat="Anatomie-Physiologie" data-search="système cardiovasculaire & hémodynamique cœur, vascularisation coronaire, circulation systémique/pulmonaire, ecg et repères de ponction. auscultation des 4 foyers : aortique (2e espace intercostal droit), pulmonaire (2e eic gauche), tricuspide (4e-5e eic bord sternal gauche), mitral (5e eic ligne médio-claviculaire gauche). prise des pouls périphériques (radial, fémoral, pédieux, tibial postérieur). pose de voie veineuse périphérique (vvp) sur les veines céphalique, basilique ou médiane du pli du coude. anatomie-physiologie">
+    <a href="cours-cardiovasculaire.html" class="card" data-cat="Anatomie-Physiologie" data-search="système cardiovasculaire & hémodynamique cœur, vascularisation coronaire, circulation systémique/pulmonaire, ecg et repères de ponction. anatomie-physiologie">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 01 • Anatomie-Physiologie</span>
@@ -286,7 +289,7 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
-    <a href="cours-respiratoire.html" class="card" data-cat="Anatomie-Physiologie" data-search="système respiratoire & échanges gazeux voies aériennes supérieures/inférieures, poumons, plèvre, hématose et oxygénothérapie. mesure de la spo2 par oxymètre de pouls. auscultation pulmonaire bilatérale et comparative (sommets, champs moyens, bases). repère de ponction pleurale : bord supérieur de la côte inférieure (pour éviter le paquet vasculo-nerveux intercostal situé au bord inférieur de chaque côte). prudence sous o2 chez le patient bpco hypercapnique (cible spo2 88–92 %). anatomie-physiologie">
+    <a href="cours-respiratoire.html" class="card" data-cat="Anatomie-Physiologie" data-search="système respiratoire & échanges gazeux voies aériennes supérieures/inférieures, poumons, plèvre, hématose et oxygénothérapie. anatomie-physiologie">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 02 • Anatomie-Physiologie</span>
@@ -300,7 +303,7 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
-    <a href="cours-nerveux.html" class="card" data-cat="Anatomie-Physiologie" data-search="système nerveux central & périphérique encéphale, méninges, lcr, moelle épinière, nerfs crâniens et repères de ponction lombaire. repère de la ponction lombaire (pl) : espace intervertébral l4-l5 (ou l3-l4) situé sur la ligne de tuffier joignant les deux crêtes iliaques, en dessous de la terminaison de la moelle épinière (l1-l2) pour éviter toute lésion médullaire. surveillance post-pl (hydratation, céphalées). anatomie-physiologie">
+    <a href="cours-nerveux.html" class="card" data-cat="Anatomie-Physiologie" data-search="système nerveux central & périphérique encéphale, méninges, lcr, moelle épinière, nerfs crâniens et repères de ponction lombaire. anatomie-physiologie">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 03 • Anatomie-Physiologie</span>
@@ -314,7 +317,7 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
-    <a href="cours-musculo-squelettique.html" class="card" data-cat="Anatomie-Physiologie" data-search="système musculo-squelettique & sites d'injection squelette axial/appendiculaire, articulations, muscles et repères sécurisés d'injection im. repères des injections intramusculaires (im) : 1) quart supéro-externe de la fesse (muscle grand fessier) pour éviter le nerf sciatique qui passe en inféro-interne ; 2) face antéro-externe de la cuisse (muscle vaste externe, tiers moyen) ; 3) muscle deltoïde (2 à 3 travers de doigt sous l'acromion, volume max 1-2 ml). surveillance sous plâtre (chaleur, couleur, sensibilité, mobilité des extrémités). anatomie-physiologie">
+    <a href="cours-musculo-squelettique.html" class="card" data-cat="Anatomie-Physiologie" data-search="système musculo-squelettique & sites d'injection squelette axial/appendiculaire, articulations, muscles et repères sécurisés d'injection im. anatomie-physiologie">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 04 • Anatomie-Physiologie</span>
@@ -328,7 +331,7 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
-    <a href="cours-digestif.html" class="card" data-cat="Anatomie-Physiologie" data-search="système digestif & glandes annexes tube digestif, foie, voies biliaires, pancréas, quadrants abdominaux et sonde nasogastrique. repère de pose de sonde nasogastrique (sng) : mesure nez – lobe de l'oreille – appendice xiphoïde (repère nex). contrôle du positionnement par auscultation épigastrique et mesure du ph gastrique (ph ≤ 5,5). point de mac burney (fosse iliaque droite, tiers externe de la ligne ombilic – épine iliaque antéro-supérieure) pour l'appendicite. anatomie-physiologie">
+    <a href="cours-digestif.html" class="card" data-cat="Anatomie-Physiologie" data-search="système digestif & glandes annexes tube digestif, foie, voies biliaires, pancréas, quadrants abdominaux et sonde nasogastrique. anatomie-physiologie">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 05 • Anatomie-Physiologie</span>
@@ -342,7 +345,7 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
-    <a href="cours-renal-urinaire.html" class="card" data-cat="Anatomie-Physiologie" data-search="système rénal, urinaire & équilibre hydro-électrolytique reins, néphron, uretères, vessie, sonde vésicale et régulation acido-basique. sondage vésical aseptique : respecter la courbure urétrale chez l'homme (verge à 90° puis abaissée après passage du sphincter) et gonfler le ballonnet uniquement après reflux d'urine. surveillance de la bandelette urinaire (leucocytes, nitrites, protéines, glucose, cétones). anatomie-physiologie">
+    <a href="cours-renal-urinaire.html" class="card" data-cat="Anatomie-Physiologie" data-search="système rénal, urinaire & équilibre hydro-électrolytique reins, néphron, uretères, vessie, sonde vésicale et régulation acido-basique. anatomie-physiologie">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 06 • Anatomie-Physiologie</span>
@@ -356,7 +359,7 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
-    <a href="cours-endocrinien.html" class="card" data-cat="Anatomie-Physiologie" data-search="système endocrinien & métabolisme axe hypothalamo-hypophysaire, thyroïde, surrénales, pancréas endocrine et diabète. sites d'injection sous-cutanée d'insuline (abdomen à 2 travers de doigt de l'ombilic, face externe des cuisses, bras) avec rotation systématique des points pour prévenir les lipodystrophies. surveillance post-thyroïdectomie (risque d'hématome compressif cervical et d'hypocalcémie par atteinte des parathyroïdes). anatomie-physiologie">
+    <a href="cours-endocrinien.html" class="card" data-cat="Anatomie-Physiologie" data-search="système endocrinien & métabolisme axe hypothalamo-hypophysaire, thyroïde, surrénales, pancréas endocrine et diabète. anatomie-physiologie">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 07 • Anatomie-Physiologie</span>
@@ -370,7 +373,7 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
-    <a href="cours-reproducteur.html" class="card" data-cat="Anatomie-Physiologie" data-search="système reproducteur & périnatalité anatomie pelvienne féminine et masculine, cycle menstruel, grossesse et surveillance obstétricale. calcul du terme théorique de grossesse (règle de naegele : date des dernières règles + 14 jours + 9 mois). surveillance de la pré-éclampsie (hta ≥ 140/90 mmhg + protéinurie). accompagnement du dépistage (frottis cervico-utérin, palpation mammaire). anatomie-physiologie">
+    <a href="cours-reproducteur.html" class="card" data-cat="Anatomie-Physiologie" data-search="système reproducteur & périnatalité anatomie pelvienne féminine et masculine, cycle menstruel, grossesse et surveillance obstétricale. anatomie-physiologie">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 08 • Anatomie-Physiologie</span>
@@ -384,7 +387,7 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
-    <a href="cours-tegumentaire.html" class="card" data-cat="Anatomie-Physiologie" data-search="système tégumentaire, plaies & cicatrisation peau (épiderme, derme, hypoderme), thermorégulation, stades d'escarres et brûlures. calcul de la surface brûlée chez l'adulte selon la règle des 9 de wallace (tête = 9 %, chaque membre supérieur = 9 %, face antérieure du tronc = 18 %, face postérieure = 18 %, chaque membre inférieur = 18 %, périnée = 1 %). choix du pansement adapté au stade de cicatrisation (détersion, bourgeonnement, épidermisation). anatomie-physiologie">
+    <a href="cours-tegumentaire.html" class="card" data-cat="Anatomie-Physiologie" data-search="système tégumentaire, plaies & cicatrisation peau (épiderme, derme, hypoderme), thermorégulation, stades d'escarres et brûlures. anatomie-physiologie">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 09 • Anatomie-Physiologie</span>
@@ -398,7 +401,7 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
-    <a href="cours-sens-immunitaire.html" class="card" data-cat="Anatomie-Physiologie" data-search="organes des sens & système lymphatique/immunitaire œil, oreille, ganglions lymphatiques, rate, immunité innée/adaptative et asepsie. précautions standard d'hygiène (friction hydro-alcoolique, port de gants/masque), règles d'administration des collyres (instillation dans le cul-de-sac conjonctival inférieur sans toucher l'œil), surveillance d'un patient splénectomisé ou aplasique (isolement protecteur). anatomie-physiologie">
+    <a href="cours-sens-immunitaire.html" class="card" data-cat="Anatomie-Physiologie" data-search="organes des sens & système lymphatique/immunitaire œil, oreille, ganglions lymphatiques, rate, immunité innée/adaptative et asepsie. anatomie-physiologie">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 10 • Anatomie-Physiologie</span>
@@ -412,7 +415,7 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
-    <a href="cours-hematologie.html" class="card" data-cat="Anatomie-Physiologie" data-search="système hématologique, hémostase & transfusion cellules sanguines, coagulation, groupes abo/rhésus, ordre des tubes et sécurité transfusionnelle. ordre recommandé de prélèvement des tubes sanguins : 1) hémocultures (aérobie puis anaérobie) ; 2) tube citrate (bleu - coagulation) ; 3) tube sec (rouge/jaune - biochimie) ; 4) tube hépariné (vert) ; 5) tube edta (violet - nfs/groupage). sécurité transfusionnelle : contrôle ultime au lit du patient (test de beth-vincent) et surveillance constante les 15 premières minutes. anatomie-physiologie">
+    <a href="cours-hematologie.html" class="card" data-cat="Anatomie-Physiologie" data-search="système hématologique, hémostase & transfusion cellules sanguines, coagulation, groupes abo/rhésus, ordre des tubes et sécurité transfusionnelle. anatomie-physiologie">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 11 • Anatomie-Physiologie</span>
@@ -426,7 +429,7 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
-    <a href="cours-topographique.html" class="card" data-cat="Anatomie-Physiologie" data-search="anatomie topographique & repères cliniques de surface triangle de scarpa, angle de louis, ligne de tuffier, chambre implantable et repères rcp. 1) massage cardiaque externe (rcp) : centre du thorax, moitié inférieure du sternum (5 à 6 cm de profondeur chez l'adulte, rythme 100-120/min) ; 2) chambre implantable (pac) : repérage triangulaire entre le pouce, l'index et le majeur, insertion perpendiculaire d'une aiguille de huber ; 3) cathéter veineux central jugulaire interne ou sous-clavier (surveillance radio pulmonaire post-pose). anatomie-physiologie">
+    <a href="cours-topographique.html" class="card" data-cat="Anatomie-Physiologie" data-search="anatomie topographique & repères cliniques de surface triangle de scarpa, angle de louis, ligne de tuffier, chambre implantable et repères rcp. anatomie-physiologie">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 12 • Anatomie-Physiologie</span>
@@ -440,7 +443,7 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
-    <a href="cours-pharmacologie-doses.html" class="card" data-cat="Soins & Thérapeutique" data-search="pharmacologie infirmière & calculs de doses règle des 5b, débits de perfusion (gouttes/min, ml/h), dilutions, anticoagulant et surveillance. application stricte de la règle des 5b avant toute administration : bon patient, bon médicament, bonne dose, bonne voie, bon moment. conversion : 1 ml = 20 gouttes (soluté aqueux standard) ; 1 ml = 15 gouttes (sang/dérivés) ; 1 ml = 60 microgouttes (perfuseur pédiatrique). 1 g = 1 000 mg ; 1 mg = 1 000 µg. soins & thérapeutique">
+    <a href="cours-pharmacologie-doses.html" class="card" data-cat="Soins & Thérapeutique" data-search="pharmacologie infirmière & calculs de doses règle des 5b, débits de perfusion (gouttes/min, ml/h), dilutions, anticoagulant et surveillance. soins & thérapeutique">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 13 • Soins & Thérapeutique</span>
@@ -454,7 +457,7 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
-    <a href="cours-soins-techniques.html" class="card" data-cat="Soins & Thérapeutique" data-search="soins infirmiers techniques, sondages & voies veineuses pose et surveillance de vvp, chambre implantable (pac), sonde urinaire, sng et gaz du sang. 1) réfection de pansement : du plus propre vers le plus sale (de l'intérieur vers l'extérieur pour une plaie chirurgicale propre) ; 2) sondage urinaire : maintien strict du système clos et sac collecteur toujours déclive sans toucher le sol ; 3) gaz du sang : seringue héparinée, purge de l'air, compression artérielle 5 minutes post-ponction (10 min si anticoagulants). soins & thérapeutique">
+    <a href="cours-soins-techniques.html" class="card" data-cat="Soins & Thérapeutique" data-search="soins infirmiers techniques, sondages & voies veineuses pose et surveillance de vvp, chambre implantable (pac), sonde urinaire, sng et gaz du sang. soins & thérapeutique">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 14 • Soins & Thérapeutique</span>
@@ -468,7 +471,7 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
-    <a href="cours-urgences-reanimation.html" class="card" data-cat="Soins & Thérapeutique" data-search="urgences vitales, secourisme & réanimation (afgsu) bilan abcde, arrêt cardiorespiratoire (rcp), défibrillation (dae), choc anaphylactique et avc. 1) acr adulte : alerter immédiatement, débuter le massage cardiaque externe (30 compressions thoraciques à 100-120/min pour 2 insufflations), poser le dae dès qu'il est disponible ; 2) choc anaphylactique : injection intramusculaire urgente d'adrénaline (0,3 à 0,5 mg chez l'adulte dans la face antéro-externe de la cuisse) ; 3) victim inconsciente qui respire : position latérale de sécurité (pls). soins & thérapeutique">
+    <a href="cours-urgences-reanimation.html" class="card" data-cat="Soins & Thérapeutique" data-search="urgences vitales, secourisme & réanimation (afgsu) bilan abcde, arrêt cardiorespiratoire (rcp), défibrillation (dae), choc anaphylactique et avc. soins & thérapeutique">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 15 • Soins & Thérapeutique</span>
@@ -482,7 +485,7 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
-    <a href="cours-hygiene-asepsie.html" class="card" data-cat="Soins & Thérapeutique" data-search="hygiène hospitalière, asepsie & prévention des infections précautions standard, friction hydro-alcoolique, précautions complémentaires (air, gouttelettes, contact) et dasri. 1) hygiène des mains : friction hydro-alcoolique (fha, 30 secondes en 7 étapes) sur mains sèches et non souillées (lavage au savon doux obligatoire si mains visiblement souillées ou infection à clostridioides difficile / gale) ; 2) gestion des aes (accident d'exposition au sang) : nettoyage immédiat à l'eau et au savon, rinçage, antisepsie (dakin ou bétadine) pendant 5 minutes et consultation médicale urgente (< 4h) ; 3) tri des déchets : conteneur opct jaune pour objets piquants/coupants/tranchants sans jamais recapuchonner les aiguilles. soins & thérapeutique">
+    <a href="cours-hygiene-asepsie.html" class="card" data-cat="Soins & Thérapeutique" data-search="hygiène hospitalière, asepsie & prévention des infections précautions standard, friction hydro-alcoolique, précautions complémentaires (air, gouttelettes, contact) et dasri. soins & thérapeutique">
       <div>
         <div class="card-top">
           <span class="sys-badge">Cours 16 • Soins & Thérapeutique</span>
@@ -496,10 +499,66 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
+    <a href="cours-pediatrie-neonatologie.html" class="card" data-cat="Spécialités Cliniques" data-search="pédiatrie, néonatologie & surveillance du nourrisson score d'apgar, développement psychomoteur, constantes par âge, déshydratation aiguë et posologies pédiatriques. spécialités cliniques">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 17 • Spécialités Cliniques</span>
+          <span class="done-badge hidden" id="badge-pediatrie">✓ Validé</span>
+        </div>
+        <h3>Pédiatrie, Néonatologie & Surveillance du Nourrisson</h3>
+        <p>Score d'Apgar, développement psychomoteur, constantes par âge, déshydratation aiguë et posologies pédiatriques.</p>
+      </div>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-geriatrie-autonomie.html" class="card" data-cat="Spécialités Cliniques" data-search="gériatrie, vieillissement & prévention de la perte d'autonomie fragilité, grilles aggir/adl, risque de chute, dénutrition, syndrome confusionnel aigu et escarres. spécialités cliniques">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 18 • Spécialités Cliniques</span>
+          <span class="done-badge hidden" id="badge-geriatrie">✓ Validé</span>
+        </div>
+        <h3>Gériatrie, Vieillissement & Prévention de la Perte d'Autonomie</h3>
+        <p>Fragilité, grilles AGGIR/ADL, risque de chute, dénutrition, syndrome confusionnel aigu et escarres.</p>
+      </div>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-psychiatrie-sante-mentale.html" class="card" data-cat="Spécialités Cliniques" data-search="psychiatrie, santé mentale & relation d'aide entretien infirmier, crise suicidaire (rud), troubles anxieux, dépression, psychoses et surveillance des psychotropes. spécialités cliniques">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 19 • Spécialités Cliniques</span>
+          <span class="done-badge hidden" id="badge-psychiatrie">✓ Validé</span>
+        </div>
+        <h3>Psychiatrie, Santé Mentale & Relation d'Aide</h3>
+        <p>Entretien infirmier, crise suicidaire (RUD), troubles anxieux, dépression, psychoses et surveillance des psychotropes.</p>
+      </div>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-obstetrique-gynecologie.html" class="card" data-cat="Spécialités Cliniques" data-search="obstétrique, surveillance de grossesse & suites de couches consultations prénatales, bilan biologique obligatoire, diabète gestationnel, accouchement et post-partum. spécialités cliniques">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 20 • Spécialités Cliniques</span>
+          <span class="done-badge hidden" id="badge-obstetrique_gyn">✓ Validé</span>
+        </div>
+        <h3>Obstétrique, Surveillance de Grossesse & Suites de Couches</h3>
+        <p>Consultations prénatales, bilan biologique obligatoire, diabète gestationnel, accouchement et post-partum.</p>
+      </div>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
   </div>
 
   <div class="disclaimer-box">
-    <strong>Avertissement pédagogique :</strong> Les cours, schémas, calculs de doses et cas cliniques publiés sur InfirmAnat IA ont une vocation exclusivement éducative pour la formation des étudiants infirmiers (IFSI / ISPITS).
+    <strong>Avertissement pédagogique :</strong> Les cours, schémas, calculs de doses, cas cliniques et fiches PDF publiés sur InfirmAnat IA ont une vocation exclusivement éducative pour la formation des étudiants infirmiers (IFSI / ISPITS).
   </div>
 </div>
 
@@ -511,8 +570,9 @@ footer {
       <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
     </div>
     <div class="footer-links">
-      <a href="index.html">Accueil & 16 Cours</a>
-      <a href="exercices.html">Exercices & Cas Cliniques</a>
+      <a href="index.html">Accueil & 20 Cours</a>
+      <a href="exercices.html">Exercices & QCM</a>
+      <a href="ressources-pdf.html">Fiches PDF Imprimables</a>
       <a href="actualites.html">Actualités & News</a>
       <a href="a-propos.html">À propos</a>
       <a href="contact.html">Contact</a>
@@ -554,7 +614,7 @@ footer {
 let currentCat = 'all';
 function updateUI() {
   const completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
-  document.getElementById('progress-summary').textContent = `${completed.length} / 16 cours validés`;
+  document.getElementById('progress-summary').textContent = `${completed.length} / 20 cours validés`;
   completed.forEach(id => {
     const b = document.getElementById('badge-' + id);
     if (b) b.classList.remove('hidden');
