@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Atlas Anatomique 3D Interactif (Os & Muscles) — InfirmAnat IA</title>
-  <meta name="description" content="Explorez le corps humain en 3D interactive : cliquez sur chaque os et chaque muscle pour afficher son nom anatomique, sa fonction et ses repères cliniques infirmiers (IFSI / ISPITS)." />
+  <title>Atlas Anatomique 3D Réaliste (Corps Humain, Os & Muscles) — InfirmAnat IA</title>
+  <meta name="description" content="Explorez un modèle 3D anatomique réaliste du corps humain : silhouette cutanée, squelette détaillé et muscles striés interactifs avec repères infirmiers (IFSI / ISPITS)." />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
 
@@ -174,20 +174,20 @@ footer {
 
     .studio-wrap {
       display: grid;
-      grid-template-columns: 1.45fr 1fr;
+      grid-template-columns: 1.5fr 1fr;
       gap: 20px;
       align-items: start;
     }
-    @media (max-width: 960px) {
+    @media (max-width: 980px) {
       .studio-wrap { grid-template-columns: 1fr; }
     }
     .canvas-box {
       position: relative;
-      background: radial-gradient(circle at 50% 35%, #1e293b 0%, #0f172a 100%);
+      background: radial-gradient(circle at 50% 30%, #1e293b 0%, #090d16 100%);
       border-radius: 16px;
       overflow: hidden;
-      height: 610px;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.22);
+      height: 650px;
+      box-shadow: 0 14px 36px rgba(9, 13, 22, 0.32);
       border: 1px solid #334155;
     }
     #three-container {
@@ -214,13 +214,13 @@ footer {
       pointer-events: auto;
     }
     .hud-btn {
-      background: rgba(15, 23, 42, 0.78);
-      backdrop-filter: blur(6px);
+      background: rgba(15, 23, 42, 0.82);
+      backdrop-filter: blur(8px);
       color: #f8fafc;
       border: 1px solid rgba(148, 163, 184, 0.35);
       padding: 7px 12px;
       border-radius: 999px;
-      font-size: 0.82rem;
+      font-size: 0.81rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
@@ -242,23 +242,23 @@ footer {
       gap: 8px;
       color: #cbd5e1;
       font-size: 0.78rem;
-      background: rgba(15, 23, 42, 0.72);
+      background: rgba(15, 23, 42, 0.78);
       padding: 8px 14px;
       border-radius: 10px;
       pointer-events: none;
     }
     .hover-tag {
       position: absolute;
-      background: rgba(13, 148, 136, 0.95);
+      background: rgba(13, 148, 136, 0.96);
       color: #fff;
-      padding: 5px 11px;
+      padding: 5px 12px;
       border-radius: 8px;
       font-size: 0.82rem;
       font-weight: 700;
       pointer-events: none;
-      transform: translate(-50%, -135%);
+      transform: translate(-50%, -140%);
       white-space: nowrap;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.35);
       display: none;
       z-index: 20;
     }
@@ -299,8 +299,8 @@ footer {
       margin: 0;
     }
     .parts-list {
-      margin-top: 16px;
-      max-height: 210px;
+      margin-top: 14px;
+      max-height: 215px;
       overflow-y: auto;
       display: flex;
       flex-wrap: wrap;
@@ -346,7 +346,7 @@ footer {
 </header>
 
 <div class="container">
-  <div class="breadcrumb"><a href="index.html">Accueil</a> › Explorateur Anatomique 3D Interactif (Squelette & Muscles)</div>
+  <div class="breadcrumb"><a href="index.html">Accueil</a> › Atlas Anatomique 3D Réaliste (Corps Humain, Squelette & Muscles)</div>
 
   <div class="studio-wrap">
     <!-- 3D VIEWPORT -->
@@ -356,28 +356,29 @@ footer {
 
       <div class="hud-top">
         <div class="hud-group">
-          <button class="hud-btn active" id="layer-both" onclick="setLayer('both', this)">🧬 Vue Combinée</button>
+          <button class="hud-btn active" id="layer-both" onclick="setLayer('both', this)">🧬 Corps Complet</button>
+          <button class="hud-btn" id="layer-muscles" onclick="setLayer('muscles', this)">💪 Muscles Striés</button>
           <button class="hud-btn" id="layer-bones" onclick="setLayer('bones', this)">🦴 Squelette (Os)</button>
-          <button class="hud-btn" id="layer-muscles" onclick="setLayer('muscles', this)">💪 Muscles</button>
+          <button class="hud-btn active" id="btn-skin" onclick="toggleSkin(this)">👤 Silhouette Peau</button>
         </div>
         <div class="hud-group">
           <button class="hud-btn" onclick="setCameraPreset('front')">Face</button>
           <button class="hud-btn" onclick="setCameraPreset('back')">Dos</button>
           <button class="hud-btn" onclick="setCameraPreset('side')">Profil</button>
-          <button class="hud-btn" id="btn-spin" onclick="toggleSpin()">🔄 Rotation</button>
+          <button class="hud-btn" id="btn-spin" onclick="toggleSpin()">🔄 360°</button>
         </div>
       </div>
 
       <div class="hud-bottom">
-        <span>🖱️ <strong>Clic gauche + glisser :</strong> Tourner à 360° • <strong>Molette :</strong> Zoomer</span>
-        <span>👆 <strong>Cliquer sur un os ou muscle</strong> pour animer & voir sa fiche</span>
+        <span>🖱️ <strong>Clic gauche + glisser :</strong> Pivoter • <strong>Clic droit + glisser :</strong> Déplacer • <strong>Molette :</strong> Zoomer</span>
+        <span>👆 <strong>Cliquez sur un os ou un muscle</strong> pour zoomer & animer</span>
       </div>
     </div>
 
     <!-- CLINICAL & ANATOMICAL INFO PANEL -->
     <aside class="info-panel">
       <span id="part-type" class="type-pill pill-bone">🦴 Structure Sélectionnée</span>
-      <h2 id="part-name" style="color:var(--primary); font-size:1.4rem; margin-bottom:2px;">Crâne (Neurocrâne & Face)</h2>
+      <h2 id="part-name" style="color:var(--primary); font-size:1.38rem; margin-bottom:2px;">Crâne (Neurocrâne & Face)</h2>
       <p id="part-latin" style="color:var(--muted); font-style:italic; font-size:0.9rem; margin-bottom:10px;">Cranium • Squelette Axial</p>
 
       <div class="info-block">
@@ -398,6 +399,7 @@ footer {
       <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
         <a id="part-course-link" href="cours-musculo-squelettique.html" class="btn btn-accent">📖 Ouvrir le cours associé</a>
         <button class="btn btn-outline" onclick="triggerQuiz()">🎯 Quiz Rapide 3D</button>
+        <button class="btn btn-outline" onclick="resetCamera()">🔄 Vue Entière</button>
       </div>
 
       <div id="quiz-banner" style="display:none; margin-top:12px; padding:12px; background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; font-size:0.88rem;">
@@ -406,7 +408,7 @@ footer {
       </div>
 
       <div style="margin-top:14px;">
-        <input type="text" id="part-filter" placeholder="Filtrer un os ou un muscle (ex: Deltoïde, Fémur, Sternum)..." oninput="renderChips()" style="width:100%; padding:9px 12px; border:1px solid var(--border); border-radius:8px; font-size:0.88rem;" />
+        <input type="text" id="part-filter" placeholder="Rechercher un os ou un muscle (Deltoïde, Fémur, Sternum, Biceps...)..." oninput="renderChips()" style="width:100%; padding:9px 12px; border:1px solid var(--border); border-radius:8px; font-size:0.88rem;" />
         <div id="parts-chips" class="parts-list"></div>
       </div>
     </aside>
@@ -438,200 +440,266 @@ const ANATOMY_DB = {
     name: "Crâne (Neurocrâne & Massif Facial)",
     latin: "Cranium • Squelette Axial",
     category: "bone",
-    desc: "Ensemble de 22 os soudés par des sutures (frontal, 2 pariétaux, 2 temporaux, occipital, sphénoïde, ethmoïde et os de la face).",
-    func: "Protège l'encéphale contre les chocs mécaniques et abrite les organes sensoriels (vision, audition, équilibre, olfaction).",
-    ide: "Évaluation neurologique post-traumatique (Score de Glasgow, recherche d'otorragie ou d'hématome en lunettes) et palpation des fontanelles chez le nourrisson.",
+    desc: "Boîte osseuse de 22 os soudés (frontal, 2 pariétaux, 2 temporaux, occipital, sphénoïde, ethmoïde, maxillaires et mandibule) abritant l'encéphale.",
+    func: "Protège le cerveau, le cervelet et le tronc cérébral contre les traumatismes et soutient les organes sensoriels.",
+    ide: "Surveillance d'un traumatisme crânien (Score de Glasgow /15, taille et symétrie pupillaire, recherche d'otorragie) et palpation des fontanelles chez le nourrisson.",
     course: "cours-nerveux.html"
   },
   rachis_cervical: {
     name: "Rachis Cervical (Vertèbres C1 à C7)",
     latin: "Columna vertebralis cervicalis • Squelette Axial",
     category: "bone",
-    desc: "Composé de 7 vertèbres cervicales dont l'Atlas (C1), l'Axis (C2) et la vertèbre proéminente (C7) palpable à la base de la nuque.",
-    func: "Soutient la tête, permet sa mobilité et protège le segment cervical de la moelle épinière.",
-    ide: "Maintien strict de l'axe tête-cou-tronc et pose de collier cervical rigide chez tout polytraumatisé suspect de lésion rachidienne.",
+    desc: "7 vertèbres cervicales articulées (Atlas C1, Axis C2 jusqu'à la vertèbre proéminente C7 palpable à la base du cou).",
+    func: "Soutient la tête, permet sa rotation et protège le segment cervical de la moelle épinière.",
+    ide: "Immobilisation stricte de l'axe tête-cou-tronc par collier cervical rigide chez tout patient polytraumatisé.",
     course: "cours-musculo-squelettique.html"
   },
   clavicule: {
-    name: "Clavicules (Droite & Gauche)",
-    latin: "Clavicula • Ceinture Scapulaire",
+    name: "Clavicules & Scapulas (Ceinture Scapulaire)",
+    latin: "Clavicula et Scapula • Membre Supérieur",
     category: "bone",
-    desc: "Os long en forme de S reliant le manubrium sternal à l'acromion de la scapula (omoplate).",
-    func: "Maintient l'épaule à distance du thorax et transmet les forces du membre supérieur vers le squelette axial.",
-    ide: "Repère anatomique majeur pour la pose d'un cathéter veineux central sous-clavier et le placement de l'électrode sous-claviculaire droite du défibrillateur (DAE).",
+    desc: "Os long en S (clavicule) articulé en dedans avec le sternum et en dehors avec l'acromion de la scapula (omoplate).",
+    func: "Relie le membre supérieur au tronc et permet la mobilité multidirectionnelle de l'épaule.",
+    ide: "Repère clé pour l'abord veineux central sous-clavier et le positionnement de l'électrode sous-claviculaire droite du défibrillateur (DAE).",
     course: "cours-topographique.html"
   },
   sternum: {
-    name: "Sternum (Manubrium, Corps & Xiphoïde)",
+    name: "Sternum (Manubrium, Angle de Louis & Xiphoïde)",
     latin: "Sternum • Cage Thoracique",
     category: "bone",
-    desc: "Os plat médian antérieur du thorax comprenant le manubrium, l'angle de Louis, le corps sternal et l'appendice xiphoïde.",
-    func: "Ferme la cage thoracique en avant et protège le cœur et les gros vaisseaux du médiastin.",
-    ide: "1) Moitié inférieure du sternum = zone d'appui des compressions thoraciques (RCP) ; 2) Angle de Louis = repère du 2e espace intercostal ; 3) Appendice xiphoïde = repère final de la mesure NEX (sonde nasogastrique).",
+    desc: "Os plat médian antérieur du thorax présentant l'angle de Louis (2e espace intercostal) et l'appendice xiphoïde à son extrémité inférieure.",
+    func: "Ferme la cage thoracique en avant et protège le cœur, l'aorte et le médiastin.",
+    ide: "1) Moitié inférieure du sternum = appui du massage cardiaque (RCP) ; 2) Angle de Louis = 2e EIC ; 3) Appendice xiphoïde = repère final NEX de la sonde nasogastrique.",
     course: "cours-topographique.html"
   },
   cotes: {
-    name: "Gril Costal (12 Paires de Côtes)",
+    name: "Cage Thoracique (12 Paires de Côtes)",
     latin: "Costae • Cage Thoracique",
     category: "bone",
-    desc: "7 paires de vraies côtes, 3 fausses côtes et 2 côtes flottantes délimitant les espaces intercostaux.",
-    func: "Protège les poumons et le cœur tout en participant à la mécanique ventilatoire grâce aux muscles intercostaux.",
-    ide: "Lors d'une ponction pleurale ou pose de drain thoracique, toujours piquer au BORD SUPÉRIEUR de la côte inférieure pour éviter le paquet vasculo-nerveux intercostal.",
+    desc: "12 paires d'arcs osseux courbes (7 vraies côtes, 3 fausses côtes, 2 côtes flottantes) délimitant les espaces intercostaux.",
+    func: "Protège les poumons et le cœur et assure l'expansion thoracique lors de l'inspiration.",
+    ide: "Ponction pleurale ou drainage thoracique : toujours piquer au BORD SUPÉRIEUR de la côte inférieure pour éviter le paquet vasculo-nerveux intercostal.",
     course: "cours-respiratoire.html"
   },
   rachis_lombaire: {
     name: "Rachis Thoraco-Lombaire & Sacrum",
-    latin: "Vertebrae thoracicae et lumbales • Squelette Axial",
+    latin: "Vertebrae thoracicae, lumbales et Os sacrum",
     category: "bone",
-    desc: "12 vertèbres thoraciques, 5 vertèbres lombaires massives (L1 à L5) et le sacrum articulé avec le bassin.",
-    func: "Supporte le poids du tronc et protège la moelle épinière (qui se termine en L1–L2 chez l'adulte) puis la queue de cheval.",
-    ide: "L'espace intervertébral L4–L5 (repéré par la ligne de Tuffier joignant les deux crêtes iliaques) est le site sécurisé de la ponction lombaire et de la rachianesthésie.",
+    desc: "12 vertèbres thoraciques, 5 vertèbres lombaires massives (L1–L5) et le sacrum encastré dans le bassin.",
+    func: "Supporte la charge du tronc et protège la moelle épinière (qui s'arrête en L1–L2 chez l'adulte).",
+    ide: "Ponction lombaire (PL) réalisée en L4–L5 sur la ligne de Tuffier (joignant les crêtes iliaques), sous le cône terminal de la moelle épinière (L1–L2).",
     course: "cours-nerveux.html"
   },
   humerus: {
     name: "Humérus (Bras)",
     latin: "Humerus • Membre Supérieur",
     category: "bone",
-    desc: "Os long du bras articulé en haut avec la scapula (articulation gléno-humérale) et en bas avec le radius et l'ulna.",
-    func: "Assure les mouvements de grande amplitude du bras et sert d'insertion aux muscles deltoïde, biceps et triceps.",
-    ide: "Surveillance vasculo-nerveuse (pouls radial, sensibilité/motricité des doigts) en cas de fracture de la diaphyse humérale (risque d'atteinte du nerf radial).",
+    desc: "Os long du bras articulé en haut avec la glène de la scapula et en bas avec le radius et l'ulna au niveau du coude.",
+    func: "Levier principal du bras permettant la flexion, l'extension, l'abduction et la rotation.",
+    ide: "En cas de fracture de la diaphyse humérale, vérifier systématiquement le pouls radial et la motricité d'extension du poignet/doigts (nerf radial).",
     course: "cours-musculo-squelettique.html"
   },
   avant_bras: {
     name: "Radius & Ulna (Avant-Bras)",
     latin: "Radius et Ulna • Membre Supérieur",
     category: "bone",
-    desc: "Deux os longs parallèles : le radius (latéral, côté pouce) et l'ulna ou cubitus (médial, côté auriculaire).",
-    func: "Permettent la pronation et la supination de la main ainsi que la flexion-extension du poignet.",
-    ide: "Repère de la gouttière radiale au poignet pour la prise du pouls radial et la ponction de gaz du sang artériel (après test d'Allen vérifiant la suppléance ulnaire).",
+    desc: "Deux os longs parallèles : le radius (externe, côté pouce) et l'ulna ou cubitus (interne, côté auriculaire).",
+    func: "Permettent les mouvements de pronation-supination et la mobilité du poignet.",
+    ide: "La gouttière radiale au poignet est le site de prise du pouls radial et de ponction de gaz du sang artériel (après manœuvre d'Allen).",
     course: "cours-soins-techniques.html"
   },
   bassin: {
     name: "Bassin Osseux (Os Coxaux & Crêtes Iliaques)",
     latin: "Pelvis • Ceinture Pelvienne",
     category: "bone",
-    desc: "Formé par les deux os coxaux (ilion, ischion, pubis) unis en avant par la symphyse pubienne et en arrière par le sacrum.",
-    func: "Transmet le poids du corps aux membres inférieurs et protège les organes pelviens (vessie, rectum, utérus).",
-    ide: "1) Crêtes iliaques = repère de la ligne de Tuffier (L4-L5) et site de ponction/biopsie médullaire ; 2) Sacrum et ischions = zones à haut risque d'escarres.",
-    course: "cours-musculo-squelettique.html"
+    desc: "Anneau osseux formé par les deux os coxaux (ilion, ischion, pubis) et le sacrum.",
+    func: "Transmet le poids du corps aux membres inférieurs et protège la vessie, le rectum et l'utérus.",
+    ide: "Les crêtes iliaques déterminent la ligne de Tuffier (L4–L5) ; le sacrum et les ischions sont des points d'appui majeurs à surveiller pour prévenir les escarres.",
+    course: "cours-tegumentaire.html"
   },
   femur: {
     name: "Fémur (Cuisse)",
     latin: "Femur • Membre Inférieur",
     category: "bone",
-    desc: "Os le plus long et le plus résistant du corps humain, comportant une tête, un col fémoral, deux trochanters et une diaphyse.",
-    func: "Supporte la charge corporelle en station debout et assure le levier principal de la marche et de la course.",
-    ide: "Signes cliniques typiques d'une fracture du col du fémur chez le sujet âgé après chute : raccourcissement, adduction et rotation externe du membre inférieur.",
+    desc: "Os le plus long et le plus solide du squelette humain (tête fémorale dans l'acétabulum, col fémoral, grand et petit trochanters, diaphyse, condyles).",
+    func: "Soutient tout le poids du corps à la marche et sert d'insertion aux muscles de la cuisse et de la hanche.",
+    ide: "Triade clinique typique de la fracture du col du fémur chez la personne âgée : raccourcissement, adduction et rotation externe du membre inférieur.",
     course: "cours-geriatrie-autonomie.html"
   },
   tibia_fibula: {
     name: "Tibia & Fibula (Jambe)",
     latin: "Tibia et Fibula • Membre Inférieur",
     category: "bone",
-    desc: "Le tibia (médial, porteur, crête tibiale sous-cutanée) et la fibula ou péroné (latéral, grêle).",
-    func: "Assurent la stabilité de la cheville et le soutien du poids du corps entre le genou et le pied.",
-    ide: "Surveillance sous plâtre cruro-pédieux ou botte plâtrée (chaleur, coloration, mobilité des orteils, douleur) pour dépister un syndrome des loges ou une phlébite.",
+    desc: "Le tibia (os porteur interne à crête antérieure sous-cutanée) et la fibula ou péroné (os latéral fin).",
+    func: "Assurent le transfert de charge du genou vers la cheville et le pied.",
+    ide: "Surveillance infirmière sous plâtre de jambe (douleur, œdème, chaleur, coloration, sensibilité des orteils) pour dépister un syndrome des loges ou une TVP.",
     course: "cours-musculo-squelettique.html"
   },
   deltoide: {
     name: "Muscle Deltoïde (Épaule)",
-    latin: "Musculus deltoideus • Membre Supérieur",
+    latin: "Musculus deltoideus • Ceinture Scapulaire",
     category: "muscle",
-    desc: "Muscle triangulaire épais coiffant l'articulation de l'épaule (faisceaux antérieur, moyen et postérieur).",
-    func: "Principal abducteur du bras (élévation latérale jusqu'à 90°).",
-    ide: "Site de référence pour les injections intramusculaires (IM) de faible volume (≤ 2 mL) et les vaccinations : piquer à 2 à 3 travers de doigt sous l'acromion.",
+    desc: "Muscle épais galbant le moignon de l'épaule, composé des faisceaux claviculaire, acromial et épineux.",
+    func: "Principal abducteur du bras jusqu'à l'horizontale (90°).",
+    ide: "Site d'injection intramusculaire (IM) et vaccinale (volume max ≤ 2 mL) : repérer 2 à 3 travers de doigt sous le bord inférieur de l'acromion.",
     course: "cours-musculo-squelettique.html"
   },
   pectoral: {
     name: "Muscle Grand Pectoral",
     latin: "Musculus pectoralis major • Thorax",
     category: "muscle",
-    desc: "Muscle large en éventail recouvrant la partie antéro-supérieure de la paroi thoracique.",
-    func: "Assure l'adduction et la rotation médiale du bras ainsi que l'inspiration forcée.",
-    ide: "Repère anatomique de la région sous-claviculaire où sont implantées les chambres implantables (PAC) et où se place l'électrode droite du DAE.",
+    desc: "Muscle large en éventail recouvrant la paroi thoracique antérieure de la clavicule et du sternum jusqu'à l'humérus.",
+    func: "Adduction et rotation interne du bras ; muscle inspirateur accessoire.",
+    ide: "Région anatomique d'implantation des chambres implantables (PAC / Port-à-Cath) en sous-claviculaire.",
     course: "cours-topographique.html"
   },
   biceps: {
     name: "Muscle Biceps Brachial",
     latin: "Musculus biceps brachii • Bras",
     category: "muscle",
-    desc: "Muscle antérieur du bras composé d'un chef long et d'un chef court se terminant au pli du coude.",
-    func: "Flexion du coude et supination de l'avant-bras.",
-    ide: "Le pli du coude (en avant du tendon bicipital) abrite les veines médiane basilique et médiane céphalique utilisées pour les prélèvements sanguins veineux.",
+    desc: "Muscle fusiforme de la loge antérieure du bras (chef long et chef court) s'insérant sur la tubérosité radiale.",
+    func: "Fléchisseur du coude et supinateur puissant de l'avant-bras.",
+    ide: "Au pli du coude, le tendon du biceps sépare les veines superficielles (médiane céphalique et médiane basilique) utilisées pour les bilans sanguins.",
     course: "cours-soins-techniques.html"
   },
   abdominaux: {
     name: "Muscles Grand Droit & Obliques de l'Abdomen",
     latin: "Musculus rectus abdominis • Paroi Abdominale",
     category: "muscle",
-    desc: "Sangle musculaire antéro-latérale de l'abdomen tendue entre le gril costal et le pubis.",
-    func: "Protège les viscères abdominaux, maintient la posture et participe à l'expiration forcée et à la presse abdominale.",
-    ide: "1) Une contracture involontaire (« ventre de bois ») signe une urgence chirurgicale (péritonite) ; 2) Tissu sous-cutané péri-ombilical = site d'injection d'insuline et d'HBPM (à 2 travers de doigt de l'ombilic).",
+    desc: "Sangle musculaire antéro-latérale de l'abdomen tendue du gril costal au pubis.",
+    func: "Maintient les viscères abdominaux, fléchit le tronc et participe à l'expiration forcée.",
+    ide: "1) Défense ou contracture (« ventre de bois ») = urgence chirurgicale ; 2) Tissu sous-cutané abdominal = site d'injection d'insuline et d'anticoagulants (HBPM) à distance de l'ombilic.",
     course: "cours-endocrinien.html"
   },
   quadriceps: {
     name: "Muscle Quadriceps Fémoral (Vaste Externe)",
     latin: "Musculus quadriceps femoris • Cuisse",
     category: "muscle",
-    desc: "Muscle le plus volumineux du corps humain (4 chefs : droit fémoral, vaste latéral/externe, vaste médial, vaste intermédiaire).",
-    func: "Extenseur puissant du genou et fléchisseur de la hanche (droit fémoral).",
-    ide: "1) Face antéro-externe de la cuisse (muscle vaste externe, tiers moyen) = site d'injection IM sécurisé chez l'adulte et le nourrisson ; 2) Site d'injection urgente d'Adrénaline en cas de choc anaphylactique.",
+    desc: "Volumineux groupe musculaire antéro-latéral de la cuisse à 4 chefs (droit fémoral, vaste latéral/externe, vaste médial, vaste intermédiaire).",
+    func: "Extenseur majeur du genou et fléchisseur de la hanche.",
+    ide: "1) Tiers moyen de la face antéro-externe de la cuisse (vaste externe) = site IM privilégié chez le nourrisson et l'adulte ; 2) Site d'injection IM urgente d'Adrénaline en cas de choc anaphylactique.",
     course: "cours-urgences-reanimation.html"
   },
   grand_fessier: {
     name: "Muscle Grand Fessier (Quadrant Supéro-Externe)",
-    latin: "Musculus gluteus maximus • Bassin / Hanche",
+    latin: "Musculus gluteus maximus • Région Glutéale",
     category: "muscle",
-    desc: "Muscle épais et puissant de la région glutéale recouvrant le trajet profond du nerf sciatique.",
-    func: "Extension et rotation latérale de la cuisse, maintien de la station debout.",
-    ide: "Injection intramusculaire (IM) autorisée UNIQUEMENT dans le QUART SUPÉRO-EXTERNE de la fesse (volume max 5 mL) afin d'éviter toute lésion du nerf sciatique situé en inféro-interne.",
+    desc: "Muscle le plus épais du corps humain, recouvrant le nerf sciatique qui chemine dans la profondeur du quadrant inféro-interne.",
+    func: "Extension et rotation externe de la hanche, maintien de la posture érigée.",
+    ide: "Site d'injection intramusculaire (IM) sécurisé UNIQUEMENT dans le QUART SUPÉRO-EXTERNE de la fesse (volume max 5 mL) afin d'éviter toute lésion du nerf sciatique.",
     course: "cours-musculo-squelettique.html"
   },
   trapeze_dorsal: {
     name: "Muscles Trapèze & Grand Dorsal",
     latin: "Musculus trapezius et latissimus dorsi • Dos",
     category: "muscle",
-    desc: "Vastes muscles superficiels du dos recouvrant la ceinture scapulaire et la région thoraco-lombaire.",
-    func: "Mobilisent la scapula (élévation, adduction) et assurent l'extension/adduction du bras.",
-    ide: "Zone d'auscultation pulmonaire postérieure (sommets, champs moyens et bases bilatérales) en position assise.",
+    desc: "Vastes nappes musculaires recouvrant la nuque, les épaules et la région thoraco-lombaire postérieure.",
+    func: "Élévation et adduction de la scapula (trapèze) ; extension et adduction du bras (grand dorsal).",
+    ide: "Repère topographique de l'auscultation pulmonaire postérieure comparative (sommets, champs moyens, bases).",
     course: "cours-respiratoire.html"
   },
   gastrocnemien: {
     name: "Muscle Triceps Sural (Mollet / Gastrocnémien)",
     latin: "Musculus triceps surae • Jambe",
     category: "muscle",
-    desc: "Formé des muscles gastrocnémiens (jumeaux) et du soléaire, s'insérant sur le calcanéus par le tendon d'Achille.",
-    func: "Flexion plantaire du pied (propulsion lors de la marche) et pompe musculaire du retour veineux.",
-    ide: "La palpation d'un mollet douloureux, chaud, œdématié avec diminution du ballottement (signe de Homans) fait suspecter une thrombose veineuse profonde (phlébite).",
+    desc: "Formé des deux chefs du gastrocnémien (jumeaux) et du soléaire, prolongés par le tendon calcanéen (tendon d'Achille).",
+    func: "Flexion plantaire de la cheville et pompe musculaire favorisant le retour veineux des membres inférieurs.",
+    ide: "La surveillance clinique quotidienne des mollets (recherche de douleur, chaleur, rougeur, œdème unilatéral, perte du ballottement) est essentielle pour dépister une phlébite (TVP).",
     course: "cours-cardiovasculaire.html"
   }
 };
 
-// THREE.JS SCENE SETUP
+// === PROCEDURAL REALISTIC TEXTURES ===
+function createMuscleTexture() {
+  const c = document.createElement('canvas');
+  c.width = 256; c.height = 256;
+  const ctx = c.getContext('2d');
+  ctx.fillStyle = '#9f1239';
+  ctx.fillRect(0, 0, 256, 256);
+  for (let x = 0; x < 256; x += 3) {
+    const shade = 135 + Math.floor(Math.sin(x * 0.45) * 35 + Math.random() * 20);
+    ctx.fillStyle = `rgb(${shade + 35}, ${Math.floor(shade * 0.16)}, ${Math.floor(shade * 0.25)})`;
+    ctx.fillRect(x, 0, 2, 256);
+  }
+  // Tendon sheen near ends
+  const grad = ctx.createLinearGradient(0, 0, 0, 256);
+  grad.addColorStop(0, 'rgba(241, 245, 249, 0.55)');
+  grad.addColorStop(0.14, 'rgba(241, 245, 249, 0.0)');
+  grad.addColorStop(0.86, 'rgba(241, 245, 249, 0.0)');
+  grad.addColorStop(1, 'rgba(241, 245, 249, 0.55)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, 256, 256);
+  const tex = new THREE.CanvasTexture(c);
+  tex.wrapS = THREE.RepeatWrapping;
+  tex.wrapT = THREE.RepeatWrapping;
+  return tex;
+}
+
+function createBoneTexture() {
+  const c = document.createElement('canvas');
+  c.width = 256; c.height = 256;
+  const ctx = c.getContext('2d');
+  ctx.fillStyle = '#ede6d6';
+  ctx.fillRect(0, 0, 256, 256);
+  for (let i = 0; i < 1600; i++) {
+    const x = Math.random() * 256;
+    const y = Math.random() * 256;
+    const v = 215 + Math.floor(Math.random() * 28);
+    ctx.fillStyle = `rgba(${v}, ${v - 10}, ${v - 26}, 0.35)`;
+    ctx.fillRect(x, y, 2, 4);
+  }
+  const tex = new THREE.CanvasTexture(c);
+  tex.wrapS = THREE.RepeatWrapping;
+  tex.wrapT = THREE.RepeatWrapping;
+  return tex;
+}
+
+const muscleTex = createMuscleTexture();
+const boneTex = createBoneTexture();
+
+// === THREE.JS SCENE SETUP ===
 const container = document.getElementById('three-container');
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(42, container.clientWidth / container.clientHeight, 0.1, 100);
-camera.position.set(0, 1.15, 4.3);
+const camera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.1, 100);
+camera.position.set(0, 0.25, 4.15);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(container.clientWidth, container.clientHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.15;
 container.appendChild(renderer.domElement);
 
-// Lights
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0x334155, 1.05);
+// Studio 3-Point Anatomical Lighting
+const hemiLight = new THREE.HemisphereLight(0xf8fafc, 0x1e293b, 0.95);
 scene.add(hemiLight);
-const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.95);
-dirLight1.position.set(3, 5, 4);
-scene.add(dirLight1);
-const dirLight2 = new THREE.DirectionalLight(0x38bdf8, 0.45);
-dirLight2.position.set(-4, 2, -3);
-scene.add(dirLight2);
 
-// Floor grid reference
-const grid = new THREE.GridHelper(3.2, 16, 0x334155, 0x1e293b);
-grid.position.y = -1.65;
-scene.add(grid);
+const keyLight = new THREE.DirectionalLight(0xffffff, 1.15);
+keyLight.position.set(3.2, 4.5, 4.2);
+scene.add(keyLight);
+
+const fillLight = new THREE.DirectionalLight(0xbae6fd, 0.55);
+fillLight.position.set(-3.8, 1.8, 2.5);
+scene.add(fillLight);
+
+const rimLight = new THREE.DirectionalLight(0x5eead4, 0.65);
+rimLight.position.set(0, 3.2, -4.0);
+scene.add(rimLight);
+
+// Pedestal Disc
+const pedestal = new THREE.Mesh(
+  new THREE.CylinderGeometry(1.05, 1.15, 0.06, 48),
+  new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.4, roughness: 0.5 })
+);
+pedestal.position.y = -1.68;
+scene.add(pedestal);
+const ringGlow = new THREE.Mesh(
+  new THREE.RingGeometry(1.02, 1.06, 48),
+  new THREE.MeshBasicMaterial({ color: 0x0d9488, side: THREE.DoubleSide })
+);
+ringGlow.rotation.x = -Math.PI / 2;
+ringGlow.position.y = -1.648;
+scene.add(ringGlow);
 
 const bodyGroup = new THREE.Group();
 scene.add(bodyGroup);
@@ -639,23 +707,54 @@ scene.add(bodyGroup);
 const clickableMeshes = [];
 const boneMeshes = [];
 const muscleMeshes = [];
+const skinMeshes = [];
 
-function createPart(geo, colorHex, pos, rot, partKey, isMuscle, scaleVec) {
-  const mat = new THREE.MeshStandardMaterial({
-    color: colorHex,
-    roughness: isMuscle ? 0.48 : 0.35,
-    metalness: 0.08,
+function makeOrganicLimb(pointsArr, radiiArr, radialSegs) {
+  const curve = new THREE.CatmullRomCurve3(pointsArr.map(p => new THREE.Vector3(p[0], p[1], p[2])));
+  const tubularSegs = 28;
+  const geo = new THREE.TubeGeometry(curve, tubularSegs, 1, radialSegs || 18, false);
+  const pos = geo.attributes.position;
+  const v = new THREE.Vector3();
+  const cPt = new THREE.Vector3();
+  for (let i = 0; i <= tubularSegs; i++) {
+    const t = i / tubularSegs;
+    curve.getPointAt(t, cPt);
+    const idxFloat = t * (radiiArr.length - 1);
+    const idx0 = Math.floor(idxFloat);
+    const idx1 = Math.min(radiiArr.length - 1, idx0 + 1);
+    const frac = idxFloat - idx0;
+    const r = radiiArr[idx0] * (1 - frac) + radiiArr[idx1] * frac;
+    for (let j = 0; j <= (radialSegs || 18); j++) {
+      const vertIdx = i * ((radialSegs || 18) + 1) + j;
+      v.fromBufferAttribute(pos, vertIdx).sub(cPt).multiplyScalar(r).add(cPt);
+      pos.setXYZ(vertIdx, v.x, v.y, v.z);
+    }
+  }
+  geo.computeVertexNormals();
+  return geo;
+}
+
+function addAnatomyMesh(geo, partKey, isMuscle, pos, rot, scaleVec) {
+  const mat = new THREE.MeshPhysicalMaterial({
+    color: isMuscle ? 0xdbeafe : 0xfffbeb,
+    map: isMuscle ? muscleTex : boneTex,
+    roughness: isMuscle ? 0.36 : 0.42,
+    metalness: 0.04,
+    clearcoat: isMuscle ? 0.32 : 0.12,
+    clearcoatRoughness: 0.35,
     transparent: true,
-    opacity: isMuscle ? 0.86 : 0.98
+    opacity: isMuscle ? 0.90 : 0.98
   });
+  // Tint base color appropriately so texture shows richly
+  mat.color.setHex(isMuscle ? 0xffffff : 0xfdf8ee);
   const mesh = new THREE.Mesh(geo, mat);
-  mesh.position.set(pos[0], pos[1], pos[2]);
+  if (pos) mesh.position.set(pos[0], pos[1], pos[2]);
   if (rot) mesh.rotation.set(rot[0], rot[1], rot[2]);
   if (scaleVec) mesh.scale.set(scaleVec[0], scaleVec[1], scaleVec[2]);
   mesh.userData = {
     partKey,
     isMuscle,
-    baseColor: colorHex,
+    baseColor: isMuscle ? 0xffffff : 0xfdf8ee,
     baseScale: mesh.scale.clone()
   };
   bodyGroup.add(mesh);
@@ -665,81 +764,157 @@ function createPart(geo, colorHex, pos, rot, partKey, isMuscle, scaleVec) {
   return mesh;
 }
 
-const BONE_COL = 0xf1f5f9;
-const MUSCLE_COL = 0xe11d48;
+// === 1. REALISTIC SCULPTED SKELETON ===
+// Neurocrâne + Face + Mandibule
+addAnatomyMesh(new THREE.SphereGeometry(0.22, 32, 32), "crane", false, [0, 1.48, -0.01], [0,0,0], [0.88, 1.06, 1.04]);
+addAnatomyMesh(new THREE.BoxGeometry(0.19, 0.13, 0.17), "crane", false, [0, 1.33, 0.07], [0.05,0,0], [1, 1, 1]);
+addAnatomyMesh(new THREE.CylinderGeometry(0.075, 0.055, 0.09, 16), "crane", false, [0, 1.24, 0.07], [0.2,0,0], [1.1, 1, 1.1]);
 
-// === SKELETON ===
-// Crâne
-createPart(new THREE.SphereGeometry(0.24, 24, 24), BONE_COL, [0, 1.48, 0.01], [0,0,0], "crane", false, [0.92, 1.08, 1.0]);
-createPart(new THREE.BoxGeometry(0.22, 0.16, 0.20), BONE_COL, [0, 1.31, 0.06], [0,0,0], "crane", false);
-// Rachis cervical
-createPart(new THREE.CylinderGeometry(0.055, 0.065, 0.22, 14), BONE_COL, [0, 1.15, -0.02], [0,0,0], "rachis_cervical", false);
-// Clavicules
-createPart(new THREE.CylinderGeometry(0.022, 0.022, 0.34, 12), BONE_COL, [-0.19, 1.03, 0.07], [0, 0.15, 1.45], "clavicule", false);
-createPart(new THREE.CylinderGeometry(0.022, 0.022, 0.34, 12), BONE_COL, [0.19, 1.03, 0.07], [0, -0.15, -1.45], "clavicule", false);
-// Sternum
-createPart(new THREE.BoxGeometry(0.07, 0.34, 0.035), BONE_COL, [0, 0.84, 0.14], [0.06, 0, 0], "sternum", false);
-// Côtes (6 anneaux thoraciques stylisés)
-for (let i = 0; i < 6; i++) {
-  const y = 0.98 - i * 0.065;
-  const rx = 0.21 + Math.sin((i / 5) * Math.PI) * 0.04;
-  createPart(new THREE.TorusGeometry(rx, 0.016, 10, 28), BONE_COL, [0, y, 0.01], [Math.PI / 2, 0, 0], "cotes", false, [1, 0.68, 1]);
+// Vertèbres cervicales (7 disques empilés)
+for (let i = 0; i < 7; i++) {
+  addAnatomyMesh(new THREE.CylinderGeometry(0.046, 0.050, 0.024, 16), "rachis_cervical", false, [0, 1.19 - i * 0.03, -0.025 + i * 0.002]);
 }
-// Rachis thoraco-lombaire
-createPart(new THREE.CylinderGeometry(0.06, 0.075, 0.72, 14), BONE_COL, [0, 0.66, -0.09], [0,0,0], "rachis_lombaire", false);
-// Bassin
-createPart(new THREE.TorusGeometry(0.22, 0.045, 12, 24, Math.PI * 1.35), BONE_COL, [0, 0.24, 0.01], [Math.PI / 2.2, 0, -0.55], "bassin", false, [1.15, 0.85, 1]);
-// Humérus G & D
-createPart(new THREE.CylinderGeometry(0.036, 0.032, 0.52, 14), BONE_COL, [-0.40, 0.76, 0], [0, 0, -0.12], "humerus", false);
-createPart(new THREE.CylinderGeometry(0.036, 0.032, 0.52, 14), BONE_COL, [0.40, 0.76, 0], [0, 0, 0.12], "humerus", false);
-// Avant-bras (Radius & Ulna)
-createPart(new THREE.CylinderGeometry(0.025, 0.022, 0.48, 12), BONE_COL, [-0.47, 0.27, 0.03], [0.1, 0, -0.08], "avant_bras", false);
-createPart(new THREE.CylinderGeometry(0.025, 0.022, 0.48, 12), BONE_COL, [0.47, 0.27, 0.03], [0.1, 0, 0.08], "avant_bras", false);
-// Fémurs G & D
-createPart(new THREE.CylinderGeometry(0.048, 0.042, 0.74, 14), BONE_COL, [-0.17, -0.22, 0], [0, 0, 0.04], "femur", false);
-createPart(new THREE.CylinderGeometry(0.048, 0.042, 0.74, 14), BONE_COL, [0.17, -0.22, 0], [0, 0, -0.04], "femur", false);
-// Tibias & Fibulas G & D
-createPart(new THREE.CylinderGeometry(0.038, 0.030, 0.72, 14), BONE_COL, [-0.15, -0.96, 0], [0, 0, 0], "tibia_fibula", false);
-createPart(new THREE.CylinderGeometry(0.038, 0.030, 0.72, 14), BONE_COL, [0.15, -0.96, 0], [0, 0, 0], "tibia_fibula", false);
 
-// === MUSCLES ===
-// Deltoïdes G & D
-createPart(new THREE.SphereGeometry(0.105, 18, 18), MUSCLE_COL, [-0.39, 0.99, 0], [0,0,0], "deltoide", true, [0.95, 1.25, 1.05]);
-createPart(new THREE.SphereGeometry(0.105, 18, 18), MUSCLE_COL, [0.39, 0.99, 0], [0,0,0], "deltoide", true, [0.95, 1.25, 1.05]);
-// Grand Pectoral G & D
-createPart(new THREE.BoxGeometry(0.22, 0.19, 0.07), MUSCLE_COL, [-0.13, 0.91, 0.16], [0.05, 0.18, 0], "pectoral", true);
-createPart(new THREE.BoxGeometry(0.22, 0.19, 0.07), MUSCLE_COL, [0.13, 0.91, 0.16], [0.05, -0.18, 0], "pectoral", true);
-// Biceps Brachial G & D
-createPart(new THREE.CylinderGeometry(0.058, 0.048, 0.36, 16), MUSCLE_COL, [-0.41, 0.74, 0.04], [0.08, 0, -0.12], "biceps", true);
-createPart(new THREE.CylinderGeometry(0.058, 0.048, 0.36, 16), MUSCLE_COL, [0.41, 0.74, 0.04], [0.08, 0, 0.12], "biceps", true);
-// Abdominaux
-createPart(new THREE.BoxGeometry(0.26, 0.38, 0.08), MUSCLE_COL, [0, 0.56, 0.14], [0, 0, 0], "abdominaux", true);
+// Clavicules courbes en S (Droite et Gauche)
+addAnatomyMesh(makeOrganicLimb([[-0.04, 1.02, 0.11], [-0.18, 1.04, 0.08], [-0.34, 1.03, 0.01]], [0.022, 0.018, 0.024], 12), "clavicule", false);
+addAnatomyMesh(makeOrganicLimb([[0.04, 1.02, 0.11], [0.18, 1.04, 0.08], [0.34, 1.03, 0.01]], [0.022, 0.018, 0.024], 12), "clavicule", false);
+
+// Sternum (Manubrium + Corps + Xiphoïde)
+addAnatomyMesh(new THREE.BoxGeometry(0.085, 0.09, 0.028), "sternum", false, [0, 0.96, 0.13], [0.12, 0, 0]);
+addAnatomyMesh(new THREE.BoxGeometry(0.058, 0.22, 0.024), "sternum", false, [0, 0.81, 0.145], [0.03, 0, 0]);
+addAnatomyMesh(new THREE.ConeGeometry(0.024, 0.06, 10), "sternum", false, [0, 0.67, 0.142], [Math.PI, 0, 0]);
+
+// 9 paires de côtes anatomiques courbes
+for (let i = 0; i < 9; i++) {
+  const y = 0.98 - i * 0.044;
+  const w = 0.15 + Math.sin((i / 8) * Math.PI * 0.85) * 0.11;
+  const d = 0.11 + Math.sin((i / 8) * Math.PI * 0.85) * 0.06;
+  const frontZ = i < 6 ? 0.135 : 0.09;
+  addAnatomyMesh(makeOrganicLimb([[0, y + 0.02, -0.08], [-w, y, 0.01], [-0.03, y - 0.02, frontZ]], [0.013, 0.014, 0.012], 10), "cotes", false);
+  addAnatomyMesh(makeOrganicLimb([[0, y + 0.02, -0.08], [w, y, 0.01], [0.03, y - 0.02, frontZ]], [0.013, 0.014, 0.012], 10), "cotes", false);
+}
+
+// Rachis thoraco-lombaire (vertèbres individuelles + sacrum)
+for (let i = 0; i < 14; i++) {
+  const y = 0.96 - i * 0.048;
+  const z = -0.085 + Math.sin((i / 13) * Math.PI) * 0.025;
+  const r = 0.048 + (i / 13) * 0.022;
+  addAnatomyMesh(new THREE.CylinderGeometry(r, r * 1.04, 0.036, 16), "rachis_lombaire", false, [0, y, z]);
+}
+addAnatomyMesh(new THREE.ConeGeometry(0.095, 0.18, 14), "rachis_lombaire", false, [0, 0.22, -0.07], [Math.PI + 0.18, 0, 0], [1.1, 1, 0.55]);
+
+// Bassin (Ailes iliaques + Symphyse pubienne)
+addAnatomyMesh(new THREE.SphereGeometry(0.14, 20, 20), "bassin", false, [-0.16, 0.30, -0.01], [0.1, 0.3, -0.35], [0.45, 1.15, 1.05]);
+addAnatomyMesh(new THREE.SphereGeometry(0.14, 20, 20), "bassin", false, [0.16, 0.30, -0.01], [0.1, -0.3, 0.35], [0.45, 1.15, 1.05]);
+addAnatomyMesh(new THREE.TorusGeometry(0.14, 0.026, 10, 24, Math.PI), "bassin", false, [0, 0.20, 0.05], [Math.PI * 0.75, 0, 0], [1.15, 0.9, 1]);
+
+// Humérus (avec épiphyses articulaires)
+addAnatomyMesh(makeOrganicLimb([[-0.37, 0.98, -0.01], [-0.41, 0.75, 0.0], [-0.44, 0.53, 0.02]], [0.048, 0.028, 0.042], 14), "humerus", false);
+addAnatomyMesh(makeOrganicLimb([[0.37, 0.98, -0.01], [0.41, 0.75, 0.0], [0.44, 0.53, 0.02]], [0.048, 0.028, 0.042], 14), "humerus", false);
+
+// Radius & Ulna (2 os distincts par avant-bras)
+addAnatomyMesh(makeOrganicLimb([[-0.45, 0.51, 0.02], [-0.49, 0.28, 0.05], [-0.52, 0.06, 0.08]], [0.022, 0.018, 0.024], 10), "avant_bras", false);
+addAnatomyMesh(makeOrganicLimb([[-0.43, 0.51, 0.01], [-0.46, 0.28, 0.03], [-0.49, 0.06, 0.05]], [0.024, 0.017, 0.019], 10), "avant_bras", false);
+addAnatomyMesh(makeOrganicLimb([[0.45, 0.51, 0.02], [0.49, 0.28, 0.05], [0.52, 0.06, 0.08]], [0.022, 0.018, 0.024], 10), "avant_bras", false);
+addAnatomyMesh(makeOrganicLimb([[0.43, 0.51, 0.01], [0.46, 0.28, 0.03], [0.49, 0.06, 0.05]], [0.024, 0.017, 0.019], 10), "avant_bras", false);
+
+// Fémurs (col fémoral + diaphyse + condyles)
+addAnatomyMesh(makeOrganicLimb([[-0.15, 0.20, 0.01], [-0.21, 0.14, 0.01], [-0.18, -0.22, 0.02], [-0.16, -0.56, 0.01]], [0.046, 0.042, 0.036, 0.058], 16), "femur", false);
+addAnatomyMesh(makeOrganicLimb([[0.15, 0.20, 0.01], [0.21, 0.14, 0.01], [0.18, -0.22, 0.02], [0.16, -0.56, 0.01]], [0.046, 0.042, 0.036, 0.058], 16), "femur", false);
+
+// Tibia & Fibula (2 os par jambe)
+addAnatomyMesh(makeOrganicLimb([[-0.16, -0.60, 0.01], [-0.15, -0.98, 0.01], [-0.15, -1.36, 0.0]], [0.052, 0.032, 0.040], 14), "tibia_fibula", false);
+addAnatomyMesh(makeOrganicLimb([[-0.20, -0.62, -0.01], [-0.19, -0.98, -0.01], [-0.18, -1.36, -0.01]], [0.018, 0.014, 0.018], 10), "tibia_fibula", false);
+addAnatomyMesh(makeOrganicLimb([[0.16, -0.60, 0.01], [0.15, -0.98, 0.01], [0.15, -1.36, 0.0]], [0.052, 0.032, 0.040], 14), "tibia_fibula", false);
+addAnatomyMesh(makeOrganicLimb([[0.20, -0.62, -0.01], [0.19, -0.98, -0.01], [0.18, -1.36, -0.01]], [0.018, 0.014, 0.018], 10), "tibia_fibula", false);
+
+// === 2. REALISTIC STRIATED MUSCLES ===
+// Deltoïdes galbés
+addAnatomyMesh(makeOrganicLimb([[-0.32, 1.04, 0.01], [-0.40, 0.96, 0.0], [-0.41, 0.83, 0.01]], [0.065, 0.095, 0.045], 20), "deltoide", true);
+addAnatomyMesh(makeOrganicLimb([[0.32, 1.04, 0.01], [0.40, 0.96, 0.0], [0.41, 0.83, 0.01]], [0.065, 0.095, 0.045], 20), "deltoide", true);
+
+// Grand Pectoral (faisceaux convergents vers l'humérus)
+addAnatomyMesh(new THREE.SphereGeometry(0.145, 24, 24), "pectoral", true, [-0.15, 0.90, 0.13], [0.08, 0.22, -0.15], [1.18, 0.82, 0.42]);
+addAnatomyMesh(new THREE.SphereGeometry(0.145, 24, 24), "pectoral", true, [0.15, 0.90, 0.13], [0.08, -0.22, 0.15], [1.18, 0.82, 0.42]);
+
+// Biceps Brachial
+addAnatomyMesh(makeOrganicLimb([[-0.39, 0.88, 0.03], [-0.42, 0.72, 0.045], [-0.44, 0.55, 0.03]], [0.042, 0.064, 0.035], 18), "biceps", true);
+addAnatomyMesh(makeOrganicLimb([[0.39, 0.88, 0.03], [0.42, 0.72, 0.045], [0.44, 0.55, 0.03]], [0.042, 0.064, 0.035], 18), "biceps", true);
+
+// Grand Droit de l'Abdomen (tablettes segmentées réalistes)
+for (let row = 0; row < 3; row++) {
+  const y = 0.67 - row * 0.11;
+  addAnatomyMesh(new THREE.SphereGeometry(0.068, 16, 16), "abdominaux", true, [-0.065, y, 0.14], [0,0,0], [0.95, 0.78, 0.48]);
+  addAnatomyMesh(new THREE.SphereGeometry(0.068, 16, 16), "abdominaux", true, [0.065, y, 0.14], [0,0,0], [0.95, 0.78, 0.48]);
+}
+
 // Trapèze & Grand Dorsal (Dos)
-createPart(new THREE.BoxGeometry(0.42, 0.44, 0.07), MUSCLE_COL, [0, 0.80, -0.14], [0, 0, 0], "trapeze_dorsal", true);
-// Grand Fessier G & D
-createPart(new THREE.SphereGeometry(0.13, 18, 18), MUSCLE_COL, [-0.14, 0.22, -0.11], [0,0,0], "grand_fessier", true, [1.05, 1.15, 0.85]);
-createPart(new THREE.SphereGeometry(0.13, 18, 18), MUSCLE_COL, [0.14, 0.22, -0.11], [0,0,0], "grand_fessier", true, [1.05, 1.15, 0.85]);
-// Quadriceps Fémoral G & D
-createPart(new THREE.CylinderGeometry(0.095, 0.072, 0.58, 16), MUSCLE_COL, [-0.17, -0.21, 0.04], [0, 0, 0.04], "quadriceps", true);
-createPart(new THREE.CylinderGeometry(0.095, 0.072, 0.58, 16), MUSCLE_COL, [0.17, -0.21, 0.04], [0, 0, -0.04], "quadriceps", true);
-// Gastrocnémiens (Mollets) G & D
-createPart(new THREE.SphereGeometry(0.078, 16, 16), MUSCLE_COL, [-0.15, -0.84, -0.04], [0,0,0], "gastrocnemien", true, [0.9, 2.3, 1.0]);
-createPart(new THREE.SphereGeometry(0.078, 16, 16), MUSCLE_COL, [0.15, -0.84, -0.04], [0,0,0], "gastrocnemien", true, [0.9, 2.3, 1.0]);
+addAnatomyMesh(new THREE.SphereGeometry(0.24, 24, 24), "trapeze_dorsal", true, [0, 0.86, -0.11], [0,0,0], [1.15, 1.15, 0.36]);
 
-// === INTERACTION: ORBIT, ZOOM, RAYCASTING & PULSE ANIMATION ===
+// Grand Fessier (galbe anatomique bilatéral)
+addAnatomyMesh(new THREE.SphereGeometry(0.135, 24, 24), "grand_fessier", true, [-0.13, 0.21, -0.09], [0.1, 0, 0.1], [1.02, 1.12, 0.78]);
+addAnatomyMesh(new THREE.SphereGeometry(0.135, 24, 24), "grand_fessier", true, [0.13, 0.21, -0.09], [0.1, 0, -0.1], [1.02, 1.12, 0.78]);
+
+// Quadriceps Fémoral (Vaste externe + Droit fémoral)
+addAnatomyMesh(makeOrganicLimb([[-0.19, 0.12, 0.02], [-0.20, -0.20, 0.04], [-0.17, -0.52, 0.03]], [0.088, 0.105, 0.065], 20), "quadriceps", true);
+addAnatomyMesh(makeOrganicLimb([[0.19, 0.12, 0.02], [0.20, -0.20, 0.04], [0.17, -0.52, 0.03]], [0.088, 0.105, 0.065], 20), "quadriceps", true);
+
+// Gastrocnémiens / Mollets
+addAnatomyMesh(makeOrganicLimb([[-0.16, -0.62, -0.02], [-0.16, -0.82, -0.045], [-0.15, -1.16, -0.02]], [0.055, 0.082, 0.032], 18), "gastrocnemien", true);
+addAnatomyMesh(makeOrganicLimb([[0.16, -0.62, -0.02], [0.16, -0.82, -0.045], [0.15, -1.16, -0.02]], [0.055, 0.082, 0.032], 18), "gastrocnemien", true);
+
+// === 3. TRANSLUCENT HUMAN SKIN SILHOUETTE ENVELOPE ===
+const skinMat = new THREE.MeshPhysicalMaterial({
+  color: 0xf1c27d,
+  roughness: 0.45,
+  metalness: 0.0,
+  transparent: true,
+  opacity: 0.22,
+  depthWrite: false,
+  side: THREE.FrontSide
+});
+
+function addSkinPart(geo, pos, rot, scaleVec) {
+  const m = new THREE.Mesh(geo, skinMat);
+  if (pos) m.position.set(pos[0], pos[1], pos[2]);
+  if (rot) m.rotation.set(rot[0], rot[1], rot[2]);
+  if (scaleVec) m.scale.set(scaleVec[0], scaleVec[1], scaleVec[2]);
+  bodyGroup.add(m);
+  skinMeshes.push(m);
+}
+
+// Tête & Cou cutanés
+addSkinPart(new THREE.SphereGeometry(0.25, 28, 28), [0, 1.45, 0.01], [0,0,0], [0.92, 1.15, 1.05]);
+addSkinPart(new THREE.CylinderGeometry(0.10, 0.12, 0.22, 20), [0, 1.16, 0.0], [0,0,0]);
+// Torse cutané
+addSkinPart(makeOrganicLimb([[0, 1.05, 0.01], [0, 0.72, 0.02], [0, 0.30, 0.0]], [0.27, 0.22, 0.24], 24), [0,0,0], [0,0,0], [1.22, 1, 0.72]);
+// Bras & Avant-bras cutanés
+addSkinPart(makeOrganicLimb([[-0.35, 1.02, 0.0], [-0.42, 0.72, 0.02], [-0.50, 0.06, 0.07]], [0.105, 0.078, 0.048], 18));
+addSkinPart(makeOrganicLimb([[0.35, 1.02, 0.0], [0.42, 0.72, 0.02], [0.50, 0.06, 0.07]], [0.105, 0.078, 0.048], 18));
+// Cuisses & Jambes cutanées
+addSkinPart(makeOrganicLimb([[-0.16, 0.22, 0.0], [-0.18, -0.24, 0.01], [-0.16, -0.60, 0.0], [-0.15, -1.38, 0.0]], [0.145, 0.125, 0.088, 0.056], 20));
+addSkinPart(makeOrganicLimb([[0.16, 0.22, 0.0], [0.18, -0.24, 0.01], [0.16, -0.60, 0.0], [0.15, -1.38, 0.0]], [0.145, 0.125, 0.088, 0.056], 20));
+
+// === INTERACTION: ORBIT, PAN, ZOOM, RAYCASTING & SMOOTH FOCUS ANIMATION ===
 let isDragging = false;
+let isRightDrag = false;
 let prevMouse = { x: 0, y: 0 };
 let autoSpin = false;
+let showSkin = true;
 let selectedKey = "crane";
 let pulseClock = 0;
 let quizTargetKey = null;
+let targetCamY = 0.25;
+let targetCamZ = 4.15;
 
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
 const hoverTag = document.getElementById('hover-tag');
 
+container.addEventListener('contextmenu', e => e.preventDefault());
 container.addEventListener('pointerdown', (e) => {
   isDragging = true;
+  isRightDrag = (e.button === 2);
   prevMouse = { x: e.clientX, y: e.clientY };
 });
 window.addEventListener('pointerup', () => { isDragging = false; });
@@ -749,8 +924,12 @@ container.addEventListener('pointermove', (e) => {
   if (isDragging) {
     const dx = e.clientX - prevMouse.x;
     const dy = e.clientY - prevMouse.y;
-    bodyGroup.rotation.y += dx * 0.01;
-    bodyGroup.rotation.x = Math.max(-0.45, Math.min(0.45, bodyGroup.rotation.x + dy * 0.006));
+    if (isRightDrag) {
+      targetCamY = Math.max(-1.2, Math.min(1.5, targetCamY + dy * 0.004));
+    } else {
+      bodyGroup.rotation.y += dx * 0.011;
+      bodyGroup.rotation.x = Math.max(-0.45, Math.min(0.45, bodyGroup.rotation.x + dy * 0.006));
+    }
     prevMouse = { x: e.clientX, y: e.clientY };
     hoverTag.style.display = 'none';
     return;
@@ -780,31 +959,40 @@ container.addEventListener('click', (e) => {
   raycaster.setFromCamera(pointer, camera);
   const hits = raycaster.intersectObjects(clickableMeshes.filter(m => m.visible));
   if (hits.length > 0) {
-    selectPart(hits[0].object.userData.partKey);
+    selectPart(hits[0].object.userData.partKey, true);
   }
 });
 
 container.addEventListener('wheel', (e) => {
   e.preventDefault();
-  camera.position.z = Math.max(2.1, Math.min(6.2, camera.position.z + e.deltaY * 0.003));
+  targetCamZ = Math.max(1.85, Math.min(5.6, targetCamZ + e.deltaY * 0.003));
 }, { passive: false });
 
-function selectPart(key) {
+function selectPart(key, zoomFocus) {
   selectedKey = key;
-  pulseClock = 1.0; // trigger 3D pulse animation
+  pulseClock = 1.0;
   const item = ANATOMY_DB[key];
   if (!item) return;
 
-  // Highlight meshes of this partKey
+  let avgY = 0, count = 0;
   clickableMeshes.forEach(m => {
     const isSel = m.userData.partKey === key;
-    m.material.color.setHex(isSel ? 0x14b8a6 : m.userData.baseColor);
+    m.material.color.setHex(isSel ? 0x2dd4bf : m.userData.baseColor);
     m.material.emissive.setHex(isSel ? 0x0f766e : 0x000000);
+    if (isSel) {
+      const box = new THREE.Box3().setFromObject(m);
+      avgY += (box.min.y + box.max.y) * 0.5;
+      count++;
+    }
   });
 
-  // Update info panel
+  if (zoomFocus && count > 0) {
+    targetCamY = Math.max(-1.0, Math.min(1.35, avgY / count));
+    targetCamZ = 2.85;
+  }
+
   const badge = document.getElementById('part-type');
-  badge.textContent = item.category === 'bone' ? '🦴 Os du Squelette' : '💪 Muscle Squelettique';
+  badge.textContent = item.category === 'bone' ? '🦴 Os du Squelette' : '💪 Muscle Strié Squelettique';
   badge.className = 'type-pill ' + (item.category === 'bone' ? 'pill-bone' : 'pill-muscle');
   document.getElementById('part-name').textContent = item.name;
   document.getElementById('part-latin').textContent = item.latin;
@@ -813,15 +1001,14 @@ function selectPart(key) {
   document.getElementById('part-ide').textContent = item.ide;
   document.getElementById('part-course-link').href = item.course;
 
-  // Check quiz if active
   if (quizTargetKey) {
     const st = document.getElementById('quiz-status');
     if (key === quizTargetKey) {
-      st.innerHTML = "✅ <strong>Bravo !</strong> Vous avez identifié la bonne structure anatomique en 3D.";
+      st.innerHTML = "✅ <strong>Excellent !</strong> Vous avez localisé la bonne structure anatomique en 3D.";
       st.style.color = "#15803d";
       quizTargetKey = null;
     } else {
-      st.innerHTML = `❌ Vous avez cliqué sur <em>${item.name}</em>. Essayez encore !`;
+      st.innerHTML = `❌ Vous avez cliqué sur <em>${item.name}</em>. Réessayez !`;
       st.style.color = "#dc2626";
     }
   }
@@ -831,13 +1018,23 @@ function selectPart(key) {
 function setLayer(mode, btn) {
   document.querySelectorAll('#layer-both, #layer-bones, #layer-muscles').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  boneMeshes.forEach(m => {
-    m.visible = (mode === 'both' || mode === 'bones');
-  });
+  boneMeshes.forEach(m => { m.visible = (mode === 'both' || mode === 'bones'); });
   muscleMeshes.forEach(m => {
     m.visible = (mode === 'both' || mode === 'muscles');
-    m.material.opacity = (mode === 'both') ? 0.72 : 0.96;
+    m.material.opacity = (mode === 'both') ? 0.78 : 0.96;
   });
+}
+
+function toggleSkin(btn) {
+  showSkin = !showSkin;
+  btn.classList.toggle('active', showSkin);
+  skinMeshes.forEach(m => { m.visible = showSkin; });
+}
+
+function resetCamera() {
+  targetCamY = 0.25;
+  targetCamZ = 4.15;
+  bodyGroup.rotation.x = 0;
 }
 
 function setCameraPreset(view) {
@@ -858,12 +1055,12 @@ function triggerQuiz() {
   const keys = Object.keys(ANATOMY_DB);
   quizTargetKey = keys[Math.floor(Math.random() * keys.length)];
   const target = ANATOMY_DB[quizTargetKey];
-  // Ensure required layer is visible
   if (target.category === 'bone') setLayer('bones', document.getElementById('layer-bones'));
   else setLayer('muscles', document.getElementById('layer-muscles'));
+  resetCamera();
   document.getElementById('quiz-banner').style.display = 'block';
   document.getElementById('quiz-prompt').textContent = `🎯 Trouvez et cliquez en 3D sur : ${target.name}`;
-  document.getElementById('quiz-status').textContent = "Faites pivoter le modèle 3D si besoin et cliquez sur la structure.";
+  document.getElementById('quiz-status').textContent = "Faites pivoter le modèle 3D et cliquez sur l'élément demandé.";
   document.getElementById('quiz-status').style.color = "#1e40af";
 }
 
@@ -876,7 +1073,7 @@ function renderChips() {
     const btn = document.createElement('button');
     btn.className = 'part-chip' + (k === selectedKey ? ' selected' : '');
     btn.textContent = (val.category === 'bone' ? '🦴 ' : '💪 ') + val.name.split(' (')[0];
-    btn.onclick = () => selectPart(k);
+    btn.onclick = () => selectPart(k, true);
     box.appendChild(btn);
   });
 }
@@ -891,11 +1088,15 @@ window.addEventListener('resize', () => {
 function animate() {
   requestAnimationFrame(animate);
   if (autoSpin && !isDragging) {
-    bodyGroup.rotation.y += 0.008;
+    bodyGroup.rotation.y += 0.007;
   }
+  camera.position.y += (targetCamY - camera.position.y) * 0.08;
+  camera.position.z += (targetCamZ - camera.position.z) * 0.08;
+  camera.lookAt(0, camera.position.y * 0.85, 0);
+
   if (pulseClock > 0) {
-    pulseClock = Math.max(0, pulseClock - 0.035);
-    const boost = 1 + Math.sin(pulseClock * Math.PI) * 0.22;
+    pulseClock = Math.max(0, pulseClock - 0.032);
+    const boost = 1 + Math.sin(pulseClock * Math.PI) * 0.18;
     clickableMeshes.forEach(m => {
       if (m.userData.partKey === selectedKey) {
         m.scale.copy(m.userData.baseScale).multiplyScalar(boost);
@@ -907,7 +1108,7 @@ function animate() {
   renderer.render(scene, camera);
 }
 
-selectPart('crane');
+selectPart('crane', false);
 animate();
 </script>
 </body>
