@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercices Corrigés, Calculs de Doses & Cas Cliniques — InfirmAnat IA</title>
+  <meta name="description" content="Banque complète d'exercices pour étudiants infirmiers (IFSI / ISPITS) : 20 QCM cliniques corrigés, 10 exercices interactifs de calculs de doses, 6 cas concrets et 36 flashcards." />
+  <style>
+
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --primary: #0f4c81;
+  --primary-light: #e6f0fa;
+  --accent: #0d9488;
+  --accent-light: #e6f7f5;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(15, 76, 129, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, #0f4c81 0%, #0d9488 100%);
+  color: #fff;
+  padding: 15px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+.brand-icon {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: bold;
+}
+.brand h1 { font-size: 1.25rem; font-weight: 700; }
+.brand p { font-size: 0.78rem; opacity: 0.9; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a, nav button {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+nav a:hover, nav button:hover, nav button.active, nav a.active {
+  background: #fff;
+  color: var(--primary);
+}
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 20px 50px;
+  flex: 1;
+}
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.sys-badge {
+  background: var(--primary-light); color: var(--primary);
+  font-weight: 700; font-size: 0.78rem; padding: 4px 11px; border-radius: 999px;
+  display: inline-block;
+}
+.done-badge {
+  background: #dcfce7; color: #15803d;
+  font-size: 0.75rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+}
+.btn {
+  background: var(--primary); color: #fff; border: none;
+  padding: 10px 18px; border-radius: 10px; font-weight: 600;
+  cursor: pointer; font-size: 0.9rem; text-decoration: none; display: inline-block;
+}
+.btn:hover { opacity: 0.93; }
+.btn-accent { background: var(--accent); }
+.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+.course-header {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; gap: 12px; border-bottom: 2px solid var(--border);
+  padding-bottom: 16px; margin-bottom: 22px;
+}
+.course-section {
+  margin-bottom: 20px; padding: 20px; border-radius: 12px;
+  background: #f8fafc; border: 1px solid var(--border);
+}
+.course-section h3, .course-section h4 { color: var(--primary); font-size: 1.08rem; margin-bottom: 9px; }
+.course-section p, .course-section li { color: #334155; font-size: 0.96rem; margin-bottom: 8px; }
+.norms-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.norm-box {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); padding: 12px; border-radius: 10px;
+}
+.norm-box strong { display: block; color: var(--primary); font-size: 0.85rem; }
+.norm-box span { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+.svg-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; margin-bottom: 22px; text-align: center;
+}
+.svg-card figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 8px; font-weight: 600; }
+.breadcrumb { font-size: 0.86rem; color: var(--muted); margin-bottom: 14px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.course-nav-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);
+}
+.disclaimer-box {
+  background: #fefce8;
+  border-left: 4px solid #eab308;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  color: #713f12;
+}
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 32px 20px;
+  margin-top: auto;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.footer-links a:hover { color: #ffffff; text-decoration: underline; }
+
+    .ex-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+    .ex-tab-btn {
+      background: #fff; border: 1px solid var(--border); color: var(--text);
+      padding: 10px 18px; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 0.92rem;
+    }
+    .ex-tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .hidden { display: none !important; }
+    .qcm-option {
+      display: block; width: 100%; text-align: left; padding: 12px 15px;
+      margin-bottom: 8px; border: 1px solid var(--border); border-radius: 9px;
+      background: #fff; cursor: pointer; font-size: 0.94rem;
+    }
+    .qcm-option:hover { background: var(--primary-light); }
+    .qcm-option.correct { background: #dcfce7; border-color: #16a34a; color: #14532d; font-weight: 600; }
+    .qcm-option.wrong { background: #fee2e2; border-color: #dc2626; color: #7f1d1d; }
+    .dose-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 10px; }
+    .dose-row input {
+      padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
+      width: 160px; font-size: 0.95rem; font-weight: 600;
+    }
+    .feedback-box {
+      margin-top: 12px; padding: 12px 15px; background: #fff;
+      border-left: 4px solid var(--accent); border-radius: 8px; font-size: 0.92rem;
+    }
+    .flashcard {
+      max-width: 660px; margin: 20px auto;
+      background: linear-gradient(145deg, #ffffff, #f1f5f9);
+      border: 2px solid var(--primary-light); border-radius: 18px;
+      padding: 36px 28px; text-align: center; min-height: 230px;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      box-shadow: var(--shadow); cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-icon">🩺</div>
+      <div>
+        <h1>InfirmAnat IA</h1>
+        <p>Anatomie-Physiologie & Soins Infirmiers (IFSI / ISPITS)</p>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">📚 16 Cours</a>
+      <a href="exercices.html" class="active">✍️ Exercices & QCM</a>
+      <a href="actualites.html">📰 Actualités</a>
+      <a href="a-propos.html">ℹ️ À propos</a>
+      <a href="contact.html">✉️ Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">Accueil</a> › Atelier d'Exercices Corrigés IFSI / ISPITS
+  </div>
+
+  <div class="panel">
+    <div class="course-header">
+      <div>
+        <span class="sys-badge">Entraînement Examens & Stages</span>
+        <h2 style="color:var(--primary); margin-top:8px;">✍️ Banque Complète d'Exercices Infirmiers Corrigés</h2>
+        <p style="color:var(--muted); font-size:0.94rem;">Entraînez-vous sur 20 QCM cliniques, 10 calculs de doses interactifs, 6 situations cliniques et 36 flashcards.</p>
+      </div>
+      <span class="sys-badge" id="global-score">QCM : 0 / 20 • Doses : 0 / 10</span>
+    </div>
+
+    <div class="ex-tabs">
+      <button class="ex-tab-btn active" onclick="switchExTab('qcm', this)">✅ 20 QCM Cliniques</button>
+      <button class="ex-tab-btn" onclick="switchExTab('doses', this)">💉 10 Calculs de Doses</button>
+      <button class="ex-tab-btn" onclick="switchExTab('cas', this)">🏥 6 Cas Cliniques IFSI/ISPITS</button>
+      <button class="ex-tab-btn" onclick="switchExTab('fc', this)">🗂️ 36 Flashcards Rapides</button>
+    </div>
+
+    <!-- SECTION 1: 20 QCM -->
+    <div id="ex-qcm">
+      <div id="qcm-list"></div>
+    </div>
+
+    <!-- SECTION 2: 10 CALCULS DE DOSES -->
+    <div id="ex-doses" class="hidden">
+      <p style="margin-bottom:16px; color:var(--muted);">Rappel : 1 mL = 20 gouttes (soluté standard) • 1 g = 1 000 mg • 1 mg = 1 000 µg. Arrondissez les débits en gouttes/min à l'entier le plus proche.</p>
+      <div id="doses-list"></div>
+    </div>
+
+    <!-- SECTION 3: 6 CAS CLINIQUES -->
+    <div id="ex-cas" class="hidden">
+      <div id="cas-list"></div>
+    </div>
+
+    <!-- SECTION 4: 36 FLASHCARDS -->
+    <div id="ex-fc" class="hidden">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+        <strong>Cliquez sur la carte pour révéler la réponse :</strong>
+        <select id="fc-cat-sel" onchange="filterFc()" style="padding:8px 12px; border-radius:8px; border:1px solid var(--border);">
+          <option value="all">Toutes les catégories (36 cartes)</option>
+        </select>
+      </div>
+      <div class="flashcard" onclick="flipFc()">
+        <span class="sys-badge" id="fc-badge" style="margin-bottom:12px;">Catégorie</span>
+        <h3 id="fc-q" style="color:var(--primary); font-size:1.18rem;">Chargement...</h3>
+        <p id="fc-hint" style="margin-top:14px; font-size:0.82rem; color:var(--muted);">👆 Cliquez pour retourner</p>
+      </div>
+      <div style="display:flex; justify-content:center; gap:12px;">
+        <button class="btn btn-outline" onclick="prevFc()">⬅️ Précédente</button>
+        <button class="btn" onclick="nextFc()">Suivante ➡️</button>
+      </div>
+      <p id="fc-pos" style="text-align:center; margin-top:10px; color:var(--muted); font-size:0.88rem;"></p>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>InfirmAnat IA</strong> — Ressource Éducative Libre en Sciences Infirmières.<br/>
+      <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Accueil & 16 Cours</a>
+      <a href="exercices.html">Exercices & Cas Cliniques</a>
+      <a href="actualites.html">Actualités & News</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+const QCM_DATA = [
+  { q: "1. [Neurologie] À quel niveau vertébral se termine la moelle épinière chez l'adulte ?", opts: ["T12 – L1", "L1 – L2", "L4 – L5", "S1 – S2"], ans: 1, exp: "Le cône médullaire s'arrête en L1-L2 chez l'adulte, permettant de piquer sans danger en L4-L5 (ligne de Tuffier)." },
+  { q: "2. [Topographie] Dans le triangle de Scarpa, quel est l'ordre des structures de dedans en dehors ?", opts: ["Artère – Veine – Nerf", "Nerf – Artère – Veine", "Veine – Artère – Nerf (VAN)", "Veine – Nerf – Artère"], ans: 2, exp: "De la partie interne vers la partie externe : Veine fémorale, Artère fémorale, Nerf fémoral (VAN)." },
+  { q: "3. [Pneumologie] Lors d'une ponction pleurale, on introduit l'aiguille :", opts: ["Au bord inférieur de la côte supérieure", "Au bord supérieur de la côte inférieure", "Au milieu exact de l'espace intercostal", "Sous l'appendice xiphoïde"], ans: 1, exp: "Le paquet vasculo-nerveux intercostal chemine au bord inférieur de chaque côte ; on pique donc au bord supérieur de la côte inférieure." },
+  { q: "4. [Hématologie] Quel est l'ordre correct de prélèvement des tubes sanguins ?", opts: ["EDTA → Sec → Citrate", "Hémocultures → Citrate (bleu) → Sec (rouge/jaune) → Héparine (vert) → EDTA (violet)", "Héparine → EDTA → Citrate", "Sec → Citrate → Hémocultures"], ans: 1, exp: "Les hémocultures passent en premier pour éviter toute contamination, suivies du tube citrate avant les tubes contenant du potassium ou de l'EDTA." },
+  { q: "5. [Urgences] Un patient traumatisé crânien présente un score de Glasgow à 7. Quelle est la priorité ?", opts: ["Surveillance simple toutes les 4 heures", "Préparer une intubation oro-trachéale pour protéger les voies aériennes", "Lui faire boire de l'eau sucrée", "Le mettre en position assise"], ans: 1, exp: "Un score de Glasgow ≤ 8 correspond à un coma avec perte des réflexes de protection des voies aériennes." },
+  { q: "6. [Soins Techniques] Quel est le site recommandé d'injection intramusculaire dans la fesse ?", opts: ["Quart inféro-interne", "Quart supéro-externe", "Centre de la fesse", "Pli sous-fessier"], ans: 1, exp: "Le quart supéro-externe du grand fessier évite toute atteinte du nerf sciatique." },
+  { q: "7. [Brûlures] Selon la règle des 9 de Wallace chez l'adulte, quelle surface représente la face antérieure du tronc + un membre supérieur entier ?", opts: ["18 %", "27 %", "36 %", "45 %"], ans: 1, exp: "Face antérieure du tronc (18 %) + un membre supérieur entier (9 %) = 27 %." },
+  { q: "8. [Biologie] Quelle anomalie ionique expose immédiatement à un arrêt cardiaque ?", opts: ["Hyperkaliémie à 6,9 mmol/L", "Natrémie à 138 mmol/L", "Calcémie à 2,35 mmol/L", "CRP à 8 mg/L"], ans: 0, exp: "La kaliémie normale est de 3,5 à 5,0 mmol/L ; une hyperkaliémie sévère entraîne des troubles graves de la conduction cardiaque." },
+  { q: "9. [Cardiologie] Où ausculte-t-on le foyer mitral ?", opts: ["2e espace intercostal droit", "2e espace intercostal gauche", "5e espace intercostal gauche sur la ligne médio-claviculaire", "4e espace intercostal droit"], ans: 2, exp: "Le foyer mitral correspond à la pointe du cœur (apex), au 5e EIC gauche sur la ligne médio-claviculaire." },
+  { q: "10. [Pneumologie] Quelle est la cible de SpO2 recommandée sous oxygène chez un patient BPCO hypercapnique ?", opts: ["98 – 100 %", "88 – 92 %", "80 – 84 %", "75 – 80 %"], ans: 1, exp: "Chez le BPCO hypercapnique, une SpO2 > 92 % peut supprimer le stimulus hypoxique respiratoire." },
+  { q: "11. [Digestif] Comment mesure-t-on la longueur d'une sonde nasogastrique (repère NEX) ?", opts: ["Bouche – Menton – Ombilic", "Aile du Nez – Lobe de l'Oreille – Appendice Xiphoïde", "Front – Nez – Sternum", "Oreille – Clavicule – Nombril"], ans: 1, exp: "La mesure NEX (Nez – Oreille – Xiphoïde) détermine la longueur d'insertion gastrique." },
+  { q: "12. [Néphrologie] À partir de quel seuil parle-t-on d'oligurie chez l'adulte ?", opts: ["Diurèse < 1 500 mL/24h", "Diurèse < 500 mL/24h", "Diurèse < 2 000 mL/24h", "Diurèse > 3 000 mL/24h"], ans: 1, exp: "L'oligurie est définie par une diurèse inférieure à 500 mL/24h (ou < 0,5 mL/kg/h) ; l'anurie est < 100 mL/24h." },
+  { q: "13. [Endocrinologie] Quelle hormone pancréatique est hypoglycémiante ?", opts: ["Le glucagon", "L'insuline", "Le cortisol", "L'adrénaline"], ans: 1, exp: "L'insuline (sécrétée par les cellules bêta des îlots de Langerhans) abaisse la glycémie." },
+  { q: "14. [Hygiène] Quel masque doit porter le soignant entrant dans la chambre d'un patient atteint de tuberculose pulmonaire bacillifère ?", opts: ["Masque chirurgical simple", "Masque FFP2", "Aucun masque à plus de 50 cm", "Visière seule"], ans: 1, exp: "La tuberculose se transmet par voie aérienne (aérosols), imposant des précautions complémentaires « Air » avec masque FFP2." },
+  { q: "15. [Urgences] Quelle est la dose et la voie d'administration de première intention de l'adrénaline dans le choc anaphylactique de l'adulte ?", opts: ["0,3 à 0,5 mg par voie intramusculaire (face antéro-externe de la cuisse)", "5 mg par voie orale", "10 mg en sous-cutané dans l'abdomen", "0,01 mg en intra-articulaire"], ans: 0, exp: "L'injection IM de 0,3 à 0,5 mg d'adrénaline dans le vaste externe de la cuisse est le traitement urgent de référence." },
+  { q: "16. [Soins Techniques] Quelle aiguille utilise-t-on obligatoirement sur une chambre implantable (PAC) ?", opts: ["Aiguille intramusculaire verte 21G", "Aiguille de Huber (biseau non carottant)", "Aiguille intradermique", "Trocart de ponction lombaire"], ans: 1, exp: "L'aiguille de Huber possède un biseau tangentiel évitant d'arracher des fragments du septum en silicone." },
+  { q: "17. [Hématologie] Quel groupe sanguin est donneur universel de concentrés de globules rouges (CGR) ?", opts: ["AB+", "O-", "A+", "B-"], ans: 1, exp: "Les hématies O- ne portent ni antigène A, ni B, ni Rhésus D." },
+  { q: "18. [Tégumentaire] À quoi correspond le Stade 1 d'une escarre ?", opts: ["Phlyctène séreuse", "Érythème persistant ne blanchissant pas à la pression", "Nécrose noire", "Mise à nu de l'os"], ans: 1, exp: "Le stade 1 est une rougeur cutanée persistante sur peau intacte qui ne disparaît pas à la vitropression." },
+  { q: "19. [Obstétrique] Quels sont les deux critères définissant la pré-éclampsie ?", opts: ["Diabète + Fièvre", "Hypertension artérielle gravidique (≥ 140/90 mmHg) + Protéinurie", "Anémie + Tachycardie", "Hypotension + Hypoglycémie"], ans: 1, exp: "La pré-éclampsie associe HTA après 20 SA et protéinurie significative." },
+  { q: "20. [Hygiène] En cas d'Accident d'Exposition au Sang (AES) par piqûre, quel est le premier geste immédiat ?", opts: ["Faire saigner fortement la plaie", "Laver immédiatement à l'eau courante et au savon, rincer puis désinfecter 5 min au Dakin/Bétadine", "Appliquer de l'alcool à 90° pur", "Attendre la fin de la garde"], ans: 1, exp: "Il ne faut jamais faire saigner ; on lave à l'eau et au savon, on rince abondamment, puis on réalise une antisepsie de 5 minutes." }
+];
+
+const DOSE_DATA = [
+  { id: 1, title: "Exercice 1 : Débit de perfusion par gravité", q: "Vous devez perfuser 1 000 mL de Sérum Physiologique NaCl 0,9 % sur 8 heures avec un perfuseur standard (1 mL = 20 gouttes). Quel est le débit en gouttes/minute (arrondi à l'entier) ?", ans: 42, unit: "gouttes/min", sol: "Volume = 1 000 × 20 = 20 000 gouttes. Durée = 8 × 60 = 480 minutes. Débit = 20 000 ÷ 480 = 41,66 → 42 gouttes/min." },
+  { id: 2, title: "Exercice 2 : Perfusion courte d'antibiotique", q: "Un flacon de 100 mL de Paracétamol injectable doit passer en 30 minutes (perfuseur 1 mL = 20 gouttes). Quel est le débit en gouttes/minute ?", ans: 67, unit: "gouttes/min", sol: "Volume = 100 × 20 = 2 000 gouttes. Durée = 30 minutes. Débit = 2 000 ÷ 30 = 66,66 → 67 gouttes/min." },
+  { id: 3, title: "Exercice 3 : Vitesse au Pousse-Seringue Électrique (PSE)", q: "Vous préparez une seringue de 48 mL devant être administrée en 24 heures au PSE. Quelle vitesse en mL/h réglez-vous ?", ans: 2, unit: "mL/h", sol: "Vitesse = Volume ÷ Temps = 48 mL ÷ 24 h = 2 mL/h." },
+  { id: 4, title: "Exercice 4 : Dilution et volume à prélever", q: "Vous disposez d'une ampoule de 10 mL de Chlorure de Potassium (KCl) dosée à 10 %. La prescription demande 1,5 g de KCl dans une perfusion. Quel volume en mL prélevez-vous ?", ans: 15, unit: "mL", sol: "10 % signifie 10 g pour 100 mL, soit 1 g dans 10 mL (0,1 g/mL). Pour 1,5 g : 1,5 ÷ 0,1 = 15 mL (soit 1 ampoule et demie)." },
+  { id: 5, title: "Exercice 5 : Posologie pédiatrique selon le poids", q: "Un enfant pèse 18 kg. Le médecin prescrit de l'Amoxicilline à 50 mg/kg/jour répartis en 3 prises. Quelle dose en mg reçoit-il à CHAQUE prise ?", ans: 300, unit: "mg", sol: "Dose journalière = 18 kg × 50 mg = 900 mg/jour. Répartie en 3 prises : 900 ÷ 3 = 300 mg par prise." },
+  { id: 6, title: "Exercice 6 : Débit de Glucose 5 % sur 24h", q: "Prescription : 2 000 mL de G5 % sur 24 heures (1 mL = 20 gouttes). Quel est le débit en gouttes/minute (arrondi à l'entier) ?", ans: 28, unit: "gouttes/min", sol: "2 000 × 20 = 40 000 gouttes. 24 h × 60 = 1 440 min. 40 000 ÷ 1 440 = 27,77 → 28 gouttes/min." },
+  { id: 7, title: "Exercice 7 : Héparine au PSE (UI/h → mL/h)", q: "Un flacon d'Héparine contient 25 000 UI dans 5 mL. Vous diluez ces 5 mL avec 45 mL de NaCl 0,9 % (total = 50 mL). La prescription est de 1 000 UI/heure. Quelle vitesse en mL/h réglez-vous ?", ans: 2, unit: "mL/h", sol: "Concentration = 25 000 UI ÷ 50 mL = 500 UI/mL. Pour 1 000 UI/h : 1 000 ÷ 500 = 2 mL/h." },
+  { id: 8, title: "Exercice 8 : Conversion mg en mL", q: "Vous avez un flacon de Gentamicine 80 mg / 2 mL. La prescription est de 120 mg en IVL. Quel volume total en mL devez-vous prélever ?", ans: 3, unit: "mL", sol: "80 mg dans 2 mL équivaut à 40 mg/mL. Pour 120 mg : 120 ÷ 40 = 3 mL." },
+  { id: 9, title: "Exercice 9 : Transfusion d'un Concentré de Globules Rouges", q: "Un CGR de 300 mL doit être transfusé en 2 heures avec un transfuseur (1 mL = 15 gouttes). Quel est le débit moyen en gouttes/minute ?", ans: 38, unit: "gouttes/min", sol: "300 × 15 = 4 500 gouttes. 2 h = 120 min. 4 500 ÷ 120 = 37,5 → 38 gouttes/min." },
+  { id: 10, title: "Exercice 10 : Insuline rapide en unités", q: "Un stylo d'insuline est dosé à 100 UI/mL. Si un patient reçoit 25 UI par injection, quel volume en mL cela représente-t-il ?", ans: 0.25, unit: "mL", sol: "25 UI ÷ 100 UI/mL = 0,25 mL." }
+];
+
+const CAS_DATA = [
+  {
+    title: "Cas Clinique 1 : Détresse respiratoire aiguë chez un patient BPCO",
+    scenario: "M. Karim, 68 ans, suivi pour BPCO sévère, est admis aux urgences pour dyspnée aiguë, toux productive purulente et somnolence. Constantes : FR = 28 cycles/min, SpO2 = 83 % en air ambiant, FC = 114 bpm, PA = 145/85 mmHg, T° = 38,6 °C.",
+    questions: "1) Quels signes de gravité clinique repérez-vous ? 2) Quelle position d'installation adoptez-vous ? 3) Quelle cible de SpO2 visez-vous sous oxygénothérapie et pourquoi ?",
+    corrigé: "1) Signes de gravité : polypnée (FR 28/min), hypoxémie sévère (SpO2 83 %), tachycardie (114 bpm), fièvre (38,6 °C) et somnolence évoquant une hypercapnie (encéphalopathie respiratoire). 2) Installation en position demi-assise (45-60°) pour libérer le diaphragme. 3) Cible SpO2 entre 88 % et 92 % : chez le BPCO hypercapnique, un débit d'O2 trop élevé supprime le stimulus hypoxique des centres respiratoires et aggrave l'acidose respiratoire."
+  },
+  {
+    title: "Cas Clinique 2 : Suspicion d'hypoglycémie sous insuline",
+    scenario: "Mme Fatima, 54 ans, diabétique de type 1 hospitalisée en médecine, présente brutalement à 11h30 des sueurs froides abondantes, des tremblements des mains, une pâleur et une confusion légère.",
+    questions: "1) Quel examen réalisez-vous immédiatement au lit de la patiente ? 2) Si le résultat est à 0,48 g/L et qu'elle est consciente, quelle est votre conduite à tenir ? 3) Que faire si elle perd connaissance ?",
+    corrigé: "1) Glycémie capillaire (dextro) immédiate. 2) Resucrage per os immédiat avec 15 g de glucides rapides (3 morceaux de sucre ou 15 cL de jus de fruits), suivi d'un contrôle de glycémie capillaire 15 minutes plus tard puis d'un apport de glucides lents (pain/biscottes). 3) Si inconsciente : ne rien donner par la bouche (risque de fausse route), mise en Position Latérale de Sécurité (PLS), alerte médicale et injection de Glucagon 1 mg en IM/SC ou Glucose 30 % en IV sur prescription."
+  },
+  {
+    title: "Cas Clinique 3 : Surveillance post-opératoire immédiate",
+    scenario: "M. Youssef, 42 ans, revient du bloc opératoire après une appendicectomie sous anesthésie générale. À H+1, il est pâle, se plaint de vertiges, son pansement abdominal est taché de sang rouge vif. Constantes : PA = 88/52 mmHg (contre 125/75 au départ), FC = 124 bpm, marbrures aux genoux.",
+    questions: "1) Quel syndrome suspectez-vous en priorité ? 2) Quels gestes infirmiers immédiats mettez-vous en œuvre ?",
+    corrigé: "1) Choc hypovolémique d'origine hémorragique (saignement actif au niveau du site opératoire avec hypotension artérielle, tachycardie compensatrice et marbrures). 2) Appeler immédiatement le chirurgien et l'anesthésiste en urgence, allonger le patient à plat (ou surélever les membres inférieurs), vérifier la perméabilité de la VVP (et poser une 2e VVP de gros calibre 16G/18G), administrer de l'O2, renforcer le pansement sans le retirer et préparer un bilan pré-transfusionnel (NFS, hémostase, groupe/RAI) et un remplissage vasculaire sur prescription."
+  },
+  {
+    title: "Cas Clinique 4 : Réaction allergique sévère après injection d'antibiotique",
+    scenario: "Deux minutes après le début d'une perfusion d'Amoxicilline-Acide clavulanique, Mme Nadia, 31 ans, présente un prurit généralisé, une urticaire sur le thorax, une gêne laryngée avec voix rauque et une chute tensionnelle à 80/45 mmHg.",
+    questions: "1) Quel diagnostic d'urgence posez-vous ? 2) Quels sont les 3 gestes prioritaires immédiats ?",
+    corrigé: "1) Choc anaphylactique (grade III). 2) Gestes prioritaires : a) Arrêter immédiatement la perfusion d'antibiotique tout en conservant la voie veineuse ; b) Alerter le médecin réanimateur en urgence et allonger la patiente jambes surélevées (ou demi-assise si dyspnée prédominante) ; c) Préparer et injecter en urgence de l'Adrénaline par voie intramusculaire (0,3 à 0,5 mg dans la face antéro-externe de la cuisse) et mettre sous O2 fort débit."
+  },
+  {
+    title: "Cas Clinique 5 : Rétention aiguë d'urine en service de chirurgie",
+    scenario: "M. Driss, 74 ans, opéré d'une prothèse totale de hanche il y a 10 heures, n'a toujours pas uriné. Il est agité et présente une douleur sus-pubienne intense avec une voussure mate à la percussion.",
+    questions: "1) Quel signe clinique identifiez-vous ? 2) Quelle précaution fondamentale respectez-vous lors de l'évacuation vésicale par sondage ?",
+    corrigé: "1) Globe vésical aigu (rétention aiguë d'urine). 2) Lors du sondage vésical évacuateur, il faut impérativement clamper la sonde tous les 300 à 400 mL pendant 15 minutes (vidange fractionnée) afin de prévenir l'hémorragie vésicale a vacuo et le malaise vagal."
+  },
+  {
+    title: "Cas Clinique 6 : Accident d'Exposition au Sang (AES)",
+    scenario: "En fin de soin, un étudiant infirmier se pique profondément l'index à travers son gant avec une aiguille ayant servi à un prélèvement veineux.",
+    questions: "1) Quels sont les gestes locaux immédiats à réaliser dans les 5 premières minutes ? 2) Quelles démarches administratives et médicales suivent ?",
+    corrigé: "1) Retirer les gants, ne pas faire saigner, laver immédiatement la plaie à l'eau courante et au savon doux, rincer abondamment, puis réaliser une antisepsie par trempage/compresse imbibée de Dakin ou Bétadine dermique pendant au moins 5 minutes. 2) Consulter un médecin référent AES dans les 4 heures pour évaluer le risque VIH/VHB/VHC (et instaurer une trithérapie post-exposition si nécessaire), puis déclarer l'accident de travail dans les 24-48 heures."
+  }
+];
+
+const FC_ALL = [
+  { cat: "Cardiovasculaire", q: "Foyer d'auscultation mitral ?", a: "5e espace intercostal gauche, ligne médio-claviculaire." },
+  { cat: "Cardiovasculaire", q: "Norme Troponine Ic ?", a: "< 0,04 µg/L." },
+  { cat: "Cardiovasculaire", q: "INR cible sous AVK ?", a: "2,0 – 3,0." },
+  { cat: "Respiratoire", q: "Repère de ponction pleurale ?", a: "Bord SUPÉRIEUR de la côte inférieure." },
+  { cat: "Respiratoire", q: "Cible SpO2 chez un BPCO hypercapnique ?", a: "88 – 92 %." },
+  { cat: "Respiratoire", q: "Nombre de lobes pulmonaires ?", a: "3 à droite, 2 à gauche." },
+  { cat: "Nerveux", q: "Terminaison de la moelle épinière adulte ?", a: "Vertèbres L1 – L2." },
+  { cat: "Nerveux", q: "Repère de la ligne de Tuffier ?", a: "Crêtes iliaques → espace L4-L5." },
+  { cat: "Nerveux", q: "Score de Glasgow minimal / maximal ?", a: "Min = 3 ; Max = 15 (Coma ≤ 8)." },
+  { cat: "Musculo-Squelettique", q: "Site sécurisé IM fessier ?", a: "Quart supéro-externe du grand fessier." },
+  { cat: "Musculo-Squelettique", q: "Volume max IM deltoïde ?", a: "≤ 2 mL." },
+  { cat: "Musculo-Squelettique", q: "Norme calcémie totale ?", a: "2,20 – 2,60 mmol/L." },
+  { cat: "Digestif", q: "Mesure NEX (SNG) ?", a: "Nez – Lobe Oreille – Appendice Xiphoïde." },
+  { cat: "Digestif", q: "Point de Mac Burney ?", a: "Fosse iliaque droite (1/3 externe ligne ombilic-EIAS)." },
+  { cat: "Rénal", q: "Norme Kaliémie (K+) ?", a: "3,5 – 5,0 mmol/L." },
+  { cat: "Rénal", q: "Seuil d'oligurie et d'anurie ?", a: "Oligurie < 500 mL/24h ; Anurie < 100 mL/24h." },
+  { cat: "Endocrinien", q: "Norme glycémie à jeun ?", a: "0,70 – 1,10 g/L (3,9 – 6,1 mmol/L)." },
+  { cat: "Endocrinien", q: "Hormone hypoglycémiante du pancréas ?", a: "Insuline (cellules bêta)." },
+  { cat: "Reproducteur", q: "Lieu de la fécondation ?", a: "Ampoule (tiers externe) de la trompe de Fallope." },
+  { cat: "Reproducteur", q: "Critères de pré-éclampsie ?", a: "HTA ≥ 140/90 mmHg + Protéinurie." },
+  { cat: "Tégumentaire", q: "Stade 1 d'une escarre ?", a: "Érythème persistant ne blanchissant pas à la pression." },
+  { cat: "Tégumentaire", q: "Règle des 9 de Wallace : membre inférieur ?", a: "18 % par membre inférieur." },
+  { cat: "Immunité", q: "Norme des Leucocytes ?", a: "4 000 – 10 000 / mm³." },
+  { cat: "Immunité", q: "Norme CRP ?", a: "< 5 mg/L." },
+  { cat: "Hématologie", q: "Ordre des tubes sanguins ?", a: "Hémoc → Citrate (bleu) → Sec (rouge) → Héparine (vert) → EDTA (violet)." },
+  { cat: "Hématologie", q: "Donneur universel CGR ?", a: "O Rhésus négatif (O-)." },
+  { cat: "Topographie", q: "Triangle de Scarpa (de dedans en dehors) ?", a: "Veine – Artère – Nerf (VAN)." },
+  { cat: "Topographie", q: "Repère de l'angle de Louis ?", a: "2e espace intercostal (bifurcation trachéale T4-T5)." },
+  { cat: "Pharmacologie", q: "Gouttes par mL (perfuseur standard) ?", a: "1 mL = 20 gouttes." },
+  { cat: "Pharmacologie", q: "Gouttes par mL (transfusion sang) ?", a: "1 mL = 15 gouttes." },
+  { cat: "Pharmacologie", q: "Antidote des morphiniques ?", a: "Naloxone." },
+  { cat: "Pharmacologie", q: "Antidote des AVK ?", a: "Vitamine K." },
+  { cat: "Urgences", q: "Ratio RCP Adulte ?", a: "30 compressions / 2 insufflations (100-120/min)." },
+  { cat: "Urgences", q: "Adrénaline choc anaphylactique adulte ?", a: "0,3 à 0,5 mg en IM (face externe cuisse)." },
+  { cat: "Hygiène", q: "Masque requis pour Précautions Air ?", a: "Masque FFP2 (tuberculose, rougeole, varicelle)." },
+  { cat: "Hygiène", q: "Durée friction hydro-alcoolique (FHA) ?", a: "30 secondes sur mains sèches." }
+];
+
+let qcmOk = 0, doseOk = 0;
+function updateScore() {
+  document.getElementById('global-score').textContent = `QCM : ${qcmOk} / 20 • Doses : ${doseOk} / 10`;
+}
+
+function switchExTab(tab, btn) {
+  ['qcm', 'doses', 'cas', 'fc'].forEach(t => document.getElementById('ex-' + t).classList.toggle('hidden', t !== tab));
+  document.querySelectorAll('.ex-tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function initQcm() {
+  const box = document.getElementById('qcm-list');
+  QCM_DATA.forEach((item, idx) => {
+    const div = document.createElement('div');
+    div.className = 'course-section';
+    div.innerHTML = `<h4>${item.q}</h4>
+      <div id="qopts-${idx}">${item.opts.map((o, oi) => `<button class="qcm-option" onclick="checkQcm(${idx}, ${oi})">${o}</button>`).join('')}</div>
+      <div id="qexp-${idx}" class="feedback-box hidden"><strong>Correction :</strong> ${item.exp}</div>`;
+    box.appendChild(div);
+  });
+}
+function checkQcm(qi, oi) {
+  const p = document.getElementById('qopts-' + qi);
+  if (p.dataset.done) return;
+  p.dataset.done = "1";
+  const item = QCM_DATA[qi];
+  p.querySelectorAll('button').forEach((b, i) => {
+    if (i === item.ans) b.classList.add('correct');
+    else if (i === oi) b.classList.add('wrong');
+  });
+  if (oi === item.ans) qcmOk++;
+  updateScore();
+  document.getElementById('qexp-' + qi).classList.remove('hidden');
+}
+
+function initDoses() {
+  const box = document.getElementById('doses-list');
+  DOSE_DATA.forEach((d, idx) => {
+    const div = document.createElement('div');
+    div.className = 'course-section';
+    div.innerHTML = `<h4>${d.title}</h4><p>${d.q}</p>
+      <div class="dose-row">
+        <input type="number" step="any" id="dinput-${idx}" placeholder="Votre réponse..." />
+        <strong>${d.unit}</strong>
+        <button class="btn btn-accent" onclick="checkDose(${idx})">Vérifier</button>
+      </div>
+      <div id="dfb-${idx}" class="feedback-box hidden"></div>`;
+    box.appendChild(div);
+  });
+}
+function checkDose(idx) {
+  const d = DOSE_DATA[idx];
+  const val = parseFloat(document.getElementById('dinput-' + idx).value.replace(',', '.'));
+  const fb = document.getElementById('dfb-' + idx);
+  fb.classList.remove('hidden');
+  if (!isNaN(val) && Math.abs(val - d.ans) < 0.05) {
+    if (!fb.dataset.scored) { doseOk++; fb.dataset.scored = "1"; updateScore(); }
+    fb.style.borderLeftColor = "#16a34a";
+    fb.innerHTML = `<strong style="color:#15803d;">✅ Exact (${d.ans} ${d.unit}) !</strong><br/>${d.sol}`;
+  } else {
+    fb.style.borderLeftColor = "#dc2626";
+    fb.innerHTML = `<strong style="color:#dc2626;">❌ Réponse attendue : ${d.ans} ${d.unit}</strong><br/>${d.sol}`;
+  }
+}
+
+function initCas() {
+  const box = document.getElementById('cas-list');
+  CAS_DATA.forEach((c, idx) => {
+    const div = document.createElement('div');
+    div.className = 'course-section';
+    div.innerHTML = `<h4>${c.title}</h4>
+      <p><strong>Situation clinique :</strong> ${c.scenario}</p>
+      <p style="color:var(--primary); font-weight:600;">${c.questions}</p>
+      <button class="btn btn-outline" onclick="document.getElementById('cas-sol-${idx}').classList.toggle('hidden')">Afficher / Masquer le corrigé détaillé</button>
+      <div id="cas-sol-${idx}" class="feedback-box hidden"><strong>Grille de correction IDE :</strong><br/>${c.corrigé}</div>`;
+    box.appendChild(div);
+  });
+}
+
+let fcFiltered = [...FC_ALL], fcIdx = 0, fcFlip = false;
+function initFc() {
+  const sel = document.getElementById('fc-cat-sel');
+  [...new Set(FC_ALL.map(x => x.cat))].forEach(c => {
+    const o = document.createElement('option'); o.value = c; o.textContent = c; sel.appendChild(o);
+  });
+  renderFc();
+}
+function filterFc() {
+  const v = document.getElementById('fc-cat-sel').value;
+  fcFiltered = v === 'all' ? [...FC_ALL] : FC_ALL.filter(x => x.cat === v);
+  fcIdx = 0; fcFlip = false; renderFc();
+}
+function renderFc() {
+  const item = fcFiltered[fcIdx]; if (!item) return;
+  document.getElementById('fc-badge').textContent = item.cat;
+  document.getElementById('fc-q').textContent = fcFlip ? item.a : item.q;
+  document.getElementById('fc-q').style.color = fcFlip ? 'var(--accent)' : 'var(--primary)';
+  document.getElementById('fc-hint').textContent = fcFlip ? '✅ Réponse' : '👆 Cliquez pour retourner';
+  document.getElementById('fc-pos').textContent = `Carte ${fcIdx + 1} / ${fcFiltered.length}`;
+}
+function flipFc() { fcFlip = !fcFlip; renderFc(); }
+function nextFc() { fcIdx = (fcIdx + 1) % fcFiltered.length; fcFlip = false; renderFc(); }
+function prevFc() { fcIdx = (fcIdx - 1 + fcFiltered.length) % fcFiltered.length; fcFlip = false; renderFc(); }
+
+initQcm(); initDoses(); initCas(); initFc();
+</script>
+</body>
+</html>

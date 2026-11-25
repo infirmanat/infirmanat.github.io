@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://infirmanat.github.io/sitemap.xml

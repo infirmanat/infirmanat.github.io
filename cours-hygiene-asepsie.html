@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cours 16 : Hygiène Hospitalière, Asepsie & Prévention des Infections — InfirmAnat IA</title>
+  <meta name="description" content="Précautions standard, friction hydro-alcoolique, précautions complémentaires (Air, Gouttelettes, Contact) et DASRI. Cours complet pour étudiants infirmiers (IFSI / ISPITS)." />
+  <style>
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --primary: #0f4c81;
+  --primary-light: #e6f0fa;
+  --accent: #0d9488;
+  --accent-light: #e6f7f5;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(15, 76, 129, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, #0f4c81 0%, #0d9488 100%);
+  color: #fff;
+  padding: 15px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+.brand-icon {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: bold;
+}
+.brand h1 { font-size: 1.25rem; font-weight: 700; }
+.brand p { font-size: 0.78rem; opacity: 0.9; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a, nav button {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+nav a:hover, nav button:hover, nav button.active, nav a.active {
+  background: #fff;
+  color: var(--primary);
+}
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 20px 50px;
+  flex: 1;
+}
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.sys-badge {
+  background: var(--primary-light); color: var(--primary);
+  font-weight: 700; font-size: 0.78rem; padding: 4px 11px; border-radius: 999px;
+  display: inline-block;
+}
+.done-badge {
+  background: #dcfce7; color: #15803d;
+  font-size: 0.75rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+}
+.btn {
+  background: var(--primary); color: #fff; border: none;
+  padding: 10px 18px; border-radius: 10px; font-weight: 600;
+  cursor: pointer; font-size: 0.9rem; text-decoration: none; display: inline-block;
+}
+.btn:hover { opacity: 0.93; }
+.btn-accent { background: var(--accent); }
+.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+.course-header {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; gap: 12px; border-bottom: 2px solid var(--border);
+  padding-bottom: 16px; margin-bottom: 22px;
+}
+.course-section {
+  margin-bottom: 20px; padding: 20px; border-radius: 12px;
+  background: #f8fafc; border: 1px solid var(--border);
+}
+.course-section h3, .course-section h4 { color: var(--primary); font-size: 1.08rem; margin-bottom: 9px; }
+.course-section p, .course-section li { color: #334155; font-size: 0.96rem; margin-bottom: 8px; }
+.norms-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.norm-box {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); padding: 12px; border-radius: 10px;
+}
+.norm-box strong { display: block; color: var(--primary); font-size: 0.85rem; }
+.norm-box span { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+.svg-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; margin-bottom: 22px; text-align: center;
+}
+.svg-card figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 8px; font-weight: 600; }
+.breadcrumb { font-size: 0.86rem; color: var(--muted); margin-bottom: 14px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.course-nav-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);
+}
+.disclaimer-box {
+  background: #fefce8;
+  border-left: 4px solid #eab308;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  color: #713f12;
+}
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 32px 20px;
+  margin-top: auto;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.footer-links a:hover { color: #ffffff; text-decoration: underline; }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-icon">🩺</div>
+      <div>
+        <h1>InfirmAnat IA</h1>
+        <p>Anatomie-Physiologie & Soins Infirmiers (IFSI / ISPITS)</p>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">📚 16 Cours</a>
+      <a href="exercices.html">✍️ Exercices & QCM</a>
+      <a href="actualites.html">📰 Actualités</a>
+      <a href="a-propos.html">ℹ️ À propos</a>
+      <a href="contact.html">✉️ Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">Accueil</a> › <a href="index.html">Programme Infirmier (Soins & Thérapeutique)</a> › Cours 16
+  </div>
+
+  <article class="panel">
+    <div class="course-header">
+      <div>
+        <span class="sys-badge">Cours 16 / 16 • Soins & Thérapeutique</span>
+        <h2 style="color:var(--primary); margin-top:8px; font-size:1.5rem;">Hygiène Hospitalière, Asepsie & Prévention des Infections</h2>
+        <p style="color:var(--muted); font-size:0.95rem; margin-top:4px;">Précautions standard, friction hydro-alcoolique, précautions complémentaires (Air, Gouttelettes, Contact) et DASRI.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn btn-outline" href="exercices.html">✍️ S'entraîner</a>
+        <button id="btn-complete" class="btn btn-accent" onclick="toggleCourseComplete('hygiene')">Marquer comme étudié</button>
+      </div>
+    </div>
+
+    <figure class="svg-card">
+      <svg viewBox="0 0 620 210" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="620" height="210" rx="12" fill="#f8fafc"/><rect x="40" y="52" width="165" height="105" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="122" y="92" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e">Précautions Contact</text><text x="122" y="114" text-anchor="middle" font-size="10" fill="#b45309">Gants + Tablier/Surblouse</text><text x="122" y="132" text-anchor="middle" font-size="9" fill="#92400e">(BMR, Clostridioides, Gale)</text><rect x="228" y="52" width="165" height="105" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text x="310" y="92" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e40af">Précautions Gouttelettes</text><text x="310" y="114" text-anchor="middle" font-size="10" fill="#1d4ed8">Masque Chirurgical (< 1m)</text><text x="310" y="132" text-anchor="middle" font-size="9" fill="#1e40af">(Grippe, Coqueluche, Méningo)</text><rect x="415" y="52" width="165" height="105" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/><text x="497" y="92" text-anchor="middle" font-size="12" font-weight="bold" fill="#991b1b">Précautions Air</text><text x="497" y="114" text-anchor="middle" font-size="10" fill="#b91c1c">Masque FFP2 + Porte fermée</text><text x="497" y="132" text-anchor="middle" font-size="9" fill="#991b1b">(Tuberculose, Rougeole, Varicelle)</text></svg>
+      <figcaption>Les trois types de précautions complémentaires d'hygiène en milieu hospitalier.</figcaption>
+    </figure>
+
+    <section class="course-section">
+      <h3>1. Bases Anatomiques & Fondamentaux</h3>
+      <p>La flore cutanée humaine comprend la flore résidente (commensale profonde, protectrice) et la flore transitoire (superficielle, acquise par contact avec les patients ou l'environnement hospitalier, principale responsable des infections associées aux soins - IAS).</p>
+    </section>
+
+    <section class="course-section">
+      <h3>2. Physiologie Appliquée & Mécanismes</h3>
+      <p>La chaîne de transmission d'une infection nécessite un agent infectieux, un réservoir, une porte de sortie, un mode de transmission (contact direct/indirect, gouttelettes, voie aérienne), une porte d'entrée et un hôte réceptif.</p>
+    </section>
+
+    <section class="course-section">
+      <h3>3. Sémiologie Clinique & Surveillance Infirmière</h3>
+      <p>Surveillance des signes d'infection associée aux soins (IAS) : fièvre survenant plus de 48 heures après l'admission, écoulement purulent sur cicatrice chirurgicale, urines troubles malodorantes sur sonde, foyer pulmonaire nosocomial.</p>
+    </section>
+
+    <section class="course-section">
+      <h3>4. Soins Infirmiers, Gestes Techniques & Repères</h3>
+      <p>1) Hygiène des mains : Friction Hydro-Alcoolique (FHA, 30 secondes en 7 étapes) sur mains sèches et non souillées (lavage au savon doux obligatoire si mains visiblement souillées ou infection à Clostridioides difficile / gale) ; 2) Gestion des AES (Accident d'Exposition au Sang) : nettoyage immédiat à l'eau et au savon, rinçage, antisepsie (Dakin ou Bétadine) pendant 5 minutes et consultation médicale urgente (< 4h) ; 3) Tri des déchets : conteneur OPCT jaune pour objets piquants/coupants/tranchants sans jamais recapuchonner les aiguilles.</p>
+    </section>
+
+    <section class="course-section">
+      <h3>5. Pathologies, Risques & Prévention</h3>
+      <p>Infections du site opératoire (ISO), bactériémies nosocomiales, infections urinaires sur sonde, pneumopathies acquises sous ventilation mécanique (PAVM), diffusion de bactéries multirésistantes (BMR / BHRe).</p>
+    </section>
+
+    <section class="course-section">
+      <h3>📊 Normes Biologiques, Repères & Constantes de Référence</h3>
+      <div class="norms-grid"><div class="norm-box"><strong>Durée friction FHA</strong><span>30 secondes (mains sèches)</span></div><div class="norm-box"><strong>Délai définition IAS</strong><span>> 48 heures d'hospitalisation</span></div><div class="norm-box"><strong>Temps contact antisepsie AES</strong><span>5 minutes minimum</span></div><div class="norm-box"><strong>Remplissage boîte OPCT</strong><span>Limite max trait noir (2/3)</span></div></div>
+    </section>
+
+    <div class="disclaimer-box">
+      <strong>Note pédagogique :</strong> Ce support de cours est destiné à la révision des étudiants en soins infirmiers (IFSI / ISPITS) et ne remplace pas les protocoles médicaux de votre établissement.
+    </div>
+
+    <div class="course-nav-bottom">
+      <a class="btn btn-outline" href="cours-urgences-reanimation.html">⬅️ Cours 15 : Urgences Vitales, Secourisme & Réanimation (AFGSU)</a>
+      <a class="btn btn-accent" href="exercices.html">Passer aux Exercices & Cas Cliniques ✅</a>
+    </div>
+  </article>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>InfirmAnat IA</strong> — Ressource Éducative Libre en Sciences Infirmières.<br/>
+      <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Accueil & 16 Cours</a>
+      <a href="exercices.html">Exercices & Cas Cliniques</a>
+      <a href="actualites.html">Actualités & News</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function refreshBtn() {
+  const completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  const btn = document.getElementById('btn-complete');
+  btn.textContent = completed.includes('hygiene') ? '✓ Cours validé' : 'Marquer ce cours comme étudié';
+}
+function toggleCourseComplete(id) {
+  let completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  completed = completed.includes(id) ? completed.filter(x => x !== id) : [...completed, id];
+  localStorage.setItem('ia_completed', JSON.stringify(completed));
+  refreshBtn();
+}
+refreshBtn();
+</script>
+</body>
+</html>

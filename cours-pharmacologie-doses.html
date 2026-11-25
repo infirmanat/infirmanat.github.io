@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cours 13 : Pharmacologie Infirmière & Calculs de Doses — InfirmAnat IA</title>
+  <meta name="description" content="Règle des 5B, débits de perfusion (gouttes/min, mL/h), dilutions, anticoagulant et surveillance. Cours complet pour étudiants infirmiers (IFSI / ISPITS)." />
+  <style>
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --primary: #0f4c81;
+  --primary-light: #e6f0fa;
+  --accent: #0d9488;
+  --accent-light: #e6f7f5;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(15, 76, 129, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, #0f4c81 0%, #0d9488 100%);
+  color: #fff;
+  padding: 15px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+.brand-icon {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: bold;
+}
+.brand h1 { font-size: 1.25rem; font-weight: 700; }
+.brand p { font-size: 0.78rem; opacity: 0.9; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a, nav button {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+nav a:hover, nav button:hover, nav button.active, nav a.active {
+  background: #fff;
+  color: var(--primary);
+}
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 20px 50px;
+  flex: 1;
+}
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.sys-badge {
+  background: var(--primary-light); color: var(--primary);
+  font-weight: 700; font-size: 0.78rem; padding: 4px 11px; border-radius: 999px;
+  display: inline-block;
+}
+.done-badge {
+  background: #dcfce7; color: #15803d;
+  font-size: 0.75rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+}
+.btn {
+  background: var(--primary); color: #fff; border: none;
+  padding: 10px 18px; border-radius: 10px; font-weight: 600;
+  cursor: pointer; font-size: 0.9rem; text-decoration: none; display: inline-block;
+}
+.btn:hover { opacity: 0.93; }
+.btn-accent { background: var(--accent); }
+.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+.course-header {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; gap: 12px; border-bottom: 2px solid var(--border);
+  padding-bottom: 16px; margin-bottom: 22px;
+}
+.course-section {
+  margin-bottom: 20px; padding: 20px; border-radius: 12px;
+  background: #f8fafc; border: 1px solid var(--border);
+}
+.course-section h3, .course-section h4 { color: var(--primary); font-size: 1.08rem; margin-bottom: 9px; }
+.course-section p, .course-section li { color: #334155; font-size: 0.96rem; margin-bottom: 8px; }
+.norms-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.norm-box {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); padding: 12px; border-radius: 10px;
+}
+.norm-box strong { display: block; color: var(--primary); font-size: 0.85rem; }
+.norm-box span { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+.svg-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; margin-bottom: 22px; text-align: center;
+}
+.svg-card figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 8px; font-weight: 600; }
+.breadcrumb { font-size: 0.86rem; color: var(--muted); margin-bottom: 14px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.course-nav-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);
+}
+.disclaimer-box {
+  background: #fefce8;
+  border-left: 4px solid #eab308;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  color: #713f12;
+}
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 32px 20px;
+  margin-top: auto;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.footer-links a:hover { color: #ffffff; text-decoration: underline; }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-icon">🩺</div>
+      <div>
+        <h1>InfirmAnat IA</h1>
+        <p>Anatomie-Physiologie & Soins Infirmiers (IFSI / ISPITS)</p>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">📚 16 Cours</a>
+      <a href="exercices.html">✍️ Exercices & QCM</a>
+      <a href="actualites.html">📰 Actualités</a>
+      <a href="a-propos.html">ℹ️ À propos</a>
+      <a href="contact.html">✉️ Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">Accueil</a> › <a href="index.html">Programme Infirmier (Soins & Thérapeutique)</a> › Cours 13
+  </div>
+
+  <article class="panel">
+    <div class="course-header">
+      <div>
+        <span class="sys-badge">Cours 13 / 16 • Soins & Thérapeutique</span>
+        <h2 style="color:var(--primary); margin-top:8px; font-size:1.5rem;">Pharmacologie Infirmière & Calculs de Doses</h2>
+        <p style="color:var(--muted); font-size:0.95rem; margin-top:4px;">Règle des 5B, débits de perfusion (gouttes/min, mL/h), dilutions, anticoagulant et surveillance.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn btn-outline" href="exercices.html">✍️ S'entraîner</a>
+        <button id="btn-complete" class="btn btn-accent" onclick="toggleCourseComplete('pharma')">Marquer comme étudié</button>
+      </div>
+    </div>
+
+    <figure class="svg-card">
+      <svg viewBox="0 0 620 210" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="620" height="210" rx="12" fill="#f8fafc"/><rect x="45" y="48" width="245" height="110" rx="14" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/><text x="167" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#0369a1">Débit Perfusion Standard</text><text x="167" y="112" text-anchor="middle" font-size="12" fill="#0284c7">Débit (gtt/min) = (Volume mL × 20)</text><text x="167" y="132" text-anchor="middle" font-size="12" fill="#0284c7">÷ (Durée en heures × 60)</text><rect x="330" y="48" width="245" height="110" rx="14" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/><text x="452" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#115e59">Pousse-Seringue (PSE)</text><text x="452" y="112" text-anchor="middle" font-size="12" fill="#0f766e">Vitesse (mL/h) = Volume (mL)</text><text x="452" y="132" text-anchor="middle" font-size="12" fill="#0f766e">÷ Temps (en heures)</text></svg>
+      <figcaption>Formules fondamentales de calcul de débit par gravité (perfuseur standard 1 mL = 20 gouttes) et au PSE.</figcaption>
+    </figure>
+
+    <section class="course-section">
+      <h3>1. Bases Anatomiques & Fondamentaux</h3>
+      <p>La pharmacocinétique étudie le devenir du médicament dans l'organisme en 4 étapes (ADME) : Absorption (tube digestif, tissu sous-cutané, muscle, voie intraveineuse biodisponible à 100 %), Distribution (liaison aux protéines plasmatiques comme l'albumine), Métabolisme (principalement hépatique via les cytochromes P450) et Élimination (rénale et biliaire).</p>
+    </section>
+
+    <section class="course-section">
+      <h3>2. Physiologie Appliquée & Mécanismes</h3>
+      <p>La pharmacodynamie décrit l'action du principe actif sur ses récepteurs cibles (agonistes ou antagonistes). La demi-vie plasmatique (T1/2) détermine le rythme d'administration et le délai d'élimination complète (environ 5 demi-vies).</p>
+    </section>
+
+    <section class="course-section">
+      <h3>3. Sémiologie Clinique & Surveillance Infirmière</h3>
+      <p>Dépistage des effets indésirables et signes de surdosage : bradycardie sous bêtabloquants ou digoxine, saignements sous anticoagulants, hypoglycémie sous insuline/sulfamides, allergie médicamenteuse (urticaire, œdème de Quincke, choc anaphylactique).</p>
+    </section>
+
+    <section class="course-section">
+      <h3>4. Soins Infirmiers, Gestes Techniques & Repères</h3>
+      <p>Application stricte de la règle des 5B avant toute administration : Bon patient, Bon médicament, Bonne dose, Bonne voie, Bon moment. Conversion : 1 mL = 20 gouttes (soluté aqueux standard) ; 1 mL = 15 gouttes (sang/dérivés) ; 1 mL = 60 microgouttes (perfuseur pédiatrique). 1 g = 1 000 mg ; 1 mg = 1 000 µg.</p>
+    </section>
+
+    <section class="course-section">
+      <h3>5. Pathologies, Risques & Prévention</h3>
+      <p>Iatrogénie médicamenteuse, surdosage aux AVK (antidote : Vitamine K), surdosage aux morphiniques (antidote : Naloxone), surdosage à l'héparine non fractionnée (antidote : Sulfate de protamine).</p>
+    </section>
+
+    <section class="course-section">
+      <h3>📊 Normes Biologiques, Repères & Constantes de Référence</h3>
+      <div class="norms-grid"><div class="norm-box"><strong>Perfuseur standard</strong><span>1 mL = 20 gouttes</span></div><div class="norm-box"><strong>Transfusion CGR</strong><span>1 mL = 15 gouttes</span></div><div class="norm-box"><strong>Microperfuseur pédiatrique</strong><span>1 mL = 60 microgouttes</span></div><div class="norm-box"><strong>1 % (concentration)</strong><span>1 g pour 100 mL (10 mg/mL)</span></div></div>
+    </section>
+
+    <div class="disclaimer-box">
+      <strong>Note pédagogique :</strong> Ce support de cours est destiné à la révision des étudiants en soins infirmiers (IFSI / ISPITS) et ne remplace pas les protocoles médicaux de votre établissement.
+    </div>
+
+    <div class="course-nav-bottom">
+      <a class="btn btn-outline" href="cours-topographique.html">⬅️ Cours 12 : Anatomie Topographique & Repères Cliniques de Surface</a>
+      <a class="btn" href="cours-soins-techniques.html">Cours 14 : Soins Infirmiers Techniques, Sondages & Voies Veineuses ➡️</a>
+    </div>
+  </article>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>InfirmAnat IA</strong> — Ressource Éducative Libre en Sciences Infirmières.<br/>
+      <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Accueil & 16 Cours</a>
+      <a href="exercices.html">Exercices & Cas Cliniques</a>
+      <a href="actualites.html">Actualités & News</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function refreshBtn() {
+  const completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  const btn = document.getElementById('btn-complete');
+  btn.textContent = completed.includes('pharma') ? '✓ Cours validé' : 'Marquer ce cours comme étudié';
+}
+function toggleCourseComplete(id) {
+  let completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  completed = completed.includes(id) ? completed.filter(x => x !== id) : [...completed, id];
+  localStorage.setItem('ia_completed', JSON.stringify(completed));
+  refreshBtn();
+}
+refreshBtn();
+</script>
+</body>
+</html>

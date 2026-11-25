@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cours 15 : Urgences Vitales, Secourisme & Réanimation (AFGSU) — InfirmAnat IA</title>
+  <meta name="description" content="Bilan ABCDE, arrêt cardiorespiratoire (RCP), défibrillation (DAE), choc anaphylactique et AVC. Cours complet pour étudiants infirmiers (IFSI / ISPITS)." />
+  <style>
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --primary: #0f4c81;
+  --primary-light: #e6f0fa;
+  --accent: #0d9488;
+  --accent-light: #e6f7f5;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(15, 76, 129, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, #0f4c81 0%, #0d9488 100%);
+  color: #fff;
+  padding: 15px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+.brand-icon {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: bold;
+}
+.brand h1 { font-size: 1.25rem; font-weight: 700; }
+.brand p { font-size: 0.78rem; opacity: 0.9; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a, nav button {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+nav a:hover, nav button:hover, nav button.active, nav a.active {
+  background: #fff;
+  color: var(--primary);
+}
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 20px 50px;
+  flex: 1;
+}
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.sys-badge {
+  background: var(--primary-light); color: var(--primary);
+  font-weight: 700; font-size: 0.78rem; padding: 4px 11px; border-radius: 999px;
+  display: inline-block;
+}
+.done-badge {
+  background: #dcfce7; color: #15803d;
+  font-size: 0.75rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+}
+.btn {
+  background: var(--primary); color: #fff; border: none;
+  padding: 10px 18px; border-radius: 10px; font-weight: 600;
+  cursor: pointer; font-size: 0.9rem; text-decoration: none; display: inline-block;
+}
+.btn:hover { opacity: 0.93; }
+.btn-accent { background: var(--accent); }
+.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+.course-header {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; gap: 12px; border-bottom: 2px solid var(--border);
+  padding-bottom: 16px; margin-bottom: 22px;
+}
+.course-section {
+  margin-bottom: 20px; padding: 20px; border-radius: 12px;
+  background: #f8fafc; border: 1px solid var(--border);
+}
+.course-section h3, .course-section h4 { color: var(--primary); font-size: 1.08rem; margin-bottom: 9px; }
+.course-section p, .course-section li { color: #334155; font-size: 0.96rem; margin-bottom: 8px; }
+.norms-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.norm-box {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); padding: 12px; border-radius: 10px;
+}
+.norm-box strong { display: block; color: var(--primary); font-size: 0.85rem; }
+.norm-box span { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+.svg-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; margin-bottom: 22px; text-align: center;
+}
+.svg-card figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 8px; font-weight: 600; }
+.breadcrumb { font-size: 0.86rem; color: var(--muted); margin-bottom: 14px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.course-nav-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);
+}
+.disclaimer-box {
+  background: #fefce8;
+  border-left: 4px solid #eab308;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  color: #713f12;
+}
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 32px 20px;
+  margin-top: auto;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.footer-links a:hover { color: #ffffff; text-decoration: underline; }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-icon">🩺</div>
+      <div>
+        <h1>InfirmAnat IA</h1>
+        <p>Anatomie-Physiologie & Soins Infirmiers (IFSI / ISPITS)</p>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">📚 16 Cours</a>
+      <a href="exercices.html">✍️ Exercices & QCM</a>
+      <a href="actualites.html">📰 Actualités</a>
+      <a href="a-propos.html">ℹ️ À propos</a>
+      <a href="contact.html">✉️ Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">Accueil</a> › <a href="index.html">Programme Infirmier (Soins & Thérapeutique)</a> › Cours 15
+  </div>
+
+  <article class="panel">
+    <div class="course-header">
+      <div>
+        <span class="sys-badge">Cours 15 / 16 • Soins & Thérapeutique</span>
+        <h2 style="color:var(--primary); margin-top:8px; font-size:1.5rem;">Urgences Vitales, Secourisme & Réanimation (AFGSU)</h2>
+        <p style="color:var(--muted); font-size:0.95rem; margin-top:4px;">Bilan ABCDE, arrêt cardiorespiratoire (RCP), défibrillation (DAE), choc anaphylactique et AVC.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn btn-outline" href="exercices.html">✍️ S'entraîner</a>
+        <button id="btn-complete" class="btn btn-accent" onclick="toggleCourseComplete('urgences')">Marquer comme étudié</button>
+      </div>
+    </div>
+
+    <figure class="svg-card">
+      <svg viewBox="0 0 620 210" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="620" height="210" rx="12" fill="#f8fafc"/><rect x="20" y="55" width="105" height="100" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/><text x="72" y="95" text-anchor="middle" font-size="13" font-weight="bold" fill="#991b1b">A - Airway</text><text x="72" y="115" text-anchor="middle" font-size="9" fill="#b91c1c">Liberté VAS</text><rect x="138" y="55" width="105" height="100" rx="10" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/><text x="190" y="95" text-anchor="middle" font-size="13" font-weight="bold" fill="#9a3412">B - Breathing</text><text x="190" y="115" text-anchor="middle" font-size="9" fill="#c2410c">FR, SpO2, O2</text><rect x="256" y="55" width="105" height="100" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="308" y="95" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400e">C - Circulation</text><text x="308" y="115" text-anchor="middle" font-size="9" fill="#b45309">Pouls, PA, VVP</text><rect x="374" y="55" width="105" height="100" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text x="426" y="95" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e40af">D - Disability</text><text x="426" y="115" text-anchor="middle" font-size="9" fill="#1d4ed8">Glasgow, Pupilles</text><rect x="492" y="55" width="108" height="100" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/><text x="546" y="95" text-anchor="middle" font-size="13" font-weight="bold" fill="#14532d">E - Exposure</text><text x="546" y="115" text-anchor="middle" font-size="9" fill="#15803d">T°, Lésions</text></svg>
+      <figcaption>Approche systématique d'évaluation d'une détresse vitale selon l'algorithme ABCDE.</figcaption>
+    </figure>
+
+    <section class="course-section">
+      <h3>1. Bases Anatomiques & Fondamentaux</h3>
+      <p>Lors de la réanimation cardiopulmonaire (RCP), les mains sont placées au centre du thorax (moitié inférieure du sternum) pour comprimer le cœur entre le sternum et le rachis thoracique. Les électrodes du défibrillateur (DAE) se placent l'une sous la clavicule droite et l'autre sous l'aisselle gauche (ligne médio-axillaire).</p>
+    </section>
+
+    <section class="course-section">
+      <h3>2. Physiologie Appliquée & Mécanismes</h3>
+      <p>L'arrêt circulatoire prive le cerveau d'oxygène ; des lésions cérébrales irréversibles apparaissent dès 3 à 5 minutes d'anoxie. Le massage cardiaque externe génère un débit cérébral et coronaire minimal indispensable en attendant la défibrillation et l'adrénaline.</p>
+    </section>
+
+    <section class="course-section">
+      <h3>3. Sémiologie Clinique & Surveillance Infirmière</h3>
+      <p>Reconnaissance de l'arrêt cardiorespiratoire (ACR) en moins de 10 secondes : victime inconsciente (ne répond pas) qui ne respire pas ou présente une respiration agonique (gasps). Signes de choc : hypotension (PAS < 90 mmHg), tachycardie, marbrures, oligurie, confusion.</p>
+    </section>
+
+    <section class="course-section">
+      <h3>4. Soins Infirmiers, Gestes Techniques & Repères</h3>
+      <p>1) ACR adulte : alerter immédiatement, débuter le massage cardiaque externe (30 compressions thoraciques à 100-120/min pour 2 insufflations), poser le DAE dès qu'il est disponible ; 2) Choc anaphylactique : injection intramusculaire urgente d'Adrénaline (0,3 à 0,5 mg chez l'adulte dans la face antéro-externe de la cuisse) ; 3) Victim inconsciente qui respire : Position Latérale de Sécurité (PLS).</p>
+    </section>
+
+    <section class="course-section">
+      <h3>5. Pathologies, Risques & Prévention</h3>
+      <p>Arrêt cardiorespiratoire, choc anaphylactique, choc septique, choc hémorragique, œdème aigu du poumon (OAP), hypoglycémie sévère, état de mal épileptique.</p>
+    </section>
+
+    <section class="course-section">
+      <h3>📊 Normes Biologiques, Repères & Constantes de Référence</h3>
+      <div class="norms-grid"><div class="norm-box"><strong>Ratio RCP Adulte</strong><span>30 compressions / 2 insufflations</span></div><div class="norm-box"><strong>Ratio RCP Enfant/Nourrisson</strong><span>15 compressions / 2 insufflations</span></div><div class="norm-box"><strong>Adrénaline Anaphylaxie</strong><span>0,3 – 0,5 mg en IM (cuisse)</span></div><div class="norm-box"><strong>Délai anoxie cérébrale</strong><span>3 à 5 minutes</span></div></div>
+    </section>
+
+    <div class="disclaimer-box">
+      <strong>Note pédagogique :</strong> Ce support de cours est destiné à la révision des étudiants en soins infirmiers (IFSI / ISPITS) et ne remplace pas les protocoles médicaux de votre établissement.
+    </div>
+
+    <div class="course-nav-bottom">
+      <a class="btn btn-outline" href="cours-soins-techniques.html">⬅️ Cours 14 : Soins Infirmiers Techniques, Sondages & Voies Veineuses</a>
+      <a class="btn" href="cours-hygiene-asepsie.html">Cours 16 : Hygiène Hospitalière, Asepsie & Prévention des Infections ➡️</a>
+    </div>
+  </article>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>InfirmAnat IA</strong> — Ressource Éducative Libre en Sciences Infirmières.<br/>
+      <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Accueil & 16 Cours</a>
+      <a href="exercices.html">Exercices & Cas Cliniques</a>
+      <a href="actualites.html">Actualités & News</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function refreshBtn() {
+  const completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  const btn = document.getElementById('btn-complete');
+  btn.textContent = completed.includes('urgences') ? '✓ Cours validé' : 'Marquer ce cours comme étudié';
+}
+function toggleCourseComplete(id) {
+  let completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  completed = completed.includes(id) ? completed.filter(x => x !== id) : [...completed, id];
+  localStorage.setItem('ia_completed', JSON.stringify(completed));
+  refreshBtn();
+}
+refreshBtn();
+</script>
+</body>
+</html>

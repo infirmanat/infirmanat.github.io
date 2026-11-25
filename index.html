@@ -3,130 +3,193 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>InfirmAnat IA — Anatomie & Physiologie Infirmière (100 % Gratuit)</title>
+  <title>InfirmAnat IA — 16 Cours Infirmiers, Exercices, Calculs de Doses & QCM (IFSI / ISPITS)</title>
+  <meta name="description" content="Plateforme pédagogique 100 % gratuite : 16 cours complets (anatomie-physiologie, pharmacologie, calculs de doses, soins techniques, urgences, hygiène), exercices corrigés et cas cliniques." />
+  <meta name="robots" content="index, follow" />
   <style>
-    :root {
-      --bg: #f4f7fb;
-      --surface: #ffffff;
-      --primary: #0f4c81;
-      --primary-light: #e6f0fa;
-      --accent: #0d9488;
-      --accent-light: #e6f7f5;
-      --text: #1e293b;
-      --muted: #64748b;
-      --border: #e2e8f0;
-      --danger: #dc2626;
-      --warning: #d97706;
-      --success: #16a34a;
-      --radius: 14px;
-      --shadow: 0 4px 20px rgba(15, 76, 129, 0.08);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-    }
-    header {
-      background: linear-gradient(135deg, #0f4c81 0%, #0d9488 100%);
-      color: #fff;
-      padding: 16px 24px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
-    }
-    .header-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .brand-icon {
-      width: 42px;
-      height: 42px;
-      background: rgba(255,255,255,0.18);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: bold;
-    }
-    .brand h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.3px; }
-    .brand p { font-size: 0.78rem; opacity: 0.9; }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    nav button {
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.22);
-      color: #fff;
-      padding: 8px 14px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-size: 0.88rem;
-      font-weight: 600;
-      transition: all 0.2s;
-    }
-    nav button:hover, nav button.active {
-      background: #fff;
-      color: var(--primary);
-    }
+
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --primary: #0f4c81;
+  --primary-light: #e6f0fa;
+  --accent: #0d9488;
+  --accent-light: #e6f7f5;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(15, 76, 129, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, #0f4c81 0%, #0d9488 100%);
+  color: #fff;
+  padding: 15px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+.brand-icon {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: bold;
+}
+.brand h1 { font-size: 1.25rem; font-weight: 700; }
+.brand p { font-size: 0.78rem; opacity: 0.9; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a, nav button {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+nav a:hover, nav button:hover, nav button.active, nav a.active {
+  background: #fff;
+  color: var(--primary);
+}
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 20px 50px;
+  flex: 1;
+}
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.sys-badge {
+  background: var(--primary-light); color: var(--primary);
+  font-weight: 700; font-size: 0.78rem; padding: 4px 11px; border-radius: 999px;
+  display: inline-block;
+}
+.done-badge {
+  background: #dcfce7; color: #15803d;
+  font-size: 0.75rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+}
+.btn {
+  background: var(--primary); color: #fff; border: none;
+  padding: 10px 18px; border-radius: 10px; font-weight: 600;
+  cursor: pointer; font-size: 0.9rem; text-decoration: none; display: inline-block;
+}
+.btn:hover { opacity: 0.93; }
+.btn-accent { background: var(--accent); }
+.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+.course-header {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; gap: 12px; border-bottom: 2px solid var(--border);
+  padding-bottom: 16px; margin-bottom: 22px;
+}
+.course-section {
+  margin-bottom: 20px; padding: 20px; border-radius: 12px;
+  background: #f8fafc; border: 1px solid var(--border);
+}
+.course-section h3, .course-section h4 { color: var(--primary); font-size: 1.08rem; margin-bottom: 9px; }
+.course-section p, .course-section li { color: #334155; font-size: 0.96rem; margin-bottom: 8px; }
+.norms-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.norm-box {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); padding: 12px; border-radius: 10px;
+}
+.norm-box strong { display: block; color: var(--primary); font-size: 0.85rem; }
+.norm-box span { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+.svg-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; margin-bottom: 22px; text-align: center;
+}
+.svg-card figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 8px; font-weight: 600; }
+.breadcrumb { font-size: 0.86rem; color: var(--muted); margin-bottom: 14px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.course-nav-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);
+}
+.disclaimer-box {
+  background: #fefce8;
+  border-left: 4px solid #eab308;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  color: #713f12;
+}
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 32px 20px;
+  margin-top: auto;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.footer-links a:hover { color: #ffffff; text-decoration: underline; }
+
     .user-pill {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(0,0,0,0.22);
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      cursor: pointer;
-    }
-    .container {
-      max-width: 1280px;
-      margin: 24px auto;
-      padding: 0 20px 60px;
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(0,0,0,0.22); padding: 6px 12px;
+      border-radius: 999px; font-size: 0.82rem; cursor: pointer;
     }
     .banner {
-      background: var(--surface);
-      border-radius: var(--radius);
-      padding: 22px 26px;
-      box-shadow: var(--shadow);
-      border-left: 5px solid var(--accent);
-      margin-bottom: 24px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      background: var(--surface); border-radius: var(--radius);
+      padding: 22px 26px; box-shadow: var(--shadow);
+      border-left: 5px solid var(--accent); margin-bottom: 20px;
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: 16px;
     }
-    .banner h2 { font-size: 1.3rem; color: var(--primary); margin-bottom: 4px; }
+    .banner h2 { font-size: 1.32rem; color: var(--primary); margin-bottom: 4px; }
     .banner p { color: var(--muted); font-size: 0.92rem; }
-    .search-box {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 22px;
-    }
+    .search-box { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
     .search-box input {
-      flex: 1;
-      padding: 13px 18px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      font-size: 0.98rem;
-      background: var(--surface);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      flex: 1; min-width: 240px; padding: 13px 18px; border-radius: var(--radius);
+      border: 1px solid var(--border); font-size: 0.98rem; background: var(--surface);
     }
     .grid {
       display: grid;
@@ -134,200 +197,34 @@
       gap: 18px;
     }
     .card {
-      background: var(--surface);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      background: var(--surface); border-radius: var(--radius); padding: 20px;
+      box-shadow: var(--shadow); border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;
+      display: flex; flex-direction: column; justify-content: space-between;
+      text-decoration: none; color: inherit;
     }
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 26px rgba(15, 76, 129, 0.14);
-      border-color: var(--accent);
-    }
-    .card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-    .sys-badge {
-      background: var(--primary-light);
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 0.78rem;
-      padding: 4px 10px;
-      border-radius: 999px;
-    }
-    .done-badge {
-      background: #dcfce7;
-      color: #15803d;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 3px 9px;
-      border-radius: 999px;
-    }
+    .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; gap: 6px; }
     .card h3 { font-size: 1.12rem; color: var(--primary); margin-bottom: 8px; }
     .card p { font-size: 0.88rem; color: var(--muted); margin-bottom: 14px; }
     .card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      color: var(--accent);
-      font-weight: 600;
-      border-top: 1px solid var(--border);
-      padding-top: 10px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8rem; color: var(--accent); font-weight: 600;
+      border-top: 1px solid var(--border); padding-top: 10px;
     }
-    .panel {
-      background: var(--surface);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-    }
-    .btn {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: opacity 0.2s;
-    }
-    .btn:hover { opacity: 0.92; }
-    .btn-accent { background: var(--accent); }
-    .btn-outline {
-      background: transparent;
-      border: 1px solid var(--primary);
-      color: var(--primary);
-    }
-    .course-header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 16px;
-      margin-bottom: 22px;
-    }
-    .course-section {
-      margin-bottom: 24px;
-      padding: 20px;
-      border-radius: 12px;
-      background: #f8fafc;
-      border: 1px solid var(--border);
-    }
-    .course-section h4 {
-      color: var(--primary);
-      font-size: 1.08rem;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .course-section p, .course-section li {
-      font-size: 0.95rem;
-      color: #334155;
-      margin-bottom: 8px;
-    }
-    .course-section ul { padding-left: 20px; }
-    .norms-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: 12px;
-      margin-top: 12px;
-    }
-    .norm-box {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--accent);
-      padding: 12px;
-      border-radius: 10px;
-    }
-    .norm-box strong { display: block; color: var(--primary); font-size: 0.85rem; }
-    .norm-box span { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
-    .flashcard {
-      max-width: 640px;
-      margin: 20px auto;
-      background: linear-gradient(145deg, #ffffff, #f1f5f9);
-      border: 2px solid var(--primary-light);
-      border-radius: 18px;
-      padding: 36px 28px;
-      text-align: center;
-      min-height: 240px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      box-shadow: var(--shadow);
-      cursor: pointer;
-    }
-    .qcm-option {
-      display: block;
-      width: 100%;
-      text-align: left;
-      padding: 13px 16px;
-      margin-bottom: 10px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: #fff;
-      cursor: pointer;
-      font-size: 0.94rem;
-    }
-    .qcm-option:hover { background: var(--primary-light); }
-    .qcm-option.correct { background: #dcfce7; border-color: #16a34a; color: #14532d; font-weight: 600; }
-    .qcm-option.wrong { background: #fee2e2; border-color: #dc2626; color: #7f1d1d; }
     .hidden { display: none !important; }
     .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.55);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 200;
-      padding: 16px;
+      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.55);
+      display: flex; align-items: center; justify-content: center; z-index: 200; padding: 16px;
     }
     .modal {
-      background: #fff;
-      border-radius: 16px;
-      max-width: 480px;
-      width: 100%;
-      padding: 26px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      background: #fff; border-radius: 16px; max-width: 480px; width: 100%;
+      padding: 26px; box-shadow: 0 20px 40px rgba(0,0,0,0.25);
     }
     .form-group { margin-bottom: 14px; }
     .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; }
-    .form-group input, .form-group textarea, .form-group select {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid var(--border);
-      border-radius: 9px;
-      font-size: 0.92rem;
-    }
-    .chat-box {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      height: 340px;
-      overflow-y: auto;
-      padding: 16px;
-      background: #f8fafc;
-      margin-bottom: 12px;
-    }
-    .msg { margin-bottom: 12px; padding: 11px 14px; border-radius: 12px; max-width: 85%; font-size: 0.92rem; }
-    .msg.user { background: var(--primary); color: #fff; margin-left: auto; }
-    .msg.bot { background: #fff; border: 1px solid var(--border); color: var(--text); }
-    @media (max-width: 640px) {
-      .header-inner { flex-direction: column; align-items: flex-start; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 9px; font-size: 0.92rem;
     }
   </style>
 </head>
@@ -335,842 +232,367 @@
 
 <header>
   <div class="header-inner">
-    <div class="brand">
+    <a class="brand" href="index.html">
       <div class="brand-icon">🩺</div>
       <div>
         <h1>InfirmAnat IA</h1>
-        <p>Plateforme Gratuite d'Anatomie-Physiologie & Soins Infirmiers (IFSI / ISPITS)</p>
+        <p>Anatomie-Physiologie & Soins Infirmiers (IFSI / ISPITS)</p>
       </div>
-    </div>
+    </a>
     <nav>
-      <button id="nav-home" class="active" onclick="showTab('home')">📚 12 Cours Complets</button>
-      <button id="nav-flashcards" onclick="showTab('flashcards')">🗂️ Flashcards (36)</button>
-      <button id="nav-qcm" onclick="showTab('qcm')">✅ QCM Cliniques</button>
-      <button id="nav-tutor" onclick="showTab('tutor')">🤖 Tuteur IA & Gemini</button>
-      <button id="nav-profile" onclick="showTab('profile')">👤 Mon Suivi Gmail</button>
+      <a href="index.html" class="active">📚 16 Cours</a>
+      <a href="exercices.html">✍️ Exercices & QCM</a>
+      <a href="actualites.html">📰 Actualités</a>
+      <button onclick="openNotesModal()">📝 Carnet de Stage</button>
     </nav>
     <div class="user-pill" onclick="openGmailModal()">
-      <span id="user-badge-text">Connexion Gmail (Optionnel)</span>
+      <span id="user-badge-text">Connexion Gmail</span>
     </div>
   </div>
 </header>
 
 <div class="container">
-  <!-- TAB HOME: 12 COURS -->
-  <section id="tab-home">
-    <div class="banner">
+  <div class="banner">
+    <div>
+      <h2>Programme Complet des Études Infirmières (16 Modules + Exercices)</h2>
+      <p>12 systèmes d'anatomie-physiologie + 4 modules cliniques (Pharmacologie & Calculs de doses, Soins techniques, Urgences AFGSU, Hygiène hospitalière).</p>
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+      <span class="sys-badge" id="progress-summary">0 / 16 cours validés</span>
+      <a href="exercices.html" class="btn btn-accent">✍️ Passer aux Exercices</a>
+    </div>
+  </div>
+
+  <div class="search-box">
+    <input type="text" id="search-input" placeholder="Rechercher un cours, un geste infirmier, un calcul de dose, un repère..." oninput="filterCards()" />
+    <button class="btn btn-outline" onclick="filterByCat('all')">Tous (16)</button>
+    <button class="btn btn-outline" onclick="filterByCat('Anatomie-Physiologie')">Anatomie (12)</button>
+    <button class="btn btn-outline" onclick="filterByCat('Soins & Thérapeutique')">Soins & Doses (4)</button>
+  </div>
+
+  <div id="courses-grid" class="grid">
+    
+    <a href="cours-cardiovasculaire.html" class="card" data-cat="Anatomie-Physiologie" data-search="système cardiovasculaire & hémodynamique cœur, vascularisation coronaire, circulation systémique/pulmonaire, ecg et repères de ponction. auscultation des 4 foyers : aortique (2e espace intercostal droit), pulmonaire (2e eic gauche), tricuspide (4e-5e eic bord sternal gauche), mitral (5e eic ligne médio-claviculaire gauche). prise des pouls périphériques (radial, fémoral, pédieux, tibial postérieur). pose de voie veineuse périphérique (vvp) sur les veines céphalique, basilique ou médiane du pli du coude. anatomie-physiologie">
       <div>
-        <h2>Programme Complet d'Anatomie & Physiologie Infirmière</h2>
-        <p>100 % gratuit, hors-ligne et prêt pour GitHub Pages. Cliquez sur un système pour ouvrir le cours magistral détaillé en 5 volets cliniques.</p>
+        <div class="card-top">
+          <span class="sys-badge">Cours 01 • Anatomie-Physiologie</span>
+          <span class="done-badge hidden" id="badge-cardio">✓ Validé</span>
+        </div>
+        <h3>Système Cardiovasculaire & Hémodynamique</h3>
+        <p>Cœur, vascularisation coronaire, circulation systémique/pulmonaire, ECG et repères de ponction.</p>
       </div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <span class="sys-badge" id="progress-summary">0 / 12 cours validés</span>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
       </div>
-    </div>
-
-    <div class="search-box">
-      <input type="text" id="search-input" placeholder="Rechercher un organe, un repère infirmier (ex: Ponction lombaire, Scarpa, Néphron, Troponine, ECG)..." oninput="renderCourses()" />
-    </div>
-
-    <div id="courses-grid" class="grid"></div>
-    <div id="course-detail" class="panel hidden"></div>
-  </section>
-
-  <!-- TAB FLASHCARDS -->
-  <section id="tab-flashcards" class="panel hidden">
-    <div class="course-header">
+    </a>
+    <a href="cours-respiratoire.html" class="card" data-cat="Anatomie-Physiologie" data-search="système respiratoire & échanges gazeux voies aériennes supérieures/inférieures, poumons, plèvre, hématose et oxygénothérapie. mesure de la spo2 par oxymètre de pouls. auscultation pulmonaire bilatérale et comparative (sommets, champs moyens, bases). repère de ponction pleurale : bord supérieur de la côte inférieure (pour éviter le paquet vasculo-nerveux intercostal situé au bord inférieur de chaque côte). prudence sous o2 chez le patient bpco hypercapnique (cible spo2 88–92 %). anatomie-physiologie">
       <div>
-        <h2>🗂️ Atelier Flashcards Anatomie & Repères IDE</h2>
-        <p style="color:var(--muted); font-size:0.9rem;">Cliquez sur la carte pour révéler la réponse clinique.</p>
+        <div class="card-top">
+          <span class="sys-badge">Cours 02 • Anatomie-Physiologie</span>
+          <span class="done-badge hidden" id="badge-respi">✓ Validé</span>
+        </div>
+        <h3>Système Respiratoire & Échanges Gazeux</h3>
+        <p>Voies aériennes supérieures/inférieures, poumons, plèvre, hématose et oxygénothérapie.</p>
       </div>
-      <select id="fc-filter" onchange="resetFlashcards()" style="padding:9px 12px; border-radius:9px; border:1px solid var(--border);">
-        <option value="all">Tous les systèmes (36 cartes)</option>
-      </select>
-    </div>
-    <div class="flashcard" onclick="flipFlashcard()">
-      <span class="sys-badge" id="fc-cat" style="margin-bottom:14px;">Système</span>
-      <h3 id="fc-text" style="font-size:1.2rem; color:var(--primary);">Chargement...</h3>
-      <p id="fc-hint" style="margin-top:16px; font-size:0.82rem; color:var(--muted);">👆 Cliquez pour retourner la carte</p>
-    </div>
-    <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
-      <button class="btn btn-outline" onclick="prevFlashcard()">⬅️ Précédente</button>
-      <button class="btn btn-accent" onclick="markCardMastered()">⭐ Marquer comme maîtrisée</button>
-      <button class="btn" onclick="nextFlashcard()">Suivante ➡️</button>
-    </div>
-    <p id="fc-counter" style="text-align:center; margin-top:12px; color:var(--muted); font-size:0.88rem;"></p>
-  </section>
-
-  <!-- TAB QCM -->
-  <section id="tab-qcm" class="panel hidden">
-    <div class="course-header">
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-nerveux.html" class="card" data-cat="Anatomie-Physiologie" data-search="système nerveux central & périphérique encéphale, méninges, lcr, moelle épinière, nerfs crâniens et repères de ponction lombaire. repère de la ponction lombaire (pl) : espace intervertébral l4-l5 (ou l3-l4) situé sur la ligne de tuffier joignant les deux crêtes iliaques, en dessous de la terminaison de la moelle épinière (l1-l2) pour éviter toute lésion médullaire. surveillance post-pl (hydratation, céphalées). anatomie-physiologie">
       <div>
-        <h2>✅ Évaluation Clinique & QCM Corrigés</h2>
-        <p style="color:var(--muted); font-size:0.9rem;">Testez vos connaissances anatomiques appliquées aux soins infirmiers.</p>
+        <div class="card-top">
+          <span class="sys-badge">Cours 03 • Anatomie-Physiologie</span>
+          <span class="done-badge hidden" id="badge-nerveux">✓ Validé</span>
+        </div>
+        <h3>Système Nerveux Central & Périphérique</h3>
+        <p>Encéphale, méninges, LCR, moelle épinière, nerfs crâniens et repères de ponction lombaire.</p>
       </div>
-      <span class="sys-badge" id="qcm-score-badge">Score : 0 / 0</span>
-    </div>
-    <div id="qcm-container"></div>
-  </section>
-
-  <!-- TAB TUTOR IA -->
-  <section id="tab-tutor" class="panel hidden">
-    <div class="course-header">
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-musculo-squelettique.html" class="card" data-cat="Anatomie-Physiologie" data-search="système musculo-squelettique & sites d'injection squelette axial/appendiculaire, articulations, muscles et repères sécurisés d'injection im. repères des injections intramusculaires (im) : 1) quart supéro-externe de la fesse (muscle grand fessier) pour éviter le nerf sciatique qui passe en inféro-interne ; 2) face antéro-externe de la cuisse (muscle vaste externe, tiers moyen) ; 3) muscle deltoïde (2 à 3 travers de doigt sous l'acromion, volume max 1-2 ml). surveillance sous plâtre (chaleur, couleur, sensibilité, mobilité des extrémités). anatomie-physiologie">
       <div>
-        <h2>🤖 Tuteur Clinique Hors-Ligne & Gemini IA Gratuit</h2>
-        <p style="color:var(--muted); font-size:0.9rem;">Posez une question anatomique : réponse immédiate intégrée ou ouverture directe dans Gemini gratuit.</p>
+        <div class="card-top">
+          <span class="sys-badge">Cours 04 • Anatomie-Physiologie</span>
+          <span class="done-badge hidden" id="badge-musculo">✓ Validé</span>
+        </div>
+        <h3>Système Musculo-Squelettique & Sites d'Injection</h3>
+        <p>Squelette axial/appendiculaire, articulations, muscles et repères sécurisés d'injection IM.</p>
       </div>
-    </div>
-    <div class="chat-box" id="chat-box">
-      <div class="msg bot">
-        Bonjour ! Je suis votre assistant d'anatomie-physiologie infirmière. Interrogez-moi sur n'importe quel repère (ex : <em>« site injection intramusculaire fessier »</em>, <em>« ligne de Tuffier »</em>, <em>« valves cardiaques »</em>, <em>« normes potassium »</em>) ou configurez votre clé gratuite Google AI Studio ci-dessous.
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
       </div>
-    </div>
-    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;">
-      <input type="text" id="tutor-input" placeholder="Posez votre question d'anatomie ou de soins infirmiers..." style="flex:1; min-width:240px; padding:11px 14px; border-radius:10px; border:1px solid var(--border);" onkeydown="if(event.key==='Enter') askTutor()" />
-      <button class="btn" onclick="askTutor()">Envoyer</button>
-      <button class="btn btn-accent" onclick="openInGeminiWeb()">✨ Ouvrir dans Gemini (Gratuit)</button>
-    </div>
-    <details style="background:#f8fafc; padding:14px; border-radius:10px; border:1px solid var(--border);">
-      <summary style="cursor:pointer; font-weight:600; color:var(--primary);">⚙️ Optionnel : Connecter une clé API gratuite Google AI Studio (Gemini)</summary>
-      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-        <input type="password" id="gemini-key-input" placeholder="Collez votre clé AIzaSy... (gratuite sur aistudio.google.com)" style="flex:1; padding:9px 12px; border-radius:8px; border:1px solid var(--border);" />
-        <button class="btn btn-accent" onclick="saveGeminiKey()">Enregistrer la clé</button>
-      </div>
-    </details>
-  </section>
-
-  <!-- TAB PROFILE -->
-  <section id="tab-profile" class="panel hidden">
-    <div class="course-header">
+    </a>
+    <a href="cours-digestif.html" class="card" data-cat="Anatomie-Physiologie" data-search="système digestif & glandes annexes tube digestif, foie, voies biliaires, pancréas, quadrants abdominaux et sonde nasogastrique. repère de pose de sonde nasogastrique (sng) : mesure nez – lobe de l'oreille – appendice xiphoïde (repère nex). contrôle du positionnement par auscultation épigastrique et mesure du ph gastrique (ph ≤ 5,5). point de mac burney (fosse iliaque droite, tiers externe de la ligne ombilic – épine iliaque antéro-supérieure) pour l'appendicite. anatomie-physiologie">
       <div>
-        <h2>👤 Espace Étudiant & Synchronisation Gmail</h2>
-        <p style="color:var(--muted); font-size:0.9rem;">Vos cours validés, scores QCM et notes cliniques sont enregistrés automatiquement pour votre compte Gmail.</p>
+        <div class="card-top">
+          <span class="sys-badge">Cours 05 • Anatomie-Physiologie</span>
+          <span class="done-badge hidden" id="badge-digestif">✓ Validé</span>
+        </div>
+        <h3>Système Digestif & Glandes Annexes</h3>
+        <p>Tube digestif, foie, voies biliaires, pancréas, quadrants abdominaux et sonde nasogastrique.</p>
       </div>
-      <button class="btn" onclick="openGmailModal()">Changer de compte Gmail</button>
-    </div>
-    <div id="profile-summary" style="margin-bottom:20px;"></div>
-    <div class="form-group">
-      <label>📝 Mes Notes Personnelles de Stage & Révision :</label>
-      <textarea id="student-notes" rows="6" placeholder="Notez ici vos repères anatomiques de stage, protocoles de service, calculs de doses..." oninput="saveNotes()"></textarea>
-    </div>
-  </section>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-renal-urinaire.html" class="card" data-cat="Anatomie-Physiologie" data-search="système rénal, urinaire & équilibre hydro-électrolytique reins, néphron, uretères, vessie, sonde vésicale et régulation acido-basique. sondage vésical aseptique : respecter la courbure urétrale chez l'homme (verge à 90° puis abaissée après passage du sphincter) et gonfler le ballonnet uniquement après reflux d'urine. surveillance de la bandelette urinaire (leucocytes, nitrites, protéines, glucose, cétones). anatomie-physiologie">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 06 • Anatomie-Physiologie</span>
+          <span class="done-badge hidden" id="badge-renal">✓ Validé</span>
+        </div>
+        <h3>Système Rénal, Urinaire & Équilibre Hydro-Électrolytique</h3>
+        <p>Reins, néphron, uretères, vessie, sonde vésicale et régulation acido-basique.</p>
+      </div>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-endocrinien.html" class="card" data-cat="Anatomie-Physiologie" data-search="système endocrinien & métabolisme axe hypothalamo-hypophysaire, thyroïde, surrénales, pancréas endocrine et diabète. sites d'injection sous-cutanée d'insuline (abdomen à 2 travers de doigt de l'ombilic, face externe des cuisses, bras) avec rotation systématique des points pour prévenir les lipodystrophies. surveillance post-thyroïdectomie (risque d'hématome compressif cervical et d'hypocalcémie par atteinte des parathyroïdes). anatomie-physiologie">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 07 • Anatomie-Physiologie</span>
+          <span class="done-badge hidden" id="badge-endocrinien">✓ Validé</span>
+        </div>
+        <h3>Système Endocrinien & Métabolisme</h3>
+        <p>Axe hypothalamo-hypophysaire, thyroïde, surrénales, pancréas endocrine et diabète.</p>
+      </div>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-reproducteur.html" class="card" data-cat="Anatomie-Physiologie" data-search="système reproducteur & périnatalité anatomie pelvienne féminine et masculine, cycle menstruel, grossesse et surveillance obstétricale. calcul du terme théorique de grossesse (règle de naegele : date des dernières règles + 14 jours + 9 mois). surveillance de la pré-éclampsie (hta ≥ 140/90 mmhg + protéinurie). accompagnement du dépistage (frottis cervico-utérin, palpation mammaire). anatomie-physiologie">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 08 • Anatomie-Physiologie</span>
+          <span class="done-badge hidden" id="badge-reproducteur">✓ Validé</span>
+        </div>
+        <h3>Système Reproducteur & Périnatalité</h3>
+        <p>Anatomie pelvienne féminine et masculine, cycle menstruel, grossesse et surveillance obstétricale.</p>
+      </div>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-tegumentaire.html" class="card" data-cat="Anatomie-Physiologie" data-search="système tégumentaire, plaies & cicatrisation peau (épiderme, derme, hypoderme), thermorégulation, stades d'escarres et brûlures. calcul de la surface brûlée chez l'adulte selon la règle des 9 de wallace (tête = 9 %, chaque membre supérieur = 9 %, face antérieure du tronc = 18 %, face postérieure = 18 %, chaque membre inférieur = 18 %, périnée = 1 %). choix du pansement adapté au stade de cicatrisation (détersion, bourgeonnement, épidermisation). anatomie-physiologie">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 09 • Anatomie-Physiologie</span>
+          <span class="done-badge hidden" id="badge-tegumentaire">✓ Validé</span>
+        </div>
+        <h3>Système Tégumentaire, Plaies & Cicatrisation</h3>
+        <p>Peau (épiderme, derme, hypoderme), thermorégulation, stades d'escarres et brûlures.</p>
+      </div>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-sens-immunitaire.html" class="card" data-cat="Anatomie-Physiologie" data-search="organes des sens & système lymphatique/immunitaire œil, oreille, ganglions lymphatiques, rate, immunité innée/adaptative et asepsie. précautions standard d'hygiène (friction hydro-alcoolique, port de gants/masque), règles d'administration des collyres (instillation dans le cul-de-sac conjonctival inférieur sans toucher l'œil), surveillance d'un patient splénectomisé ou aplasique (isolement protecteur). anatomie-physiologie">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 10 • Anatomie-Physiologie</span>
+          <span class="done-badge hidden" id="badge-sens">✓ Validé</span>
+        </div>
+        <h3>Organes des Sens & Système Lymphatique/Immunitaire</h3>
+        <p>Œil, oreille, ganglions lymphatiques, rate, immunité innée/adaptative et asepsie.</p>
+      </div>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-hematologie.html" class="card" data-cat="Anatomie-Physiologie" data-search="système hématologique, hémostase & transfusion cellules sanguines, coagulation, groupes abo/rhésus, ordre des tubes et sécurité transfusionnelle. ordre recommandé de prélèvement des tubes sanguins : 1) hémocultures (aérobie puis anaérobie) ; 2) tube citrate (bleu - coagulation) ; 3) tube sec (rouge/jaune - biochimie) ; 4) tube hépariné (vert) ; 5) tube edta (violet - nfs/groupage). sécurité transfusionnelle : contrôle ultime au lit du patient (test de beth-vincent) et surveillance constante les 15 premières minutes. anatomie-physiologie">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 11 • Anatomie-Physiologie</span>
+          <span class="done-badge hidden" id="badge-hemato">✓ Validé</span>
+        </div>
+        <h3>Système Hématologique, Hémostase & Transfusion</h3>
+        <p>Cellules sanguines, coagulation, groupes ABO/Rhésus, ordre des tubes et sécurité transfusionnelle.</p>
+      </div>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-topographique.html" class="card" data-cat="Anatomie-Physiologie" data-search="anatomie topographique & repères cliniques de surface triangle de scarpa, angle de louis, ligne de tuffier, chambre implantable et repères rcp. 1) massage cardiaque externe (rcp) : centre du thorax, moitié inférieure du sternum (5 à 6 cm de profondeur chez l'adulte, rythme 100-120/min) ; 2) chambre implantable (pac) : repérage triangulaire entre le pouce, l'index et le majeur, insertion perpendiculaire d'une aiguille de huber ; 3) cathéter veineux central jugulaire interne ou sous-clavier (surveillance radio pulmonaire post-pose). anatomie-physiologie">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 12 • Anatomie-Physiologie</span>
+          <span class="done-badge hidden" id="badge-topo">✓ Validé</span>
+        </div>
+        <h3>Anatomie Topographique & Repères Cliniques de Surface</h3>
+        <p>Triangle de Scarpa, angle de Louis, ligne de Tuffier, chambre implantable et repères RCP.</p>
+      </div>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-pharmacologie-doses.html" class="card" data-cat="Soins & Thérapeutique" data-search="pharmacologie infirmière & calculs de doses règle des 5b, débits de perfusion (gouttes/min, ml/h), dilutions, anticoagulant et surveillance. application stricte de la règle des 5b avant toute administration : bon patient, bon médicament, bonne dose, bonne voie, bon moment. conversion : 1 ml = 20 gouttes (soluté aqueux standard) ; 1 ml = 15 gouttes (sang/dérivés) ; 1 ml = 60 microgouttes (perfuseur pédiatrique). 1 g = 1 000 mg ; 1 mg = 1 000 µg. soins & thérapeutique">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 13 • Soins & Thérapeutique</span>
+          <span class="done-badge hidden" id="badge-pharma">✓ Validé</span>
+        </div>
+        <h3>Pharmacologie Infirmière & Calculs de Doses</h3>
+        <p>Règle des 5B, débits de perfusion (gouttes/min, mL/h), dilutions, anticoagulant et surveillance.</p>
+      </div>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-soins-techniques.html" class="card" data-cat="Soins & Thérapeutique" data-search="soins infirmiers techniques, sondages & voies veineuses pose et surveillance de vvp, chambre implantable (pac), sonde urinaire, sng et gaz du sang. 1) réfection de pansement : du plus propre vers le plus sale (de l'intérieur vers l'extérieur pour une plaie chirurgicale propre) ; 2) sondage urinaire : maintien strict du système clos et sac collecteur toujours déclive sans toucher le sol ; 3) gaz du sang : seringue héparinée, purge de l'air, compression artérielle 5 minutes post-ponction (10 min si anticoagulants). soins & thérapeutique">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 14 • Soins & Thérapeutique</span>
+          <span class="done-badge hidden" id="badge-soins_tech">✓ Validé</span>
+        </div>
+        <h3>Soins Infirmiers Techniques, Sondages & Voies Veineuses</h3>
+        <p>Pose et surveillance de VVP, chambre implantable (PAC), sonde urinaire, SNG et gaz du sang.</p>
+      </div>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-urgences-reanimation.html" class="card" data-cat="Soins & Thérapeutique" data-search="urgences vitales, secourisme & réanimation (afgsu) bilan abcde, arrêt cardiorespiratoire (rcp), défibrillation (dae), choc anaphylactique et avc. 1) acr adulte : alerter immédiatement, débuter le massage cardiaque externe (30 compressions thoraciques à 100-120/min pour 2 insufflations), poser le dae dès qu'il est disponible ; 2) choc anaphylactique : injection intramusculaire urgente d'adrénaline (0,3 à 0,5 mg chez l'adulte dans la face antéro-externe de la cuisse) ; 3) victim inconsciente qui respire : position latérale de sécurité (pls). soins & thérapeutique">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 15 • Soins & Thérapeutique</span>
+          <span class="done-badge hidden" id="badge-urgences">✓ Validé</span>
+        </div>
+        <h3>Urgences Vitales, Secourisme & Réanimation (AFGSU)</h3>
+        <p>Bilan ABCDE, arrêt cardiorespiratoire (RCP), défibrillation (DAE), choc anaphylactique et AVC.</p>
+      </div>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-hygiene-asepsie.html" class="card" data-cat="Soins & Thérapeutique" data-search="hygiène hospitalière, asepsie & prévention des infections précautions standard, friction hydro-alcoolique, précautions complémentaires (air, gouttelettes, contact) et dasri. 1) hygiène des mains : friction hydro-alcoolique (fha, 30 secondes en 7 étapes) sur mains sèches et non souillées (lavage au savon doux obligatoire si mains visiblement souillées ou infection à clostridioides difficile / gale) ; 2) gestion des aes (accident d'exposition au sang) : nettoyage immédiat à l'eau et au savon, rinçage, antisepsie (dakin ou bétadine) pendant 5 minutes et consultation médicale urgente (< 4h) ; 3) tri des déchets : conteneur opct jaune pour objets piquants/coupants/tranchants sans jamais recapuchonner les aiguilles. soins & thérapeutique">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 16 • Soins & Thérapeutique</span>
+          <span class="done-badge hidden" id="badge-hygiene">✓ Validé</span>
+        </div>
+        <h3>Hygiène Hospitalière, Asepsie & Prévention des Infections</h3>
+        <p>Précautions standard, friction hydro-alcoolique, précautions complémentaires (Air, Gouttelettes, Contact) et DASRI.</p>
+      </div>
+      <div class="card-footer">
+        <span>Schéma SVG + 5 volets</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="disclaimer-box">
+    <strong>Avertissement pédagogique :</strong> Les cours, schémas, calculs de doses et cas cliniques publiés sur InfirmAnat IA ont une vocation exclusivement éducative pour la formation des étudiants infirmiers (IFSI / ISPITS).
+  </div>
 </div>
+
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>InfirmAnat IA</strong> — Ressource Éducative Libre en Sciences Infirmières.<br/>
+      <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Accueil & 16 Cours</a>
+      <a href="exercices.html">Exercices & Cas Cliniques</a>
+      <a href="actualites.html">Actualités & News</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>
+
 
 <!-- MODAL GMAIL -->
 <div id="gmail-modal" class="modal-backdrop hidden">
   <div class="modal">
-    <h3 style="color:var(--primary); margin-bottom:8px;">📧 Connexion Étudiant via Gmail (100 % Gratuit)</h3>
-    <p style="font-size:0.88rem; color:var(--muted); margin-bottom:16px;">Identifiez-vous avec votre adresse Gmail pour sauvegarder votre progression et vos notes d'anatomie.</p>
-    <div class="form-group">
-      <label>Nom & Prénom de l'étudiant(e)</label>
-      <input type="text" id="login-name" placeholder="Ex: Sara Benali" />
-    </div>
-    <div class="form-group">
-      <label>Adresse Gmail (@gmail.com)</label>
-      <input type="email" id="login-email" placeholder="etudiant.infirmier@gmail.com" />
-    </div>
-    <div class="form-group">
-      <label>Institut / École (IFSI / ISPITS)</label>
-      <input type="text" id="login-school" placeholder="Ex: ISPITS / IFSI Promotion 2026" />
-    </div>
+    <h3 style="color:var(--primary); margin-bottom:8px;">📧 Profil Étudiant & Suivi Gmail</h3>
+    <p style="font-size:0.88rem; color:var(--muted); margin-bottom:16px;">Vos cours validés et notes sont sauvegardés automatiquement sur votre navigateur.</p>
+    <div class="form-group"><label>Nom & Prénom</label><input type="text" id="login-name" placeholder="Ex: Sara Benali" /></div>
+    <div class="form-group"><label>Adresse Gmail</label><input type="email" id="login-email" placeholder="etudiant.infirmier@gmail.com" /></div>
+    <div class="form-group"><label>Institut (IFSI / ISPITS)</label><input type="text" id="login-school" placeholder="Ex: ISPITS / IFSI" /></div>
     <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
       <button class="btn btn-outline" onclick="closeGmailModal()">Fermer</button>
-      <button class="btn btn-accent" onclick="saveGmailUser()">Valider la connexion Gmail</button>
+      <button class="btn btn-accent" onclick="saveGmailUser()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL NOTES -->
+<div id="notes-modal" class="modal-backdrop hidden">
+  <div class="modal">
+    <h3 style="color:var(--primary); margin-bottom:8px;">📝 Mon Carnet de Stage & Révision</h3>
+    <div class="form-group">
+      <textarea id="student-notes" rows="7" placeholder="Notez ici vos protocoles, formules de calculs de doses, repères de stage..." oninput="saveNotes()"></textarea>
+    </div>
+    <div style="display:flex; justify-content:flex-end;">
+      <button class="btn btn-accent" onclick="document.getElementById('notes-modal').classList.add('hidden')">Fermer</button>
     </div>
   </div>
 </div>
 
 <script>
-const COURSES = [
-  {
-    id: "cardio",
-    num: "01",
-    title: "Système Cardiovasculaire & Hémodynamique",
-    short: "Cœur, vascularisation coronaire, circulation systémique/pulmonaire, ECG et repères de ponction.",
-    anatomie: "Le cœur est un organe musculaire creux situé dans le médiastin antéro-inférieur, reposant sur le diaphragme. Il comporte 4 cavités (oreillettes droite/gauche, ventricules droit/gauche) séparées par les valves auriculo-ventriculaires (tricuspide à droite, mitrale à gauche) et sigmoïdes (pulmonaire et aortique). Sa paroi comprend l'endocarde, le myocarde et le péricarde. La vascularisation propre est assurée par les artères coronaires droite et gauche naissant à la base de l'aorte.",
-    physiologie: "La révolution cardiaque alterne systole (contraction et éjection) et diastole (relâchement et remplissage). L'automatisme cardiaque naît du nœud sinusal (Keith et Flack, 60-100 bpm), traverse le nœud auriculo-ventriculaire (Aschoff-Tawara), le faisceau de His et le réseau de Purkinje. Le débit cardiaque (DC = FC × VES) avoisine 5 L/min au repos.",
-    semiologie: "Surveillance de la douleur thoracique constrictive irradiant vers le bras gauche/mâchoire, dyspnée d'effort ou de décubitus (orthopnée), œdèmes des membres inférieurs prenant le godet, turgescence jugulaire, marbrures cutanées et temps de recoloration cutanée (> 3 secondes = hypoperfusion).",
-    soins: "Auscultation des 4 foyers : aortique (2e EIC droit), pulmonaire (2e EIC gauche), tricuspide (4e-5e EIC bord sternal gauche), mitral (5e EIC ligne médio-claviculaire gauche). Prise des pouls périphériques (radial, fémoral, pédieux, tibial postérieur). Pose de voie veineuse périphérique (VVP) sur les veines céphalique, basilique ou médiane du pli du coude.",
-    pathologies: "Syndrome coronarien aigu (SCA), insuffisance cardiaque gauche/droite, embolie pulmonaire, thrombose veineuse profonde (TVP), choc hypovolémique ou cardiogénique. Surveillance des anticoagulants (HBPM, AVK, AOD), antiagrégants et bêtabloquants.",
-    norms: [
-      { label: "Fréquence cardiaque", val: "60 – 100 bpm" },
-      { label: "Pression artérielle", val: "120/80 mmHg" },
-      { label: "Troponine Ic", val: "< 0,04 µg/L" },
-      { label: "INR (sous AVK)", val: "2,0 – 3,0" }
-    ]
-  },
-  {
-    id: "respi",
-    num: "02",
-    title: "Système Respiratoire & Échanges Gazeux",
-    short: "Voies aériennes supérieures/inférieures, poumons, plèvre, hématose et oxygénothérapie.",
-    anatomie: "Les voies aériennes supérieures comprennent les fosses nasales, le pharynx et le larynx (épiglotte protectrice). Les voies inférieures incluent la trachée (anneaux cartilagineux en C), les bronches souches droite (plus verticale et courte) et gauche, les bronchioles et les alvéoles pulmonaires. Le poumon droit possède 3 lobes (supérieur, moyen, inférieur) et le gauche 2 lobes. Chaque poumon est enveloppé par la plèvre (feuillets viscéral et pariétal).",
-    physiologie: "La ventilation comprend l'inspiration (active, contraction du diaphragme et des intercostaux externes) et l'expiration (passive au repos). L'hématose s'effectue au niveau de la membrane alvéolo-capillaire par diffusion passive de l'O2 vers le sang et du CO2 vers l'alvéole. Le centre respiratoire bulbaire est stimulé principalement par l'augmentation de la PaCO2 (hypercapnie).",
-    semiologie: "Observation de la fréquence respiratoire, amplitude, symétrie thoracique, tirage intercostal/sus-sternal, battement des ailes du nez, cyanose péribuccale/unguéale, toux, expectorations et bruits surajoutés (crépitants, sibilants, ronchi).",
-    soins: "Mesure de la SpO2 par oxymètre de pouls. Auscultation pulmonaire bilatérale et comparative (sommets, champs moyens, bases). Repère de ponction pleurale : bord supérieur de la côte inférieure (pour éviter le paquet vasculo-nerveux intercostal situé au bord inférieur de chaque côte). Prudence sous O2 chez le patient BPCO hypercapnique (cible SpO2 88–92 %).",
-    pathologies: "BPCO, asthme aigu grave, pneumopathie infectieuse, pneumothorax, épanchement pleural, syndrome de détresse respiratoire aiguë (SDRA). Administration des bronchodilatateurs (Bêta-2 mimétiques) et corticoïdes inhalés.",
-    norms: [
-      { label: "Fréquence respiratoire", val: "12 – 20 cycles/min" },
-      { label: "Saturation SpO2", val: "95 – 100 % (88-92% BPCO)" },
-      { label: "PaO2 artérielle", val: "80 – 100 mmHg" },
-      { label: "PaCO2 artérielle", val: "35 – 45 mmHg" }
-    ]
-  },
-  {
-    id: "nerveux",
-    num: "03",
-    title: "Système Nerveux Central & Périphérique",
-    short: "Encéphale, méninges, LCR, moelle épinière, nerfs crâniens et repères de ponction lombaire.",
-    anatomie: "Le système nerveux central (SNC) regroupe l'encéphale (cerveau divisé en lobes frontal, pariétal, temporal, occipital ; cervelet ; tronc cérébral) et la moelle épinière logée dans le canal rachidien jusqu'à la vertèbre L1-L2 chez l'adulte. Trois méninges les protègent : dure-mère, arachnoïde et pie-mère. Le liquide céphalo-rachidien (LCR) circule dans les ventricules et l'espace sous-arachnoïdien.",
-    physiologie: "Le neurone transmet l'influx nerveux via le potentiel d'action et les synapses chimiques (acétylcholine, dopamine, sérotonine, GABA). Le système nerveux autonome régule les fonctions involontaires via le système sympathique (adrénaline/noradrénaline : tachycardie, mydriase) et parasympathique (nerf vague X : bradycardie, myosis, digestion).",
-    semiologie: "Évaluation de la vigilance par le Score de Glasgow (ouverture des yeux /4, réponse verbale /5, réponse motrice /6 ; score de 3 à 15), examen des pupilles (taille, symétrie, réflexe photomoteur), recherche d'un déficit moteur (hémiplégie) ou d'un syndrome méningé (raideur de nuque, photophobie).",
-    soins: "Repère de la ponction lombaire (PL) : espace intervertébral L4-L5 (ou L3-L4) situé sur la ligne de Tuffier joignant les deux crêtes iliaques, en dessous de la terminaison de la moelle épinière (L1-L2) pour éviter toute lésion médullaire. Surveillance post-PL (hydratation, céphalées).",
-    pathologies: "AVC ischémique ou hémorragique (alerte FAST), méningite, épilepsie, traumatisme crânien, maladie de Parkinson, sclérose en plaques. Surveillance stricte de la glycémie capillaire devant tout trouble neurologique aigu.",
-    norms: [
-      { label: "Score de Glasgow", val: "15 / 15 (Coma ≤ 8)" },
-      { label: "Pression intracrânienne", val: "5 – 15 mmHg" },
-      { label: "Glycorachie (LCR)", val: "50 – 60 % de la glycémie" },
-      { label: "Protéinorachie", val: "0,15 – 0,45 g/L" }
-    ]
-  },
-  {
-    id: "musculo",
-    num: "04",
-    title: "Système Musculo-Squelettique & Sites d'Injection",
-    short: "Squelette axial/appendiculaire, articulations, muscles et repères sécurisés d'injection IM.",
-    anatomie: "Le squelette humain compte 206 os répartis entre le squelette axial (crâne, rachis : 7 cervicales, 12 thoraciques, 5 lombaires, sacrum, coccyx ; cage thoracique) et appendiculaire (ceintures scapulaire et pelvienne, membres). Les muscles striés squelettiques s'insèrent sur les os via les tendons.",
-    physiologie: "L'os est un tissu vivant en perpétuel remodelage grâce aux ostéoblastes (construction osseuse) et ostéoclastes (résorption), régulé par la parathormone (PTH), la calcitonine et la vitamine D. La contraction musculaire dépend du glissement des filaments d'actine et de myosine en présence d'ions calcium (Ca2+) et d'ATP.",
-    semiologie: "Évaluation de la douleur mécanique ou inflammatoire, déformation d'un membre, raccourcissement et rotation externe du membre inférieur (fracture du col du fémur), impotence fonctionnelle, syndrome des loges (douleur intense, tension, paresthésies).",
-    soins: "Repères des injections intramusculaires (IM) : 1) Quart supéro-externe de la fesse (muscle grand fessier) pour éviter le nerf sciatique qui passe en inféro-interne ; 2) Face antéro-externe de la cuisse (muscle vaste externe, tiers moyen) ; 3) Muscle deltoïde (2 à 3 travers de doigt sous l'acromion, volume max 1-2 mL). Surveillance sous plâtre (chaleur, couleur, sensibilité, mobilité des extrémités).",
-    pathologies: "Fractures (col fémoral, Pouteau-Colles), arthrose, polyarthrite rhumatoïde, ostéoporose, lombalgie/sciatique, rhabdomyolyse. Prévention des complications de décubitus (escarres, phlébite).",
-    norms: [
-      { label: "Calcémie totale", val: "2,20 – 2,60 mmol/L" },
-      { label: "CPK (enzymes musculaires)", val: "20 – 200 UI/L" },
-      { label: "Volume max IM deltoïde", val: "≤ 2 mL" },
-      { label: "Volume max IM fessier", val: "≤ 5 mL" }
-    ]
-  },
-  {
-    id: "digestif",
-    num: "05",
-    title: "Système Digestif & Glandes Annexes",
-    short: "Tube digestif, foie, voies biliaires, pancréas, quadrants abdominaux et sonde nasogastrique.",
-    anatomie: "Le tube digestif s'étend de la bouche à l'anus : œsophage, estomac (cardia, fundus, corps, pylore), intestin grêle (duodénum, jéjunum, iléon : 5 à 6 mètres, siège principal de l'absorption) et gros intestin (cæcum et appendice, côlon ascendant, transverse, descendant, sigmoïde, rectum). Les glandes annexes sont les glandes salivaires, le foie (hypochondre droit), la vésicule biliaire et le pancréas.",
-    physiologie: "La digestion combine une action mécanique (mastication, péristaltisme) et chimique (amylase salivaire, acide chlorhydrique et pepsine gastriques, bile hépatique émulsionnant les lipides, enzymes pancréatiques). Le foie assure la synthèse des facteurs de coagulation, de l'albumine, la glycogénogenèse et la détoxification.",
-    semiologie: "Inspection et palpation des 9 régions abdominales, recherche d'une défense ou contracture abdominale, arrêt des matières et des gaz (syndrome occlusif), ictère cutanéo-muqueux, ascite, hématémèse ou méléna.",
-    soins: "Repère de pose de sonde nasogastrique (SNG) : mesure Nez – Lobe de l'oreille – Appendice xiphoïde (repère NEX). Contrôle du positionnement par auscultation épigastrique et mesure du pH gastrique (pH ≤ 5,5). Point de Mac Burney (fosse iliaque droite, tiers externe de la ligne ombilic – épine iliaque antéro-supérieure) pour l'appendicite.",
-    pathologies: "Appendicite aiguë, occlusion intestinale, pancréatite aiguë, cirrhose hépatique, ulcère gastroduodénal, hémorragie digestive. Surveillance nutritionnelle et hydratation.",
-    norms: [
-      { label: "Bilirubine totale", val: "< 17 µmol/L" },
-      { label: "Transaminases ASAT/ALAT", val: "< 40 UI/L" },
-      { label: "Lipasémie", val: "< 60 UI/L" },
-      { label: "Albumine sérique", val: "35 – 50 g/L" }
-    ]
-  },
-  {
-    id: "renal",
-    num: "06",
-    title: "Système Rénal, Urinaire & Équilibre Hydro-Électrolytique",
-    short: "Reins, néphron, uretères, vessie, sonde vésicale et régulation acido-basique.",
-    anatomie: "L'appareil urinaire comprend deux reins rétropéritonéaux (situés entre T12 et L3, le rein droit étant légèrement plus bas sous le foie), deux uretères, la vessie (réservoir musculo-membraneux pelvien) et l'urètre (court chez la femme : 3-4 cm ; long chez l'homme : 16-20 cm traversant la prostate). L'unité fonctionnelle du rein est le néphron (glomérule + tubules).",
-    physiologie: "Le rein filtre environ 180 L de plasma par jour pour produire 1,5 L d'urine via 3 étapes : filtration glomérulaire, réabsorption tubulaire et sécrétion. Il régule la volémie et la pression artérielle via le système rénine-angiotensine-aldostérone (SRAA), synthétise l'érythropoïétine (EPO) et active la vitamine D.",
-    semiologie: "Quantification de la diurèse horaire et des 24h (oligurie < 500 mL/24h, anurie < 100 mL/24h, polyurie > 3 L/24h), brûlures mictionnelles, pollakiurie, hématurie, globe vésical (matité sus-pubienne convexe vers le haut).",
-    soins: "Sondage vésical aseptique : respecter la courbure urétrale chez l'homme (verge à 90° puis abaissée après passage du sphincter) et gonfler le ballonnet uniquement après reflux d'urine. Surveillance de la bandelette urinaire (leucocytes, nitrites, protéines, glucose, cétones).",
-    pathologies: "Infection urinaire / pyélonéphrite aiguë, colique néphrétique, insuffisance rénale aiguë (IRA) ou chronique (IRC), rétention aiguë d'urine. Adaptation des posologies médicamenteuses à la clairance de la créatinine.",
-    norms: [
-      { label: "Diurèse normale", val: "1 000 – 2 000 mL/24h" },
-      { label: "Créatininémie", val: "50 – 105 µmol/L" },
-      { label: "Kaliémie (K+)", val: "3,5 – 5,0 mmol/L" },
-      { label: "Natrémie (Na+)", val: "135 – 145 mmol/L" }
-    ]
-  },
-  {
-    id: "endocrinien",
-    num: "07",
-    title: "Système Endocrinien & Métabolisme",
-    short: "Axe hypothalamo-hypophysaire, thyroïde, surrénales, pancréas endocrine et diabète.",
-    anatomie: "Les principales glandes endocrines (sécrétant des hormones directement dans le sang) sont l'hypothalamus et l'hypophyse (loge sellaire cérébrale), la thyroïde et les 4 parathyroïdes (face antérieure du cou sous le larynx), les glandes surrénales (pôle supérieur des reins : corticosurrénale et médullosurrénale) et les îlots de Langerhans du pancréas.",
-    physiologie: "La régulation hormonale fonctionne par rétrocontrôle (feed-back négatif). Le pancréas régule la glycémie grâce à l'insuline (cellules bêta : hormone hypoglycémiante) et au glucagon (cellules alpha : hormone hyperglycémiante). La thyroïde sécrète T3 et T4 sous contrôle de la TSH hypophysaire.",
-    semiologie: "Signes d'hypoglycémie (sueurs, tremblements, pâleur, tachycardie, confusion), signes d'hyperglycémie/acidocétose (syndrome polyuro-polydipsique, haleine cétonique, dyspnée de Kussmaul), dysthyroïdie (tachycardie/amaigrissement vs bradycardie/frilosité).",
-    soins: "Sites d'injection sous-cutanée d'insuline (abdomen à 2 travers de doigt de l'ombilic, face externe des cuisses, bras) avec rotation systématique des points pour prévenir les lipodystrophies. Surveillance post-thyroïdectomie (risque d'hématome compressif cervical et d'hypocalcémie par atteinte des parathyroïdes).",
-    pathologies: "Diabète de type 1 et type 2, acidocétose diabétique, hyperthyroïdie (maladie de Basedow), hypothyroïdie, insuffisance surrénalienne aiguë.",
-    norms: [
-      { label: "Glycémie à jeun", val: "0,70 – 1,10 g/L (3,9-6,1 mmol/L)" },
-      { label: "HbA1c (cible diabète)", val: "< 7,0 %" },
-      { label: "TSH us", val: "0,4 – 4,0 mUI/L" },
-      { label: "Cortisolémie (8h)", val: "150 – 550 nmol/L" }
-    ]
-  },
-  {
-    id: "reproducteur",
-    num: "08",
-    title: "Système Reproducteur & Périnatalité",
-    short: "Anatomie pelvienne féminine et masculine, cycle menstruel, grossesse et surveillance obstétricale.",
-    anatomie: "Chez la femme : ovaires, trompes de Fallope (lieu de la fécondation dans l'ampoule), utérus (corps, isthme, col ; paroi : endomètre, myomètre, périmètre), vagin et vulve. Chez l'homme : testicules (dans le scrotum), épididymes, canaux déférents, vésicules séminales, prostate et pénis.",
-    physiologie: "Le cycle ovarien de 28 jours comprend la phase folliculaire (sécrétion d'œstrogènes, pic de LH déclenchant l'ovulation au 14e jour) et la phase lutéale (sécrétion de progestérone par le corps jaune préparant l'endomètre à la nidation). En cas de fécondation, le trophoblaste sécrète l'hormone bêta-hCG.",
-    semiologie: "Surveillance des métrorragies, douleurs pelviennes aiguës (éliminer une grossesse extra-utérine chez toute femme en âge de procréer), leucorrhées, contractions utérines, hauteur utérine et mouvements actifs fœtaux.",
-    soins: "Calcul du terme théorique de grossesse (règle de Naegele : date des dernières règles + 14 jours + 9 mois). Surveillance de la pré-éclampsie (HTA ≥ 140/90 mmHg + protéinurie). Accompagnement du dépistage (frottis cervico-utérin, palpation mammaire).",
-    pathologies: "Grossesse extra-utérine (GEU), pré-éclampsie, hémorragie de la délivrance, endométriose, salpingite, hypertrophie bénigne de la prostate (HBP), cancer du sein ou de la prostate.",
-    norms: [
-      { label: "Bêta-hCG (hors grossesse)", val: "< 5 UI/L" },
-      { label: "PSA total (homme)", val: "< 4,0 ng/mL" },
-      { label: "Durée grossesse", val: "41 semaines d'aménorrhée" },
-      { label: "Rythme cardiaque fœtal", val: "110 – 160 bpm" }
-    ]
-  },
-  {
-    id: "tegumentaire",
-    num: "09",
-    title: "Système Tégumentaire, Plaies & Cicatrisation",
-    short: "Peau (épiderme, derme, hypoderme), thermorégulation, stades d'escarres et brûlures.",
-    anatomie: "La peau est le plus grand organe du corps (environ 1,8 m²). Elle se compose de 3 couches : l'épiderme (tissu épithélial avasculaire kératinisé avec mélanocytes), le derme (tissu conjonctif richement vascularisé et innervé contenant glandes sudoripares, sébacées et follicules pileux) et l'hypoderme (tissu adipeux isolant).",
-    physiologie: "La peau assure une barrière mécanique, chimique (film hydrolipidique acide) et immunitaire, synthétise la vitamine D sous l'action des UV et régule la température corporelle via la vasodilatation/sudation (thermolyse) ou la vasoconstriction/frissons (thermogenèse).",
-    semiologie: "Évaluation du risque d'escarre (échelle de Braden ou Norton) aux points d'appui (sacrum, talons, ischions, occiput). Classification des escarres en 4 stades : Stade 1 (érythème persistant ne blanchissant pas à la pression), Stade 2 (phlyctène ou désépidermisation), Stade 3 (nécrose sous-cutanée), Stade 4 (atteinte musculaire/osseuse).",
-    soins: "Calcul de la surface brûlée chez l'adulte selon la règle des 9 de Wallace (tête = 9 %, chaque membre supérieur = 9 %, face antérieure du tronc = 18 %, face postérieure = 18 %, chaque membre inférieur = 18 %, périnée = 1 %). Choix du pansement adapté au stade de cicatrisation (détersion, bourgeonnement, épidermisation).",
-    pathologies: "Escarres de décubitus, ulcères veineux et artériels des membres inférieurs, pied diabétique, brûlures thermiques/chimiques, érysipèle.",
-    norms: [
-      { label: "Température centrale", val: "36,5 – 37,5 °C" },
-      { label: "Règle de Wallace (Adulte)", val: "Multiples de 9 %" },
-      { label: "Stade 1 escarre", val: "Érythème non blanchissant" },
-      { label: "IPS (Index Pression Syst.)", val: "0,90 – 1,30" }
-    ]
-  },
-  {
-    id: "sens",
-    num: "10",
-    title: "Organes des Sens & Système Lymphatique/Immunitaire",
-    short: "Œil, oreille, ganglions lymphatiques, rate, immunité innée/adaptative et asepsie.",
-    anatomie: "L'œil comprend 3 tuniques (sclère/cornée, choroïde/iris/pupille, rétine avec cônes et bâtonnets) et des milieux transparents (humeur aqueuse, cristallin, corps vitré). L'oreille se divise en oreille externe, moyenne (tympan et osselets : marteau, enclume, étrier) et interne (cochlée pour l'audition, vestibule pour l'équilibre). Le système lymphatique comprend la lymphe, les ganglions, le thymus et la rate.",
-    physiologie: "L'immunité innée offre une défense immédiate non spécifique (peau, muqueuses, phagocytose par les polynucléaires neutrophiles et macrophages, inflammation). L'immunité adaptative repose sur les lymphocytes B (production d'anticorps/immunoglobulines : immunité humorale) et lymphocytes T (CD4 auxiliaires et CD8 cytotoxiques : immunité cellulaire).",
-    semiologie: "Recherche d'adénopathies (cervicales, axillaires, inguinales), splénomégalie, signes cardinaux de l'inflammation (rougeur, chaleur, douleur, œdème), baisse d'acuité visuelle brutale, vertiges.",
-    soins: "Précautions standard d'hygiène (friction hydro-alcoolique, port de gants/masque), règles d'administration des collyres (instillation dans le cul-de-sac conjonctival inférieur sans toucher l'œil), surveillance d'un patient splénectomisé ou aplasique (isolement protecteur).",
-    pathologies: "Glaucome aigu par fermeture de l'angle, cataracte, otite moyenne aiguë, sepsis et choc septique, aplasie fébrile, réactions allergiques/anaphylactiques.",
-    norms: [
-      { label: "Leucocytes (Globules blancs)", val: "4 000 – 10 000 / mm³" },
-      { label: "Polynucléaires neutrophiles", val: "1 500 – 7 000 / mm³" },
-      { label: "CRP (Protéine C-réactive)", val: "< 5 mg/L" },
-      { label: "Procalcitonine (sepsis)", val: "< 0,5 ng/mL" }
-    ]
-  },
-  {
-    id: "hemato",
-    num: "11",
-    title: "Système Hématologique, Hémostase & Transfusion",
-    short: "Cellules sanguines, coagulation, groupes ABO/Rhésus, ordre des tubes et sécurité transfusionnelle.",
-    anatomie: "Le sang est un tissu conjonctif liquide (environ 5 L chez l'adulte) composé à 55 % de plasma et à 45 % d'éléments figurés produits dans la moelle osseuse rouge (sternum, crêtes iliaques, épiphyses) : hématies (globules rouges), leucocytes (globules blancs) et thrombocytes (plaquettes).",
-    physiologie: "L'hémostase arrête le saignement en 3 temps : 1) Hémostase primaire (vasoconstriction et clou plaquettaire) ; 2) Coagulation plasmatique (cascade des facteurs aboutissant à la fibrine) ; 3) Fibrinolyse (dissolution du caillot par la plasmine).",
-    semiologie: "Syndrome anémique (pâleur cutanéo-muqueuse, asthénie, dyspnée d'effort, tachycardie), syndrome hémorragique (épistaxis, gingivorragies, pétéchies, ecchymoses), fièvre sous chimiothérapie.",
-    soins: "Ordre recommandé de prélèvement des tubes sanguins : 1) Hémocultures (aérobie puis anaérobie) ; 2) Tube Citrate (bleu - coagulation) ; 3) Tube Sec (rouge/jaune - biochimie) ; 4) Tube Hépariné (vert) ; 5) Tube EDTA (violet - NFS/groupage). Sécurité transfusionnelle : contrôle ultime au lit du patient (test de Beth-Vincent) et surveillance constante les 15 premières minutes.",
-    pathologies: "Anémie ferriprive ou inflammatoire, thrombopénie, hémophilie, CIVD, accident d'incompatibilité transfusionnelle ABO.",
-    norms: [
-      { label: "Hémoglobine (H / F)", val: "13–17 g/dL (H) | 12–16 g/dL (F)" },
-      { label: "Plaquettes", val: "150 000 – 400 000 / mm³" },
-      { label: "TP (Taux de Prothrombine)", val: "70 – 100 %" },
-      { label: "TCA ratio", val: "0,8 – 1,2" }
-    ]
-  },
-  {
-    id: "topo",
-    num: "12",
-    title: "Anatomie Topographique & Repères Cliniques de Surface",
-    short: "Triangle de Scarpa, angle de Louis, ligne de Tuffier, chambre implantable et repères RCP.",
-    anatomie: "L'anatomie de surface relie les structures profondes aux repères osseux palpables : l'angle sternal de Louis (jonction manubrium-corps du sternum, niveau 2e côte et bifurcation trachéale T4-T5), l'appendice xiphoïde, les épines iliaques antéro-supérieures (EIAS), la crête iliaque et la vertèbre proéminente C7.",
-    physiologie: "La connaissance précise des rapports vasculo-nerveux permet de réaliser les gestes invasifs sans léser les nerfs ou artères adjacents (ex : rapport Veine-Artère-Nerf dans le triangle fémoral de Scarpa, de dedans en dehors : moyen mnémotechnique VAN).",
-    semiologie: "Repérage de l'asymétrie thoracique, palpation des aires ganglionnaires, localisation des pouls centraux (carotidien au bord antérieur du muscle sterno-cléido-mastoïdien ; fémoral au milieu de l'arcade crurale).",
-    soins: "1) Massage cardiaque externe (RCP) : centre du thorax, moitié inférieure du sternum (5 à 6 cm de profondeur chez l'adulte, rythme 100-120/min) ; 2) Chambre implantable (PAC) : repérage triangulaire entre le pouce, l'index et le majeur, insertion perpendiculaire d'une aiguille de Huber ; 3) Cathéter veineux central jugulaire interne ou sous-clavier (surveillance radio pulmonaire post-pose).",
-    pathologies: "Pneumothorax iatrogène post-pose de voie centrale, hématome artériel post-ponction fémorale, extravasation de chimiothérapie, lésion du nerf sciatique.",
-    norms: [
-      { label: "Massage cardiaque (RCP)", val: "100 – 120 compressions/min" },
-      { label: "Profondeur compression", val: "5 – 6 cm (Adulte)" },
-      { label: "Triangle de Scarpa", val: "De dedans en dehors : V - A - N" },
-      { label: "Angle de Louis", val: "2e espace intercostal (T4-T5)" }
-    ]
-  }
-];
-
-const FLASHCARDS = [
-  { cat: "Cardiovasculaire", q: "Où se situe le foyer d'auscultation mitral ?", a: "Au 5e espace intercostal gauche, sur la ligne médio-claviculaire (apex cardiaque)." },
-  { cat: "Cardiovasculaire", q: "Quelle est la valeur normale de la Troponine Ic ?", a: "Inférieure à 0,04 µg/L (son élévation signe une nécrose myocardique)." },
-  { cat: "Cardiovasculaire", q: "Quel est l'INR cible pour la majorité des patients sous AVK ?", a: "Entre 2,0 et 3,0 (sauf certaines valves mécaniques : 2,5 à 3,5)." },
-  { cat: "Respiratoire", q: "Où doit-on piquer lors d'une ponction pleurale et pourquoi ?", a: "Au bord SUPÉRIEUR de la côte inférieure, afin d'éviter le paquet vasculo-nerveux intercostal situé au bord inférieur de la côte." },
-  { cat: "Respiratoire", q: "Quelle est la cible de SpO2 chez un patient BPCO hypercapnique ?", a: "Entre 88 % et 92 % pour ne pas abolir le stimulus hypoxique de la ventilation." },
-  { cat: "Respiratoire", q: "Combien de lobes possède chaque poumon ?", a: "3 lobes à droite (supérieur, moyen, inférieur) et 2 lobes à gauche (supérieur, inférieur)." },
-  { cat: "Nerveux", q: "À quel niveau vertébral se termine la moelle épinière chez l'adulte ?", a: "Au niveau de L1-L2 (cône médullaire), permettant de réaliser une ponction lombaire sans risque en L4-L5." },
-  { cat: "Nerveux", q: "Qu'est-ce que la ligne de Tuffier ?", a: "La ligne horizontale joignant le sommet des deux crêtes iliaques ; elle passe par l'espace intervertébral L4-L5." },
-  { cat: "Nerveux", q: "Quel est le score de Glasgow minimal et maximal ?", a: "Minimal = 3 (coma profond) ; Maximal = 15 (conscience normale). Intubation discutée si ≤ 8." },
-  { cat: "Musculo-Squelettique", q: "Quel est le site sécurisé d'injection intramusculaire dans la fesse ?", a: "Le quart supéro-externe du muscle grand fessier, loin du trajet du nerf sciatique." },
-  { cat: "Musculo-Squelettique", q: "Quel est le volume maximal injectable dans le muscle deltoïde ?", a: "2 mL maximum (repère : 2 à 3 travers de doigt sous l'acromion)." },
-  { cat: "Musculo-Squelettique", q: "Quelle est la norme de la calcémie totale chez l'adulte ?", a: "2,20 à 2,60 mmol/L." },
-  { cat: "Digestif", q: "Comment mesure-t-on la longueur d'insertion d'une sonde nasogastrique (repère NEX) ?", a: "Distance aile du Nez → lobe de l'Oreille → appendice Xiphoïde." },
-  { cat: "Digestif", q: "Où se situe le point de Mac Burney ?", a: "En fosse iliaque droite, à l'union du tiers externe et des deux tiers internes de la ligne joignant l'ombilic à l'épine iliaque antéro-supérieure." },
-  { cat: "Digestif", q: "Dans quel segment du tube digestif a lieu l'essentiel de l'absorption des nutriments ?", a: "Dans l'intestin grêle (duodénum, jéjunum, iléon)." },
-  { cat: "Rénal & Urinaire", q: "Quelle est la norme de la kaliémie (K+) et son risque majeur en cas d'anomalie ?", a: "3,5 à 5,0 mmol/L. L'hyperkaliémie expose à des troubles graves du rythme cardiaque et à l'arrêt cardiaque." },
-  { cat: "Rénal & Urinaire", q: "À partir de quel volume parle-t-on d'oligurie puis d'anurie chez l'adulte ?", a: "Oligurie : < 500 mL/24h (ou < 0,5 mL/kg/h) ; Anurie : < 100 mL/24h." },
-  { cat: "Rénal & Urinaire", q: "Quelle hormone sécrétée par le rein stimule la production des globules rouges ?", a: "L'érythropoïétine (EPO)." },
-  { cat: "Endocrinien", q: "Quelles sont les deux hormones pancréatiques antagonistes régulant la glycémie ?", a: "L'insuline (cellules bêta, hypoglycémiante) et le glucagon (cellules alpha, hyperglycémiante)." },
-  { cat: "Endocrinien", q: "Quelle est la valeur normale de la glycémie à jeun ?", a: "0,70 à 1,10 g/L (soit 3,9 à 6,1 mmol/L)." },
-  { cat: "Endocrinien", q: "Pourquoi doit-on varier les sites d'injection sous-cutanée d'insuline ?", a: "Pour prévenir les lipodystrophies qui altèrent l'absorption de l'insuline." },
-  { cat: "Reproducteur", q: "Où se produit normalement la fécondation ?", a: "Dans le tiers externe (ampoule) de la trompe de Fallope." },
-  { cat: "Reproducteur", q: "Quelle urgence faut-il éliminer en priorité devant toute douleur pelvienne avec métrorragies chez une femme en âge de procréer ?", a: "La grossesse extra-utérine (GEU) par dosage des bêta-hCG et échographie." },
-  { cat: "Reproducteur", q: "Quels sont les deux signes définissant la pré-éclampsie après 20 SA ?", a: "Hypertension artérielle gravidique (≥ 140/90 mmHg) associée à une protéinurie significative (> 0,3 g/24h)." },
-  { cat: "Tégumentaire", q: "À quoi correspond le Stade 1 d'une escarre ?", a: "Un érythème persistant sur une peau intacte qui ne blanchit pas à la pression du doigt." },
-  { cat: "Tégumentaire", q: "Selon la règle des 9 de Wallace chez l'adulte, quel pourcentage représente chaque membre inférieur ?", a: "18 % (9 % face antérieure + 9 % face postérieure)." },
-  { cat: "Tégumentaire", q: "Quelles sont les 3 couches de la peau de la superficie vers la profondeur ?", a: "Épiderme, derme et hypoderme." },
-  { cat: "Sens & Lymphatique", q: "Quelle est la norme des polynucléaires neutrophiles (PNN) ?", a: "1 500 à 7 000 / mm³ (en dessous de 500/mm³ = agranulocytose / aplasie sévère)." },
-  { cat: "Sens & Lymphatique", q: "Comment instille-t-on correctement un collyre ?", a: "Dans le cul-de-sac conjonctival inférieur en tirant doucement la paupière inférieure vers le bas, sans toucher l'œil avec l'embout." },
-  { cat: "Sens & Lymphatique", q: "Quel est le rôle principal de la cochlée vs le vestibule dans l'oreille interne ?", a: "La cochlée assure l'audition ; le vestibule et les canaux semi-circulaires assurent l'équilibre." },
-  { cat: "Hématologie", q: "Quel est l'ordre correct de prélèvement des tubes sanguins ?", a: "1) Hémocultures, 2) Tube Citrate (bleu), 3) Tube Sec (rouge/jaune), 4) Héparine (vert), 5) EDTA (violet)." },
-  { cat: "Hématologie", q: "Quel groupe sanguin est donneur universel de concentrés de globules rouges (CGR) ?", a: "Le groupe O Rhésus négatif (O-)." },
-  { cat: "Hématologie", q: "Quelle est la norme des plaquettes sanguines ?", a: "150 000 à 400 000 / mm³." },
-  { cat: "Anatomie Topographique", q: "Quel est l'ordre des éléments dans le triangle fémoral de Scarpa de dedans en dehors ?", a: "Veine fémorale – Artère fémorale – Nerf fémoral (moyen mnémotechnique : VAN de dedans en dehors)." },
-  { cat: "Anatomie Topographique", q: "À quel repère anatomique correspond l'angle sternal de Louis ?", a: "Au 2e espace intercostal (et en profondeur à la bifurcation trachéale T4-T5)." },
-  { cat: "Anatomie Topographique", q: "Quel type d'aiguille utilise-t-on obligatoirement pour piquer dans une chambre implantable (PAC) ?", a: "Une aiguille de Huber (biseau tangentiel non carottant) pour ne pas endommager le septum en silicone." }
-];
-
-const QCMS = [
-  {
-    q: "1. Lors d'une ponction lombaire chez l'adulte, l'aiguille est introduite entre L4 et L5 parce que :",
-    options: [
-      "La moelle épinière s'arrête au niveau de L1-L2 chez l'adulte.",
-      "Il n'y a pas de liquide céphalo-rachidien au-dessus de L4.",
-      "Le nerf sciatique passe au niveau de L2.",
-      "Les méninges s'arrêtent en L3."
-    ],
-    answer: 0,
-    exp: "Chez l'adulte, le cône terminal de la moelle épinière s'arrête en L1-L2 ; piquer en L4-L5 (ligne de Tuffier) permet de prélever le LCR dans le cul-de-sac dural sans blesser la moelle."
-  },
-  {
-    q: "2. Dans le triangle fémoral de Scarpa, quel est l'ordre des structures de dedans en dehors ?",
-    options: [
-      "Artère – Veine – Nerf",
-      "Nerf – Artère – Veine",
-      "Veine – Artère – Nerf (VAN)",
-      "Veine – Nerf – Artère"
-    ],
-    answer: 2,
-    exp: "De la partie médiale (interne) vers la partie latérale (externe), on trouve la Veine fémorale, puis l'Artère fémorale, puis le Nerf fémoral (VAN)."
-  },
-  {
-    q: "3. Pour réaliser une ponction pleurale évacuatrice sans léser le paquet vasculo-nerveux intercostal, vous repérez :",
-    options: [
-      "Le bord inférieur de la côte supérieure",
-      "Le bord supérieur de la côte inférieure",
-      "Le milieu exact de l'espace intercostal",
-      "La ligne médio-sternale"
-    ],
-    answer: 1,
-    exp: "Les vaisseaux et nerfs intercostaux cheminent dans la gouttière sous-costale (bord inférieur de chaque côte) ; on pique donc toujours au ras du bord supérieur de la côte inférieure."
-  },
-  {
-    q: "4. Quel est l'ordre recommandé de prélèvement des tubes lors d'une prise de sang veineuse ?",
-    options: [
-      "EDTA (violet) → Sec (rouge) → Citrate (bleu)",
-      "Hémocultures → Citrate (bleu) → Sec (rouge/jaune) → Héparine (vert) → EDTA (violet)",
-      "Héparine (vert) → EDTA (violet) → Citrate (bleu)",
-      "Sec (rouge) → EDTA (violet) → Hémocultures"
-    ],
-    answer: 1,
-    exp: "Les hémocultures passent en premier pour éviter toute contamination bactérienne, suivies du tube citrate (coagulation) avant les tubes contenant du potassium ou de l'EDTA."
-  },
-  {
-    q: "5. Chez un patient présentant un score de Glasgow à 7 suite à un traumatisme crânien, quelle est la conduite prioritaire ?",
-    options: [
-      "Lui donner à boire pour évaluer la déglutition",
-      "Préparer une intubation oro-trachéale pour protéger les voies aériennes",
-      "Le placer en position assise à 90° sans surveillance",
-      "Attendre 6 heures avant de prévenir le médecin"
-    ],
-    answer: 1,
-    exp: "Un score de Glasgow ≤ 8 définit un coma avec abolition des réflexes de protection des voies aériennes supérieures, imposant une intubation trachéale."
-  },
-  {
-    q: "6. Quelle est la zone d'injection intramusculaire recommandée au niveau de la fesse ?",
-    options: [
-      "Le quart inféro-interne",
-      "Le quart supéro-externe",
-      "Le centre exact de la fesse",
-      "Le pli sous-fessier"
-    ],
-    answer: 1,
-    exp: "Le quart supéro-externe du grand fessier est éloigné du trajet du nerf sciatique et de l'artère fessière supérieure."
-  },
-  {
-    q: "7. Selon la règle des 9 de Wallace chez l'adulte, quelle surface corporelle correspond à une brûlure de la totalité d'un membre supérieur et de la face antérieure du tronc ?",
-    options: [
-      "18 %",
-      "27 %",
-      "36 %",
-      "45 %"
-    ],
-    answer: 1,
-    exp: "Un membre supérieur entier = 9 %, et la face antérieure du tronc = 18 %, soit un total de 27 % de surface corporelle brûlée."
-  },
-  {
-    q: "8. Quelle anomalie biologique expose immédiatement le patient à un risque d'arrêt cardiaque par trouble de la conduction ?",
-    options: [
-      "Une hyperkaliémie à 6,8 mmol/L",
-      "Une CRP à 12 mg/L",
-      "Une bilirubine à 15 µmol/L",
-      "Une hémoglobine à 13,5 g/dL"
-    ],
-    answer: 0,
-    exp: "La kaliémie normale est de 3,5 à 5,0 mmol/L. Une hyperkaliémie sérvère (> 6,5 mmol/L) entraîne des troubles graves du rythme et de la conduction visibles à l'ECG."
-  }
-];
-
-let state = {
-  user: JSON.parse(localStorage.getItem('ia_user') || 'null'),
-  completed: JSON.parse(localStorage.getItem('ia_completed') || '[]'),
-  masteredCards: JSON.parse(localStorage.getItem('ia_mastered') || '[]'),
-  notes: localStorage.getItem('ia_notes') || '',
-  geminiKey: localStorage.getItem('ia_gemini_key') || '',
-  fcIndex: 0,
-  fcFlipped: false,
-  filteredCards: [...FLASHCARDS],
-  qcmAnswered: 0,
-  qcmCorrect: 0
-};
-
-function saveState() {
-  localStorage.setItem('ia_user', JSON.stringify(state.user));
-  localStorage.setItem('ia_completed', JSON.stringify(state.completed));
-  localStorage.setItem('ia_mastered', JSON.stringify(state.masteredCards));
-  localStorage.setItem('ia_notes', state.notes);
-}
-
-function updateUserUI() {
-  const pill = document.getElementById('user-badge-text');
-  const prog = document.getElementById('progress-summary');
-  prog.textContent = `${state.completed.length} / ${COURSES.length} cours validés`;
-  if (state.user && state.user.email) {
-    pill.textContent = `📧 ${state.user.name} (${state.user.email})`;
-  } else {
-    pill.textContent = "Connexion Gmail (Optionnel)";
-  }
-  const profDiv = document.getElementById('profile-summary');
-  if (state.user && state.user.email) {
-    profDiv.innerHTML = `
-      <div class="course-section">
-        <h4>✅ Compte Étudiant Connecté</h4>
-        <p><strong>Nom :</strong> ${state.user.name}</p>
-        <p><strong>Gmail :</strong> ${state.user.email}</p>
-        <p><strong>Établissement :</strong> ${state.user.school || 'Non précisé'}</p>
-        <p><strong>Progression :</strong> ${state.completed.length} / ${COURSES.length} cours validés • ${state.masteredCards.length} / ${FLASHCARDS.length} flashcards maîtrisées</p>
-      </div>`;
-  } else {
-    profDiv.innerHTML = `<p style="color:var(--muted);">Aucun compte Gmail connecté pour le moment. Cliquez sur « Changer de compte Gmail » pour associer votre adresse.</p>`;
-  }
-  document.getElementById('student-notes').value = state.notes;
-}
-
-function showTab(tab) {
-  ['home', 'flashcards', 'qcm', 'tutor', 'profile'].forEach(t => {
-    document.getElementById('tab-' + t).classList.toggle('hidden', t !== tab);
-    document.getElementById('nav-' + t).classList.toggle('active', t === tab);
+let currentCat = 'all';
+function updateUI() {
+  const completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  document.getElementById('progress-summary').textContent = `${completed.length} / 16 cours validés`;
+  completed.forEach(id => {
+    const b = document.getElementById('badge-' + id);
+    if (b) b.classList.remove('hidden');
   });
-  if (tab === 'home') backToGrid();
-  if (tab === 'flashcards') renderFlashcard();
-  if (tab === 'qcm') renderQCMs();
-  if (tab === 'profile') updateUserUI();
+  const user = JSON.parse(localStorage.getItem('ia_user') || 'null');
+  document.getElementById('user-badge-text').textContent = (user && user.email) ? `📧 ${user.name}` : "Connexion Gmail";
+  document.getElementById('student-notes').value = localStorage.getItem('ia_notes') || '';
 }
-
-function renderCourses() {
+function filterByCat(cat) { currentCat = cat; filterCards(); }
+function filterCards() {
   const q = document.getElementById('search-input').value.toLowerCase().trim();
-  const grid = document.getElementById('courses-grid');
-  grid.innerHTML = '';
-  COURSES.filter(c => {
-    if (!q) return true;
-    const blob = (c.title + ' ' + c.short + ' ' + c.anatomie + ' ' + c.physiologie + ' ' + c.soins + ' ' + c.pathologies).toLowerCase();
-    return blob.includes(q);
-  }).forEach(c => {
-    const isDone = state.completed.includes(c.id);
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.onclick = () => openCourse(c.id);
-    card.innerHTML = `
-      <div>
-        <div class="card-top">
-          <span class="sys-badge">Cours ${c.num}</span>
-          ${isDone ? '<span class="done-badge">✓ Validé</span>' : ''}
-        </div>
-        <h3>${c.title}</h3>
-        <p>${c.short}</p>
-      </div>
-      <div class="card-footer">
-        <span>5 volets cliniques + Normes</span>
-        <span>Ouvrir le cours →</span>
-      </div>
-    `;
-    grid.appendChild(card);
+  document.querySelectorAll('#courses-grid .card').forEach(el => {
+    const matchCat = currentCat === 'all' || el.dataset.cat === currentCat;
+    const matchQ = !q || el.dataset.search.includes(q);
+    el.classList.toggle('hidden', !(matchCat && matchQ));
   });
 }
-
-function openCourse(id) {
-  const c = COURSES.find(x => x.id === id);
-  if (!c) return;
-  document.getElementById('courses-grid').classList.add('hidden');
-  document.querySelector('.search-box').classList.add('hidden');
-  const detail = document.getElementById('course-detail');
-  detail.classList.remove('hidden');
-  const isDone = state.completed.includes(c.id);
-  detail.innerHTML = `
-    <div class="course-header">
-      <div>
-        <span class="sys-badge">Système ${c.num} / ${COURSES.length}</span>
-        <h2 style="color:var(--primary); margin-top:8px;">${c.title}</h2>
-      </div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <button class="btn btn-outline" onclick="backToGrid()">⬅️ Retour aux 12 cours</button>
-        <button class="btn btn-accent" onclick="toggleComplete('${c.id}')">${isDone ? '✓ Cours validé' : 'Marquer ce cours comme étudié'}</button>
-      </div>
-    </div>
-
-    <div class="course-section">
-      <h4>1. Anatomie Descriptive & Topographique</h4>
-      <p>${c.anatomie}</p>
-    </div>
-
-    <div class="course-section">
-      <h4>2. Physiologie Appliquée & Mécanismes de Régulation</h4>
-      <p>${c.physiologie}</p>
-    </div>
-
-    <div class="course-section">
-      <h4>3. Sémiologie Clinique & Surveillance Infirmière</h4>
-      <p>${c.semiologie}</p>
-    </div>
-
-    <div class="course-section">
-      <h4>4. Soins Infirmiers, Gestes Techniques & Repères Anatomiques</h4>
-      <p>${c.soins}</p>
-    </div>
-
-    <div class="course-section">
-      <h4>5. Pathologies Hospitalières & Pharmacologie Associée</h4>
-      <p>${c.pathologies}</p>
-    </div>
-
-    <div class="course-section">
-      <h4>📊 Normes Biologiques & Constantes Vitales de Référence</h4>
-      <div class="norms-grid">
-        ${c.norms.map(n => `<div class="norm-box"><strong>${n.label}</strong><span>${n.val}</span></div>`).join('')}
-      </div>
-    </div>
-  `;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function backToGrid() {
-  document.getElementById('course-detail').classList.add('hidden');
-  document.getElementById('courses-grid').classList.remove('hidden');
-  document.querySelector('.search-box').classList.remove('hidden');
-  renderCourses();
-}
-
-function toggleComplete(id) {
-  if (state.completed.includes(id)) {
-    state.completed = state.completed.filter(x => x !== id);
-  } else {
-    state.completed.push(id);
-  }
-  saveState();
-  updateUserUI();
-  openCourse(id);
-}
-
-// FLASHCARDS
-function initFlashcardFilter() {
-  const sel = document.getElementById('fc-filter');
-  const cats = [...new Set(FLASHCARDS.map(f => f.cat))];
-  cats.forEach(cat => {
-    const opt = document.createElement('option');
-    opt.value = cat;
-    opt.textContent = cat;
-    sel.appendChild(opt);
-  });
-}
-
-function resetFlashcards() {
-  const val = document.getElementById('fc-filter').value;
-  state.filteredCards = val === 'all' ? [...FLASHCARDS] : FLASHCARDS.filter(f => f.cat === val);
-  state.fcIndex = 0;
-  state.fcFlipped = false;
-  renderFlashcard();
-}
-
-function renderFlashcard() {
-  const card = state.filteredCards[state.fcIndex];
-  if (!card) return;
-  document.getElementById('fc-cat').textContent = card.cat + (state.masteredCards.includes(card.q) ? ' • ⭐ Maîtrisée' : '');
-  document.getElementById('fc-text').textContent = state.fcFlipped ? card.a : card.q;
-  document.getElementById('fc-text').style.color = state.fcFlipped ? 'var(--accent)' : 'var(--primary)';
-  document.getElementById('fc-hint').textContent = state.fcFlipped ? '✅ Réponse clinique (cliquez pour revoir la question)' : '👆 Cliquez pour révéler la réponse';
-  document.getElementById('fc-counter').textContent = `Carte ${state.fcIndex + 1} sur ${state.filteredCards.length}`;
-}
-
-function flipFlashcard() {
-  state.fcFlipped = !state.fcFlipped;
-  renderFlashcard();
-}
-
-function nextFlashcard() {
-  state.fcIndex = (state.fcIndex + 1) % state.filteredCards.length;
-  state.fcFlipped = false;
-  renderFlashcard();
-}
-
-function prevFlashcard() {
-  state.fcIndex = (state.fcIndex - 1 + state.filteredCards.length) % state.filteredCards.length;
-  state.fcFlipped = false;
-  renderFlashcard();
-}
-
-function markCardMastered() {
-  const card = state.filteredCards[state.fcIndex];
-  if (card && !state.masteredCards.includes(card.q)) {
-    state.masteredCards.push(card.q);
-    saveState();
-    renderFlashcard();
-  }
-}
-
-// QCM
-function renderQCMs() {
-  const container = document.getElementById('qcm-container');
-  container.innerHTML = '';
-  state.qcmAnswered = 0;
-  state.qcmCorrect = 0;
-  updateQcmScore();
-  QCMS.forEach((item, idx) => {
-    const box = document.createElement('div');
-    box.className = 'course-section';
-    box.innerHTML = `
-      <h4>${item.q}</h4>
-      <div id="qcm-opts-${idx}">
-        ${item.options.map((opt, oIdx) => `<button class="qcm-option" onclick="answerQcm(${idx}, ${oIdx}, this)">${opt}</button>`).join('')}
-      </div>
-      <p id="qcm-exp-${idx}" class="hidden" style="margin-top:10px; padding:10px; background:#fff; border-left:4px solid var(--accent); border-radius:8px;"><strong>Justification :</strong> ${item.exp}</p>
-    `;
-    container.appendChild(box);
-  });
-}
-
-function answerQcm(qIdx, oIdx, btn) {
-  const parent = document.getElementById(`qcm-opts-${qIdx}`);
-  if (parent.dataset.done) return;
-  parent.dataset.done = "1";
-  const item = QCMS[qIdx];
-  const buttons = parent.querySelectorAll('button');
-  buttons.forEach((b, i) => {
-    if (i === item.answer) b.classList.add('correct');
-    else if (i === oIdx) b.classList.add('wrong');
-  });
-  state.qcmAnswered++;
-  if (oIdx === item.answer) state.qcmCorrect++;
-  updateQcmScore();
-  document.getElementById(`qcm-exp-${qIdx}`).classList.remove('hidden');
-}
-
-function updateQcmScore() {
-  document.getElementById('qcm-score-badge').textContent = `Score : ${state.qcmCorrect} / ${state.qcmAnswered}`;
-}
-
-// TUTOR IA
-async function askTutor() {
-  const input = document.getElementById('tutor-input');
-  const q = input.value.trim();
-  if (!q) return;
-  input.value = '';
-  appendMsg(q, 'user');
-
-  if (state.geminiKey) {
-    appendMsg("⏳ Consultation de Gemini IA...", 'bot');
-    try {
-      const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(state.geminiKey)}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: "Tu es un formateur en soins infirmiers (IFSI/ISPITS). Réponds clairement en français avec les repères anatomiques et soins infirmiers à la question suivante : " + q }] }]
-        })
-      });
-      const data = await resp.json();
-      const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || localTutorReply(q);
-      document.getElementById('chat-box').lastChild.textContent = reply;
-      return;
-    } catch (e) {
-      document.getElementById('chat-box').lastChild.textContent = localTutorReply(q);
-      return;
-    }
-  }
-  appendMsg(localTutorReply(q), 'bot');
-}
-
-function localTutorReply(q) {
-  const low = q.toLowerCase();
-  const match = COURSES.find(c => (c.title + ' ' + c.anatomie + ' ' + c.soins + ' ' + c.physiologie).toLowerCase().includes(low.split(' ').find(w => w.length > 4) || low));
-  if (match) {
-    return `📘 [${match.title}] — Anatomie : ${match.anatomie} | Repère IDE : ${match.soins}`;
-  }
-  return "💡 Conseil IDE : Consultez les 12 cours détaillés ou cliquez sur « ✨ Ouvrir dans Gemini (Gratuit) » pour poser directement cette question à l'IA gratuite de Google.";
-}
-
-function appendMsg(text, who) {
-  const box = document.getElementById('chat-box');
-  const div = document.createElement('div');
-  div.className = 'msg ' + who;
-  div.textContent = text;
-  box.appendChild(div);
-  box.scrollTop = box.scrollHeight;
-}
-
-function openInGeminiWeb() {
-  const q = document.getElementById('tutor-input').value.trim() || "Explique-moi les repères anatomiques essentiels pour les soins infirmiers";
-  window.open(`https://gemini.google.com/app?q=${encodeURIComponent(q)}`, '_blank');
-}
-
-function saveGeminiKey() {
-  state.geminiKey = document.getElementById('gemini-key-input').value.trim();
-  localStorage.setItem('ia_gemini_key', state.geminiKey);
-  alert("Clé API Gemini enregistrée localement sur votre navigateur !");
-}
-
-// GMAIL MODAL
 function openGmailModal() {
-  if (state.user) {
-    document.getElementById('login-name').value = state.user.name || '';
-    document.getElementById('login-email').value = state.user.email || '';
-    document.getElementById('login-school').value = state.user.school || '';
+  const user = JSON.parse(localStorage.getItem('ia_user') || 'null');
+  if (user) {
+    document.getElementById('login-name').value = user.name || '';
+    document.getElementById('login-email').value = user.email || '';
+    document.getElementById('login-school').value = user.school || '';
   }
   document.getElementById('gmail-modal').classList.remove('hidden');
 }
-
-function closeGmailModal() {
-  document.getElementById('gmail-modal').classList.add('hidden');
-}
-
+function closeGmailModal() { document.getElementById('gmail-modal').classList.add('hidden'); }
 function saveGmailUser() {
   const name = document.getElementById('login-name').value.trim();
   const email = document.getElementById('login-email').value.trim();
   const school = document.getElementById('login-school').value.trim();
-  if (!email.includes('@')) {
-    alert("Veuillez saisir une adresse Gmail valide (ex: etudiant@gmail.com).");
-    return;
-  }
-  state.user = { name: name || email.split('@')[0], email, school };
-  saveState();
-  updateUserUI();
-  closeGmailModal();
+  if (!email.includes('@')) { alert("Veuillez saisir une adresse Gmail valide."); return; }
+  localStorage.setItem('ia_user', JSON.stringify({ name: name || email.split('@')[0], email, school }));
+  updateUI(); closeGmailModal();
 }
-
-function saveNotes() {
-  state.notes = document.getElementById('student-notes').value;
-  saveState();
-}
-
-// INIT
-initFlashcardFilter();
-renderCourses();
-updateUserUI();
+function openNotesModal() { document.getElementById('notes-modal').classList.remove('hidden'); }
+function saveNotes() { localStorage.setItem('ia_notes', document.getElementById('student-notes').value); }
+updateUI();
 </script>
 </body>
 </html>
