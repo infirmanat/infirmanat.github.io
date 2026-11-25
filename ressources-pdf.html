@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fiches PDF Imprimables pour Étudiants Infirmiers & Stages — InfirmAnat IA</title>
-  <meta name="description" content="Téléchargez et imprimez gratuitement les fiches PDF pour vos études infirmières et stages hospitaliers (IFSI / ISPITS) : constantes vitales, calculs de doses, repères anatomiques, démarche de soins." />
+  <title>Fiches Imprimables & PDF pour Étudiants Infirmiers — InfirmAnat IA</title>
+  <meta name="description" content="Fiches de révision et de stage imprimables (PDF via Ctrl+P) pour étudiants infirmiers (IFSI / ISPITS) : constantes vitales, calculs de doses, repères anatomiques, démarche de soins." />
   <style>
 :root {
   --bg: #f4f7fb;
@@ -100,7 +100,6 @@ nav a:hover, nav button:hover, nav button.active, nav a.active {
 }
 .btn:hover { opacity: 0.93; }
 .btn-accent { background: var(--accent); }
-.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
 .course-header {
   display: flex; flex-wrap: wrap; justify-content: space-between;
   align-items: center; gap: 12px; border-bottom: 2px solid var(--border);
@@ -120,26 +119,6 @@ nav a:hover, nav button:hover, nav button.active, nav a.active {
   display: flex; flex-direction: column; justify-content: space-between;
 }
 .pdf-card:hover { border-color: var(--accent); }
-.custom-pdf-bar {
-  background: var(--accent-light);
-  border: 1px solid #99f6e4;
-  border-radius: 12px;
-  padding: 16px 20px;
-  margin-bottom: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-.custom-pdf-bar input {
-  padding: 9px 13px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 0.9rem;
-  min-width: 240px;
-  background: #fff;
-}
 .disclaimer-box {
   background: #fefce8;
   border-left: 4px solid #eab308;
@@ -195,25 +174,14 @@ footer {
 </header>
 
 <div class="container">
-  <div class="breadcrumb"><a href="index.html">Accueil</a> › Bibliothèque de Fiches PDF Imprimables</div>
+  <div class="breadcrumb"><a href="index.html">Accueil</a> › Fiches Imprimables & PDF</div>
 
   <div class="panel">
     <div class="course-header">
       <div>
-        <span class="sys-badge">Format A4 • Téléchargement Gratuit</span>
-        <h2 style="color:var(--primary); margin-top:8px;">📄 Fiches PDF Imprimables pour Révisions & Stages Hospitaliers</h2>
-        <p style="color:var(--muted); font-size:0.95rem;">Accédez à vos documents PDF imprimables (constantes vitales, calculs de doses, repères anatomiques, cas cliniques, démarche de soins et carnet de stage).</p>
-      </div>
-    </div>
-
-    <div class="custom-pdf-bar">
-      <div>
-        <strong style="color:#115e59; display:block;">📌 Lien direct vers votre fichier PDF téléversé sur GitHub :</strong>
-        <span style="font-size:0.85rem; color:#0f766e;">Si vous avez envoyé un PDF unique (ex: <code>fiches-infirmier.pdf</code> ou <code>pdf/fiches.pdf</code>), indiquez son chemin ci-dessous :</span>
-      </div>
-      <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
-        <input type="text" id="custom-pdf-path" placeholder="Ex: fiches-infirmiers.pdf ou pdf/fiches.pdf" oninput="saveCustomPdf()" />
-        <a id="custom-pdf-open" href="pdf/fiche-poche-constantes-normes.pdf" target="_blank" rel="noopener" class="btn btn-accent">👁️ Voir / Imprimer</a>
+        <span class="sys-badge">Impression Directe & Export PDF (Ctrl + P)</span>
+        <h2 style="color:var(--primary); margin-top:8px;">📄 Fiches Imprimables pour Révisions & Stages Hospitaliers</h2>
+        <p style="color:var(--muted); font-size:0.95rem;">Ouvrez chaque fiche pour l'imprimer directement ou l'enregistrer au format PDF en un clic (aucun fichier PDF bloqué sur GitHub).</p>
       </div>
     </div>
 
@@ -222,14 +190,13 @@ footer {
         <div>
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
             <span class="sys-badge">Fiche de Poche Stage</span>
-            <span style="font-size:0.8rem; font-weight:700; color:#dc2626;">PDF A4 Imprimable</span>
+            <span style="font-size:0.8rem; font-weight:700; color:var(--accent);">Imprimable / PDF</span>
           </div>
           <h3 style="color:var(--primary); font-size:1.15rem; margin-bottom:8px;">Constantes Vitales & Normes Biologiques</h3>
-          <p style="color:#334155; font-size:0.92rem; margin-bottom:16px;">Paramètres vitaux adultes, ordre des tubes de prélèvement sanguin et valeurs biologiques normales (NFS, ionogramme, gaz du sang, coagulation).</p>
+          <p style="color:#334155; font-size:0.92rem; margin-bottom:16px;">Paramètres vitaux adultes, cible SpO2 BPCO, seuils de diurèse et ordre standardisé des tubes de prélèvement sanguin.</p>
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap; border-top:1px solid var(--border); padding-top:12px;">
-          <a href="pdf/fiche-poche-constantes-normes.pdf" target="_blank" rel="noopener" class="btn pdf-link">👁️ Voir / Imprimer</a>
-          <a href="pdf/fiche-poche-constantes-normes.pdf" download class="btn btn-accent pdf-link">⬇️ Télécharger</a>
+          <a href="fiche-constantes-normes.html" class="btn btn-accent">👁️ Voir / Imprimer / PDF</a>
         </div>
       </article>
 
@@ -237,14 +204,13 @@ footer {
         <div>
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
             <span class="sys-badge">Mémo Calculs & Sécurité</span>
-            <span style="font-size:0.8rem; font-weight:700; color:#dc2626;">PDF A4 Imprimable</span>
+            <span style="font-size:0.8rem; font-weight:700; color:var(--accent);">Imprimable / PDF</span>
           </div>
           <h3 style="color:var(--primary); font-size:1.15rem; margin-bottom:8px;">Calculs de Doses, Débits & Règle des 5B</h3>
-          <p style="color:#334155; font-size:0.92rem; margin-bottom:16px;">Formules de conversion (g, mg, µg, %), calculs de débits en gouttes/min et mL/h au PSE, et check-list de sécurité des 5B.</p>
+          <p style="color:#334155; font-size:0.92rem; margin-bottom:16px;">Conversions (g, mg, µg, mL), formules de débit en gouttes/min (perfuseur et transfuseur), vitesse PSE et règle des 5B.</p>
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap; border-top:1px solid var(--border); padding-top:12px;">
-          <a href="pdf/guide-calculs-doses-perfusions.pdf" target="_blank" rel="noopener" class="btn pdf-link">👁️ Voir / Imprimer</a>
-          <a href="pdf/guide-calculs-doses-perfusions.pdf" download class="btn btn-accent pdf-link">⬇️ Télécharger</a>
+          <a href="fiche-calculs-doses.html" class="btn btn-accent">👁️ Voir / Imprimer / PDF</a>
         </div>
       </article>
 
@@ -252,14 +218,13 @@ footer {
         <div>
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
             <span class="sys-badge">Atlas de Révision</span>
-            <span style="font-size:0.8rem; font-weight:700; color:#dc2626;">PDF A4 Imprimable</span>
+            <span style="font-size:0.8rem; font-weight:700; color:var(--accent);">Imprimable / PDF</span>
           </div>
           <h3 style="color:var(--primary); font-size:1.15rem; margin-bottom:8px;">Repères Anatomiques & Gestes Techniques Infirmiers</h3>
-          <p style="color:#334155; font-size:0.92rem; margin-bottom:16px;">Ponction lombaire (ligne de Tuffier), ponction pleurale, triangle de Scarpa (VAN), injections IM, SNG et RCP.</p>
+          <p style="color:#334155; font-size:0.92rem; margin-bottom:16px;">Ponction lombaire (L4–L5 / Tuffier), ponction pleurale, triangle de Scarpa (VAN), injections IM, mesure NEX et RCP.</p>
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap; border-top:1px solid var(--border); padding-top:12px;">
-          <a href="pdf/reperes-anatomiques-soins-ide.pdf" target="_blank" rel="noopener" class="btn pdf-link">👁️ Voir / Imprimer</a>
-          <a href="pdf/reperes-anatomiques-soins-ide.pdf" download class="btn btn-accent pdf-link">⬇️ Télécharger</a>
+          <a href="fiche-reperes-anatomiques.html" class="btn btn-accent">👁️ Voir / Imprimer / PDF</a>
         </div>
       </article>
 
@@ -267,14 +232,13 @@ footer {
         <div>
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
             <span class="sys-badge">Cahier d'Examens</span>
-            <span style="font-size:0.8rem; font-weight:700; color:#dc2626;">PDF A4 Imprimable</span>
+            <span style="font-size:0.8rem; font-weight:700; color:var(--accent);">Imprimable / PDF</span>
           </div>
-          <h3 style="color:var(--primary); font-size:1.15rem; margin-bottom:8px;">Recueil de Cas Cliniques & Sujets Types Corrigés</h3>
-          <p style="color:#334155; font-size:0.92rem; margin-bottom:16px;">Situations professionnelles commentées avec grille de correction infirmière (BPCO, choc anaphylactique, conduite AES).</p>
+          <h3 style="color:var(--primary); font-size:1.15rem; margin-bottom:8px;">Recueil de Cas Cliniques Corrigés</h3>
+          <p style="color:#334155; font-size:0.92rem; margin-bottom:16px;">Conduites infirmières corrigées : détresse respiratoire sur BPCO, choc anaphylactique et accident d'exposition au sang (AES).</p>
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap; border-top:1px solid var(--border); padding-top:12px;">
-          <a href="pdf/recueil-qcm-cas-cliniques-corriges.pdf" target="_blank" rel="noopener" class="btn pdf-link">👁️ Voir / Imprimer</a>
-          <a href="pdf/recueil-qcm-cas-cliniques-corriges.pdf" download class="btn btn-accent pdf-link">⬇️ Télécharger</a>
+          <a href="fiche-cas-cliniques.html" class="btn btn-accent">👁️ Voir / Imprimer / PDF</a>
         </div>
       </article>
 
@@ -282,14 +246,13 @@ footer {
         <div>
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
             <span class="sys-badge">Outil de Stage</span>
-            <span style="font-size:0.8rem; font-weight:700; color:#dc2626;">PDF A4 Imprimable</span>
+            <span style="font-size:0.8rem; font-weight:700; color:var(--accent);">Imprimable / PDF</span>
           </div>
           <h3 style="color:var(--primary); font-size:1.15rem; margin-bottom:8px;">Grille de Recueil de Données & Démarche de Soins</h3>
-          <p style="color:#334155; font-size:0.92rem; margin-bottom:16px;">Trame structurée imprimable basée sur les 14 besoins fondamentaux de Virginia Henderson pour vos démarches cliniques.</p>
+          <p style="color:#334155; font-size:0.92rem; margin-bottom:16px;">Trame structurée pour vos démarches cliniques en stage hospitalier selon les 14 besoins fondamentaux.</p>
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap; border-top:1px solid var(--border); padding-top:12px;">
-          <a href="pdf/grille-recueil-donnees-demarche-soins.pdf" target="_blank" rel="noopener" class="btn pdf-link">👁️ Voir / Imprimer</a>
-          <a href="pdf/grille-recueil-donnees-demarche-soins.pdf" download class="btn btn-accent pdf-link">⬇️ Télécharger</a>
+          <a href="fiche-demarche-soins.html" class="btn btn-accent">👁️ Voir / Imprimer / PDF</a>
         </div>
       </article>
 
@@ -297,20 +260,19 @@ footer {
         <div>
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
             <span class="sys-badge">Suivi des Compétences</span>
-            <span style="font-size:0.8rem; font-weight:700; color:#dc2626;">PDF A4 Imprimable</span>
+            <span style="font-size:0.8rem; font-weight:700; color:var(--accent);">Imprimable / PDF</span>
           </div>
-          <h3 style="color:var(--primary); font-size:1.15rem; margin-bottom:8px;">Carnet de Stage : Grille d'Auto-Évaluation des Actes</h3>
-          <p style="color:#334155; font-size:0.92rem; margin-bottom:16px;">Tableau imprimable permettant de tracer et faire valider vos soins techniques auprès de vos tuteurs de stage.</p>
+          <h3 style="color:var(--primary); font-size:1.15rem; margin-bottom:8px;">Carnet de Stage : Auto-Évaluation des Actes</h3>
+          <p style="color:#334155; font-size:0.92rem; margin-bottom:16px;">Liste de contrôle des gestes techniques infirmiers à suivre et faire valider en stage.</p>
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap; border-top:1px solid var(--border); padding-top:12px;">
-          <a href="pdf/carnet-stage-objectifs-actes-ide.pdf" target="_blank" rel="noopener" class="btn pdf-link">👁️ Voir / Imprimer</a>
-          <a href="pdf/carnet-stage-objectifs-actes-ide.pdf" download class="btn btn-accent pdf-link">⬇️ Télécharger</a>
+          <a href="fiche-carnet-stage.html" class="btn btn-accent">👁️ Voir / Imprimer / PDF</a>
         </div>
       </article>
     </div>
 
     <div class="disclaimer-box">
-      <strong>Conseil d'impression :</strong> Ouvrez le PDF souhaité puis utilisez <code>Ctrl + P</code> pour imprimer (possibilité d'imprimer 2 pages par feuille pour un format de poche en stage).
+      <strong>Astuce :</strong> Cliquez sur <strong>👁️ Voir / Imprimer / PDF</strong> pour ouvrir la fiche, puis appuyez sur <code>Ctrl + P</code> et choisissez <strong>Enregistrer au format PDF</strong> ou votre imprimante.
     </div>
   </div>
 </div>
@@ -332,25 +294,5 @@ footer {
     </div>
   </div>
 </footer>
-
-<script>
-function saveCustomPdf() {
-  const val = document.getElementById('custom-pdf-path').value.trim();
-  localStorage.setItem('ia_custom_pdf', val);
-  applyCustomPdf(val);
-}
-function applyCustomPdf(val) {
-  const openBtn = document.getElementById('custom-pdf-open');
-  if (val) {
-    openBtn.href = val;
-    document.querySelectorAll('a.pdf-link').forEach(a => { a.href = val; });
-  }
-}
-const saved = localStorage.getItem('ia_custom_pdf') || '';
-if (saved) {
-  document.getElementById('custom-pdf-path').value = saved;
-  applyCustomPdf(saved);
-}
-</script>
 </body>
 </html>
