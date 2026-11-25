@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Opérations & Actes Connus en Clinique (Déroulement & Soins) — InfirmAnat IA</title>
+  <meta name="description" content="Guide pratique des opérations et actes cliniques fréquents (appendicectomie, cholécystectomie, césarienne, PTH, endoscopie, ponctions) : préparation et surveillance infirmière." />
+  <style>
+
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --primary: #0f4c81;
+  --primary-light: #e6f0fa;
+  --accent: #0d9488;
+  --accent-light: #e6f7f5;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(15, 76, 129, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, #0f4c81 0%, #0d9488 100%);
+  color: #fff;
+  padding: 15px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+.brand-icon {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: bold;
+}
+.brand h1 { font-size: 1.25rem; font-weight: 700; }
+.brand p { font-size: 0.78rem; opacity: 0.9; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a, nav button {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+nav a:hover, nav button:hover, nav button.active, nav a.active {
+  background: #fff;
+  color: var(--primary);
+}
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 20px 50px;
+  flex: 1;
+}
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.sys-badge {
+  background: var(--primary-light); color: var(--primary);
+  font-weight: 700; font-size: 0.78rem; padding: 4px 11px; border-radius: 999px;
+  display: inline-block;
+}
+.done-badge {
+  background: #dcfce7; color: #15803d;
+  font-size: 0.75rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+}
+.btn {
+  background: var(--primary); color: #fff; border: none;
+  padding: 10px 18px; border-radius: 10px; font-weight: 600;
+  cursor: pointer; font-size: 0.9rem; text-decoration: none; display: inline-block;
+}
+.btn:hover { opacity: 0.93; }
+.btn-accent { background: var(--accent); }
+.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+.course-header {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; gap: 12px; border-bottom: 2px solid var(--border);
+  padding-bottom: 16px; margin-bottom: 22px;
+}
+.course-section {
+  margin-bottom: 20px; padding: 20px; border-radius: 12px;
+  background: #f8fafc; border: 1px solid var(--border);
+}
+.course-section h3, .course-section h4 { color: var(--primary); font-size: 1.08rem; margin-bottom: 9px; }
+.course-section p, .course-section li { color: #334155; font-size: 0.96rem; margin-bottom: 8px; }
+.norms-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.norm-box {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); padding: 12px; border-radius: 10px;
+}
+.norm-box strong { display: block; color: var(--primary); font-size: 0.85rem; }
+.norm-box span { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+.svg-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; margin-bottom: 22px; text-align: center;
+}
+.svg-card figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 8px; font-weight: 600; }
+.breadcrumb { font-size: 0.86rem; color: var(--muted); margin-bottom: 14px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.course-nav-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);
+}
+.disclaimer-box {
+  background: #fefce8;
+  border-left: 4px solid #eab308;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  color: #713f12;
+}
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 32px 20px;
+  margin-top: auto;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.footer-links a:hover { color: #ffffff; text-decoration: underline; }
+
+    .op-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
+    .op-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 14px;
+      padding: 22px; box-shadow: var(--shadow);
+    }
+    .op-card.hidden { display: none !important; }
+    .op-title { color: var(--primary); font-size: 1.15rem; font-weight: 800; margin-bottom: 4px; }
+    .op-sub { font-size: 0.84rem; color: var(--muted); font-style: italic; margin-bottom: 12px; }
+    .op-step { font-size: 0.9rem; color: #334155; margin-bottom: 8px; }
+    .op-alert {
+      background: #fef2f2; border-left: 3.5px solid #dc2626;
+      padding: 9px 12px; border-radius: 8px; font-size: 0.85rem; color: #7f1d1d; margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-icon">🩺</div>
+      <div>
+        <h1>InfirmAnat IA</h1>
+        <p>Anatomie-Physiologie & Soins Infirmiers (IFSI / ISPITS)</p>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">📚 20 Cours</a>
+      <a href="anatomie-3d.html">🦴 Corps 3D</a>
+      <a href="outils-medicaux.html">🩺 Outils Docteurs</a>
+      <a href="operations-cliniques.html" class="active">🏥 Opérations Clinique</a>
+      <a href="exercices.html">✍️ Exercices</a>
+      <a href="ressources-pdf.html">📄 Fiches PDF</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Accueil</a> › Opérations & Actes Connus en Clinique</div>
+
+  <div class="panel">
+    <div class="course-header">
+      <div>
+        <span class="sys-badge">Bloc Opératoire, Clinique & Gestes Diagnostiques</span>
+        <h2 style="color:var(--primary); margin-top:8px; font-size:1.5rem;">🏥 Les Opérations & Actes Connus en Clinique : Repères & Surveillance</h2>
+        <p style="color:var(--muted); font-size:0.94rem;">Préparation du patient, principe de l'intervention, surveillance post-opératoire et complications à dépister.</p>
+      </div>
+      <input type="text" id="op-search" placeholder="Filtrer une opération (appendicectomie, césarienne, hanche, ponction...)" oninput="filterOps()" style="padding:10px 14px; border:1px solid var(--border); border-radius:10px; min-width:270px; font-size:0.9rem;" />
+    </div>
+
+    <div id="ops-list" class="op-grid"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>InfirmAnat IA</strong> — Ressource Éducative Libre en Sciences Infirmières.<br/>
+      <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Accueil & 20 Cours</a>
+      <a href="anatomie-3d.html">Atlas 3D & Planche</a>
+      <a href="outils-medicaux.html">Outils Docteurs</a>
+      <a href="operations-cliniques.html">Opérations en Clinique</a>
+      <a href="exercices.html">Exercices & QCM</a>
+      <a href="ressources-pdf.html">Fiches PDF Imprimables</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const OPS_DATA = [
+  {
+    name: "Appendicectomie (Cœlioscopie ou Laparotomie)",
+    sub: "Chirurgie digestive • Fosse iliaque droite",
+    principe: "Ablation de l'appendice vermiculaire enflammé ou abcédé, le plus souvent sous cœlioscopie.",
+    pre: "À jeun selon consigne, douche antiseptique, voie veineuse périphérique (VVP), bilan pré-opératoire et antibioprophylaxie si indiquée.",
+    post: "Surveillance constantes (PA, FC, T°), douleur, pansements des trocarts, reprise des gaz/transit et mobilisation précoce.",
+    risque: "Hémorragie post-opératoire, péritonite ou abcès profond (surveiller fièvre, défense abdominale et tachycardie)."
+  },
+  {
+    name: "Cholécystectomie par cœlioscopie",
+    sub: "Chirurgie hépato-biliaire • Hypochondre droit",
+    principe: "Exérèse de la vésicule biliaire (lithiase biliaire symptomatique, cholécystite) via 3 à 4 mini-incisions.",
+    pre: "Préparation cutanée, vérification du bilan hépatique et de la coagulation, jeûne pré-opératoire.",
+    post: "Surveillance des constantes, douleurs scapulaires droites liées au pneumopéritoine (CO2), absence d'ictère et reprise alimentaire progressive.",
+    risque: "Plaie des voies biliaires, fuite biliaire ou hémorragie."
+  },
+  {
+    name: "Césarienne (Programmée ou en Urgence)",
+    sub: "Obstétrique • Naissance par voie abdominale",
+    principe: "Extraction du nouveau-né par incision abdominale et utérine sous rachianesthésie ou anesthésie générale.",
+    pre: "Pose d'une VVP de bon calibre, sondage vésical à demeure, préparation cutanée abdominale et vérification du groupe/RAI.",
+    post: "Surveillance étroite des 2 premières heures : globe utérin de sécurité, saignements vaginaux (< 500 mL), PA/FC, pansement et score d'Apgar du nouveau-né.",
+    risque: "Hémorragie de la délivrance, pré-éclampsie/éclampsie ou maladie thromboembolique."
+  },
+  {
+    name: "Prothèse Totale de Hanche (PTH)",
+    sub: "Chirurgie orthopédique • Articulation coxo-fémorale",
+    principe: "Remplacement de la tête fémorale et de la cavité cotyloïdienne par une prothèse articulaire.",
+    pre: "Prévention thromboembolique (bas de contention, HBPM selon prescription), bilan infectieux et repérage du côté à opérer.",
+    post: "Surveillance des pouls distaux, chaleur/couleur/motricité du membre, respect des postures de sécurité (éviter flexion > 90°, adduction et rotation interne selon voie d'abord) et antalgiques.",
+    risque: "Luxation de prothèse, thrombose veineuse profonde (phlébite) / embolie pulmonaire ou infection sur matériel."
+  },
+  {
+    name: "Coronarographie & Angioplastie coronaire (Stent)",
+    sub: "Cardiologie interventionnelle • Artère radiale ou fémorale",
+    principe: "Cathétérisme des artères coronaires par voie radiale ou fémorale avec pose éventuelle d'un stent pour lever une sténose.",
+    pre: "Vérification de la fonction rénale (créatininémie), allergies à l'iode, rasage/préparation du point de ponction et traitement antiagrégant.",
+    post: "Surveillance stricte du point de ponction (absence de saignement ou d'hématome), pouls radial/pédieux, PA, FC, ECG et diurèse.",
+    risque: "Hématome ou faux anévrisme au point de ponction, ischémie du membre ou trouble du rythme."
+  },
+  {
+    name: "Cure de Hernie Inguinale ou Ombilicale",
+    sub: "Chirurgie pariétale • Paroi abdominale",
+    principe: "Réintégration du sac herniaire et renforcement de la paroi abdominale (souvent par pose d'une plaque prothétique).",
+    pre: "Préparation cutanée, vidange vésicale avant le départ au bloc et évaluation de la douleur.",
+    post: "Surveillance du pansement, miction spontanée (dépister une rétention aiguë d'urine), antalgie et prévention des efforts de poussée.",
+    risque: "Hématome scrotal/pariétal, rétention urinaire ou récidive."
+  },
+  {
+    name: "Thyroïdectomie (Partielle ou Totale)",
+    sub: "Chirurgie endocrinienne • Région cervicale antérieure",
+    principe: "Ablation d'un lobe ou de la totalité de la glande thyroïde.",
+    pre: "Bilan thyroïdien/calcique, information sur la voix et préparation cutanée cervicale.",
+    post: "Surveillance attentive de la voix (nerf récurrent), absence de dyspnée ou d'hématome cervical compressif et signes d'hypocalcémie (fourmillements péribuccaux/extrémités).",
+    risque: "Hématome suffocant cervical (urgence vitale) ou hypocalcémie aiguë."
+  },
+  {
+    name: "Ponction Lombaire (PL) & Ponction Pleurale",
+    sub: "Actes diagnostiques et/ou évacuateurs • L4–L5 / Cavité pleurale",
+    principe: "Prélèvement de LCR entre L4 et L5 (ligne de Tuffier) ou évacuation/analyse de liquide pleural au bord supérieur de la côte inférieure.",
+    pre: "Vérification de l'hémostase (TP/TCA/plaquettes), asepsie rigoureuse et installation adaptée (position assise dos rond ou décubitus latéral en chien de fusil pour la PL).",
+    post: "Après PL : surveillance neurologique, céphalées, hydratation ; après ponction pleurale : FR, SpO2, douleur thoracique et contrôle radiologique.",
+    risque: "Syndrome post-PL, pneumothorax ou hémothorax après ponction pleurale."
+  }
+];
+
+function filterOps() {
+  const q = document.getElementById("op-search").value.toLowerCase().trim();
+  document.querySelectorAll(".op-card").forEach(el => {
+    el.classList.toggle("hidden", Boolean(q) && !el.dataset.search.includes(q));
+  });
+}
+function renderOps() {
+  const box = document.getElementById("ops-list");
+  box.innerHTML = "";
+  OPS_DATA.forEach(o => {
+    const card = document.createElement("article");
+    card.className = "op-card";
+    card.dataset.search = `${o.name} ${o.sub} ${o.principe} ${o.pre} ${o.post} ${o.risque}`.toLowerCase();
+    card.innerHTML = `
+      <div class="op-title">${o.name}</div>
+      <div class="op-sub">${o.sub}</div>
+      <p class="op-step"><strong>Principe :</strong> ${o.principe}</p>
+      <p class="op-step"><strong>Préparation pré-opératoire :</strong> ${o.pre}</p>
+      <p class="op-step"><strong>Surveillance infirmière :</strong> ${o.post}</p>
+      <div class="op-alert"><strong>⚠️ Risques & Complications :</strong> ${o.risque}</div>
+    `;
+    box.appendChild(card);
+  });
+}
+renderOps();
+</script>
+</body>
+</html>

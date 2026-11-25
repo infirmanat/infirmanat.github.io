@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outils & Instruments Médicaux des Docteurs (Noms & Usages) — InfirmAnat IA</title>
+  <meta name="description" content="Catalogue illustré des outils et instruments médicaux utilisés par les médecins et soignants : noms, schémas, rôle clinique et surveillance infirmière." />
+  <style>
+
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --primary: #0f4c81;
+  --primary-light: #e6f0fa;
+  --accent: #0d9488;
+  --accent-light: #e6f7f5;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(15, 76, 129, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, #0f4c81 0%, #0d9488 100%);
+  color: #fff;
+  padding: 15px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+.brand-icon {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: bold;
+}
+.brand h1 { font-size: 1.25rem; font-weight: 700; }
+.brand p { font-size: 0.78rem; opacity: 0.9; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a, nav button {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+nav a:hover, nav button:hover, nav button.active, nav a.active {
+  background: #fff;
+  color: var(--primary);
+}
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 20px 50px;
+  flex: 1;
+}
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.sys-badge {
+  background: var(--primary-light); color: var(--primary);
+  font-weight: 700; font-size: 0.78rem; padding: 4px 11px; border-radius: 999px;
+  display: inline-block;
+}
+.done-badge {
+  background: #dcfce7; color: #15803d;
+  font-size: 0.75rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+}
+.btn {
+  background: var(--primary); color: #fff; border: none;
+  padding: 10px 18px; border-radius: 10px; font-weight: 600;
+  cursor: pointer; font-size: 0.9rem; text-decoration: none; display: inline-block;
+}
+.btn:hover { opacity: 0.93; }
+.btn-accent { background: var(--accent); }
+.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+.course-header {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; gap: 12px; border-bottom: 2px solid var(--border);
+  padding-bottom: 16px; margin-bottom: 22px;
+}
+.course-section {
+  margin-bottom: 20px; padding: 20px; border-radius: 12px;
+  background: #f8fafc; border: 1px solid var(--border);
+}
+.course-section h3, .course-section h4 { color: var(--primary); font-size: 1.08rem; margin-bottom: 9px; }
+.course-section p, .course-section li { color: #334155; font-size: 0.96rem; margin-bottom: 8px; }
+.norms-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.norm-box {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); padding: 12px; border-radius: 10px;
+}
+.norm-box strong { display: block; color: var(--primary); font-size: 0.85rem; }
+.norm-box span { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+.svg-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; margin-bottom: 22px; text-align: center;
+}
+.svg-card figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 8px; font-weight: 600; }
+.breadcrumb { font-size: 0.86rem; color: var(--muted); margin-bottom: 14px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.course-nav-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);
+}
+.disclaimer-box {
+  background: #fefce8;
+  border-left: 4px solid #eab308;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  color: #713f12;
+}
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 32px 20px;
+  margin-top: auto;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.footer-links a:hover { color: #ffffff; text-decoration: underline; }
+
+    .filter-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .fbtn {
+      background: #fff; border: 1px solid var(--border); color: var(--text);
+      padding: 8px 15px; border-radius: 999px; font-weight: 700; font-size: 0.85rem; cursor: pointer;
+    }
+    .fbtn.active, .fbtn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .tools-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px;
+    }
+    .tool-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 14px;
+      padding: 20px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px;
+    }
+    .tool-card.hidden { display: none !important; }
+    .tool-visual {
+      background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px;
+      padding: 10px; text-align: center;
+    }
+    .tool-name { color: var(--primary); font-size: 1.15rem; font-weight: 800; }
+    .tool-sub { color: var(--muted); font-style: italic; font-size: 0.85rem; }
+    .tool-meta { font-size: 0.9rem; color: #334155; }
+    .tool-ide {
+      background: #f0fdfa; border-left: 3.5px solid var(--accent);
+      padding: 9px 12px; border-radius: 8px; font-size: 0.86rem; color: #134e4a;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-icon">🩺</div>
+      <div>
+        <h1>InfirmAnat IA</h1>
+        <p>Anatomie-Physiologie & Soins Infirmiers (IFSI / ISPITS)</p>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">📚 20 Cours</a>
+      <a href="anatomie-3d.html">🦴 Corps 3D</a>
+      <a href="outils-medicaux.html" class="active">🩺 Outils Docteurs</a>
+      <a href="operations-cliniques.html">🏥 Opérations Clinique</a>
+      <a href="exercices.html">✍️ Exercices</a>
+      <a href="ressources-pdf.html">📄 Fiches PDF</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Accueil</a> › Outils & Instruments Médicaux des Docteurs</div>
+
+  <div class="panel">
+    <div class="course-header">
+      <div>
+        <span class="sys-badge">Sémiologie, Diagnostic & Bloc Opératoire</span>
+        <h2 style="color:var(--primary); margin-top:8px; font-size:1.5rem;">🩺 Les Outils Médicaux Utilisés par les Docteurs : Noms & Usages</h2>
+        <p style="color:var(--muted); font-size:0.94rem;">Identifiez chaque outil médical par son nom, son schéma, son rôle diagnostique ou chirurgical et la préparation / surveillance soignante.</p>
+      </div>
+      <input type="text" id="tool-search" placeholder="Rechercher un outil (stéthoscope, otoscope, bistouri, ECG...)" oninput="filterTools()" style="padding:10px 14px; border:1px solid var(--border); border-radius:10px; min-width:260px; font-size:0.9rem;" />
+    </div>
+
+    <div class="filter-row">
+      <button class="fbtn active" onclick="setToolCat('all', this)">Tous les outils (14)</button>
+      <button class="fbtn" onclick="setToolCat('diagnostic', this)">Auscultation & Examen Clinique (6)</button>
+      <button class="fbtn" onclick="setToolCat('imagerie', this)">Imagerie & Exploration (4)</button>
+      <button class="fbtn" onclick="setToolCat('chirurgie', this)">Chirurgie & Urgences (4)</button>
+    </div>
+
+    <div id="tools-list" class="tools-grid"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>InfirmAnat IA</strong> — Ressource Éducative Libre en Sciences Infirmières.<br/>
+      <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Accueil & 20 Cours</a>
+      <a href="anatomie-3d.html">Atlas 3D & Planche</a>
+      <a href="outils-medicaux.html">Outils Docteurs</a>
+      <a href="operations-cliniques.html">Opérations en Clinique</a>
+      <a href="exercices.html">Exercices & QCM</a>
+      <a href="ressources-pdf.html">Fiches PDF Imprimables</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const TOOLS_DATA = [
+  {
+    cat: "diagnostic",
+    name: "Stéthoscope acoustique ou électronique",
+    sub: "Auscultation cardio-pulmonaire & abdominale",
+    svg: `<svg width="160" height="64" viewBox="0 0 160 64"><path d="M25 14 C25 36 55 36 55 14" fill="none" stroke="#0f4c81" stroke-width="3"/><circle cx="25" cy="12" r="3" fill="#334155"/><circle cx="55" cy="12" r="3" fill="#334155"/><path d="M40 31 C40 54 115 54 115 36" fill="none" stroke="#0d9488" stroke-width="3"/><circle cx="115" cy="30" r="9" fill="#cbd5e1" stroke="#0f4c81" stroke-width="2.5"/><circle cx="115" cy="30" r="4" fill="#0d9488"/></svg>`,
+    usage: "Écoute des bruits du cœur (foyers aortique, pulmonaire, tricuspide, mitral), des murmures vésiculaires pulmonaires, des souffles vasculaires et des bruits hydro-aériques abdominaux.",
+    ide: "Désinfecter les embouts auriculaires et le diaphragme à la lingette/SHA entre chaque patient ; réchauffer le pavillon avant de le poser sur le thorax."
+  },
+  {
+    cat: "diagnostic",
+    name: "Sphygmomanomètre / Tensiomètre (brassard + manomètre)",
+    sub: "Mesure de la pression artérielle (PAS / PAD)",
+    svg: `<svg width="160" height="64" viewBox="0 0 160 64"><rect x="18" y="18" width="68" height="28" rx="6" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/><circle cx="122" cy="32" r="18" fill="#ffffff" stroke="#0f4c81" stroke-width="2.5"/><line x1="122" y1="32" x2="133" y2="23" stroke="#dc2626" stroke-width="2.2"/><path d="M86 32 L104 32" stroke="#334155" stroke-width="2.5"/></svg>`,
+    usage: "Mesure non invasive de la pression artérielle systolique et diastolique (en mmHg) au bras, à l'avant-bras ou à la cuisse.",
+    ide: "Choisir un brassard adapté à la circonférence du bras (un brassard trop petit surestime la PA) ; mesurer au repos après 5 min."
+  },
+  {
+    cat: "diagnostic",
+    name: "Otoscope médical",
+    sub: "Examen du conduit auditif externe & du tympan",
+    svg: `<svg width="160" height="64" viewBox="0 0 160 64"><rect x="68" y="24" width="16" height="32" rx="4" fill="#0f4c81"/><circle cx="76" cy="18" r="10" fill="#e2e8f0" stroke="#0f4c81" stroke-width="2"/><polygon points="86,16 112,12 112,24 86,22" fill="#94a3b8"/></svg>`,
+    usage: "Inspection visuelle du conduit auditif externe (bouchon de cérumen, inflammation) et de la membrane tympanique (otite moyenne aiguë, perforation).",
+    ide: "Utiliser un cône (spéculum auriculaire) à usage unique propre à chaque oreille ; tracter le pavillon en haut et en arrière chez l'adulte."
+  },
+  {
+    cat: "diagnostic",
+    name: "Ophtalmoscope direct",
+    sub: "Examen du fond d'œil & des milieux oculaires",
+    svg: `<svg width="160" height="64" viewBox="0 0 160 64"><rect x="72" y="25" width="16" height="32" rx="4" fill="#0d9488"/><circle cx="80" cy="17" r="11" fill="#f8fafc" stroke="#0f4c81" stroke-width="2.5"/><circle cx="80" cy="17" r="4.5" fill="#0284c7"/></svg>`,
+    usage: "Observation de la rétine, de la papille optique et des vaisseaux rétiniens (rétinopathie diabétique ou hypertensive, œdème papillaire).",
+    ide: "Préparer la pièce en semi-obscurité et vérifier la prescription d'un éventuel collyre mydriatique."
+  },
+  {
+    cat: "diagnostic",
+    name: "Marteau à réflexes (Buck / Babinski / Troemner)",
+    sub: "Exploration des réflexes ostéo-tendineux (ROT)",
+    svg: `<svg width="160" height="64" viewBox="0 0 160 64"><line x1="80" y1="16" x2="80" y2="56" stroke="#475569" stroke-width="3.5" stroke-linecap="round"/><ellipse cx="80" cy="16" rx="18" ry="6" fill="#dc2626" stroke="#7f1d1d" stroke-width="1.5"/></svg>`,
+    usage: "Percussion douce des tendons (rotulien, achilléen, bicipital, tricipital) pour tester les réflexes ostéo-tendineux et le système nerveux périphérique.",
+    ide: "Installer le patient détendu (jambes pendantes ou fléchies) et comparer systématiquement la réponse droite et gauche."
+  },
+  {
+    cat: "diagnostic",
+    name: "Oxymètre de pouls (SpO2) & Thermomètre médical",
+    sub: "Saturation pulsée en oxygène & température corporelle",
+    svg: `<svg width="160" height="64" viewBox="0 0 160 64"><rect x="20" y="14" width="54" height="36" rx="8" fill="#0f172a"/><text x="47" y="36" text-anchor="middle" fill="#2dd4bf" font-size="11" font-weight="bold">98% SpO2</text><rect x="92" y="24" width="52" height="14" rx="7" fill="#ffffff" stroke="#0f4c81" stroke-width="2"/><rect x="96" y="28" width="26" height="6" rx="3" fill="#dc2626"/></svg>`,
+    usage: "Surveillance continue de l'oxygénation périphérique (SpO2) et de la fréquence du pouls, ainsi que de la température corporelle (36,5–37,5 °C).",
+    ide: "Retirer le vernis à ongles ou faux ongles si la lecture SpO2 est faussée ; éviter un doigt refroidi ou porteur d'une VVP."
+  },
+  {
+    cat: "imagerie",
+    name: "Électrocardiographe (ECG 12 dérivations)",
+    sub: "Enregistrement de l'activité électrique du cœur",
+    svg: `<svg width="160" height="64" viewBox="0 0 160 64"><rect x="16" y="10" width="128" height="44" rx="6" fill="#ffffff" stroke="#0f4c81" stroke-width="2"/><polyline points="22,34 45,34 52,20 60,46 68,14 76,42 84,34 138,34" fill="none" stroke="#dc2626" stroke-width="2.2"/></svg>`,
+    usage: "Dépistage des troubles du rythme, troubles de la conduction et ischémie/infarctus du myocarde (SCA ST+ / ST-).",
+    ide: "Positionner les 6 électrodes précordiales (V1–V6) aux bons repères intercostaux et les 4 électrodes périphériques."
+  },
+  {
+    cat: "imagerie",
+    name: "Échographe portable (POCUS / Doppler)",
+    sub: "Visualisation ultrasonore en temps réel",
+    svg: `<svg width="160" height="64" viewBox="0 0 160 64"><rect x="22" y="12" width="66" height="40" rx="5" fill="#1e293b"/><path d="M30 38 Q45 18 60 36 T80 28" fill="none" stroke="#38bdf8" stroke-width="2"/><path d="M108 48 L124 22 L134 26 L118 52 Z" fill="#0d9488"/></svg>`,
+    usage: "Guidage de ponction vasculaire/pleurale, échographie abdominale, cardiaque ciblée ou mesure du résidu vésical (bladder scan).",
+    ide: "Appliquer du gel d'échographie (ou gel stérile si geste invasif) et nettoyer la sonde selon le protocole."
+  },
+  {
+    cat: "imagerie",
+    name: "Endoscope / Fibroscope & Coloscope",
+    sub: "Exploration visuelle des muqueuses digestives ou bronchiques",
+    svg: `<svg width="160" height="64" viewBox="0 0 160 64"><rect x="20" y="18" width="28" height="28" rx="6" fill="#0f4c81"/><path d="M48 32 C85 32 95 16 125 22 C136 24 142 32 142 38" fill="none" stroke="#475569" stroke-width="5" stroke-linecap="round"/><circle cx="143" cy="39" r="3" fill="#38bdf8"/></svg>`,
+    usage: "Visualisation directe de l'œsophage, de l'estomac, du duodénum ou du côlon avec possibilité de biopsie ou d'hémostase.",
+    ide: "Vérifier le jeûne strict (ou la préparation colique), le consentement et la surveillance du réveil après sédation/anesthésie."
+  },
+  {
+    cat: "imagerie",
+    name: "Glucomètre / Lecteur de glycémie capillaire",
+    sub: "Mesure rapide de la glycémie au lit du patient",
+    svg: `<svg width="160" height="64" viewBox="0 0 160 64"><rect x="35" y="14" width="66" height="36" rx="8" fill="#ffffff" stroke="#0f4c81" stroke-width="2"/><rect x="101" y="25" width="24" height="12" rx="2" fill="#fbbf24"/><text x="68" y="37" text-anchor="middle" fill="#0f4c81" font-size="11" font-weight="bold">0,95 g/L</text></svg>`,
+    usage: "Contrôle glycémique capillaire pour adapter l'insulinothérapie et dépister rapidement une hypoglycémie (< 0,70 g/L) ou hyperglycémie.",
+    ide: "Piquer sur le bord latéral de la pulpe du doigt (jamais au centre très innervé) et éliminer la lancette en boîte OPCT."
+  },
+  {
+    cat: "chirurgie",
+    name: "Bistouri chirurgical (lame froide ou bistouri électrique)",
+    sub: "Incision tissulaire & coagulation chirurgicale",
+    svg: `<svg width="160" height="64" viewBox="0 0 160 64"><rect x="22" y="27" width="68" height="10" rx="4" fill="#334155"/><polygon points="90,27 136,35 90,37" fill="#cbd5e1" stroke="#475569" stroke-width="1.2"/></svg>`,
+    usage: "Incision précise des plans cutanés et tissulaires (bistouri froid) ou section avec hémostase par courant haute fréquence (bistouri électrique).",
+    ide: "Vérifier le bon collage de la plaque neutre (électrode dispersive) du bistouri électrique pour éviter toute brûlure cutanée."
+  },
+  {
+    cat: "chirurgie",
+    name: "Porte-aiguille de Mayo-Hegar & Pince de Kocher",
+    sub: "Suture chirurgicale & hémostase / préhension tissulaire",
+    svg: `<svg width="160" height="64" viewBox="0 0 160 64"><line x1="25" y1="18" x2="135" y2="46" stroke="#64748b" stroke-width="3.5" stroke-linecap="round"/><line x1="25" y1="46" x2="135" y2="18" stroke="#64748b" stroke-width="3.5" stroke-linecap="round"/><circle cx="80" cy="32" r="3" fill="#0f4c81"/></svg>`,
+    usage: "Maintien ferme de l'aiguille courbe de suture (porte-aiguille) et clampage ou préhension de tissus/vaisseaux (pince de Kocher).",
+    ide: "Compter rigoureusement les compresses et instruments avant et après fermeture opératoire."
+  },
+  {
+    cat: "chirurgie",
+    name: "Laryngoscope & Ballon auto-remplisseur (BAVU / Ambu)",
+    sub: "Contrôle des voies aériennes & ventilation manuelle",
+    svg: `<svg width="160" height="64" viewBox="0 0 160 64"><rect x="24" y="20" width="14" height="30" rx="3" fill="#475569"/><path d="M38 46 L72 46 Q82 46 84 36" fill="none" stroke="#94a3b8" stroke-width="4"/><ellipse cx="122" cy="34" rx="22" ry="14" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/></svg>`,
+    usage: "Visualisation de la glotte lors d'une intubation trachéale (laryngoscope) et ventilation manuelle au masque ou sur sonde d'intubation (BAVU).",
+    ide: "Vérifier la disponibilité du matériel d'aspiration bronchique et de l'oxygène à fort débit avant tout geste."
+  },
+  {
+    cat: "chirurgie",
+    name: "Défibrillateur automatisé externe (DAE) / Moniteur-Défibrillateur",
+    sub: "Analyse du rythme cardiaque & choc électrique externe (CEE)",
+    svg: `<svg width="160" height="64" viewBox="0 0 160 64"><rect x="35" y="12" width="90" height="40" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="80" y="30" text-anchor="middle" fill="#92400e" font-size="11" font-weight="bold">DAE / CHOC</text><polyline points="48,40 65,40 72,26 80,46 88,36 112,36" fill="none" stroke="#dc2626" stroke-width="2"/></svg>`,
+    usage: "Détection des rythmes choquables (fibrillation ventriculaire, tachycardie ventriculaire sans pouls) et délivrance d'un choc électrique externe.",
+    ide: "S'assurer qu'aucun soignant ne touche le patient ou le lit lors de la délivrance du choc et reprendre immédiatement la RCP."
+  }
+];
+
+let currentToolCat = "all";
+function setToolCat(cat, btn) {
+  currentToolCat = cat;
+  document.querySelectorAll(".fbtn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  filterTools();
+}
+function filterTools() {
+  const q = document.getElementById("tool-search").value.toLowerCase().trim();
+  document.querySelectorAll(".tool-card").forEach(el => {
+    const matchC = currentToolCat === "all" || el.dataset.cat === currentToolCat;
+    const matchQ = !q || el.dataset.search.includes(q);
+    el.classList.toggle("hidden", !(matchC && matchQ));
+  });
+}
+function renderTools() {
+  const box = document.getElementById("tools-list");
+  box.innerHTML = "";
+  TOOLS_DATA.forEach(t => {
+    const card = document.createElement("article");
+    card.className = "tool-card";
+    card.dataset.cat = t.cat;
+    card.dataset.search = `${t.name} ${t.sub} ${t.usage} ${t.ide}`.toLowerCase();
+    card.innerHTML = `
+      <div class="tool-visual">${t.svg}</div>
+      <div class="tool-name">${t.name}</div>
+      <div class="tool-sub">${t.sub}</div>
+      <p class="tool-meta"><strong>Utilisation médicale :</strong> ${t.usage}</p>
+      <div class="tool-ide"><strong>🩺 Repère infirmier :</strong> ${t.ide}</div>
+    `;
+    box.appendChild(card);
+  });
+}
+renderTools();
+</script>
+</body>
+</html>
