@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Atlas Anatomique Complet : Planche Médicale & Corps 3D (Muscles, Organes, Os) — InfirmAnat IA</title>
   <meta name="description" content="Planche anatomique médicale interactive style Human Muscular System (Vue antérieure, latérale, postérieure, profonde, fonctions) + Corps 3D rotatif pour Muscles, Organes et Os." />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+  <script src="models/anatomy/manifest.js"></script>
   <style>
 
 :root {
@@ -403,6 +404,34 @@ footer {
       cursor: pointer;
     }
     .chip:hover, .chip.sel { background: var(--primary); color: #fff; border-color: var(--primary); }
+    /* ===== Corps 3D réaliste ===== */
+    .canvas-box { height: 600px; background: radial-gradient(ellipse at 50% 35%, #1d2b44 0%, #0b1220 62%, #05080f 100%); border: 1px solid #1e293b; }
+    .canvas-box:fullscreen { height: 100vh; border-radius: 0; }
+    @media (max-width: 720px) { .canvas-box { height: 480px; } }
+    .a3d-ui { position: absolute; inset: 0; pointer-events: none; font-family: inherit; }
+    .a3d-ui button { pointer-events: auto; }
+    .a3d-loader { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: #cbd5e1; background: rgba(5,8,15,0.55); backdrop-filter: blur(2px); }
+    .a3d-spin { width: 46px; height: 46px; border-radius: 50%; border: 3px solid rgba(56,189,248,0.2); border-top-color: #38bdf8; animation: a3dspin 0.9s linear infinite; }
+    @keyframes a3dspin { to { transform: rotate(360deg); } }
+    .a3d-ltxt { font-size: 0.9rem; font-weight: 600; letter-spacing: 0.02em; }
+    .a3d-bar { width: 160px; height: 3px; background: rgba(148,163,184,0.25); border-radius: 3px; overflow: hidden; }
+    .a3d-bar i { display: block; height: 100%; width: 40%; background: linear-gradient(90deg, #0ea5e9, #22d3ee); animation: a3dbar 1.2s ease-in-out infinite; }
+    @keyframes a3dbar { 0% { transform: translateX(-100%); } 100% { transform: translateX(260%); } }
+    .a3d-tip { position: absolute; left: 0; top: 0; opacity: 0; transition: opacity .15s; background: rgba(15,23,42,0.92); color: #f1f5f9; border: 1px solid rgba(56,189,248,0.45); padding: 6px 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
+    .a3d-tip small { display: block; color: #94a3b8; font-weight: 500; font-style: italic; }
+    .a3d-label { position: absolute; left: 0; top: 0; opacity: 0; transition: opacity .3s; display: flex; align-items: center; gap: 0; }
+    .a3d-dot { width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: #22d3ee; box-shadow: 0 0 0 0 rgba(34,211,238,0.7); animation: a3dping 1.6s ease-out infinite; }
+    @keyframes a3dping { 0% { box-shadow: 0 0 0 0 rgba(34,211,238,0.7); } 100% { box-shadow: 0 0 0 16px rgba(34,211,238,0); } }
+    .a3d-ltext { margin: -6px 0 0 10px; padding: 4px 10px 4px 12px; color: #e0f2fe; font-size: 0.82rem; font-weight: 700; background: linear-gradient(90deg, rgba(8,47,73,0.9), rgba(8,47,73,0.55)); border-left: 2px solid #22d3ee; border-radius: 0 6px 6px 0; white-space: nowrap; }
+    .a3d-ltext:empty { display: none; }
+    .a3d-hud { position: absolute; left: 14px; top: 12px; display: none; color: #e2e8f0; font-size: 0.8rem; background: rgba(15,23,42,0.7); border: 1px solid rgba(148,163,184,0.25); padding: 5px 10px; border-radius: 999px; }
+    .a3d-heart { display: inline-block; color: #f43f5e; transform-origin: center; }
+    .a3d-tools { position: absolute; right: 12px; top: 12px; display: flex; flex-direction: column; gap: 6px; }
+    .a3d-tools button { background: rgba(15,23,42,0.72); color: #e2e8f0; border: 1px solid rgba(148,163,184,0.3); padding: 6px 10px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; cursor: pointer; text-align: left; transition: all .2s; }
+    .a3d-tools button:hover { border-color: #38bdf8; }
+    .a3d-tools button.on { background: rgba(14,165,233,0.25); border-color: #38bdf8; color: #fff; }
+    .a3d-credit { position: absolute; right: 12px; bottom: 8px; font-size: 0.68rem; color: rgba(148,163,184,0.75); }
+    #three-container canvas { display: block; touch-action: none; }
   </style>
 </head>
 <body>
@@ -494,7 +523,7 @@ footer {
       <!-- ROTATABLE 3D VIEWPORT BELOW POSTER -->
       <div style="margin-top:14px; border-top:2px solid #0f172a; padding-top:12px;">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
-          <strong style="color:var(--primary); font-size:0.95rem;">🌐 Modèle 3D Rotatif (360°) — Cliquez sur une zone</strong>
+          <strong style="color:var(--primary); font-size:0.95rem;">🌐 Corps 3D réaliste — glissez pour tourner, molette pour zoomer, cliquez une structure</strong>
           <div style="display:flex; gap:6px;">
             <button class="chip" onclick="rot3D(0)">Face</button>
             <button class="chip" onclick="rot3D(Math.PI/2)">Profil</button>
@@ -885,7 +914,9 @@ function switchDimension(dim) {
   const firstKey = Object.keys(ATLAS_ITEMS).find(k => ATLAS_ITEMS[k].dim === dim);
   refreshDeepViews();
   renderKeyList();
+  window.__a3dNoFly = true;
   selectItem(firstKey);
+  window.__a3dNoFly = false;
   sync3DVisibility();
 }
 
@@ -894,7 +925,7 @@ function selectItem(key) {
   if (!item) return;
   if (item.dim !== currentDim) {
     switchDimension(item.dim);
-    return;
+    if (key === selectedKey) return;
   }
   selectedKey = key;
 
@@ -948,128 +979,529 @@ function startQuiz() {
   document.getElementById("quiz-res").style.color = "#1e40af";
 }
 
-// === THREE.JS 3D VIEWPORT ===
-const c3d = document.getElementById("three-container");
-const scene = new THREE.Scene();
-const cam3d = new THREE.PerspectiveCamera(40, c3d.clientWidth / c3d.clientHeight, 0.1, 100);
-cam3d.position.set(0, 0.15, 4.1);
-const ren3d = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-ren3d.setSize(c3d.clientWidth, c3d.clientHeight);
-ren3d.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-c3d.appendChild(ren3d.domElement);
-
-scene.add(new THREE.HemisphereLight(0xffffff, 0xcbd5e1, 1.1));
-const dl3d = new THREE.DirectionalLight(0xffffff, 0.9);
-dl3d.position.set(3, 4, 4);
-scene.add(dl3d);
-
-const grp3d = new THREE.Group();
-scene.add(grp3d);
-const meshes3d = [];
-
-function add3DMesh(geo, key, dim, col, pos, scale) {
-  const mat = new THREE.MeshStandardMaterial({
-    color: col, roughness: 0.4, metalness: 0.05, transparent: true, opacity: 0.95
-  });
-  const m = new THREE.Mesh(geo, mat);
-  m.position.set(pos[0], pos[1], pos[2]);
-  if (scale) m.scale.set(scale[0], scale[1], scale[2]);
-  m.userData = { key, dim, col, baseScale: m.scale.clone() };
-  grp3d.add(m);
-  meshes3d.push(m);
-}
-
-// 3D Muscles
-add3DMesh(new THREE.SphereGeometry(0.21, 20, 20), "frontalis", "muscles", 0xc24132, [0, 1.46, 0], [0.9, 1.08, 1.0]);
-add3DMesh(new THREE.CylinderGeometry(0.03, 0.035, 0.2, 12), "sternocleidomastoid", "muscles", 0xb83b2a, [-0.08, 1.15, 0.05], [1,1,1]);
-add3DMesh(new THREE.CylinderGeometry(0.03, 0.035, 0.2, 12), "sternocleidomastoid", "muscles", 0xb83b2a, [0.08, 1.15, 0.05], [1,1,1]);
-add3DMesh(new THREE.SphereGeometry(0.10, 16, 16), "deltoid", "muscles", 0xc24132, [-0.38, 0.98, 0], [1, 1.2, 1]);
-add3DMesh(new THREE.SphereGeometry(0.10, 16, 16), "deltoid", "muscles", 0xc24132, [0.38, 0.98, 0], [1, 1.2, 1]);
-add3DMesh(new THREE.BoxGeometry(0.20, 0.16, 0.08), "pectoralis_major", "muscles", 0xb83b2a, [-0.12, 0.90, 0.14], [1,1,1]);
-add3DMesh(new THREE.BoxGeometry(0.20, 0.16, 0.08), "pectoralis_major", "muscles", 0xb83b2a, [0.12, 0.90, 0.14], [1,1,1]);
-add3DMesh(new THREE.CylinderGeometry(0.055, 0.048, 0.34, 14), "biceps_brachii", "muscles", 0xc24132, [-0.41, 0.72, 0.03], [1,1,1]);
-add3DMesh(new THREE.CylinderGeometry(0.055, 0.048, 0.34, 14), "biceps_brachii", "muscles", 0xc24132, [0.41, 0.72, 0.03], [1,1,1]);
-add3DMesh(new THREE.BoxGeometry(0.24, 0.36, 0.08), "rectus_abdominis", "muscles", 0xb83b2a, [0, 0.56, 0.13], [1,1,1]);
-add3DMesh(new THREE.BoxGeometry(0.40, 0.42, 0.08), "latissimus_dorsi", "muscles", 0xa83224, [0, 0.78, -0.13], [1,1,1]);
-add3DMesh(new THREE.SphereGeometry(0.13, 16, 16), "gluteus_maximus", "muscles", 0xc24132, [-0.14, 0.22, -0.10], [1, 1.1, 0.85]);
-add3DMesh(new THREE.SphereGeometry(0.13, 16, 16), "gluteus_maximus", "muscles", 0xc24132, [0.14, 0.22, -0.10], [1, 1.1, 0.85]);
-add3DMesh(new THREE.CylinderGeometry(0.09, 0.07, 0.56, 14), "vastus_lateralis", "muscles", 0xb83b2a, [-0.17, -0.22, 0.03], [1,1,1]);
-add3DMesh(new THREE.CylinderGeometry(0.09, 0.07, 0.56, 14), "vastus_lateralis", "muscles", 0xb83b2a, [0.17, -0.22, 0.03], [1,1,1]);
-add3DMesh(new THREE.CylinderGeometry(0.068, 0.052, 0.62, 14), "gastrocnemius", "muscles", 0xc24132, [-0.15, -0.94, -0.02], [1,1,1]);
-add3DMesh(new THREE.CylinderGeometry(0.068, 0.052, 0.62, 14), "gastrocnemius", "muscles", 0xc24132, [0.15, -0.94, -0.02], [1,1,1]);
-
-// 3D Organs
-add3DMesh(new THREE.SphereGeometry(0.17, 20, 20), "cerveau", "organs", 0xf472b6, [0, 1.48, 0], [0.9, 0.95, 1.0]);
-add3DMesh(new THREE.SphereGeometry(0.13, 18, 18), "poumons", "organs", 0xfb7185, [-0.12, 0.86, 0.03], [0.8, 1.4, 0.8]);
-add3DMesh(new THREE.SphereGeometry(0.13, 18, 18), "poumons", "organs", 0xfb7185, [0.12, 0.86, 0.03], [0.8, 1.4, 0.8]);
-add3DMesh(new THREE.SphereGeometry(0.085, 18, 18), "coeur", "organs", 0xdc2626, [0.03, 0.83, 0.08], [0.9, 1.1, 0.85]);
-add3DMesh(new THREE.SphereGeometry(0.125, 18, 18), "foie", "organs", 0x991b1b, [-0.08, 0.67, 0.07], [1.2, 0.7, 0.8]);
-add3DMesh(new THREE.SphereGeometry(0.085, 16, 16), "estomac", "organs", 0xf59e0b, [0.09, 0.65, 0.06], [0.85, 1.1, 0.75]);
-add3DMesh(new THREE.SphereGeometry(0.05, 14, 14), "reins", "organs", 0x7f1d1d, [-0.09, 0.58, -0.04], [0.7, 1.1, 0.6]);
-add3DMesh(new THREE.SphereGeometry(0.05, 14, 14), "reins", "organs", 0x7f1d1d, [0.09, 0.60, -0.04], [0.7, 1.1, 0.6]);
-add3DMesh(new THREE.SphereGeometry(0.115, 18, 18), "intestins", "organs", 0xfbbf24, [0, 0.44, 0.07], [1.0, 0.9, 0.7]);
-add3DMesh(new THREE.SphereGeometry(0.055, 14, 14), "vessie", "organs", 0x0d9488, [0, 0.25, 0.08], [1, 0.9, 0.85]);
-
-// 3D Bones
-add3DMesh(new THREE.SphereGeometry(0.20, 20, 20), "crane", "bones", 0xefe9dc, [0, 1.48, 0], [0.9, 1.05, 1.0]);
-add3DMesh(new THREE.CylinderGeometry(0.02, 0.02, 0.34, 10), "clavicule", "bones", 0xd6ccb8, [-0.18, 1.03, 0.07], [1, 1, 1]);
-add3DMesh(new THREE.CylinderGeometry(0.02, 0.02, 0.34, 10), "clavicule", "bones", 0xd6ccb8, [0.18, 1.03, 0.07], [1, 1, 1]);
-add3DMesh(new THREE.BoxGeometry(0.06, 0.30, 0.03), "sternum", "bones", 0xefe9dc, [0, 0.84, 0.14], [1,1,1]);
-for (let i = 0; i < 6; i++) {
-  add3DMesh(new THREE.TorusGeometry(0.20, 0.014, 8, 22), "cotes", "bones", 0xd6ccb8, [0, 0.96 - i*0.055, 0.01], [1, 0.65, 1]);
-}
-add3DMesh(new THREE.CylinderGeometry(0.055, 0.07, 0.68, 12), "rachis_lombaire", "bones", 0xefe9dc, [0, 0.62, -0.08], [1,1,1]);
-add3DMesh(new THREE.CylinderGeometry(0.034, 0.030, 0.50, 12), "humerus", "bones", 0xefe9dc, [-0.40, 0.75, 0], [1,1,1]);
-add3DMesh(new THREE.CylinderGeometry(0.034, 0.030, 0.50, 12), "humerus", "bones", 0xefe9dc, [0.40, 0.75, 0], [1,1,1]);
-add3DMesh(new THREE.CylinderGeometry(0.022, 0.020, 0.46, 10), "avant_bras", "bones", 0xd6ccb8, [-0.47, 0.28, 0.03], [1,1,1]);
-add3DMesh(new THREE.CylinderGeometry(0.022, 0.020, 0.46, 10), "avant_bras", "bones", 0xd6ccb8, [0.47, 0.28, 0.03], [1,1,1]);
-add3DMesh(new THREE.TorusGeometry(0.20, 0.04, 10, 20), "bassin", "bones", 0xefe9dc, [0, 0.24, 0.01], [1.1, 0.8, 1]);
-add3DMesh(new THREE.CylinderGeometry(0.045, 0.040, 0.72, 12), "femur", "bones", 0xefe9dc, [-0.17, -0.22, 0], [1,1,1]);
-add3DMesh(new THREE.CylinderGeometry(0.045, 0.040, 0.72, 12), "femur", "bones", 0xefe9dc, [0.17, -0.22, 0], [1,1,1]);
-add3DMesh(new THREE.CylinderGeometry(0.035, 0.028, 0.70, 12), "tibia_fibula", "bones", 0xd6ccb8, [-0.15, -0.96, 0], [1,1,1]);
-add3DMesh(new THREE.CylinderGeometry(0.035, 0.028, 0.70, 12), "tibia_fibula", "bones", 0xd6ccb8, [0.15, -0.96, 0], [1,1,1]);
-
-function sync3DVisibility() {
-  meshes3d.forEach(m => { m.visible = (m.userData.dim === currentDim); });
-}
-function highlight3DPart(key) {
-  meshes3d.forEach(m => {
-    const isSel = m.userData.key === key;
-    m.material.color.setHex(isSel ? 0x0284c7 : m.userData.col);
-    m.scale.copy(m.userData.baseScale).multiplyScalar(isSel ? 1.15 : 1.0);
-  });
-}
-
-let drag3d = false, prev3d = {x:0,y:0}, auto3d = false;
-c3d.addEventListener("pointerdown", e => { drag3d = true; prev3d = {x:e.clientX, y:e.clientY}; });
-window.addEventListener("pointerup", () => { drag3d = false; });
-c3d.addEventListener("pointermove", e => {
-  if (!drag3d) return;
-  grp3d.rotation.y += (e.clientX - prev3d.x) * 0.012;
-  prev3d = {x:e.clientX, y:e.clientY};
-});
-const rc3d = new THREE.Raycaster(), pt3d = new THREE.Vector2();
-c3d.addEventListener("click", e => {
-  const r = c3d.getBoundingClientRect();
-  pt3d.x = ((e.clientX - r.left)/r.width)*2 - 1;
-  pt3d.y = -((e.clientY - r.top)/r.height)*2 + 1;
-  rc3d.setFromCamera(pt3d, cam3d);
-  const h = rc3d.intersectObjects(meshes3d.filter(m => m.visible));
-  if (h.length > 0) selectItem(h[0].object.userData.key);
-});
-function rot3D(angle) { auto3d = false; grp3d.rotation.y = angle; }
-function toggleAuto3D() { auto3d = !auto3d; document.getElementById("btn-auto3d").classList.toggle("sel", auto3d); }
-function anim3D() {
-  requestAnimationFrame(anim3D);
-  if (auto3d && !drag3d) grp3d.rotation.y += 0.008;
-  ren3d.render(scene, cam3d);
-}
+// === CORPS 3D RÉALISTE (voir module ci-dessous) ===
+window.ATLAS_ITEMS_REF = ATLAS_ITEMS;
+let auto3d = false;
+function sync3DVisibility() { if (window.Anat3D) Anat3D.setDim(currentDim); }
+function highlight3DPart(key) { if (window.Anat3D) Anat3D.select(key); }
+function rot3D(angle) { auto3d = false; document.getElementById("btn-auto3d").classList.remove("sel"); if (window.Anat3D) Anat3D.view(angle); }
+function toggleAuto3D() { auto3d = !auto3d; document.getElementById("btn-auto3d").classList.toggle("sel", auto3d); if (window.Anat3D) Anat3D.auto(auto3d); }
+window.__a3dAutoOff = () => { auto3d = false; document.getElementById("btn-auto3d").classList.remove("sel"); };
 
 drawAnatomicalPosterViews();
 renderKeyList();
 selectItem("pectoralis_major");
-sync3DVisibility();
-anim3D();
+</script>
+<script type="module">
+// InfirmAnat IA — Corps 3D réaliste (BodyParts3D, CC BY 4.0, © DBCLS)
+// Rendu PBR, peau rayons X, transitions « scanner », battement cardiaque, respiration, caméra animée.
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+
+const host = document.getElementById('three-container');
+const box = host.parentElement;
+const MANIFEST = window.__ANAT3D_MANIFEST || {};
+const BASE = 'models/anatomy/';
+const BACK_KEYS = new Set(['trapezius', 'latissimus_dorsi', 'gluteus_maximus', 'hamstrings', 'gastrocnemius', 'reins', 'rachis_lombaire']);
+const SIDE_KEYS = new Set(['masseter', 'external_oblique', 'serratus_anterior', 'vastus_lateralis']);
+const reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ---------- renderer / scene ----------
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+renderer.setSize(host.clientWidth, host.clientHeight);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 0.92;
+renderer.localClippingEnabled = true;
+host.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.035).texture;
+scene.environmentIntensity = 0.55;
+
+const camera = new THREE.PerspectiveCamera(32, host.clientWidth / host.clientHeight, 0.02, 30);
+camera.position.set(0, 1.05, 4.2);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; controls.dampingFactor = 0.08;
+controls.minDistance = 0.35; controls.maxDistance = 5.5;
+controls.minPolarAngle = 0.15; controls.maxPolarAngle = Math.PI - 0.15;
+controls.target.set(0, 0.9, 0);
+controls.autoRotateSpeed = 1.2;
+controls.enablePan = true; controls.screenSpacePanning = true;
+
+// Studio lights
+scene.add(new THREE.HemisphereLight(0xf2f6ff, 0x1a1410, 0.55));
+const key = new THREE.DirectionalLight(0xfff1e0, 2.2); key.position.set(2.2, 3.2, 3.0); scene.add(key);
+const rim = new THREE.DirectionalLight(0x8fc6ff, 1.6); rim.position.set(-2.5, 2.0, -3.0); scene.add(rim);
+const fill = new THREE.DirectionalLight(0xffffff, 0.45); fill.position.set(-2.5, 0.6, 2.0); scene.add(fill);
+
+// Floor: soft contact shadow + subtle radial grid
+const floorTex = (() => {
+  const c = document.createElement('canvas'); c.width = c.height = 512; const g = c.getContext('2d');
+  const rg = g.createRadialGradient(256, 256, 10, 256, 256, 256);
+  rg.addColorStop(0, 'rgba(0,0,0,0.55)'); rg.addColorStop(0.35, 'rgba(0,0,0,0.18)'); rg.addColorStop(1, 'rgba(0,0,0,0)');
+  g.fillStyle = rg; g.fillRect(0, 0, 512, 512);
+  g.strokeStyle = 'rgba(56,189,248,0.22)'; g.lineWidth = 1.2;
+  for (let r = 60; r < 256; r += 48) { g.beginPath(); g.arc(256, 256, r, 0, Math.PI * 2); g.stroke(); }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+})();
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 1.6), new THREE.MeshBasicMaterial({ map: floorTex, transparent: true, depthWrite: false }));
+floor.rotation.x = -Math.PI / 2; floor.position.y = 0.002; scene.add(floor);
+
+// ---------- materials ----------
+const clipPlane = new THREE.Plane(new THREE.Vector3(0, -1, 0), 10); // keeps y <= constant
+const fadeClip = new THREE.Plane(new THREE.Vector3(0, 1, 0), 10);   // keeps y >= -constant (outgoing layer)
+
+function xrayMaterial(color, strength) {
+  return new THREE.ShaderMaterial({
+    uniforms: { uColor: { value: new THREE.Color(color) }, uStrength: { value: strength }, uTime: { value: 0 } },
+    vertexShader: `
+      #include <common>
+      #include <clipping_planes_pars_vertex>
+      varying vec3 vN; varying vec3 vV; varying float vY;
+      void main(){
+        #include <begin_vertex>
+        vec4 mvPosition = modelViewMatrix * vec4(transformed,1.0);
+        vN = normalize(normalMatrix * normal); vV = -mvPosition.xyz;
+        vY = (modelMatrix * vec4(transformed,1.0)).y;
+        gl_Position = projectionMatrix * mvPosition;
+        #include <clipping_planes_vertex>
+      }`,
+    fragmentShader: `
+      #include <common>
+      #include <clipping_planes_pars_fragment>
+      uniform vec3 uColor; uniform float uStrength; uniform float uTime;
+      varying vec3 vN; varying vec3 vV; varying float vY;
+      void main(){
+        #include <clipping_planes_fragment>
+        float f = pow(1.0 - abs(dot(normalize(vN), normalize(vV))), 2.4);
+        float scan = 0.06 * smoothstep(0.0, 1.0, sin(vY * 90.0 - uTime * 2.0) * 0.5 + 0.5);
+        gl_FragColor = vec4(uColor * (f * 1.4 + 0.08), (f * 0.85 + 0.035 + scan * f) * uStrength);
+      }`,
+    transparent: true, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, clipping: true,
+  });
+}
+
+function pbr(color, o = {}) {
+  return new THREE.MeshPhysicalMaterial(Object.assign({
+    color, roughness: 0.5, metalness: 0, clearcoat: 0.25, clearcoatRoughness: 0.4,
+    clippingPlanes: [clipPlane, fadeClip], side: THREE.FrontSide,
+  }, o));
+}
+
+function muscleMat(name) {
+  if (/tendon|linea alba|iliotibial|aponeuro|tensor fasciae/i.test(name)) return pbr(0xe8dccb, { roughness: 0.35, clearcoat: 0.6, sheen: 0.4, sheenColor: new THREE.Color(0xffffff) });
+  const c = new THREE.Color(0x7e1a16); c.offsetHSL((Math.random() - 0.5) * 0.02, (Math.random() - 0.5) * 0.12, (Math.random() - 0.5) * 0.07);
+  return pbr(c, { roughness: 0.42, clearcoat: 0.45, clearcoatRoughness: 0.35, sheen: 0.6, sheenRoughness: 0.5, sheenColor: new THREE.Color(0xff9a8a) });
+}
+function boneMat(name) {
+  if (/tooth/i.test(name)) return pbr(0xf5f1e6, { roughness: 0.2, clearcoat: 0.8 });
+  if (/cartilage|disk|meniscus/i.test(name)) return pbr(0xb9d0d6, { roughness: 0.3, clearcoat: 0.6, transmission: 0.0 });
+  const c = new THREE.Color(0xe4d6bb); c.offsetHSL(0, (Math.random() - 0.5) * 0.06, (Math.random() - 0.5) * 0.05);
+  return pbr(c, { roughness: 0.72, clearcoat: 0.08 });
+}
+function organMat(name) {
+  const n = name.toLowerCase();
+  if (/lung/.test(n)) return pbr(0xe89a96, { roughness: 0.55, transparent: true, opacity: 0.62, depthWrite: false, clearcoat: 0.6, side: THREE.DoubleSide });
+  if (/trachea|bronch/.test(n)) return pbr(0xf0d9c8, { roughness: 0.4, clearcoat: 0.3 });
+  if (/wall of/.test(n)) return pbr(0x8f1c1c, { roughness: 0.32, clearcoat: 0.9, clearcoatRoughness: 0.2 });
+  if (/aorta|pulmonary trunk/.test(n)) return pbr(/pulmonary/.test(n) ? 0x4d5fae : 0xc0262d, { roughness: 0.3, clearcoat: 0.9 });
+  if (/vena cava/.test(n)) return pbr(0x34479a, { roughness: 0.3, clearcoat: 0.9 });
+  if (/gallbladder/.test(n)) return pbr(0x5f8a3c, { roughness: 0.25, clearcoat: 1 });
+  if (/liver/.test(n)) return pbr(0x6b1f17, { roughness: 0.3, clearcoat: 0.9, clearcoatRoughness: 0.15 });
+  if (/stomach|esophag/.test(n)) return pbr(0xd98a78, { roughness: 0.35, clearcoat: 0.8 });
+  if (/duoden/.test(n)) return pbr(0xdca085, { roughness: 0.35, clearcoat: 0.8 });
+  if (/pancrea/.test(n)) return pbr(0xe7c27e, { roughness: 0.45, clearcoat: 0.5 });
+  if (/kidney/.test(n)) return pbr(0x7d2a22, { roughness: 0.3, clearcoat: 0.9 });
+  if (/adrenal/.test(n)) return pbr(0xe0b13a, { roughness: 0.4, clearcoat: 0.6 });
+  if (/ureter|bladder|urethra/.test(n)) return pbr(0xd9b08a, { roughness: 0.35, clearcoat: 0.8 });
+  if (/colon|cecum|rectum|appendix/.test(n)) return pbr(0xc97c69, { roughness: 0.38, clearcoat: 0.85 });
+  if (/jejun|ileum|ileocecal/.test(n)) return pbr(0xe39b86, { roughness: 0.36, clearcoat: 0.85 });
+  if (/white matter|capsule|callosum|commissure|fornix/.test(n)) return pbr(0xf1e5dc, { roughness: 0.5, clearcoat: 0.4 });
+  return pbr(0xe2aaa2, { roughness: 0.45, clearcoat: 0.6 }); // cortex / brain
+}
+
+// ---------- state ----------
+const layers = {};          // name -> { root, meshes[], ready }
+const groups = {};          // key -> { layer, objs:[pivot], meshes:[], box, center }
+const pickable = [];
+let selSeq = 0, dim = 'muscles', selected = null, hovered = null, physio = !reduceMotion;
+const clock = new THREE.Clock();
+
+// ---------- UI overlay ----------
+const ui = document.createElement('div');
+ui.className = 'a3d-ui';
+ui.innerHTML = `
+  <div class="a3d-loader"><div class="a3d-spin"></div><div class="a3d-ltxt">Chargement de l'anatomie réelle…</div><div class="a3d-bar"><i></i></div></div>
+  <div class="a3d-tip"></div>
+  <div class="a3d-label"><span class="a3d-dot"></span><span class="a3d-ltext"></span></div>
+  <div class="a3d-hud"><span class="a3d-heart">♥</span> <b>72</b> bpm · FR <b>14</b>/min</div>
+  <div class="a3d-tools">
+    <button data-a="skin" title="Peau en transparence (rayons X)">🩻 Peau</button>
+    <button data-a="physio" title="Animations physiologiques">💓 Physiologie</button>
+    <button data-a="reset" title="Recentrer">🎯 Centrer</button>
+    <button data-a="fs" title="Plein écran">⛶</button>
+  </div>
+  <div class="a3d-credit">Modèle : BodyParts3D © DBCLS — CC BY 4.0</div>`;
+box.appendChild(ui);
+const $ = s => ui.querySelector(s);
+const tip = $('.a3d-tip'), label = $('.a3d-label'), hud = $('.a3d-hud');
+let skinOn = true;
+
+ui.querySelector('.a3d-tools').addEventListener('click', e => {
+  const a = e.target.closest('button')?.dataset.a; if (!a) return;
+  if (a === 'skin') { skinOn = !skinOn; applyDim(false); }
+  if (a === 'physio') { physio = !physio; }
+  if (a === 'reset') { flyTo(null); }
+  if (a === 'fs') { (document.fullscreenElement ? document.exitFullscreen() : box.requestFullscreen?.()); }
+  syncToolButtons();
+});
+function syncToolButtons() {
+  ui.querySelector('[data-a=skin]').classList.toggle('on', skinOn);
+  ui.querySelector('[data-a=physio]').classList.toggle('on', physio);
+}
+
+// ---------- loading ----------
+const loader = new GLTFLoader(); loader.setMeshoptDecoder(MeshoptDecoder);
+function loadScript(src) {
+  return new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = () => rej(new Error(src)); document.head.appendChild(s); });
+}
+function b64ToBuf(b64) { const bin = atob(b64); const u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u.buffer; }
+
+async function loadLayer(name) {
+  if (layers[name]) return layers[name].promise;
+  const L = layers[name] = { meshes: [], ready: false };
+  L.promise = (async () => {
+    if (!window.__ANAT3D || !window.__ANAT3D[name]) await loadScript(BASE + name + '.js');
+    const gltf = await loader.parseAsync(b64ToBuf(window.__ANAT3D[name]), '');
+    delete window.__ANAT3D[name];
+    const root = gltf.scene; root.name = name;
+    const man = MANIFEST[name] || {};
+    const toPivot = [];
+    root.traverse(o => {
+      if (!o.isMesh) return;
+      const id = o.name && man[o.name] ? o.name : (o.parent && man[o.parent.name] ? o.parent.name : '');
+      const [eng, k] = man[id] || ['', ''];
+      if (name === 'skin') {
+        o.material = xrayMaterial(/hair|eyebrow/i.test(eng) ? 0x6b8bb0 : 0x7cc8ff, 0.9);
+        o.material.clippingPlanes = [clipPlane, fadeClip];
+        o.renderOrder = 10;
+      } else {
+        o.material = name === 'muscles' ? muscleMat(eng) : name === 'bones' ? boneMat(eng) : organMat(eng);
+        if (o.material.transparent) o.renderOrder = 5;
+      }
+      o.userData = { layer: name, eng, key: k, baseColor: o.material.color ? o.material.color.clone() : null, baseOpacity: o.material.opacity ?? 1 };
+      L.meshes.push(o);
+      if (name !== 'skin') pickable.push(o);
+      if (k) toPivot.push(o);
+    });
+    scene.add(root);
+    root.updateMatrixWorld(true);
+    // Build pivots so structures can beat / breathe / contract around their own centre
+    const byKey = {};
+    toPivot.forEach(m => { (byKey[m.userData.key] = byKey[m.userData.key] || []).push(m); });
+    for (const [k, ms] of Object.entries(byKey)) {
+      const g = groups[k] = { layer: name, meshes: ms, pivots: [], box: new THREE.Box3() };
+      ms.forEach(m => g.box.expandByObject(m));
+      g.center = g.box.getCenter(new THREE.Vector3());
+      const perMesh = name !== 'organs';
+      const units = perMesh ? ms.map(m => [m]) : [ms];
+      units.forEach(u => {
+        const bb = new THREE.Box3(); u.forEach(m => bb.expandByObject(m));
+        const piv = new THREE.Group(); piv.position.copy(bb.getCenter(new THREE.Vector3()));
+        root.add(piv); piv.updateMatrixWorld(true);
+        u.forEach(m => piv.attach(m));
+        g.pivots.push(piv);
+      });
+    }
+    root.visible = false;
+    L.root = root; L.ready = true;
+    return L;
+  })();
+  return L.promise;
+}
+
+// ---------- layer display & scan transition ----------
+const scanRing = new THREE.Mesh(
+  new THREE.RingGeometry(0.0, 0.42, 96, 1),
+  new THREE.ShaderMaterial({
+    uniforms: { uA: { value: 0 } }, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
+    vertexShader: 'varying vec2 vU; void main(){ vU = uv; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+    fragmentShader: 'uniform float uA; varying vec2 vU; void main(){ float r = length(vU-0.5)*2.0; float a = smoothstep(1.0,0.55,r)*0.35 + smoothstep(0.03,0.0,abs(r-0.82))*0.9; gl_FragColor = vec4(0.35,0.85,1.0, a*uA); }',
+  }));
+scanRing.rotation.x = -Math.PI / 2; scanRing.visible = false; scene.add(scanRing);
+
+let BODY_TOP = 1.75;
+let transition = null; // { t0, dur, from:[roots], to:[roots] }
+
+function wanted(d) {
+  if (d === 'muscles') return { muscles: 1, bones: 1, skin: 0 };
+  if (d === 'organs') return { organs: 1, bones: 0.1, skin: skinOn ? 1 : 0 };
+  return { bones: 1, skin: skinOn ? 1 : 0 };
+}
+
+function setGhost(layerName, amount) {
+  const L = layers[layerName]; if (!L || !L.ready) return;
+  L.meshes.forEach(m => {
+    const mat = m.material;
+    if (layerName === 'skin') { mat.uniforms.uStrength.value = 0.9 * amount; return; }
+    const ghost = amount < 1;
+    mat.transparent = ghost || m.userData.baseOpacity < 1;
+    mat.opacity = ghost ? 0.16 : m.userData.baseOpacity;
+    mat.depthWrite = !ghost && m.userData.baseOpacity >= 1;
+    mat.needsUpdate = true;
+    m.userData.ghost = ghost;
+  });
+}
+
+async function applyDim(animate = true) {
+  const w = wanted(dim);
+  showLoader(true);
+  await Promise.all(Object.keys(w).filter(k => w[k] > 0).map(loadLayer));
+  showLoader(false);
+  const incoming = [], outgoing = [];
+  for (const name of ['skin', 'muscles', 'organs', 'bones']) {
+    const L = layers[name]; if (!L || !L.ready) continue;
+    const show = (w[name] || 0) > 0;
+    if (show) { setGhost(name, w[name]); if (!L.root.visible) incoming.push(L.root); L.root.visible = true; }
+    else if (L.root.visible) outgoing.push(L.root);
+  }
+  if (selected) setSelected(selected);
+  if (!animate || reduceMotion) { outgoing.forEach(r => r.visible = false); clipPlane.constant = 10; fadeClip.constant = 10; return; }
+  // Incoming layers are clipped by clipPlane (revealed bottom→top); outgoing by fadeClip (erased bottom→top)
+  setLayerClip(incoming, 'in'); setLayerClip(outgoing, 'out');
+  transition = { t0: clock.elapsedTime, dur: 1.5, incoming, outgoing };
+  scanRing.visible = true;
+}
+function setLayerClip(roots, mode) {
+  roots.forEach(r => r.traverse(o => {
+    if (!o.isMesh) return;
+    o.material.clippingPlanes = mode === 'in' ? [clipPlane] : mode === 'out' ? [fadeClip] : null;
+    o.material.needsUpdate = true;
+  }));
+}
+function tickTransition(t) {
+  if (!transition) return;
+  const k = Math.min(1, (t - transition.t0) / transition.dur);
+  const e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+  const y = -0.05 + e * (BODY_TOP + 0.12);
+  clipPlane.constant = y; fadeClip.constant = -y;
+  scanRing.position.y = y; scanRing.material.uniforms.uA.value = Math.sin(k * Math.PI);
+  if (k >= 1) {
+    transition.outgoing.forEach(r => r.visible = false);
+    setLayerClip(transition.incoming, null); setLayerClip(transition.outgoing, null);
+    clipPlane.constant = 10; fadeClip.constant = 10; scanRing.visible = false; transition = null;
+  }
+}
+
+// ---------- selection / highlight ----------
+const HL = new THREE.Color(0x22d3ee);
+function setSelected(k) {
+  selected = groups[k] ? k : null;
+  const sel = selected ? groups[selected] : null;
+  pickable.forEach(m => {
+    const mat = m.material; if (!mat.emissive) return;
+    const isSel = sel && m.userData.key === selected;
+    mat.emissive.copy(isSel ? HL : new THREE.Color(0));
+    mat.emissiveIntensity = isSel ? 0.25 : 0;
+    // Desaturate non-selected structures of the active layer for focus
+    if (m.userData.baseColor && !m.userData.ghost) {
+      const c = m.userData.baseColor.clone();
+      if (isSel) c.lerp(new THREE.Color(0x1aa6c9), 0.6);
+      else if (sel && m.userData.layer === sel.layer) c.lerp(new THREE.Color(0x6b6b6b), 0.12).multiplyScalar(0.85);
+      mat.color.copy(c);
+      // Organs: see-through focus on the selected organ
+      if (m.userData.layer === 'organs') {
+        const see = sel && sel.layer === 'organs' && !isSel;
+        const op = see ? Math.min(0.28, m.userData.baseOpacity) : m.userData.baseOpacity;
+        const tr = op < 1;
+        if (mat.transparent !== tr || mat.opacity !== op) { mat.transparent = tr; mat.opacity = op; mat.depthWrite = !tr; mat.needsUpdate = true; }
+        m.renderOrder = isSel ? 1 : (tr ? 5 : 0);
+      }
+    }
+  });
+  const name = selected && window.ATLAS_ITEMS_REF ? window.ATLAS_ITEMS_REF[selected]?.name : '';
+  $('.a3d-ltext').textContent = name || '';
+}
+
+// ---------- camera fly ----------
+let fly = null;
+const DEFAULT_VIEW = { target: new THREE.Vector3(0, 0.9, 0), dist: 4.2 };
+function sphericalFrom(target, pos) { return new THREE.Spherical().setFromVector3(pos.clone().sub(target)); }
+function flyTo(k, azimuth) {
+  const g = k && groups[k];
+  let target, dist;
+  if (g) {
+    target = g.center.clone();
+    const size = g.box.getSize(new THREE.Vector3());
+    const r = Math.max(size.x, size.y, size.z * 1.2);
+    dist = THREE.MathUtils.clamp(r / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2))) * 1.55, 0.55, 3.6);
+  } else { target = DEFAULT_VIEW.target.clone(); dist = DEFAULT_VIEW.dist; }
+  const from = sphericalFrom(controls.target, camera.position);
+  let theta = azimuth !== undefined ? azimuth : from.theta;
+  if (azimuth === undefined && g) {
+    if (BACK_KEYS.has(k)) theta = Math.PI; else if (SIDE_KEYS.has(k)) theta = 0.75; else if (Math.abs(Math.cos(from.theta)) < 0.3 || Math.cos(from.theta) < 0) theta = 0.18;
+  }
+  // shortest angular path
+  let dTheta = ((theta - from.theta + Math.PI) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI) - Math.PI;
+  fly = { t0: clock.elapsedTime, dur: reduceMotion ? 0.01 : 1.35, fromT: controls.target.clone(), toT: target,
+    fromS: from, toS: new THREE.Spherical(dist, g ? 1.42 : 1.5, from.theta + dTheta) };
+}
+function tickFly(t) {
+  if (!fly) return;
+  const k = Math.min(1, (t - fly.t0) / fly.dur);
+  const e = 1 - Math.pow(1 - k, 4); // easeOutQuart
+  controls.target.lerpVectors(fly.fromT, fly.toT, e);
+  const s = new THREE.Spherical(
+    THREE.MathUtils.lerp(fly.fromS.radius, fly.toS.radius, e),
+    THREE.MathUtils.lerp(fly.fromS.phi, fly.toS.phi, e),
+    THREE.MathUtils.lerp(fly.fromS.theta, fly.toS.theta, e));
+  camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(s));
+  if (k >= 1) fly = null;
+}
+controls.addEventListener('start', () => { fly = null; });
+
+// ---------- picking ----------
+const ray = new THREE.Raycaster(); const ndc = new THREE.Vector2();
+function pick(ev) {
+  const r = renderer.domElement.getBoundingClientRect();
+  ndc.set(((ev.clientX - r.left) / r.width) * 2 - 1, -((ev.clientY - r.top) / r.height) * 2 + 1);
+  ray.setFromCamera(ndc, camera);
+  const cands = pickable.filter(m => m.userData.layer === activeLayer() && isVisible(m));
+  const hit = ray.intersectObjects(cands, false)[0];
+  return hit ? hit.object : null;
+}
+function activeLayer() { return dim; }
+function isVisible(o) { while (o) { if (!o.visible) return false; o = o.parent; } return true; }
+
+let downAt = null, lastMove = 0;
+renderer.domElement.addEventListener('pointerdown', e => { downAt = { x: e.clientX, y: e.clientY }; controls.autoRotate = false; window.__a3dAutoOff && window.__a3dAutoOff(); });
+renderer.domElement.addEventListener('pointerup', e => {
+  if (!downAt || Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y) > 5) return;
+  const m = pick(e);
+  if (m && m.userData.key && typeof window.selectItem === 'function') window.selectItem(m.userData.key);
+  else if (m) { showTip(m.userData.eng + ' — structure hors fiche', e); }
+});
+renderer.domElement.addEventListener('pointermove', e => {
+  const now = performance.now(); if (now - lastMove < 70 || e.buttons) return; lastMove = now;
+  const m = pick(e);
+  if (hovered && hovered !== m && hovered.material.emissive && hovered.userData.key !== selected) hovered.material.emissiveIntensity = 0;
+  hovered = m;
+  if (m) {
+    if (m.material.emissive && m.userData.key !== selected) { m.material.emissive.setHex(0x38bdf8); m.material.emissiveIntensity = 0.18; }
+    const fr = m.userData.key && window.ATLAS_ITEMS_REF ? window.ATLAS_ITEMS_REF[m.userData.key]?.name : '';
+    showTip(fr ? `${fr} <small>${m.userData.eng}</small>` : m.userData.eng, e);
+    renderer.domElement.style.cursor = 'pointer';
+  } else { tip.style.opacity = 0; renderer.domElement.style.cursor = 'grab'; }
+});
+renderer.domElement.addEventListener('pointerleave', () => { tip.style.opacity = 0; });
+function showTip(html, e) {
+  const r = box.getBoundingClientRect();
+  tip.innerHTML = html; tip.style.opacity = 1;
+  tip.style.transform = `translate(${e.clientX - r.left + 14}px, ${e.clientY - r.top + 12}px)`;
+}
+
+// ---------- physiology animations ----------
+function heartCurve(t) { // lub-dub at 72 bpm
+  const p = (t * 1.2) % 1;
+  const lub = Math.exp(-Math.pow((p - 0.08) / 0.045, 2));
+  const dub = 0.6 * Math.exp(-Math.pow((p - 0.3) / 0.05, 2));
+  return lub + dub;
+}
+function tickPhysio(t) {
+  const amp = physio ? 1 : 0;
+  const hb = heartCurve(t) * amp;
+  const br = (0.5 - 0.5 * Math.cos(t * Math.PI * 2 * (14 / 60))) * amp; // 14 breaths/min
+  const g = groups;
+  if (g.coeur) g.coeur.pivots.forEach(p => p.scale.setScalar(1 + 0.055 * hb));
+  if (g.poumons) g.poumons.pivots.forEach(p => p.scale.set(1 + 0.035 * br, 1 + 0.045 * br, 1 + 0.04 * br));
+  if (g.cotes) g.cotes.pivots.forEach(p => p.scale.set(1 + 0.012 * br, 1, 1 + 0.02 * br));
+  // Diaphragm pushes abdominal organs down slightly on inspiration
+  ['foie', 'estomac'].forEach(k => g[k] && g[k].pivots.forEach(p => {
+    if (p.userData.y0 === undefined) p.userData.y0 = p.position.y;
+    p.position.y = p.userData.y0 - 0.008 * br;
+  }));
+  // Selected structure: gentle contraction / emissive pulse
+  if (selected && groups[selected]) {
+    const s = groups[selected]; const pulse = 0.5 + 0.5 * Math.sin(t * 4.2);
+    if (s.layer === 'muscles') s.pivots.forEach(p => p.scale.set(1 + 0.03 * pulse * amp, 1 - 0.02 * pulse * amp, 1 + 0.03 * pulse * amp));
+    s.meshes.forEach(m => { if (m.material.emissive) m.material.emissiveIntensity = 0.12 + 0.28 * pulse; });
+  }
+  // reset non-selected muscle pivots
+  for (const [k, gg] of Object.entries(groups)) if (gg.layer === 'muscles' && k !== selected) gg.pivots.forEach(p => p.scale.setScalar(1));
+  hud.style.display = dim === 'organs' ? 'block' : 'none';
+  $('.a3d-heart').style.transform = `scale(${1 + 0.35 * hb})`;
+}
+
+// ---------- label following selection ----------
+const tmpV = new THREE.Vector3();
+function tickLabel() {
+  if (!selected || !groups[selected] || !isVisible(groups[selected].meshes[0]) || transition) { label.style.opacity = 0; return; }
+  tmpV.copy(groups[selected].center).project(camera);
+  if (tmpV.z > 1) { label.style.opacity = 0; return; }
+  const w = host.clientWidth, h = host.clientHeight;
+  label.style.opacity = 1;
+  label.style.transform = `translate(${(tmpV.x * 0.5 + 0.5) * w}px, ${(-tmpV.y * 0.5 + 0.5) * h}px)`;
+}
+
+// ---------- loop ----------
+function resize() {
+  const w = host.clientWidth, h = host.clientHeight; if (!w || !h) return;
+  renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(host);
+renderer.setAnimationLoop(() => {
+  const t = clock.getElapsedTime();
+  tickTransition(t); tickFly(t); tickPhysio(t);
+  const skin = layers.skin; if (skin && skin.ready) skin.meshes.forEach(m => m.material.uniforms.uTime.value = t);
+  controls.update();
+  renderer.render(scene, camera);
+  tickLabel();
+});
+
+function showLoader(on) { $('.a3d-loader').style.display = on ? 'flex' : 'none'; }
+
+// ---------- public API used by the page ----------
+window.Anat3D = {
+  setDim(d) { if (d === dim) return; dim = d; applyDim(true).then(() => { if (selected) setSelected(selected); }); flyTo(null); },
+  async select(k) {
+    const my = ++selSeq, noFly = !!window.__a3dNoFly;
+    const item = window.ATLAS_ITEMS_REF && window.ATLAS_ITEMS_REF[k];
+    if (item && item.dim !== dim) { dim = item.dim; applyDim(true); if (noFly) flyTo(null); }
+    await loadLayer(item ? item.dim : dim);
+    if (my !== selSeq) return;
+    setSelected(k);
+    if (groups[k] && !noFly) flyTo(k);
+  },
+  view(angle) { controls.autoRotate = false; flyTo(null, angle); },
+  auto(on) { controls.autoRotate = !!on; if (on) flyTo(null); },
+};
+
+// ---------- boot ----------
+(async () => {
+  syncToolButtons();
+  dim = (typeof currentDim !== 'undefined' && currentDim) || 'muscles';
+  // Intro: camera glides in while the first layer is scanned in
+  camera.position.set(1.8, 1.4, 5.2);
+  await loadLayer('skin').catch(() => {});
+  if (layers.skin?.ready) { const b = new THREE.Box3().setFromObject(layers.skin.root); BODY_TOP = b.max.y; DEFAULT_VIEW.target.set(0, b.max.y * 0.52, 0); DEFAULT_VIEW.dist = b.max.y * 2.25; controls.target.copy(DEFAULT_VIEW.target); }
+  await applyDim(true);
+  flyTo(null, 0.25);
+  const k = (typeof selectedKey !== 'undefined' && selectedKey) || null;
+  if (k) setTimeout(() => window.Anat3D.select(k), 1200);
+  // Preload the other layers in the background so switching tabs is instant
+  setTimeout(() => ['organs', 'bones', 'muscles'].forEach(n => loadLayer(n)), 2500);
+})().catch(err => {
+  console.error(err);
+  $('.a3d-loader').innerHTML = '<div class="a3d-ltxt">⚠️ Le modèle 3D n\'a pas pu être chargé (WebGL ou fichiers manquants).</div>';
+});
+
 </script>
 </body>
 </html>

@@ -1,0 +1,6 @@
+Modèles anatomiques 3D : BodyParts3D, © The Database Center for Life Science (DBCLS),
+licence Creative Commons Attribution 4.0 International (CC BY 4.0).
+https://dbarchive.biosciencedbc.jp/en/bodyparts3d/
+Mitsuhashi et al. (2009), BodyParts3D: 3D structure database for anatomical concepts. https://doi.org/10.1093/nar/gkn613
+Adaptations : sélection des structures (peau, muscles, organes, os), simplification et compression (meshoptimizer/gltfpack),
+couleurs et matériaux. Une partie des maillages provient de la préparation web du projet human-atlas (MIT).
