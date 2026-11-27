@@ -278,6 +278,18 @@ footer {
     </div>
   </div>
 
+  <div class="panel" style="margin-bottom:22px; padding:20px 22px;">
+    <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px;">
+      <div>
+        <h2 style="font-size:1.2rem; color:var(--primary);">🦴 Corps 3D interactif</h2>
+        <p style="font-size:0.88rem; color:var(--muted);">Faites tourner le corps et explorez les os, muscles et organes.</p>
+      </div>
+      <a href="anatomie-3d.html" class="btn btn-accent">Ouvrir l'atlas complet →</a>
+    </div>
+    <iframe src="anatomie-3d.html" title="Corps 3D interactif" loading="lazy"
+      style="width:100%; height:620px; border:1px solid var(--border); border-radius:12px; background:#fff;"></iframe>
+  </div>
+
   <div class="search-box">
     <input type="text" id="search-input" placeholder="Rechercher un cours, une spécialité (Pédiatrie, Gériatrie, Psychiatrie, Obstétrique, Doses)..." oninput="filterCards()" />
     <button class="btn btn-outline" onclick="filterByCat('all')">Tous (20)</button>
