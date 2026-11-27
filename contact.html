@@ -174,7 +174,16 @@ footer {
     .panel h3 { color: var(--primary); margin: 22px 0 10px; font-size: 1.15rem; }
     .panel p, .panel li { color: #334155; margin-bottom: 10px; font-size: 0.96rem; }
     .panel ul { padding-left: 22px; margin-bottom: 14px; }
-  </style>
+  
+@media print {
+  header, nav, .btn, .no-print, footer, .breadcrumb { display: none !important; }
+  body { background: #fff; display: block; }
+  .container { margin: 0; padding: 0; max-width: none; }
+  .panel { box-shadow: none; border: none; }
+  h2, h3 { break-after: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
 </head>
 <body>
 <header>
@@ -192,6 +201,7 @@ footer {
       <a href="outils-medicaux.html">🩺 Outils Docteurs</a>
       <a href="operations-cliniques.html">🏥 Opérations Clinique</a>
       <a href="exercices.html">✍️ Exercices & QCM</a>
+      <a href="recherche.html">🔎 Recherche</a>
       <a href="ressources-pdf.html">📄 Fiches PDF</a>
       <a href="actualites.html">📰 Actualités</a>
       <a href="a-propos.html">ℹ️ À propos</a>

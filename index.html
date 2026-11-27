@@ -226,7 +226,16 @@ footer {
     .form-group input, .form-group textarea {
       width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 9px; font-size: 0.92rem;
     }
-  </style>
+  
+@media print {
+  header, nav, .btn, .no-print, footer, .breadcrumb { display: none !important; }
+  body { background: #fff; display: block; }
+  .container { margin: 0; padding: 0; max-width: none; }
+  .panel { box-shadow: none; border: none; }
+  h2, h3 { break-after: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
 </head>
 <body>
 
@@ -245,6 +254,7 @@ footer {
       <a href="outils-medicaux.html">🩺 Outils Docteurs</a>
       <a href="operations-cliniques.html">🏥 Opérations Clinique</a>
       <a href="exercices.html">✍️ Exercices & QCM</a>
+      <a href="recherche.html">🔎 Recherche</a>
       <a href="ressources-pdf.html">📄 Fiches PDF</a>
       <a href="actualites.html">📰 Actualités</a>
       <button onclick="openNotesModal()">📝 Notes Stage</button>

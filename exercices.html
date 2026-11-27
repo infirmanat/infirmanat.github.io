@@ -203,7 +203,16 @@ footer {
       display: flex; flex-direction: column; justify-content: center; align-items: center;
       box-shadow: var(--shadow); cursor: pointer;
     }
-  </style>
+  
+@media print {
+  header, nav, .btn, .no-print, footer, .breadcrumb { display: none !important; }
+  body { background: #fff; display: block; }
+  .container { margin: 0; padding: 0; max-width: none; }
+  .panel { box-shadow: none; border: none; }
+  h2, h3 { break-after: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
 </head>
 <body>
 <header>
@@ -216,6 +225,7 @@ footer {
       </div>
     </a>
     <nav>
+      <a href="recherche.html">🔎 Recherche</a>
       <a href="index.html">📚 20 Cours</a>
       <a href="anatomie-3d.html">🦴 Corps 3D</a>
       <a href="exercices.html" class="active">✍️ Exercices & QCM</a>
