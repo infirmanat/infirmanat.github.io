@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soins de Plaies &amp; Cicatrisation — Cours 26 — InfirmAnat IA</title>
+  <meta name="description" content="Phases de la cicatrisation, types de plaies, grille TIME, prévention et stades des escarres, principes du pansement, signes d&#x27;infection." />
+  <style>
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --primary: #0f4c81;
+  --primary-light: #e6f0fa;
+  --accent: #0d9488;
+  --accent-light: #e6f7f5;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(15, 76, 129, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, #0f4c81 0%, #0d9488 100%);
+  color: #fff;
+  padding: 15px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+.brand-icon {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: bold;
+}
+.brand h1 { font-size: 1.25rem; font-weight: 700; }
+.brand p { font-size: 0.78rem; opacity: 0.9; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a, nav button {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+nav a:hover, nav button:hover, nav button.active, nav a.active {
+  background: #fff;
+  color: var(--primary);
+}
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 20px 50px;
+  flex: 1;
+}
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.sys-badge {
+  background: var(--primary-light); color: var(--primary);
+  font-weight: 700; font-size: 0.78rem; padding: 4px 11px; border-radius: 999px;
+  display: inline-block;
+}
+.done-badge {
+  background: #dcfce7; color: #15803d;
+  font-size: 0.75rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+}
+.btn {
+  background: var(--primary); color: #fff; border: none;
+  padding: 10px 18px; border-radius: 10px; font-weight: 600;
+  cursor: pointer; font-size: 0.9rem; text-decoration: none; display: inline-block;
+}
+.btn:hover { opacity: 0.93; }
+.btn-accent { background: var(--accent); }
+.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+.course-header {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; gap: 12px; border-bottom: 2px solid var(--border);
+  padding-bottom: 16px; margin-bottom: 22px;
+}
+.course-section {
+  margin-bottom: 20px; padding: 20px; border-radius: 12px;
+  background: #f8fafc; border: 1px solid var(--border);
+}
+.course-section h3, .course-section h4 { color: var(--primary); font-size: 1.08rem; margin-bottom: 9px; }
+.course-section p, .course-section li { color: #334155; font-size: 0.96rem; margin-bottom: 8px; }
+.norms-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.norm-box {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); padding: 12px; border-radius: 10px;
+}
+.norm-box strong { display: block; color: var(--primary); font-size: 0.85rem; }
+.norm-box span { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+.svg-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; margin-bottom: 22px; text-align: center;
+}
+.svg-card figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 8px; font-weight: 600; }
+.breadcrumb { font-size: 0.86rem; color: var(--muted); margin-bottom: 14px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.course-nav-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);
+}
+.disclaimer-box {
+  background: #fefce8;
+  border-left: 4px solid #eab308;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  color: #713f12;
+}
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 32px 20px;
+  margin-top: auto;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.footer-links a:hover { color: #ffffff; text-decoration: underline; }
+
+@media print {
+  header, nav, .btn, .no-print, footer, .breadcrumb { display: none !important; }
+  body { background: #fff; display: block; }
+  .container { margin: 0; padding: 0; max-width: none; }
+  .panel { box-shadow: none; border: none; }
+  h2, h3 { break-after: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-icon">🩺</div>
+      <div>
+        <h1>InfirmAnat IA</h1>
+        <p>Anatomie-Physiologie & Soins Infirmiers (IFSI / ISPITS)</p>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">📚 26 Cours</a>
+      <a href="anatomie-3d.html">🦴 Corps 3D</a>
+      <a href="outils-medicaux.html">🩺 Outils Docteurs</a>
+      <a href="operations-cliniques.html">🏥 Opérations Clinique</a>
+      <a href="exercices.html">✍️ Exercices & QCM</a>
+      <a href="recherche.html">🔎 Recherche</a>
+      <a href="ressources-pdf.html">📄 Fiches PDF</a>
+      <a href="actualites.html">📰 Actualités</a>
+      <a href="a-propos.html">ℹ️ À propos</a>
+      <a href="contact.html">✉️ Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Accueil</a> › Soins &amp; Thérapeutique › Cours 26</div>
+  <article class="panel">
+    <div class="course-header">
+      <div>
+        <span class="sys-badge">Cours 26 • Soins &amp; Thérapeutique</span>
+        <h2 style="color:var(--primary); margin-top:8px; font-size:1.5rem;">Soins de Plaies &amp; Cicatrisation</h2>
+        <p style="color:var(--muted); font-size:0.95rem; margin-top:4px;">Phases de la cicatrisation, évaluation des plaies, prévention des escarres et surveillance de l&#x27;infection.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn btn-outline" href="exercices.html">✍️ S'entraîner</a>
+        <button id="btn-complete" class="btn btn-accent" onclick="toggleCourseComplete('plaies')">Marquer comme étudié</button>
+      </div>
+    </div>
+    <section class="course-section">
+      <h3>1. Les phases de la cicatrisation</h3>
+      <ul><li>Hémostase : arrêt du saignement par la formation d&#x27;un caillot.</li><li>Inflammation : nettoyage de la plaie par les cellules de défense, avec rougeur, chaleur, œdème et douleur.</li><li>Prolifération : formation d&#x27;un tissu de bourgeonnement (granulation), puis recouvrement par l&#x27;épiderme (épithélialisation).</li><li>Remodelage : renforcement progressif de la cicatrice, qui peut durer plusieurs mois.</li></ul>
+      <p>Une cicatrisation qui s&#x27;arrête à une phase donnée (inflammation prolongée, plaie qui ne bourgeonne pas) est une cicatrisation retardée : il faut en rechercher la cause.</p>
+    </section>
+    <section class="course-section">
+      <h3>2. Types de plaies</h3>
+      <p>Une plaie aiguë (chirurgicale, traumatique) cicatrise en général en quelques semaines si rien ne l&#x27;entrave. Une plaie chronique (ulcère de jambe, pied diabétique, escarre) persiste plusieurs semaines et nécessite une prise en charge spécifique.</p>
+      <p>La contamination se décrit comme propre, contaminée ou infectée. Une plaie infectée présente des signes locaux et parfois généraux d&#x27;infection.</p>
+    </section>
+    <section class="course-section">
+      <h3>3. Évaluer la plaie</h3>
+      <p>La grille TIME aide à structurer l&#x27;évaluation : T pour le tissu (nécrose, fibrine, bourgeonnement), I pour l&#x27;infection ou l&#x27;inflammation, M pour l&#x27;humidité (excès ou insuffisance) et E pour les bords (épaississement, macération, épithélialisation).</p>
+      <p>Notez la taille, la profondeur, la couleur du lit de la plaie (rouge pour un tissu bourgeonnant, jaune pour de la fibrine, noir pour une nécrose), l&#x27;odeur et la douleur. Ces observations permettent de suivre l&#x27;évolution d&#x27;une semaine à l&#x27;autre.</p>
+    </section>
+    <section class="course-section">
+      <h3>4. Prévenir les escarres</h3>
+      <p>Une escarre est une lésion de la peau et des tissus sous-jacents due à une pression prolongée. La prévention repose sur l&#x27;évaluation du risque (par exemple avec l&#x27;échelle de Braden), les changements de position réguliers selon l&#x27;évaluation, un matelas adapté, une bonne hydratation et une alimentation suffisante.</p>
+      <p>Les stades décrivent la gravité : le stade 1 est une rougeur qui ne disparaît pas à la pression ; les stades 2 à 4 correspondent à une perte de tissu de plus en plus profonde. Le retournement et la protection des zones d&#x27;appui (talons, sacrum, coudes) sont à adapter à chaque personne.</p>
+    </section>
+    <section class="course-section">
+      <h3>5. Principes du pansement</h3>
+      <ul><li>Respectez l&#x27;asepsie et l&#x27;hygiène des mains avant et après le soin.</li><li>Choisissez le pansement en fonction de l&#x27;état de la plaie et non par habitude.</li><li>Retirez un pansement adhérent en le humidifiant pour limiter la douleur et les lésions de la peau ou du bourgeon.</li><li>Anticipez l&#x27;antalgie avant le soin si la douleur est prévisible.</li><li>Évitez de changer un pansement sans raison : chaque retrait perturbe la plaie.</li></ul>
+    </section>
+    <section class="course-section">
+      <h3>6. Surveiller l&#x27;infection</h3>
+      <p>Les signes locaux d&#x27;infection sont la rougeur qui s&#x27;étend, la chaleur, l&#x27;œdème, la douleur qui augmente, un écoulement de pus et une odeur. Les signes généraux sont la fièvre et, dans les cas graves, un état de sepsis.</p>
+      <p>En cas de doute, signalez-le au médecin et tracez précisément l&#x27;aspect de la plaie. Une plaie qui ne progresse pas comme attendu doit être réévaluée.</p>
+    </section>
+    <section class="course-section">
+      <h3>Points clés à retenir</h3>
+      <ul><li>Quatre phases : hémostase, inflammation, prolifération, remodelage.</li><li>La grille TIME structure l&#x27;évaluation de la plaie.</li><li>La prévention des escarres repose sur l&#x27;évaluation du risque et la mobilisation.</li><li>Choisir le pansement selon la plaie ; éviter les changements inutiles.</li><li>Signes locaux et généraux d&#x27;infection : alerter et tracer.</li></ul>
+    </section>
+    <div class="disclaimer-box">
+      <strong>Note pédagogique :</strong> Ce support de cours est destiné à la révision des étudiants en soins infirmiers (IFSI / ISPITS) et ne remplace pas les protocoles médicaux de votre établissement.
+    </div>
+    <div class="course-nav-bottom">
+      <a class="btn btn-outline" href="cours-sante-publique-epidemiologie.html">⬅️ Cours 25 : Santé Publique &amp; Épidémiologie</a>
+      <a class="btn" href="index.html">Retour à l&#x27;accueil ➡️</a>
+    </div>
+  </article>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>InfirmAnat IA</strong> — Ressource Éducative Libre en Sciences Infirmières.<br/>
+      <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Accueil & 26 Cours</a>
+      <a href="anatomie-3d.html">Atlas 3D Interactif</a>
+      <a href="exercices.html">Exercices & Cas Cliniques</a>
+      <a href="ressources-pdf.html">Fiches PDF Imprimables</a>
+      <a href="actualites.html">Actualités & News</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const COURSE_KEY = 'plaies';
+function refreshBtn() {
+  const completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  const btn = document.getElementById('btn-complete');
+  btn.textContent = completed.includes(COURSE_KEY) ? '✓ Cours validé' : 'Marquer comme étudié';
+}
+function toggleCourseComplete(id) {
+  let completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  completed = completed.includes(id) ? completed.filter(x => x !== id) : [...completed, id];
+  localStorage.setItem('ia_completed', JSON.stringify(completed));
+  refreshBtn();
+}
+refreshBtn();
+</script>
+</body>
+</html>

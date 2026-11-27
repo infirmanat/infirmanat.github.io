@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>InfirmAnat IA — 23 Cours Infirmiers, Exercices, Calculs de Doses & Fiches PDF (IFSI / ISPITS)</title>
-  <meta name="description" content="Plateforme pédagogique 100 % gratuite : 23 cours complets (anatomie-physiologie, pharmacologie, soins techniques, urgences, hygiène, pédiatrie, gériatrie, psychiatrie, obstétrique), exercices corrigés et 6 fiches PDF imprimables." />
+  <title>InfirmAnat IA — 26 Cours Infirmiers, Exercices, Calculs de Doses & Fiches PDF (IFSI / ISPITS)</title>
+  <meta name="description" content="Plateforme pédagogique 100 % gratuite : 26 cours complets (anatomie-physiologie, pharmacologie, soins techniques, urgences, hygiène, pédiatrie, gériatrie, psychiatrie, obstétrique), exercices corrigés et 6 fiches PDF imprimables." />
   <meta name="robots" content="index, follow" />
   <style>
 
@@ -249,7 +249,7 @@ footer {
       </div>
     </a>
     <nav>
-      <a href="index.html" class="active">📚 23 Cours</a>
+      <a href="index.html" class="active">📚 26 Cours</a>
       <a href="anatomie-3d.html">🦴 Corps 3D</a>
       <a href="outils-medicaux.html">🩺 Outils Docteurs</a>
       <a href="operations-cliniques.html">🏥 Opérations Clinique</a>
@@ -272,7 +272,7 @@ footer {
       <p>12 systèmes d'anatomie-physiologie, 4 modules de soins/pharmacologie/urgences et 4 spécialités cliniques (Pédiatrie, Gériatrie, Psychiatrie, Obstétrique).</p>
     </div>
     <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-      <span class="sys-badge" id="progress-summary">0 / 23 cours validés</span>
+      <span class="sys-badge" id="progress-summary">0 / 26 cours validés</span>
       <a href="ressources-pdf.html" class="btn">📄 Fiches PDF</a>
       <a href="exercices.html" class="btn btn-accent">✍️ Exercices</a>
     </div>
@@ -610,6 +610,48 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
+    <a href="cours-psychologie-sociologie.html" class="card" data-cat="Soins &amp; Thérapeutique" data-search="psychologie &amp; sociologie de la santé besoins fondamentaux (henderson), relation d&#x27;aide, communication, processus de deuil, burn-out, déterminants sociaux et inégalités de santé. soins &amp; thérapeutique">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 24 • Soins &amp; Thérapeutique</span>
+          <span class="done-badge hidden" id="badge-psycho">✓ Validé</span>
+        </div>
+        <h3>Psychologie &amp; Sociologie de la santé</h3>
+        <p>Besoins fondamentaux (Henderson), relation d&#x27;aide, communication, processus de deuil, burn-out, déterminants sociaux et inégalités de santé.</p>
+      </div>
+      <div class="card-footer">
+        <span>5 volets + points clés</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-sante-publique-epidemiologie.html" class="card" data-cat="Soins &amp; Thérapeutique" data-search="santé publique &amp; épidémiologie définition de la santé publique, niveaux de prévention, vaccination, incidence et prévalence, types d&#x27;études, sensibilité et spécificité. soins &amp; thérapeutique">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 25 • Soins &amp; Thérapeutique</span>
+          <span class="done-badge hidden" id="badge-santepub">✓ Validé</span>
+        </div>
+        <h3>Santé Publique &amp; Épidémiologie</h3>
+        <p>Définition de la santé publique, niveaux de prévention, vaccination, incidence et prévalence, types d&#x27;études, sensibilité et spécificité.</p>
+      </div>
+      <div class="card-footer">
+        <span>5 volets + points clés</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-soins-plaies.html" class="card" data-cat="Soins &amp; Thérapeutique" data-search="soins de plaies &amp; cicatrisation phases de la cicatrisation, types de plaies, grille time, prévention et stades des escarres, principes du pansement, signes d&#x27;infection. soins &amp; thérapeutique">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 26 • Soins &amp; Thérapeutique</span>
+          <span class="done-badge hidden" id="badge-plaies">✓ Validé</span>
+        </div>
+        <h3>Soins de Plaies &amp; Cicatrisation</h3>
+        <p>Phases de la cicatrisation, types de plaies, grille TIME, prévention et stades des escarres, principes du pansement, signes d&#x27;infection.</p>
+      </div>
+      <div class="card-footer">
+        <span>5 volets + points clés</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
   </div>
 
   <div class="disclaimer-box">
@@ -625,7 +667,7 @@ footer {
       <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
     </div>
     <div class="footer-links">
-      <a href="index.html">Accueil & 23 Cours</a>
+      <a href="index.html">Accueil & 26 Cours</a>
       <a href="anatomie-3d.html">Atlas 3D Interactif</a>
       <a href="exercices.html">Exercices & QCM</a>
       <a href="ressources-pdf.html">Fiches PDF Imprimables</a>
@@ -670,7 +712,7 @@ footer {
 let currentCat = 'all';
 function updateUI() {
   const completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
-  document.getElementById('progress-summary').textContent = `${completed.length} / 23 cours validés`;
+  document.getElementById('progress-summary').textContent = `${completed.length} / 26 cours validés`;
   completed.forEach(id => {
     const b = document.getElementById('badge-' + id);
     if (b) b.classList.remove('hidden');
