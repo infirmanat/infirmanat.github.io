@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soins péri-opératoires — Cours 27 — InfirmAnat IA</title>
+  <meta name="description" content="Phases péri-opératoires, préparation et consentement, surveillance post-opératoire, douleur, prévention des complications (thrombose, infection, respiratoires)." />
+  <style>
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --primary: #0f4c81;
+  --primary-light: #e6f0fa;
+  --accent: #0d9488;
+  --accent-light: #e6f7f5;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(15, 76, 129, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, #0f4c81 0%, #0d9488 100%);
+  color: #fff;
+  padding: 15px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+.brand-icon {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: bold;
+}
+.brand h1 { font-size: 1.25rem; font-weight: 700; }
+.brand p { font-size: 0.78rem; opacity: 0.9; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a, nav button {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+nav a:hover, nav button:hover, nav button.active, nav a.active {
+  background: #fff;
+  color: var(--primary);
+}
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 20px 50px;
+  flex: 1;
+}
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.sys-badge {
+  background: var(--primary-light); color: var(--primary);
+  font-weight: 700; font-size: 0.78rem; padding: 4px 11px; border-radius: 999px;
+  display: inline-block;
+}
+.done-badge {
+  background: #dcfce7; color: #15803d;
+  font-size: 0.75rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+}
+.btn {
+  background: var(--primary); color: #fff; border: none;
+  padding: 10px 18px; border-radius: 10px; font-weight: 600;
+  cursor: pointer; font-size: 0.9rem; text-decoration: none; display: inline-block;
+}
+.btn:hover { opacity: 0.93; }
+.btn-accent { background: var(--accent); }
+.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+.course-header {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; gap: 12px; border-bottom: 2px solid var(--border);
+  padding-bottom: 16px; margin-bottom: 22px;
+}
+.course-section {
+  margin-bottom: 20px; padding: 20px; border-radius: 12px;
+  background: #f8fafc; border: 1px solid var(--border);
+}
+.course-section h3, .course-section h4 { color: var(--primary); font-size: 1.08rem; margin-bottom: 9px; }
+.course-section p, .course-section li { color: #334155; font-size: 0.96rem; margin-bottom: 8px; }
+.norms-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.norm-box {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); padding: 12px; border-radius: 10px;
+}
+.norm-box strong { display: block; color: var(--primary); font-size: 0.85rem; }
+.norm-box span { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+.svg-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; margin-bottom: 22px; text-align: center;
+}
+.svg-card figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 8px; font-weight: 600; }
+.breadcrumb { font-size: 0.86rem; color: var(--muted); margin-bottom: 14px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.course-nav-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);
+}
+.disclaimer-box {
+  background: #fefce8;
+  border-left: 4px solid #eab308;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  color: #713f12;
+}
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 32px 20px;
+  margin-top: auto;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.footer-links a:hover { color: #ffffff; text-decoration: underline; }
+
+@media print {
+  header, nav, .btn, .no-print, footer, .breadcrumb { display: none !important; }
+  body { background: #fff; display: block; }
+  .container { margin: 0; padding: 0; max-width: none; }
+  .panel { box-shadow: none; border: none; }
+  h2, h3 { break-after: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-icon">🩺</div>
+      <div>
+        <h1>InfirmAnat IA</h1>
+        <p>Anatomie-Physiologie & Soins Infirmiers (IFSI / ISPITS)</p>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">📚 30 Cours</a>
+      <a href="anatomie-3d.html">🦴 Corps 3D</a>
+      <a href="outils-medicaux.html">🩺 Outils Docteurs</a>
+      <a href="operations-cliniques.html">🏥 Opérations Clinique</a>
+      <a href="exercices.html">✍️ Exercices & QCM</a>
+      <a href="recherche.html">🔎 Recherche</a>
+      <a href="ressources-pdf.html">📄 Fiches PDF</a>
+      <a href="actualites.html">📰 Actualités</a>
+      <a href="a-propos.html">ℹ️ À propos</a>
+      <a href="contact.html">✉️ Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Accueil</a> › Soins &amp; Thérapeutique › Cours 27</div>
+  <article class="panel">
+    <div class="course-header">
+      <div>
+        <span class="sys-badge">Cours 27 • Soins &amp; Thérapeutique</span>
+        <h2 style="color:var(--primary); margin-top:8px; font-size:1.5rem;">Soins péri-opératoires</h2>
+        <p style="color:var(--muted); font-size:0.95rem; margin-top:4px;">Préparation du patient, surveillance post-opératoire, douleur, prévention des complications.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn btn-outline" href="exercices.html">✍️ S'entraîner</a>
+        <button id="btn-complete" class="btn btn-accent" onclick="toggleCourseComplete('periop')">Marquer comme étudié</button>
+      </div>
+    </div>
+    <section class="course-section">
+      <h3>1. Les trois phases péri-opératoires</h3>
+      <ul><li>Phase préopératoire : préparation physique et psychologique, information, consentement, jeûne préopératoire selon les protocoles en vigueur.</li><li>Phase peropératoire : conduite de l&#x27;anesthésie et de l&#x27;intervention, réalisée par l&#x27;équipe de bloc (hors du champ infirmier de service).</li><li>Phase postopératoire : surveillance en salle de réveil puis dans le service, jusqu&#x27;à la récupération.</li></ul>
+    </section>
+    <section class="course-section">
+      <h3>2. Préparer le patient</h3>
+      <p>Vérifiez l&#x27;identité, le dossier, le consentement signé, les examens demandés et la présence de la prémédication prescrite. Repérez les allergies, les traitements à arrêter ou à poursuivre (anticoagulants notamment) et les risques particuliers.</p>
+      <p>Expliquez le déroulement, la douleur prévisible et la surveillance prévue. Une information claire diminue l&#x27;anxiété et améliore la collaboration du patient après l&#x27;intervention.</p>
+    </section>
+    <section class="course-section">
+      <h3>3. Surveillance en salle de réveil</h3>
+      <p>La surveillance porte sur la conscience, la ventilation (fréquence, saturation en oxygène, perméabilité des voies aériennes), la pression artérielle, la fréquence cardiaque, la température et la douleur. Utilisez l&#x27;échelle de sédation et de réveil prévue par le service pour objectiver l&#x27;état du patient.</p>
+      <p>Le transfert vers le service se fait lorsque les constantes sont stables et que le patient a retrouvé ses réflexes protecteurs, selon les critères de la structure.</p>
+    </section>
+    <section class="course-section">
+      <h3>4. Prévenir les complications</h3>
+      <ul><li>Thrombose veineuse : mobilisation précoce, contention et prophylaxie anticoagulante prescrite, surveillance des mollets.</li><li>Complications respiratoires : toux, mobilisation, drainage et spirométrie incitative si prescrite, surveillance de la saturation.</li><li>Infection du site opératoire : surveillance de la plaie et de la température, respect de l&#x27;asepsie lors des soins.</li><li>Iléus postopératoire : reprise progressive de l&#x27;alimentation et de la mobilisation, surveillance de l&#x27;abdomen et des gaz.</li></ul>
+      <p>Signalez tout signe d&#x27;alerte précocement : une détérioration rapide de l&#x27;état général doit faire appeler le médecin sans attendre.</p>
+    </section>
+    <section class="course-section">
+      <h3>5. Gérer la douleur</h3>
+      <p>La douleur postopératoire est évaluée régulièrement avec une échelle adaptée (échelle numérique, échelle visuelle analogique, ou échelle comportementale chez le patient ne pouvant pas s&#x27;exprimer). L&#x27;antalgie est prescrite de manière programmée, et non seulement à la demande, selon le protocole de l&#x27;établissement.</p>
+      <p>Réévaluez l&#x27;efficacité du traitement après l&#x27;administration et signalez toute douleur insuffisamment soulagée.</p>
+    </section>
+    <section class="course-section">
+      <h3>Points clés à retenir</h3>
+      <ul><li>Trois phases : préopératoire, peropératoire (bloc), postopératoire.</li><li>Vérifier le consentement, le jeûne et les traitements à arrêter ou poursuivre.</li><li>Surveiller ventilation, hémodynamique, température et douleur en salle de réveil.</li><li>Prévenir thrombose, complications respiratoires et infection du site.</li><li>Évaluer la douleur avec une échelle et réévaluer après l&#x27;antalgie.</li></ul>
+    </section>
+    <div class="disclaimer-box">
+      <strong>Note pédagogique :</strong> Ce support de cours est destiné à la révision des étudiants en soins infirmiers (IFSI / ISPITS) et ne remplace pas les protocoles médicaux de votre établissement.
+    </div>
+    <div class="course-nav-bottom">
+      <a class="btn btn-outline" href="cours-soins-plaies.html">⬅️ Cours 26 : Soins de Plaies &amp; Cicatrisation</a>
+      <a class="btn" href="cours-oncologie-soins-palliatifs.html">Cours 28 : Oncologie &amp; Soins palliatifs ➡️</a>
+    </div>
+  </article>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>InfirmAnat IA</strong> — Ressource Éducative Libre en Sciences Infirmières.<br/>
+      <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Accueil & 30 Cours</a>
+      <a href="anatomie-3d.html">Atlas 3D Interactif</a>
+      <a href="exercices.html">Exercices & Cas Cliniques</a>
+      <a href="ressources-pdf.html">Fiches PDF Imprimables</a>
+      <a href="actualites.html">Actualités & News</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const COURSE_KEY = 'periop';
+function refreshBtn() {
+  const completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  const btn = document.getElementById('btn-complete');
+  btn.textContent = completed.includes(COURSE_KEY) ? '✓ Cours validé' : 'Marquer comme étudié';
+}
+function toggleCourseComplete(id) {
+  let completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  completed = completed.includes(id) ? completed.filter(x => x !== id) : [...completed, id];
+  localStorage.setItem('ia_completed', JSON.stringify(completed));
+  refreshBtn();
+}
+refreshBtn();
+</script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Méthodologie &amp; Recherche infirmière — Cours 30 — InfirmAnat IA</title>
+  <meta name="description" content="Types d&#x27;études et niveaux de preuve, lecture critique d&#x27;un article, démarche de recherche, pratique fondée sur les preuves, éthique de la recherche." />
+  <style>
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --primary: #0f4c81;
+  --primary-light: #e6f0fa;
+  --accent: #0d9488;
+  --accent-light: #e6f7f5;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(15, 76, 129, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, #0f4c81 0%, #0d9488 100%);
+  color: #fff;
+  padding: 15px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+.brand-icon {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: bold;
+}
+.brand h1 { font-size: 1.25rem; font-weight: 700; }
+.brand p { font-size: 0.78rem; opacity: 0.9; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a, nav button {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+nav a:hover, nav button:hover, nav button.active, nav a.active {
+  background: #fff;
+  color: var(--primary);
+}
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 20px 50px;
+  flex: 1;
+}
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.sys-badge {
+  background: var(--primary-light); color: var(--primary);
+  font-weight: 700; font-size: 0.78rem; padding: 4px 11px; border-radius: 999px;
+  display: inline-block;
+}
+.done-badge {
+  background: #dcfce7; color: #15803d;
+  font-size: 0.75rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+}
+.btn {
+  background: var(--primary); color: #fff; border: none;
+  padding: 10px 18px; border-radius: 10px; font-weight: 600;
+  cursor: pointer; font-size: 0.9rem; text-decoration: none; display: inline-block;
+}
+.btn:hover { opacity: 0.93; }
+.btn-accent { background: var(--accent); }
+.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+.course-header {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; gap: 12px; border-bottom: 2px solid var(--border);
+  padding-bottom: 16px; margin-bottom: 22px;
+}
+.course-section {
+  margin-bottom: 20px; padding: 20px; border-radius: 12px;
+  background: #f8fafc; border: 1px solid var(--border);
+}
+.course-section h3, .course-section h4 { color: var(--primary); font-size: 1.08rem; margin-bottom: 9px; }
+.course-section p, .course-section li { color: #334155; font-size: 0.96rem; margin-bottom: 8px; }
+.norms-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.norm-box {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); padding: 12px; border-radius: 10px;
+}
+.norm-box strong { display: block; color: var(--primary); font-size: 0.85rem; }
+.norm-box span { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+.svg-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; margin-bottom: 22px; text-align: center;
+}
+.svg-card figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 8px; font-weight: 600; }
+.breadcrumb { font-size: 0.86rem; color: var(--muted); margin-bottom: 14px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.course-nav-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);
+}
+.disclaimer-box {
+  background: #fefce8;
+  border-left: 4px solid #eab308;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  color: #713f12;
+}
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 32px 20px;
+  margin-top: auto;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.footer-links a:hover { color: #ffffff; text-decoration: underline; }
+
+@media print {
+  header, nav, .btn, .no-print, footer, .breadcrumb { display: none !important; }
+  body { background: #fff; display: block; }
+  .container { margin: 0; padding: 0; max-width: none; }
+  .panel { box-shadow: none; border: none; }
+  h2, h3 { break-after: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-icon">🩺</div>
+      <div>
+        <h1>InfirmAnat IA</h1>
+        <p>Anatomie-Physiologie & Soins Infirmiers (IFSI / ISPITS)</p>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">📚 30 Cours</a>
+      <a href="anatomie-3d.html">🦴 Corps 3D</a>
+      <a href="outils-medicaux.html">🩺 Outils Docteurs</a>
+      <a href="operations-cliniques.html">🏥 Opérations Clinique</a>
+      <a href="exercices.html">✍️ Exercices & QCM</a>
+      <a href="recherche.html">🔎 Recherche</a>
+      <a href="ressources-pdf.html">📄 Fiches PDF</a>
+      <a href="actualites.html">📰 Actualités</a>
+      <a href="a-propos.html">ℹ️ À propos</a>
+      <a href="contact.html">✉️ Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Accueil</a> › Méthodologie › Cours 30</div>
+  <article class="panel">
+    <div class="course-header">
+      <div>
+        <span class="sys-badge">Cours 30 • Méthodologie</span>
+        <h2 style="color:var(--primary); margin-top:8px; font-size:1.5rem;">Méthodologie &amp; Recherche infirmière</h2>
+        <p style="color:var(--muted); font-size:0.95rem; margin-top:4px;">Lire un article scientifique, comprendre le niveau de preuve, démarche d&#x27;évaluation des pratiques.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn btn-outline" href="exercices.html">✍️ S'entraîner</a>
+        <button id="btn-complete" class="btn btn-accent" onclick="toggleCourseComplete('methodo')">Marquer comme étudié</button>
+      </div>
+    </div>
+    <section class="course-section">
+      <h3>1. Pourquoi la recherche en soins</h3>
+      <p>La pratique infirmière s&#x27;appuie sur des connaissances validées. La pratique fondée sur les preuves consiste à combiner l&#x27;expérience clinique, les préférences du patient et les données scientifiques disponibles pour décider des soins.</p>
+    </section>
+    <section class="course-section">
+      <h3>2. Les types d&#x27;études et leur niveau de preuve</h3>
+      <ul><li>Revue systématique et méta-analyse : synthèse de plusieurs études selon une méthode définie ; elles se situent en haut de la hiérarchie des preuves.</li><li>Essai randomisé contrôlé : participants répartis au hasard entre groupes ; référence pour évaluer l&#x27;efficacité d&#x27;une intervention.</li><li>Étude de cohorte : suivi de groupes exposés et non exposés dans le temps.</li><li>Étude cas-témoins et étude transversale : utiles pour repérer des associations, sans prouver un lien de causalité.</li><li>Avis d&#x27;experts et témoignages : niveau de preuve plus faible, mais parfois la seule source disponible.</li></ul>
+    </section>
+    <section class="course-section">
+      <h3>3. Lire un article de façon critique</h3>
+      <p>Vérifiez la question de recherche, la population étudiée, la méthode et la taille de l&#x27;échantillon, les critères de jugement, les biais possibles (sélection, information, confusion) et la présentation des résultats.</p>
+      <p>Un résultat statistiquement significatif n&#x27;est pas forcément cliniquement important : regardez l&#x27;ampleur de l&#x27;effet et l&#x27;intervalle de confiance. Interrogez aussi les conflits d&#x27;intérêts déclarés.</p>
+    </section>
+    <section class="course-section">
+      <h3>4. Démarche de recherche</h3>
+      <ul><li>Formuler une question claire (souvent selon le format PICO : population, intervention, comparateur, critère de jugement).</li><li>Rechercher les sources dans les bases reconnues et évaluer leur qualité.</li><li>Analyser les résultats, les confronter à la pratique et décider de leur application.</li><li>Évaluer les effets de la pratique changée et communiquer les résultats à l&#x27;équipe.</li></ul>
+    </section>
+    <section class="course-section">
+      <h3>5. Éthique de la recherche</h3>
+      <p>Toute recherche impliquant des personnes doit respecter leur consentement libre et éclairé, la confidentialité des données et la possibilité de se retirer à tout moment. Les recherches sont soumises à l&#x27;avis d&#x27;un comité d&#x27;éthique.</p>
+      <p>Le soignant qui participe à une recherche garde le souci du bien-être du patient : aucun intérêt scientifique ne justifie de négliger les soins.</p>
+    </section>
+    <section class="course-section">
+      <h3>Points clés à retenir</h3>
+      <ul><li>La pratique fondée sur les preuves combine expérience, préférences du patient et données.</li><li>L&#x27;essai randomisé est la référence pour évaluer une intervention.</li><li>Significatif statistiquement ne veut pas dire cliniquement important.</li><li>Formuler la question en format PICO facilite la recherche.</li><li>Consentement, confidentialité et avis d&#x27;un comité d&#x27;éthique sont obligatoires.</li></ul>
+    </section>
+    <div class="disclaimer-box">
+      <strong>Note pédagogique :</strong> Ce support de cours est destiné à la révision des étudiants en soins infirmiers (IFSI / ISPITS) et ne remplace pas les protocoles médicaux de votre établissement.
+    </div>
+    <div class="course-nav-bottom">
+      <a class="btn btn-outline" href="cours-nutrition-diabete.html">⬅️ Cours 29 : Nutrition &amp; Diabète</a>
+      <a class="btn" href="index.html">Retour à l&#x27;accueil ➡️</a>
+    </div>
+  </article>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>InfirmAnat IA</strong> — Ressource Éducative Libre en Sciences Infirmières.<br/>
+      <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Accueil & 30 Cours</a>
+      <a href="anatomie-3d.html">Atlas 3D Interactif</a>
+      <a href="exercices.html">Exercices & Cas Cliniques</a>
+      <a href="ressources-pdf.html">Fiches PDF Imprimables</a>
+      <a href="actualites.html">Actualités & News</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const COURSE_KEY = 'methodo';
+function refreshBtn() {
+  const completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  const btn = document.getElementById('btn-complete');
+  btn.textContent = completed.includes(COURSE_KEY) ? '✓ Cours validé' : 'Marquer comme étudié';
+}
+function toggleCourseComplete(id) {
+  let completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  completed = completed.includes(id) ? completed.filter(x => x !== id) : [...completed, id];
+  localStorage.setItem('ia_completed', JSON.stringify(completed));
+  refreshBtn();
+}
+refreshBtn();
+</script>
+</body>
+</html>
