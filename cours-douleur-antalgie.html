@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Douleur &amp; Antalgie — Cours 21 — InfirmAnat IA</title>
+  <meta name="description" content="Douleur aiguë et chronique, échelles d&#x27;évaluation (EVA, EVS, FLACC, Algoplus), paliers OMS, surveillance des opioïdes et naloxone." />
+  <style>
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --primary: #0f4c81;
+  --primary-light: #e6f0fa;
+  --accent: #0d9488;
+  --accent-light: #e6f7f5;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(15, 76, 129, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, #0f4c81 0%, #0d9488 100%);
+  color: #fff;
+  padding: 15px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+.brand-icon {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: bold;
+}
+.brand h1 { font-size: 1.25rem; font-weight: 700; }
+.brand p { font-size: 0.78rem; opacity: 0.9; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a, nav button {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+nav a:hover, nav button:hover, nav button.active, nav a.active {
+  background: #fff;
+  color: var(--primary);
+}
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 20px 50px;
+  flex: 1;
+}
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.sys-badge {
+  background: var(--primary-light); color: var(--primary);
+  font-weight: 700; font-size: 0.78rem; padding: 4px 11px; border-radius: 999px;
+  display: inline-block;
+}
+.done-badge {
+  background: #dcfce7; color: #15803d;
+  font-size: 0.75rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+}
+.btn {
+  background: var(--primary); color: #fff; border: none;
+  padding: 10px 18px; border-radius: 10px; font-weight: 600;
+  cursor: pointer; font-size: 0.9rem; text-decoration: none; display: inline-block;
+}
+.btn:hover { opacity: 0.93; }
+.btn-accent { background: var(--accent); }
+.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+.course-header {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; gap: 12px; border-bottom: 2px solid var(--border);
+  padding-bottom: 16px; margin-bottom: 22px;
+}
+.course-section {
+  margin-bottom: 20px; padding: 20px; border-radius: 12px;
+  background: #f8fafc; border: 1px solid var(--border);
+}
+.course-section h3, .course-section h4 { color: var(--primary); font-size: 1.08rem; margin-bottom: 9px; }
+.course-section p, .course-section li { color: #334155; font-size: 0.96rem; margin-bottom: 8px; }
+.norms-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.norm-box {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); padding: 12px; border-radius: 10px;
+}
+.norm-box strong { display: block; color: var(--primary); font-size: 0.85rem; }
+.norm-box span { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+.svg-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; margin-bottom: 22px; text-align: center;
+}
+.svg-card figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 8px; font-weight: 600; }
+.breadcrumb { font-size: 0.86rem; color: var(--muted); margin-bottom: 14px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.course-nav-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);
+}
+.disclaimer-box {
+  background: #fefce8;
+  border-left: 4px solid #eab308;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  color: #713f12;
+}
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 32px 20px;
+  margin-top: auto;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.footer-links a:hover { color: #ffffff; text-decoration: underline; }
+
+@media print {
+  header, nav, .btn, .no-print, footer, .breadcrumb { display: none !important; }
+  body { background: #fff; display: block; }
+  .container { margin: 0; padding: 0; max-width: none; }
+  .panel { box-shadow: none; border: none; }
+  h2, h3 { break-after: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-icon">🩺</div>
+      <div>
+        <h1>InfirmAnat IA</h1>
+        <p>Anatomie-Physiologie & Soins Infirmiers (IFSI / ISPITS)</p>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">📚 23 Cours</a>
+      <a href="anatomie-3d.html">🦴 Corps 3D</a>
+      <a href="outils-medicaux.html">🩺 Outils Docteurs</a>
+      <a href="operations-cliniques.html">🏥 Opérations Clinique</a>
+      <a href="exercices.html">✍️ Exercices & QCM</a>
+      <a href="recherche.html">🔎 Recherche</a>
+      <a href="ressources-pdf.html">📄 Fiches PDF</a>
+      <a href="actualites.html">📰 Actualités</a>
+      <a href="a-propos.html">ℹ️ À propos</a>
+      <a href="contact.html">✉️ Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Accueil</a> › Soins &amp; Thérapeutique › Cours 21</div>
+  <article class="panel">
+    <div class="course-header">
+      <div>
+        <span class="sys-badge">Cours 21 • Soins &amp; Thérapeutique</span>
+        <h2 style="color:var(--primary); margin-top:8px; font-size:1.5rem;">Douleur &amp; Antalgie</h2>
+        <p style="color:var(--muted); font-size:0.95rem; margin-top:4px;">Définitions, évaluation de la douleur, paliers antalgiques et surveillance des opioïdes.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn btn-outline" href="exercices.html">✍️ S'entraîner</a>
+        <button id="btn-complete" class="btn btn-accent" onclick="toggleCourseComplete('douleur')">Marquer comme étudié</button>
+      </div>
+    </div>
+    <section class="course-section">
+      <h3>1. Définition et types de douleur</h3>
+      <p>Selon l&#x27;Association internationale pour l&#x27;étude de la douleur (IASP), la douleur est une expérience sensorielle et émotionnelle désagréable, liée à une lésion tissulaire réelle ou potentielle, ou décrite en ces termes. Elle est toujours subjective : c&#x27;est la personne qui la décrit.</p>
+      <p>La douleur aiguë est un signal d&#x27;alerte, liée à une cause identifiable et de durée limitée (post-opératoire, traumatisme). La douleur chronique persiste au-delà de trois mois ou au-delà du délai habituel de guérison, et peut devenir une maladie à part entière.</p>
+      <p>On distingue la douleur nociceptive (stimulation des nocicepteurs après une lésion : fracture, brûlure, post-opératoire) et la douleur neuropathique (lésion ou dysfonctionnement du système nerveux : sciatique, zona, douleur du membre fantôme). Leur traitement diffère, d&#x27;où l&#x27;importance de les identifier.</p>
+    </section>
+    <section class="course-section">
+      <h3>2. Évaluer la douleur</h3>
+      <p>Le principe de base est de croire la personne et de réévaluer régulièrement, car la douleur peut varier dans le temps et après un traitement. L&#x27;évaluation se fait avec un outil adapté à la situation.</p>
+      <ul><li>EVA (échelle visuelle analogique) : ligne de 0 à 10 que la personne positionne elle-même ; 0 = pas de douleur, 10 = douleur maximale imaginable.</li><li>EN (échelle numérique) : la personne donne une note de 0 à 10 à voix haute ou à l&#x27;écrit.</li><li>EVS (échelle verbale simple) : niveaux décrits par des mots (absente, légère, modérée, intense, extrême) pour les personnes qui ont du mal avec les chiffres.</li><li>FLACC : grille d&#x27;observation pour les jeunes enfants et les enfants qui ne parlent pas (visage, jambes, activité, pleurs, consolabilité).</li><li>Algoplus et Doloplus : grilles d&#x27;observation pour les personnes âgées qui ne peuvent pas s&#x27;exprimer, dont les personnes atteintes de troubles cognitifs.</li></ul>
+      <p>Notez toujours le lieu, l&#x27;intensité, le caractère (brûlure, serrement, décharge électrique), le mode d&#x27;apparition et ce qui soulage ou aggrave la douleur. Ces informations orientent le choix du traitement.</p>
+    </section>
+    <section class="course-section">
+      <h3>3. Traitements antalgiques : les paliers OMS</h3>
+      <p>L&#x27;Organisation mondiale de la santé propose une escalade par paliers, adaptée à l&#x27;intensité de la douleur. Chaque palier s&#x27;appuie sur le précédent.</p>
+      <ul><li>Palier 1 (douleur légère) : paracétamol et/ou anti-inflammatoires non stéroïdiens (AINS), selon les contre-indications du patient.</li><li>Palier 2 (douleur modérée) : opioïdes faibles (par exemple codéine ou tramadol), associés au palier 1.</li><li>Palier 3 (douleur intense) : opioïdes forts (par exemple morphine, oxycodone), associés au palier 1 ou 2 selon l&#x27;évolution.</li></ul>
+      <p>Des antalgiques adjuvants (antidépresseurs ou antiépileptiques, par exemple) sont souvent utilisés pour les douleurs neuropathiques. Les mesures non médicamenteuses (positionnement, chaleur ou froid, distraction, relaxation) complètent toujours le traitement.</p>
+      <p>Les doses, intervalles et voies d&#x27;administration doivent toujours suivre la prescription et le protocole de l&#x27;établissement. Vérifiez la dose maximale journalière du paracétamol et les contre-indications avant toute administration.</p>
+    </section>
+    <section class="course-section">
+      <h3>4. Surveiller les opioïdes</h3>
+      <p>Les opioïdes exposent à plusieurs effets indésirables qu&#x27;il faut surveiller après chaque administration : somnolence, nausées, prurit, rétention urinaire et surtout constipation, qui doit être prévenue systématiquement par un laxatif.</p>
+      <p>Le risque le plus grave est la dépression respiratoire et l&#x27;altération de la conscience. Surveillez la fréquence respiratoire, le niveau de conscience et la saturation en oxygène. Un score de sédation peut être utilisé selon les services.</p>
+      <p>La naloxone est l&#x27;antidote des opioïdes ; elle doit être connue de l&#x27;équipe et disponible selon la procédure du service. Ne jamais écraser ni couper une forme à libération prolongée.</p>
+    </section>
+    <section class="course-section">
+      <h3>5. Réévaluer et tracer</h3>
+      <p>Réévaluez la douleur après chaque traitement, dans un délai adapté à la voie d&#x27;administration (en général environ une heure après une voie orale, plus tôt après une voie intraveineuse). Si la douleur persiste, signalez-le au médecin.</p>
+      <p>Tracez dans le dossier de soins l&#x27;intensité de la douleur, le traitement donné, l&#x27;heure et l&#x27;effet obtenu. Cette traçabilité est essentielle pour adapter le traitement et protéger le patient comme le soignant.</p>
+    </section>
+    <section class="course-section">
+      <h3>Points clés à retenir</h3>
+      <ul><li>La douleur est ce que la personne décrit : croyez-la et réévaluez-la.</li><li>Choisissez l&#x27;outil d&#x27;évaluation selon l&#x27;âge et les capacités de communication.</li><li>Respectez l&#x27;escalade des paliers OMS et associez le traitement non médicamenteux.</li><li>Prévenez la constipation et surveillez la respiration et la conscience sous opioïdes.</li><li>Réévaluez et tracez après chaque traitement.</li></ul>
+    </section>
+    <div class="disclaimer-box">
+      <strong>Note pédagogique :</strong> Ce support de cours est destiné à la révision des étudiants en soins infirmiers (IFSI / ISPITS) et ne remplace pas les protocoles médicaux de votre établissement.
+    </div>
+    <div class="course-nav-bottom">
+      <a class="btn btn-outline" href="index.html">⬅️ Accueil</a>
+      <a class="btn" href="cours-microbiologie-infectiologie.html">Cours 22 : Microbiologie &amp; Infectiologie ➡️</a>
+    </div>
+  </article>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>InfirmAnat IA</strong> — Ressource Éducative Libre en Sciences Infirmières.<br/>
+      <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Accueil & 23 Cours</a>
+      <a href="anatomie-3d.html">Atlas 3D Interactif</a>
+      <a href="exercices.html">Exercices & Cas Cliniques</a>
+      <a href="ressources-pdf.html">Fiches PDF Imprimables</a>
+      <a href="actualites.html">Actualités & News</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const COURSE_KEY = 'douleur';
+function refreshBtn() {
+  const completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  const btn = document.getElementById('btn-complete');
+  btn.textContent = completed.includes(COURSE_KEY) ? '✓ Cours validé' : 'Marquer comme étudié';
+}
+function toggleCourseComplete(id) {
+  let completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  completed = completed.includes(id) ? completed.filter(x => x !== id) : [...completed, id];
+  localStorage.setItem('ia_completed', JSON.stringify(completed));
+  refreshBtn();
+}
+refreshBtn();
+</script>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Droit, Déontologie &amp; Éthique — Cours 23 — InfirmAnat IA</title>
+  <meta name="description" content="Rôle propre et sur prescription, code de déontologie, secret professionnel, consentement, personne de confiance, directives anticipées, responsabilités." />
+  <style>
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --primary: #0f4c81;
+  --primary-light: #e6f0fa;
+  --accent: #0d9488;
+  --accent-light: #e6f7f5;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(15, 76, 129, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, #0f4c81 0%, #0d9488 100%);
+  color: #fff;
+  padding: 15px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+.brand-icon {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: bold;
+}
+.brand h1 { font-size: 1.25rem; font-weight: 700; }
+.brand p { font-size: 0.78rem; opacity: 0.9; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a, nav button {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+nav a:hover, nav button:hover, nav button.active, nav a.active {
+  background: #fff;
+  color: var(--primary);
+}
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 20px 50px;
+  flex: 1;
+}
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.sys-badge {
+  background: var(--primary-light); color: var(--primary);
+  font-weight: 700; font-size: 0.78rem; padding: 4px 11px; border-radius: 999px;
+  display: inline-block;
+}
+.done-badge {
+  background: #dcfce7; color: #15803d;
+  font-size: 0.75rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+}
+.btn {
+  background: var(--primary); color: #fff; border: none;
+  padding: 10px 18px; border-radius: 10px; font-weight: 600;
+  cursor: pointer; font-size: 0.9rem; text-decoration: none; display: inline-block;
+}
+.btn:hover { opacity: 0.93; }
+.btn-accent { background: var(--accent); }
+.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+.course-header {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; gap: 12px; border-bottom: 2px solid var(--border);
+  padding-bottom: 16px; margin-bottom: 22px;
+}
+.course-section {
+  margin-bottom: 20px; padding: 20px; border-radius: 12px;
+  background: #f8fafc; border: 1px solid var(--border);
+}
+.course-section h3, .course-section h4 { color: var(--primary); font-size: 1.08rem; margin-bottom: 9px; }
+.course-section p, .course-section li { color: #334155; font-size: 0.96rem; margin-bottom: 8px; }
+.norms-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.norm-box {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); padding: 12px; border-radius: 10px;
+}
+.norm-box strong { display: block; color: var(--primary); font-size: 0.85rem; }
+.norm-box span { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+.svg-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; margin-bottom: 22px; text-align: center;
+}
+.svg-card figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 8px; font-weight: 600; }
+.breadcrumb { font-size: 0.86rem; color: var(--muted); margin-bottom: 14px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.course-nav-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);
+}
+.disclaimer-box {
+  background: #fefce8;
+  border-left: 4px solid #eab308;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  color: #713f12;
+}
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 32px 20px;
+  margin-top: auto;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.footer-links a:hover { color: #ffffff; text-decoration: underline; }
+
+@media print {
+  header, nav, .btn, .no-print, footer, .breadcrumb { display: none !important; }
+  body { background: #fff; display: block; }
+  .container { margin: 0; padding: 0; max-width: none; }
+  .panel { box-shadow: none; border: none; }
+  h2, h3 { break-after: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-icon">🩺</div>
+      <div>
+        <h1>InfirmAnat IA</h1>
+        <p>Anatomie-Physiologie & Soins Infirmiers (IFSI / ISPITS)</p>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">📚 23 Cours</a>
+      <a href="anatomie-3d.html">🦴 Corps 3D</a>
+      <a href="outils-medicaux.html">🩺 Outils Docteurs</a>
+      <a href="operations-cliniques.html">🏥 Opérations Clinique</a>
+      <a href="exercices.html">✍️ Exercices & QCM</a>
+      <a href="recherche.html">🔎 Recherche</a>
+      <a href="ressources-pdf.html">📄 Fiches PDF</a>
+      <a href="actualites.html">📰 Actualités</a>
+      <a href="a-propos.html">ℹ️ À propos</a>
+      <a href="contact.html">✉️ Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Accueil</a> › Soins &amp; Thérapeutique › Cours 23</div>
+  <article class="panel">
+    <div class="course-header">
+      <div>
+        <span class="sys-badge">Cours 23 • Soins &amp; Thérapeutique</span>
+        <h2 style="color:var(--primary); margin-top:8px; font-size:1.5rem;">Droit, Déontologie &amp; Éthique</h2>
+        <p style="color:var(--muted); font-size:0.95rem; margin-top:4px;">Rôle infirmier, code de déontologie, secret professionnel, droits du patient et responsabilités.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn btn-outline" href="exercices.html">✍️ S'entraîner</a>
+        <button id="btn-complete" class="btn btn-accent" onclick="toggleCourseComplete('droit')">Marquer comme étudié</button>
+      </div>
+    </div>
+    <section class="course-section">
+      <h3>1. Le rôle infirmier</h3>
+      <p>En France, le décret n° 2004-802 du 29 juillet 2004 relatif aux actes professionnels et à l&#x27;exercice de la profession d&#x27;infirmier distingue deux grands champs d&#x27;intervention. Le rôle propre couvre les soins que l&#x27;infirmier décide et réalise seul : soins relationnels, éducatifs, préventifs, surveillance clinique, soins d&#x27;hygiène et de confort. Le rôle sur prescription couvre les actes réalisés sur ordonnance ou prescription médicale, comme l&#x27;administration de médicaments ou la pose de perfusions.</p>
+      <p>Ces textes sont français. Dans votre pays ou votre institut, vérifiez le cadre légal applicable à la profession.</p>
+    </section>
+    <section class="course-section">
+      <h3>2. Le code de déontologie</h3>
+      <p>Le code de déontologie infirmière figure dans le Code de la santé publique (articles R. 4312-1 et suivants). Il affirme des principes comme le respect de la dignité et de la vie privée de la personne, l&#x27;absence de discrimination, le devoir de compétence, l&#x27;obligation de prodiguer des soins avec humanité et la nécessité de collaborer avec l&#x27;équipe.</p>
+      <p>Le code encadre aussi la publicité, les relations avec les autres professionnels et l&#x27;obligation de ne pas abandonner un patient sans motif légitime.</p>
+    </section>
+    <section class="course-section">
+      <h3>3. Le secret professionnel</h3>
+      <p>Le secret professionnel protège toutes les informations confiées ou connues dans l&#x27;exercice du métier. Sa violation est punie par l&#x27;article 226-13 du Code pénal (un an d&#x27;emprisonnement et 15 000 euros d&#x27;amende).</p>
+      <ul><li>Le partage d&#x27;informations est autorisé au sein de l&#x27;équipe qui prend en charge le patient, dans la limite de ce qui est nécessaire aux soins.</li><li>La levée du secret est possible avec l&#x27;accord du patient, ou lorsque la loi l&#x27;impose (signalement de maltraitance sur mineur ou personne vulnérable, par exemple).</li></ul>
+    </section>
+    <section class="course-section">
+      <h3>4. Les droits du patient</h3>
+      <p>La loi du 4 mars 2002, dite loi Kouchner, affirme plusieurs droits : être informé sur son état de santé, accéder à son dossier, donner un consentement libre et éclairé, et le retirer à tout moment.</p>
+      <p>La personne peut désigner une personne de confiance, qui sera consultée si elle ne peut plus exprimer sa volonté. Les directives anticipées (loi Claeys-Leonetti du 2 février 2016) permettent d&#x27;exprimer à l&#x27;avance ses souhaits de fin de vie.</p>
+      <p>Le consentement doit être recherché pour chaque soin. En cas de refus, expliquez les conséquences possibles et tracez ce refus dans le dossier.</p>
+    </section>
+    <section class="course-section">
+      <h3>5. Les responsabilités</h3>
+      <ul><li>Responsabilité civile : réparation du dommage causé à la personne soignée.</li><li>Responsabilité pénale : sanction d&#x27;une infraction (par exemple une mise en danger ou une violation du secret).</li><li>Responsabilité disciplinaire : sanction prononcée par l&#x27;ordre professionnel en cas de manquement au code de déontologie.</li></ul>
+      <p>Une erreur n&#x27;est pas forcément une faute : une faute suppose un manquement à une règle ou une négligence. La traçabilité du dossier de soins, claire et datée, est la meilleure protection du patient comme du soignant.</p>
+    </section>
+    <section class="course-section">
+      <h3>Points clés à retenir</h3>
+      <ul><li>Distinguer le rôle propre du rôle sur prescription.</li><li>Le secret professionnel est protégé par la loi, avec des exceptions précises.</li><li>Le consentement est recherché pour chaque soin et peut être retiré.</li><li>La personne de confiance et les directives anticipées protègent le choix du patient.</li><li>Tracer les soins est une obligation et une protection.</li></ul>
+    </section>
+    <div class="disclaimer-box">
+      <strong>Note pédagogique :</strong> Ce support de cours est destiné à la révision des étudiants en soins infirmiers (IFSI / ISPITS) et ne remplace pas les protocoles médicaux de votre établissement.
+    </div>
+    <div class="course-nav-bottom">
+      <a class="btn btn-outline" href="cours-microbiologie-infectiologie.html">⬅️ Cours 22 : Microbiologie &amp; Infectiologie</a>
+      <a class="btn" href="index.html">Retour à l&#x27;accueil ➡️</a>
+    </div>
+  </article>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>InfirmAnat IA</strong> — Ressource Éducative Libre en Sciences Infirmières.<br/>
+      <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Accueil & 23 Cours</a>
+      <a href="anatomie-3d.html">Atlas 3D Interactif</a>
+      <a href="exercices.html">Exercices & Cas Cliniques</a>
+      <a href="ressources-pdf.html">Fiches PDF Imprimables</a>
+      <a href="actualites.html">Actualités & News</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const COURSE_KEY = 'droit';
+function refreshBtn() {
+  const completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  const btn = document.getElementById('btn-complete');
+  btn.textContent = completed.includes(COURSE_KEY) ? '✓ Cours validé' : 'Marquer comme étudié';
+}
+function toggleCourseComplete(id) {
+  let completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  completed = completed.includes(id) ? completed.filter(x => x !== id) : [...completed, id];
+  localStorage.setItem('ia_completed', JSON.stringify(completed));
+  refreshBtn();
+}
+refreshBtn();
+</script>
+</body>
+</html>

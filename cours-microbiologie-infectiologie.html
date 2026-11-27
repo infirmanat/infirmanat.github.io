@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microbiologie &amp; Infectiologie — Cours 22 — InfirmAnat IA</title>
+  <meta name="description" content="Bactéries, virus, champignons et parasites ; chaîne de transmission ; infections associées aux soins ; précautions standard et complémentaires ; sepsis." />
+  <style>
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --primary: #0f4c81;
+  --primary-light: #e6f0fa;
+  --accent: #0d9488;
+  --accent-light: #e6f7f5;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(15, 76, 129, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, #0f4c81 0%, #0d9488 100%);
+  color: #fff;
+  padding: 15px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+.brand-icon {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: bold;
+}
+.brand h1 { font-size: 1.25rem; font-weight: 700; }
+.brand p { font-size: 0.78rem; opacity: 0.9; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a, nav button {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+nav a:hover, nav button:hover, nav button.active, nav a.active {
+  background: #fff;
+  color: var(--primary);
+}
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 20px 50px;
+  flex: 1;
+}
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.sys-badge {
+  background: var(--primary-light); color: var(--primary);
+  font-weight: 700; font-size: 0.78rem; padding: 4px 11px; border-radius: 999px;
+  display: inline-block;
+}
+.done-badge {
+  background: #dcfce7; color: #15803d;
+  font-size: 0.75rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+}
+.btn {
+  background: var(--primary); color: #fff; border: none;
+  padding: 10px 18px; border-radius: 10px; font-weight: 600;
+  cursor: pointer; font-size: 0.9rem; text-decoration: none; display: inline-block;
+}
+.btn:hover { opacity: 0.93; }
+.btn-accent { background: var(--accent); }
+.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+.course-header {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; gap: 12px; border-bottom: 2px solid var(--border);
+  padding-bottom: 16px; margin-bottom: 22px;
+}
+.course-section {
+  margin-bottom: 20px; padding: 20px; border-radius: 12px;
+  background: #f8fafc; border: 1px solid var(--border);
+}
+.course-section h3, .course-section h4 { color: var(--primary); font-size: 1.08rem; margin-bottom: 9px; }
+.course-section p, .course-section li { color: #334155; font-size: 0.96rem; margin-bottom: 8px; }
+.norms-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.norm-box {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); padding: 12px; border-radius: 10px;
+}
+.norm-box strong { display: block; color: var(--primary); font-size: 0.85rem; }
+.norm-box span { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+.svg-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; margin-bottom: 22px; text-align: center;
+}
+.svg-card figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 8px; font-weight: 600; }
+.breadcrumb { font-size: 0.86rem; color: var(--muted); margin-bottom: 14px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.course-nav-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);
+}
+.disclaimer-box {
+  background: #fefce8;
+  border-left: 4px solid #eab308;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  color: #713f12;
+}
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 32px 20px;
+  margin-top: auto;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.footer-links a:hover { color: #ffffff; text-decoration: underline; }
+
+@media print {
+  header, nav, .btn, .no-print, footer, .breadcrumb { display: none !important; }
+  body { background: #fff; display: block; }
+  .container { margin: 0; padding: 0; max-width: none; }
+  .panel { box-shadow: none; border: none; }
+  h2, h3 { break-after: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-icon">🩺</div>
+      <div>
+        <h1>InfirmAnat IA</h1>
+        <p>Anatomie-Physiologie & Soins Infirmiers (IFSI / ISPITS)</p>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">📚 23 Cours</a>
+      <a href="anatomie-3d.html">🦴 Corps 3D</a>
+      <a href="outils-medicaux.html">🩺 Outils Docteurs</a>
+      <a href="operations-cliniques.html">🏥 Opérations Clinique</a>
+      <a href="exercices.html">✍️ Exercices & QCM</a>
+      <a href="recherche.html">🔎 Recherche</a>
+      <a href="ressources-pdf.html">📄 Fiches PDF</a>
+      <a href="actualites.html">📰 Actualités</a>
+      <a href="a-propos.html">ℹ️ À propos</a>
+      <a href="contact.html">✉️ Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Accueil</a> › Soins &amp; Thérapeutique › Cours 22</div>
+  <article class="panel">
+    <div class="course-header">
+      <div>
+        <span class="sys-badge">Cours 22 • Soins &amp; Thérapeutique</span>
+        <h2 style="color:var(--primary); margin-top:8px; font-size:1.5rem;">Microbiologie &amp; Infectiologie</h2>
+        <p style="color:var(--muted); font-size:0.95rem; margin-top:4px;">Micro-organismes, chaîne de transmission, précautions d&#x27;hygiène et antibiothérapie.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn btn-outline" href="exercices.html">✍️ S'entraîner</a>
+        <button id="btn-complete" class="btn btn-accent" onclick="toggleCourseComplete('microbio')">Marquer comme étudié</button>
+      </div>
+    </div>
+    <section class="course-section">
+      <h3>1. Les micro-organismes</h3>
+      <p>Les bactéries sont des organismes unicellulaires. Elles se classent selon leur forme (cocci rond, bacille en bâtonnet) et leur réaction à la coloration de Gram : Gram positif (paroi épaisse, coloration violette) ou Gram négatif (paroi plus complexe, coloration rose).</p>
+      <p>Les virus ne se multiplient qu&#x27;à l&#x27;intérieur des cellules d&#x27;un hôte. Les champignons et les parasites sont d&#x27;autres agents infectieux, plus rares en routine hospitalière. Une grande partie des micro-organismes du corps humain sont des bactéries de la flore commensale, utiles et souvent protectrices ; elles deviennent dangereuses lorsqu&#x27;elles atteignent un site normalement stérile ou qu&#x27;elles prolifèrent.</p>
+    </section>
+    <section class="course-section">
+      <h3>2. La chaîne de transmission</h3>
+      <p>Une infection apparaît lorsque six maillons sont réunis : l&#x27;agent infectieux, son réservoir (humain, animal, environnement), la porte de sortie du réservoir, le mode de transmission, la porte d&#x27;entrée chez l&#x27;hôte et l&#x27;hôte réceptif.</p>
+      <p>Les modes de transmission les plus fréquents sont le contact (direct ou indirect par les mains et le matériel), les gouttelettes (projections à moins d&#x27;environ un mètre lors de la toux ou de la parole), l&#x27;air (particules fines qui restent en suspension) et le véhiculé ou vectoriel (eau, aliments, insectes). Rompre un seul maillon suffit à stopper la transmission : c&#x27;est le principe de la prévention.</p>
+    </section>
+    <section class="course-section">
+      <h3>3. Les infections associées aux soins</h3>
+      <p>Une infection associée aux soins (IAS) est une infection contractée au cours d&#x27;une prise en charge, qui n&#x27;était pas présente ou en incubation à l&#x27;admission. Les sites les plus fréquents sont l&#x27;appareil urinaire (sonde), le sang (cathéter veineux central), les poumons (ventilation, aspiration) et le site opératoire.</p>
+      <p>La prévention repose d&#x27;abord sur la réduction des dispositifs invasifs au strict nécessaire et sur le retrait rapide des sondes et cathéters qui ne sont plus utiles.</p>
+    </section>
+    <section class="course-section">
+      <h3>4. Précautions standard et complémentaires</h3>
+      <ul><li>Hygiène des mains : c&#x27;est la mesure la plus efficace. Les cinq moments recommandés par l&#x27;OMS sont : avant le contact avec le patient, avant un geste aseptique, après un risque d&#x27;exposition à un liquide biologique, après le contact avec le patient, et après le contact avec son environnement.</li><li>Précautions standard : elles s&#x27;appliquent à tous les patients (gants, masque, lunettes ou écran selon le risque d&#x27;éclaboussure, tri du matériel souillé).</li><li>Précautions complémentaires : elles s&#x27;ajoutent aux précautions standard selon l&#x27;agent en cause. Précaution contact pour les bactéries multi-résistantes, gouttelettes pour la grippe ou la coqueluche, air pour la tuberculose.</li></ul>
+      <p>Les précautions complémentaires et leur durée sont décidées avec l&#x27;équipe d&#x27;hygiène selon l&#x27;agent identifié. Affichez-les à l&#x27;entrée de la chambre pour informer les soignants.</p>
+    </section>
+    <section class="course-section">
+      <h3>5. Antibiotiques : bon usage</h3>
+      <p>Les antibiotiques agissent sur les bactéries, pas sur les virus. Ils sont donc inefficaces contre un rhume, une grippe ou une bronchiolite virale.</p>
+      <p>Le bon usage repose sur l&#x27;administration à l&#x27;heure prescrite, la durée complète du traitement et le respect du spectre choisi. Un prélèvement bactériologique (sang, urine, pus) doit être réalisé avant la première dose lorsque c&#x27;est possible, sans retarder le traitement en cas d&#x27;urgence.</p>
+      <p>Une mauvaise utilisation favorise les résistances : des bactéries qui survivent au traitement et deviennent difficiles à éradiquer, comme le Staphylococcus aureus résistant à la méticilline (SARM).</p>
+    </section>
+    <section class="course-section">
+      <h3>6. Reconnaître le sepsis</h3>
+      <p>Le sepsis est une infection qui entraîne une dysfonction d&#x27;organe menaçant la vie. Ses signes peuvent être une fièvre ou une hypothermie, une tachycardie, une tachypnée, une baisse de la pression artérielle, une confusion ou une diminution du débit urinaire.</p>
+      <p>Devant une suspicion de sepsis, alertez immédiatement le médecin, surveillez les constantes et appliquez le protocole d&#x27;urgence de l&#x27;établissement. La rapidité de la prise en charge conditionne le pronostic.</p>
+    </section>
+    <section class="course-section">
+      <h3>Points clés à retenir</h3>
+      <ul><li>Un virus ne se traite pas par antibiotique.</li><li>L&#x27;hygiène des mains (cinq moments OMS) est la mesure la plus efficace.</li><li>Rompre un maillon de la chaîne de transmission stoppe l&#x27;infection.</li><li>Prélever avant l&#x27;antibiotique, quand c&#x27;est possible, et respecter la durée prescrite.</li><li>Un sepsis est une urgence : signes de dysfonction d&#x27;organe, alerte immédiate.</li></ul>
+    </section>
+    <div class="disclaimer-box">
+      <strong>Note pédagogique :</strong> Ce support de cours est destiné à la révision des étudiants en soins infirmiers (IFSI / ISPITS) et ne remplace pas les protocoles médicaux de votre établissement.
+    </div>
+    <div class="course-nav-bottom">
+      <a class="btn btn-outline" href="cours-douleur-antalgie.html">⬅️ Cours 21 : Douleur &amp; Antalgie</a>
+      <a class="btn" href="cours-droit-deontologie.html">Cours 23 : Droit, Déontologie &amp; Éthique ➡️</a>
+    </div>
+  </article>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>InfirmAnat IA</strong> — Ressource Éducative Libre en Sciences Infirmières.<br/>
+      <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Accueil & 23 Cours</a>
+      <a href="anatomie-3d.html">Atlas 3D Interactif</a>
+      <a href="exercices.html">Exercices & Cas Cliniques</a>
+      <a href="ressources-pdf.html">Fiches PDF Imprimables</a>
+      <a href="actualites.html">Actualités & News</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const COURSE_KEY = 'microbio';
+function refreshBtn() {
+  const completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  const btn = document.getElementById('btn-complete');
+  btn.textContent = completed.includes(COURSE_KEY) ? '✓ Cours validé' : 'Marquer comme étudié';
+}
+function toggleCourseComplete(id) {
+  let completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
+  completed = completed.includes(id) ? completed.filter(x => x !== id) : [...completed, id];
+  localStorage.setItem('ia_completed', JSON.stringify(completed));
+  refreshBtn();
+}
+refreshBtn();
+</script>
+</body>
+</html>

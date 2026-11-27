@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>InfirmAnat IA — 20 Cours Infirmiers, Exercices, Calculs de Doses & Fiches PDF (IFSI / ISPITS)</title>
-  <meta name="description" content="Plateforme pédagogique 100 % gratuite : 20 cours complets (anatomie-physiologie, pharmacologie, soins techniques, urgences, hygiène, pédiatrie, gériatrie, psychiatrie, obstétrique), exercices corrigés et 6 fiches PDF imprimables." />
+  <title>InfirmAnat IA — 23 Cours Infirmiers, Exercices, Calculs de Doses & Fiches PDF (IFSI / ISPITS)</title>
+  <meta name="description" content="Plateforme pédagogique 100 % gratuite : 23 cours complets (anatomie-physiologie, pharmacologie, soins techniques, urgences, hygiène, pédiatrie, gériatrie, psychiatrie, obstétrique), exercices corrigés et 6 fiches PDF imprimables." />
   <meta name="robots" content="index, follow" />
   <style>
 
@@ -249,7 +249,7 @@ footer {
       </div>
     </a>
     <nav>
-      <a href="index.html" class="active">📚 20 Cours</a>
+      <a href="index.html" class="active">📚 23 Cours</a>
       <a href="anatomie-3d.html">🦴 Corps 3D</a>
       <a href="outils-medicaux.html">🩺 Outils Docteurs</a>
       <a href="operations-cliniques.html">🏥 Opérations Clinique</a>
@@ -272,7 +272,7 @@ footer {
       <p>12 systèmes d'anatomie-physiologie, 4 modules de soins/pharmacologie/urgences et 4 spécialités cliniques (Pédiatrie, Gériatrie, Psychiatrie, Obstétrique).</p>
     </div>
     <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-      <span class="sys-badge" id="progress-summary">0 / 20 cours validés</span>
+      <span class="sys-badge" id="progress-summary">0 / 23 cours validés</span>
       <a href="ressources-pdf.html" class="btn">📄 Fiches PDF</a>
       <a href="exercices.html" class="btn btn-accent">✍️ Exercices</a>
     </div>
@@ -568,6 +568,48 @@ footer {
         <span>Lire le cours →</span>
       </div>
     </a>
+    <a href="cours-douleur-antalgie.html" class="card" data-cat="Soins &amp; Thérapeutique" data-search="douleur &amp; antalgie douleur aiguë et chronique, échelles d&#x27;évaluation (eva, evs, flacc, algoplus), paliers oms, surveillance des opioïdes et naloxone. soins &amp; thérapeutique">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 21 • Soins &amp; Thérapeutique</span>
+          <span class="done-badge hidden" id="badge-douleur">✓ Validé</span>
+        </div>
+        <h3>Douleur &amp; Antalgie</h3>
+        <p>Douleur aiguë et chronique, échelles d&#x27;évaluation (EVA, EVS, FLACC, Algoplus), paliers OMS, surveillance des opioïdes et naloxone.</p>
+      </div>
+      <div class="card-footer">
+        <span>5 volets + points clés</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-microbiologie-infectiologie.html" class="card" data-cat="Soins &amp; Thérapeutique" data-search="microbiologie &amp; infectiologie bactéries, virus, chaîne de transmission, infections associées aux soins, précautions standard et complémentaires, antibiotiques et sepsis. soins &amp; thérapeutique">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 22 • Soins &amp; Thérapeutique</span>
+          <span class="done-badge hidden" id="badge-microbio">✓ Validé</span>
+        </div>
+        <h3>Microbiologie &amp; Infectiologie</h3>
+        <p>Bactéries, virus, chaîne de transmission, infections associées aux soins, précautions standard et complémentaires, antibiotiques et sepsis.</p>
+      </div>
+      <div class="card-footer">
+        <span>5 volets + points clés</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
+    <a href="cours-droit-deontologie.html" class="card" data-cat="Soins &amp; Thérapeutique" data-search="droit, déontologie &amp; éthique rôle propre et sur prescription, code de déontologie, secret professionnel, consentement, personne de confiance, responsabilités. soins &amp; thérapeutique">
+      <div>
+        <div class="card-top">
+          <span class="sys-badge">Cours 23 • Soins &amp; Thérapeutique</span>
+          <span class="done-badge hidden" id="badge-droit">✓ Validé</span>
+        </div>
+        <h3>Droit, Déontologie &amp; Éthique</h3>
+        <p>Rôle propre et sur prescription, code de déontologie, secret professionnel, consentement, personne de confiance, responsabilités.</p>
+      </div>
+      <div class="card-footer">
+        <span>5 volets + points clés</span>
+        <span>Lire le cours →</span>
+      </div>
+    </a>
   </div>
 
   <div class="disclaimer-box">
@@ -583,7 +625,7 @@ footer {
       <span style="font-size:0.82rem; color:#94a3b8;">© 2026 InfirmAnat IA. Tous droits réservés.</span>
     </div>
     <div class="footer-links">
-      <a href="index.html">Accueil & 20 Cours</a>
+      <a href="index.html">Accueil & 23 Cours</a>
       <a href="anatomie-3d.html">Atlas 3D Interactif</a>
       <a href="exercices.html">Exercices & QCM</a>
       <a href="ressources-pdf.html">Fiches PDF Imprimables</a>
@@ -628,7 +670,7 @@ footer {
 let currentCat = 'all';
 function updateUI() {
   const completed = JSON.parse(localStorage.getItem('ia_completed') || '[]');
-  document.getElementById('progress-summary').textContent = `${completed.length} / 20 cours validés`;
+  document.getElementById('progress-summary').textContent = `${completed.length} / 23 cours validés`;
   completed.forEach(id => {
     const b = document.getElementById('badge-' + id);
     if (b) b.classList.remove('hidden');
